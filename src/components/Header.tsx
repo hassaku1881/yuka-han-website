@@ -15,6 +15,7 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [lang, setLang] = useState<"JP" | "EN">("JP");
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
@@ -64,9 +65,28 @@ export default function Header() {
           </Link>
         ))}
         <div className="header-lang-switch">
-          <a href="#" className="header-lang-active">JP</a>
-          <a href="#" className="header-lang">EN</a>
-          <a href="#" className="header-lang">繁中</a>
+          {(["JP", "EN"] as const).map((l, i) => (
+            <>
+              {i > 0 && <span key={`sep-${l}`} style={{ color: "#ccc", fontSize: "0.75rem" }}>/</span>}
+              <button
+                key={l}
+                onClick={() => { setLang(l); console.log(`${l} selected`); }}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "0.75rem",
+                  fontWeight: lang === l ? 700 : 400,
+                  color: lang === l ? "var(--color-primary)" : "#999",
+                  opacity: lang === l ? 1 : 0.6,
+                  padding: 0,
+                  transition: "opacity 0.2s",
+                }}
+              >
+                {l}
+              </button>
+            </>
+          ))}
         </div>
       </nav>
 
@@ -140,23 +160,31 @@ export default function Header() {
             <div
               style={{
                 display: "flex",
-                gap: "1.5rem",
+                alignItems: "center",
+                gap: "0.8rem",
                 marginTop: "1.5rem",
               }}
             >
-              {["JP", "EN", "繁中"].map((lang, i) => (
-                <a
-                  key={lang}
-                  href="#"
-                  style={{
-                    fontSize: "0.85rem",
-                    color: i === 0 ? "var(--color-primary)" : "#999",
-                    textDecoration: "none",
-                    fontWeight: i === 0 ? 500 : 400,
-                  }}
-                >
-                  {lang}
-                </a>
+              {(["JP", "EN"] as const).map((l, i) => (
+                <>
+                  {i > 0 && <span key={`msep-${l}`} style={{ color: "#ccc", fontSize: "0.85rem" }}>/</span>}
+                  <button
+                    key={l}
+                    onClick={() => { setLang(l); setIsOpen(false); console.log(`${l} selected`); }}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      fontSize: "0.95rem",
+                      fontWeight: lang === l ? 700 : 400,
+                      color: lang === l ? "var(--color-primary)" : "#999",
+                      opacity: lang === l ? 1 : 0.6,
+                      padding: 0,
+                    }}
+                  >
+                    {l}
+                  </button>
+                </>
               ))}
             </div>
           </nav>
