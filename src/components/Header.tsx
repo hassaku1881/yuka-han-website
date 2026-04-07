@@ -26,14 +26,12 @@ export default function Header() {
   const [currentLocale, setCurrentLocale] = useState<Locale>("ja");
   const [scrolled, setScrolled] = useState(false);
 
-  // スクロール検知（タスク7と共通）
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // メニュー開閉時のbodyスクロールロック
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
     return () => { document.body.style.overflow = "unset"; };
@@ -42,27 +40,29 @@ export default function Header() {
   const handleLocaleChange = (locale: Locale) => {
     setCurrentLocale(locale);
     console.log(`Locale changed to: ${locale}`);
-    // TODO: next-intl実装時にルーティング切替を追加
   };
 
-  // スクロール前は透明背景+白文字、後は白背景+ダーク文字
-  const textColor = scrolled ? "var(--color-primary)" : "#ffffff";
-  const navLinkHoverClass = scrolled ? "header-nav-link-scrolled" : "header-nav-link-top";
+  const textColor = scrolled || isOpen ? "var(--color-primary)" : "#ffffff";
 
-  // 言語切替UI（デスクトップ・モバイル共通）
   const LangSwitch = ({ mobile = false }: { mobile?: boolean }) => (
     <div
       style={{
         display: "flex",
         alignItems: "center",
         gap: mobile ? "0.6rem" : "0.4rem",
-        ...(mobile ? { marginTop: "1.5rem" } : { marginLeft: "1rem", paddingLeft: "1rem", borderLeft: `1px solid ${scrolled ? "#ddd" : "rgba(255,255,255,0.3)"}` }),
+        ...(mobile
+          ? { marginTop: "2rem" }
+          : {
+              marginLeft: "1rem",
+              paddingLeft: "1rem",
+              borderLeft: `1px solid ${scrolled ? "#ddd" : "rgba(255,255,255,0.3)"}`,
+            }),
       }}
     >
       {locales.map((locale, index) => (
         <span key={locale.key} style={{ display: "flex", alignItems: "center", gap: mobile ? "0.6rem" : "0.4rem" }}>
           {index > 0 && (
-            <span style={{ opacity: 0.4, fontSize: mobile ? "0.85rem" : "0.75rem", color: mobile ? "var(--color-primary)" : textColor }}>
+            <span style={{ opacity: 0.4, fontSize: mobile ? "0.9rem" : "0.75rem", color: "var(--color-primary)" }}>
               /
             </span>
           )}
@@ -75,15 +75,13 @@ export default function Header() {
               background: "none",
               border: "none",
               cursor: "pointer",
-              fontSize: mobile ? "0.95rem" : "0.75rem",
+              fontSize: mobile ? "1rem" : "0.75rem",
               fontWeight: currentLocale === locale.key ? 700 : 400,
               color: mobile ? "var(--color-primary)" : textColor,
               opacity: currentLocale === locale.key ? 1 : 0.6,
               padding: 0,
               transition: "opacity 0.2s",
             }}
-            onMouseEnter={(e) => { if (currentLocale !== locale.key) e.currentTarget.style.opacity = "1"; }}
-            onMouseLeave={(e) => { if (currentLocale !== locale.key) e.currentTarget.style.opacity = "0.6"; }}
           >
             {locale.label}
           </button>
@@ -93,88 +91,91 @@ export default function Header() {
   );
 
   return (
-    <header
-      style={{
-        position: "fixed",
-        top: 0,
-        width: "100%",
-        background: scrolled ? "rgba(255,255,255,0.95)" : "transparent",
-        backdropFilter: scrolled ? "blur(10px)" : "none",
-        boxShadow: scrolled ? "0 1px 0 rgba(0,0,0,0.05)" : "none",
-        zIndex: 1000,
-        padding: "1rem 4%",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        transition: "background 0.3s, box-shadow 0.3s",
-      }}
-    >
-      {/* Logo */}
-      <Link
-        href="/"
-        onClick={() => setIsOpen(false)}
+    <>
+      {/* ─── Header bar ─── */}
+      <header
         style={{
-          fontFamily: "var(--font-en)",
-          fontSize: "1.5rem",
-          fontWeight: 600,
-          color: textColor,
-          textDecoration: "none",
-          letterSpacing: "0.1em",
-          zIndex: 1001,
-          transition: "color 0.3s",
+          position: "fixed",
+          top: 0,
+          width: "100%",
+          background: scrolled || isOpen ? "rgba(255,255,255,0.97)" : "transparent",
+          backdropFilter: scrolled || isOpen ? "blur(10px)" : "none",
+          boxShadow: scrolled ? "0 1px 0 rgba(0,0,0,0.05)" : "none",
+          zIndex: 1000,
+          padding: "1rem 4%",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          transition: "background 0.3s, box-shadow 0.3s",
         }}
       >
-        YUKAHAN
-      </Link>
+        <Link
+          href="/"
+          onClick={() => setIsOpen(false)}
+          style={{
+            fontFamily: "var(--font-en)",
+            fontSize: "1.5rem",
+            fontWeight: 600,
+            color: textColor,
+            textDecoration: "none",
+            letterSpacing: "0.1em",
+            transition: "color 0.3s",
+          }}
+        >
+          YUKAHAN
+        </Link>
 
-      {/* Desktop Nav */}
-      <nav className="header-desktop-nav">
-        {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={`header-nav-link ${navLinkHoverClass}`}
-            style={{ color: textColor }}
-          >
-            {link.label}
-          </Link>
-        ))}
-        <LangSwitch />
-      </nav>
+        {/* Desktop Nav */}
+        <nav className="header-desktop-nav">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`header-nav-link ${scrolled ? "header-nav-link-scrolled" : "header-nav-link-top"}`}
+              style={{ color: textColor }}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <LangSwitch />
+        </nav>
 
-      {/* Hamburger Button */}
-      <button
-        className="header-hamburger"
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? "メニューを閉じる" : "メニューを開く"}
-        aria-expanded={isOpen}
-        style={{
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          color: textColor,
-          display: "none",
-          padding: "4px",
-          zIndex: 1001,
-          transition: "color 0.3s",
-        }}
-      >
-        {isOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
+        {/* Hamburger */}
+        <button
+          className="header-hamburger"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "メニューを閉じる" : "メニューを開く"}
+          aria-expanded={isOpen}
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            color: textColor,
+            display: "none",
+            padding: "4px",
+            transition: "color 0.3s",
+          }}
+        >
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* ─── Mobile Menu Overlay（headerの外・兄弟要素） ─── */}
       {isOpen && (
         <div
           style={{
             position: "fixed",
-            inset: 0,
-            top: "64px",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
             background: "rgba(255,255,255,0.98)",
-            zIndex: 999,
+            zIndex: 998,          // header(1000)の下・ページコンテンツの上
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
+            paddingTop: "64px",   // ヘッダー分を確保
           }}
         >
           <nav
@@ -182,7 +183,6 @@ export default function Header() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: "0.5rem",
               width: "100%",
               padding: "0 8%",
             }}
@@ -195,7 +195,7 @@ export default function Header() {
                 style={{
                   textDecoration: "none",
                   color: "var(--color-primary)",
-                  fontSize: "1.3rem",
+                  fontSize: "1.4rem",
                   fontWeight: 400,
                   fontFamily: "var(--font-en)",
                   letterSpacing: "0.1em",
@@ -233,6 +233,6 @@ export default function Header() {
           .header-hamburger { display: flex !important; }
         }
       `}</style>
-    </header>
+    </>
   );
 }
