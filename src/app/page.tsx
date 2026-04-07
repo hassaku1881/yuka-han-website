@@ -154,7 +154,7 @@ export default async function Home() {
             { icon: <Sparkles size={40} strokeWidth={1.5} color="#d4a574" />, title: "Premium Amenities", text: "高速Wi-Fi、充実のキッチン設備、こだわりのバスアメニティで快適な滞在を。" },
           ].map((f) => (
             <div key={f.title} style={{ textAlign: "center", padding: "2rem", color: "var(--color-white)" }}>
-              <div style={{ marginBottom: "1rem" }}>{f.icon}</div>
+              <div style={{ marginBottom: "1rem", display: "flex", justifyContent: "center" }}>{f.icon}</div>
               <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1.1rem", fontWeight: 400, letterSpacing: "0.05em", marginBottom: "1rem", color: "var(--color-accent)" }}>
                 {f.title}
               </h3>
