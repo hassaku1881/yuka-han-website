@@ -139,7 +139,7 @@ export default function WutoPage() {
               { icon: <Wifi size={36} strokeWidth={1.5} color="#d4a574" />, title: "High-Speed Wi-Fi", text: "ビジネスユースにも対応した高速光回線でストレスフリーなワーク環境。" },
               { icon: <Moon size={36} strokeWidth={1.5} color="#d4a574" />, title: "Personal Service", text: "創業者夫婦による直接運営。細やかなホスピタリティで旅をサポート。" },
             ].map((f) => (
-              <div key={f.title} style={{ padding: "2rem", color: "var(--color-white)" }}>
+              <div key={f.title} style={{ padding: "2rem", color: "var(--color-white)", textAlign: "center" }}>
                 <div style={{ marginBottom: "0.8rem", display: "flex", justifyContent: "center" }}>{f.icon}</div>
                 <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1rem", fontWeight: 400, color: "var(--color-accent)", marginBottom: "0.8rem", letterSpacing: "0.05em" }}>
                   {f.title}
