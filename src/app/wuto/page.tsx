@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Home as HomeIcon, TrainFront, UtensilsCrossed, Bath, Wifi, Moon } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Wuto | YUKAHAN",
@@ -131,15 +132,15 @@ export default function WutoPage() {
             style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "2rem" }}
           >
             {[
-              { icon: "🏠", title: "Japandi Interior", text: "ReCeno、無印良品、飛騨産業など厳選ブランドで統一された、上質なインテリア空間。" },
-              { icon: "🚉", title: "Prime Location", text: "全施設が駅徒歩5分以内。東京の下町エリアから都心へのアクセスも抜群。" },
-              { icon: "🍳", title: "Full Kitchen", text: "IHコンロ、電子レンジ、食器類まで充実したキッチンで自炊も楽しめる。" },
-              { icon: "🛁", title: "Premium Bath", text: "お気に入りのバスアメニティと、清潔感あふれる水まわりで至福のひとときを。" },
-              { icon: "📶", title: "High-Speed Wi-Fi", text: "ビジネスユースにも対応した高速光回線でストレスフリーなワーク環境。" },
-              { icon: "🌙", title: "Personal Service", text: "創業者夫婦による直接運営。細やかなホスピタリティで旅をサポート。" },
+              { icon: <HomeIcon size={36} strokeWidth={1.5} color="#d4a574" />, title: "Japandi Interior", text: "ReCeno、無印良品、飛騨産業など厳選ブランドで統一された、上質なインテリア空間。" },
+              { icon: <TrainFront size={36} strokeWidth={1.5} color="#d4a574" />, title: "Prime Location", text: "全施設が駅徒歩5分以内。東京の下町エリアから都心へのアクセスも抜群。" },
+              { icon: <UtensilsCrossed size={36} strokeWidth={1.5} color="#d4a574" />, title: "Full Kitchen", text: "IHコンロ、電子レンジ、食器類まで充実したキッチンで自炊も楽しめる。" },
+              { icon: <Bath size={36} strokeWidth={1.5} color="#d4a574" />, title: "Premium Bath", text: "お気に入りのバスアメニティと、清潔感あふれる水まわりで至福のひとときを。" },
+              { icon: <Wifi size={36} strokeWidth={1.5} color="#d4a574" />, title: "High-Speed Wi-Fi", text: "ビジネスユースにも対応した高速光回線でストレスフリーなワーク環境。" },
+              { icon: <Moon size={36} strokeWidth={1.5} color="#d4a574" />, title: "Personal Service", text: "創業者夫婦による直接運営。細やかなホスピタリティで旅をサポート。" },
             ].map((f) => (
               <div key={f.title} style={{ padding: "2rem", color: "var(--color-white)" }}>
-                <div style={{ fontSize: "2rem", marginBottom: "0.8rem" }}>{f.icon}</div>
+                <div style={{ marginBottom: "0.8rem", display: "flex", justifyContent: "center" }}>{f.icon}</div>
                 <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1rem", fontWeight: 400, color: "var(--color-accent)", marginBottom: "0.8rem", letterSpacing: "0.05em" }}>
                   {f.title}
                 </h3>
