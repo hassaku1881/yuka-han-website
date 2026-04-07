@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Home as HomeIcon, TrainFront, Sparkles } from "lucide-react";
 import { getArticles, getNews } from "@/lib/microcms";
 
 export const revalidate = 60;
@@ -148,12 +149,12 @@ export default async function Home() {
 
         <div className="wuto-features-grid">
           {[
-            { icon: "🏠", title: "Japandi Interior", text: "日本の美意識と北欧デザインの融合。ReCeno、無印良品、飛騨産業など厳選ブランドで統一。" },
-            { icon: "🚉", title: "Prime Location", text: "全施設が駅徒歩5分以内。東京の下町の暮らしを体験できるロケーション。" },
-            { icon: "✨", title: "Premium Amenities", text: "高速Wi-Fi、充実のキッチン設備、こだわりのバスアメニティで快適な滞在を。" },
+            { icon: <HomeIcon size={40} strokeWidth={1.5} color="#d4a574" />, title: "Japandi Interior", text: "日本の美意識と北欧デザインの融合。ReCeno、無印良品、飛騨産業など厳選ブランドで統一。" },
+            { icon: <TrainFront size={40} strokeWidth={1.5} color="#d4a574" />, title: "Prime Location", text: "全施設が駅徒歩5分以内。東京の下町の暮らしを体験できるロケーション。" },
+            { icon: <Sparkles size={40} strokeWidth={1.5} color="#d4a574" />, title: "Premium Amenities", text: "高速Wi-Fi、充実のキッチン設備、こだわりのバスアメニティで快適な滞在を。" },
           ].map((f) => (
             <div key={f.title} style={{ textAlign: "center", padding: "2rem", color: "var(--color-white)" }}>
-              <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>{f.icon}</div>
+              <div style={{ marginBottom: "1rem" }}>{f.icon}</div>
               <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1.1rem", fontWeight: 400, letterSpacing: "0.05em", marginBottom: "1rem", color: "var(--color-accent)" }}>
                 {f.title}
               </h3>
