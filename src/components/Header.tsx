@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
+type Locale = "ja" | "en" | "zh-TW";
+
 const navLinks = [
   { href: "/about", label: "About" },
   { href: "/wuto", label: "Wuto" },
@@ -13,16 +15,82 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
+const locales: { key: Locale; label: string }[] = [
+  { key: "ja", label: "JP" },
+  { key: "en", label: "EN" },
+  { key: "zh-TW", label: "繁中" },
+];
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [lang, setLang] = useState<"JP" | "EN">("JP");
+  const [currentLocale, setCurrentLocale] = useState<Locale>("ja");
+  const [scrolled, setScrolled] = useState(false);
 
+  // スクロール検知（タスク7と共通）
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // メニュー開閉時のbodyスクロールロック
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
-    return () => {
-      document.body.style.overflow = "unset";
-    };
+    return () => { document.body.style.overflow = "unset"; };
   }, [isOpen]);
+
+  const handleLocaleChange = (locale: Locale) => {
+    setCurrentLocale(locale);
+    console.log(`Locale changed to: ${locale}`);
+    // TODO: next-intl実装時にルーティング切替を追加
+  };
+
+  // スクロール前は透明背景+白文字、後は白背景+ダーク文字
+  const textColor = scrolled ? "var(--color-primary)" : "#ffffff";
+  const navLinkHoverClass = scrolled ? "header-nav-link-scrolled" : "header-nav-link-top";
+
+  // 言語切替UI（デスクトップ・モバイル共通）
+  const LangSwitch = ({ mobile = false }: { mobile?: boolean }) => (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: mobile ? "0.6rem" : "0.4rem",
+        ...(mobile ? { marginTop: "1.5rem" } : { marginLeft: "1rem", paddingLeft: "1rem", borderLeft: `1px solid ${scrolled ? "#ddd" : "rgba(255,255,255,0.3)"}` }),
+      }}
+    >
+      {locales.map((locale, index) => (
+        <span key={locale.key} style={{ display: "flex", alignItems: "center", gap: mobile ? "0.6rem" : "0.4rem" }}>
+          {index > 0 && (
+            <span style={{ opacity: 0.4, fontSize: mobile ? "0.85rem" : "0.75rem", color: mobile ? "var(--color-primary)" : textColor }}>
+              /
+            </span>
+          )}
+          <button
+            onClick={() => {
+              handleLocaleChange(locale.key);
+              if (mobile) setIsOpen(false);
+            }}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: mobile ? "0.95rem" : "0.75rem",
+              fontWeight: currentLocale === locale.key ? 700 : 400,
+              color: mobile ? "var(--color-primary)" : textColor,
+              opacity: currentLocale === locale.key ? 1 : 0.6,
+              padding: 0,
+              transition: "opacity 0.2s",
+            }}
+            onMouseEnter={(e) => { if (currentLocale !== locale.key) e.currentTarget.style.opacity = "1"; }}
+            onMouseLeave={(e) => { if (currentLocale !== locale.key) e.currentTarget.style.opacity = "0.6"; }}
+          >
+            {locale.label}
+          </button>
+        </span>
+      ))}
+    </div>
+  );
 
   return (
     <header
@@ -30,14 +98,15 @@ export default function Header() {
         position: "fixed",
         top: 0,
         width: "100%",
-        background: "rgba(255,255,255,0.95)",
-        backdropFilter: "blur(10px)",
+        background: scrolled ? "rgba(255,255,255,0.95)" : "transparent",
+        backdropFilter: scrolled ? "blur(10px)" : "none",
+        boxShadow: scrolled ? "0 1px 0 rgba(0,0,0,0.05)" : "none",
         zIndex: 1000,
         padding: "1rem 4%",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        borderBottom: "1px solid rgba(0,0,0,0.05)",
+        transition: "background 0.3s, box-shadow 0.3s",
       }}
     >
       {/* Logo */}
@@ -48,10 +117,11 @@ export default function Header() {
           fontFamily: "var(--font-en)",
           fontSize: "1.5rem",
           fontWeight: 600,
-          color: "var(--color-primary)",
+          color: textColor,
           textDecoration: "none",
           letterSpacing: "0.1em",
           zIndex: 1001,
+          transition: "color 0.3s",
         }}
       >
         YUKAHAN
@@ -60,34 +130,16 @@ export default function Header() {
       {/* Desktop Nav */}
       <nav className="header-desktop-nav">
         {navLinks.map((link) => (
-          <Link key={link.href} href={link.href} className="header-nav-link">
+          <Link
+            key={link.href}
+            href={link.href}
+            className={`header-nav-link ${navLinkHoverClass}`}
+            style={{ color: textColor }}
+          >
             {link.label}
           </Link>
         ))}
-        <div className="header-lang-switch">
-          {(["JP", "EN"] as const).map((l, i) => (
-            <>
-              {i > 0 && <span key={`sep-${l}`} style={{ color: "#ccc", fontSize: "0.75rem" }}>/</span>}
-              <button
-                key={l}
-                onClick={() => { setLang(l); console.log(`${l} selected`); }}
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: "0.75rem",
-                  fontWeight: lang === l ? 700 : 400,
-                  color: lang === l ? "var(--color-primary)" : "#999",
-                  opacity: lang === l ? 1 : 0.6,
-                  padding: 0,
-                  transition: "opacity 0.2s",
-                }}
-              >
-                {l}
-              </button>
-            </>
-          ))}
-        </div>
+        <LangSwitch />
       </nav>
 
       {/* Hamburger Button */}
@@ -100,10 +152,11 @@ export default function Header() {
           background: "none",
           border: "none",
           cursor: "pointer",
-          color: "var(--color-primary)",
+          color: textColor,
           display: "none",
           padding: "4px",
           zIndex: 1001,
+          transition: "color 0.3s",
         }}
       >
         {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -122,7 +175,6 @@ export default function Header() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: "0.5rem",
           }}
         >
           <nav
@@ -157,36 +209,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.8rem",
-                marginTop: "1.5rem",
-              }}
-            >
-              {(["JP", "EN"] as const).map((l, i) => (
-                <>
-                  {i > 0 && <span key={`msep-${l}`} style={{ color: "#ccc", fontSize: "0.85rem" }}>/</span>}
-                  <button
-                    key={l}
-                    onClick={() => { setLang(l); setIsOpen(false); console.log(`${l} selected`); }}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      fontSize: "0.95rem",
-                      fontWeight: lang === l ? 700 : 400,
-                      color: lang === l ? "var(--color-primary)" : "#999",
-                      opacity: lang === l ? 1 : 0.6,
-                      padding: 0,
-                    }}
-                  >
-                    {l}
-                  </button>
-                </>
-              ))}
-            </div>
+            <LangSwitch mobile />
           </nav>
         </div>
       )}
@@ -199,30 +222,12 @@ export default function Header() {
         }
         .header-nav-link {
           text-decoration: none;
-          color: var(--color-text);
           font-size: 0.9rem;
           font-weight: 400;
-          transition: color 0.3s;
+          transition: color 0.3s, opacity 0.3s;
         }
-        .header-nav-link:hover { color: var(--color-accent); }
-        .header-lang-switch {
-          display: flex;
-          gap: 0.5rem;
-          margin-left: 1rem;
-          padding-left: 1rem;
-          border-left: 1px solid #ddd;
-        }
-        .header-lang-active {
-          font-size: 0.75rem;
-          color: var(--color-primary);
-          font-weight: 500;
-          text-decoration: none;
-        }
-        .header-lang {
-          font-size: 0.75rem;
-          color: #999;
-          text-decoration: none;
-        }
+        .header-nav-link-top:hover { opacity: 0.75; }
+        .header-nav-link-scrolled:hover { color: var(--color-accent) !important; }
         @media (max-width: 768px) {
           .header-desktop-nav { display: none !important; }
           .header-hamburger { display: flex !important; }
