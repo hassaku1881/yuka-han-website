@@ -1,7 +1,8 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "/about", label: "About" },
@@ -13,7 +14,14 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "unset";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
   return (
     <header
@@ -31,8 +39,10 @@ export default function Header() {
         borderBottom: "1px solid rgba(0,0,0,0.05)",
       }}
     >
+      {/* Logo */}
       <Link
         href="/"
+        onClick={() => setIsOpen(false)}
         style={{
           fontFamily: "var(--font-en)",
           fontSize: "1.5rem",
@@ -40,164 +50,154 @@ export default function Header() {
           color: "var(--color-primary)",
           textDecoration: "none",
           letterSpacing: "0.1em",
+          zIndex: 1001,
         }}
       >
         YUKAHAN
       </Link>
 
       {/* Desktop Nav */}
-      <nav
-        style={{
-          display: "flex",
-          gap: "2rem",
-          alignItems: "center",
-        }}
-        className="desktop-nav"
-      >
+      <nav className="header-desktop-nav">
         {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            style={{
-              textDecoration: "none",
-              color: "var(--color-text)",
-              fontSize: "0.9rem",
-              fontWeight: 400,
-              transition: "color 0.3s",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.color = "var(--color-accent)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.color = "var(--color-text)")
-            }
-          >
+          <Link key={link.href} href={link.href} className="header-nav-link">
             {link.label}
           </Link>
         ))}
-        <div
-          style={{
-            display: "flex",
-            gap: "0.5rem",
-            marginLeft: "1rem",
-            paddingLeft: "1rem",
-            borderLeft: "1px solid #ddd",
-          }}
-        >
-          <a
-            href="#"
-            style={{
-              fontSize: "0.75rem",
-              color: "var(--color-primary)",
-              fontWeight: 500,
-              textDecoration: "none",
-            }}
-          >
-            JP
-          </a>
-          <a
-            href="#"
-            style={{ fontSize: "0.75rem", color: "#999", textDecoration: "none" }}
-          >
-            EN
-          </a>
-          <a
-            href="#"
-            style={{ fontSize: "0.75rem", color: "#999", textDecoration: "none" }}
-          >
-            繁中
-          </a>
+        <div className="header-lang-switch">
+          <a href="#" className="header-lang-active">JP</a>
+          <a href="#" className="header-lang">EN</a>
+          <a href="#" className="header-lang">繁中</a>
         </div>
       </nav>
 
-      {/* Mobile Hamburger */}
+      {/* Hamburger Button */}
       <button
-        onClick={() => setMenuOpen(!menuOpen)}
+        className="header-hamburger"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "メニューを閉じる" : "メニューを開く"}
+        aria-expanded={isOpen}
         style={{
-          display: "none",
           background: "none",
           border: "none",
           cursor: "pointer",
-          flexDirection: "column",
-          gap: "5px",
+          color: "var(--color-primary)",
+          display: "none",
           padding: "4px",
+          zIndex: 1001,
         }}
-        className="mobile-menu-btn"
-        aria-label="メニュー"
       >
-        <span
-          style={{
-            display: "block",
-            width: "24px",
-            height: "2px",
-            background: "var(--color-primary)",
-            transition: "transform 0.3s",
-            transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none",
-          }}
-        />
-        <span
-          style={{
-            display: "block",
-            width: "24px",
-            height: "2px",
-            background: "var(--color-primary)",
-            transition: "opacity 0.3s",
-            opacity: menuOpen ? 0 : 1,
-          }}
-        />
-        <span
-          style={{
-            display: "block",
-            width: "24px",
-            height: "2px",
-            background: "var(--color-primary)",
-            transition: "transform 0.3s",
-            transform: menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "none",
-          }}
-        />
+        {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
+      {/* Mobile Menu Overlay */}
+      {isOpen && (
         <div
           style={{
-            position: "absolute",
-            top: "100%",
-            left: 0,
-            right: 0,
+            position: "fixed",
+            inset: 0,
+            top: "64px",
             background: "rgba(255,255,255,0.98)",
-            padding: "1.5rem 4%",
-            borderBottom: "1px solid rgba(0,0,0,0.05)",
+            zIndex: 999,
             display: "flex",
             flexDirection: "column",
-            gap: "1rem",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "0.5rem",
           }}
-          className="mobile-menu"
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
+          <nav
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.5rem",
+              width: "100%",
+              padding: "0 8%",
+            }}
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                style={{
+                  textDecoration: "none",
+                  color: "var(--color-primary)",
+                  fontSize: "1.3rem",
+                  fontWeight: 400,
+                  fontFamily: "var(--font-en)",
+                  letterSpacing: "0.1em",
+                  padding: "1rem 0",
+                  width: "100%",
+                  textAlign: "center",
+                  borderBottom: "1px solid rgba(0,0,0,0.06)",
+                  transition: "color 0.2s",
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div
               style={{
-                textDecoration: "none",
-                color: "var(--color-text)",
-                fontSize: "1rem",
-                fontWeight: 400,
-                padding: "0.5rem 0",
-                borderBottom: "1px solid #f0f0f0",
+                display: "flex",
+                gap: "1.5rem",
+                marginTop: "1.5rem",
               }}
             >
-              {link.label}
-            </Link>
-          ))}
+              {["JP", "EN", "繁中"].map((lang, i) => (
+                <a
+                  key={lang}
+                  href="#"
+                  style={{
+                    fontSize: "0.85rem",
+                    color: i === 0 ? "var(--color-primary)" : "#999",
+                    textDecoration: "none",
+                    fontWeight: i === 0 ? 500 : 400,
+                  }}
+                >
+                  {lang}
+                </a>
+              ))}
+            </div>
+          </nav>
         </div>
       )}
 
       <style>{`
+        .header-desktop-nav {
+          display: flex;
+          gap: 2rem;
+          align-items: center;
+        }
+        .header-nav-link {
+          text-decoration: none;
+          color: var(--color-text);
+          font-size: 0.9rem;
+          font-weight: 400;
+          transition: color 0.3s;
+        }
+        .header-nav-link:hover { color: var(--color-accent); }
+        .header-lang-switch {
+          display: flex;
+          gap: 0.5rem;
+          margin-left: 1rem;
+          padding-left: 1rem;
+          border-left: 1px solid #ddd;
+        }
+        .header-lang-active {
+          font-size: 0.75rem;
+          color: var(--color-primary);
+          font-weight: 500;
+          text-decoration: none;
+        }
+        .header-lang {
+          font-size: 0.75rem;
+          color: #999;
+          text-decoration: none;
+        }
         @media (max-width: 768px) {
-          .desktop-nav { display: none !important; }
-          .mobile-menu-btn { display: flex !important; }
+          .header-desktop-nav { display: none !important; }
+          .header-hamburger { display: flex !important; }
         }
       `}</style>
     </header>
