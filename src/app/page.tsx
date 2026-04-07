@@ -1,4 +1,9 @@
 import Link from "next/link";
+import { getArticles, getNews } from "@/lib/microcms";
+
+export const revalidate = 60;
+
+const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600";
 
 const sectionLabel: React.CSSProperties = {
   fontFamily: "var(--font-en)",
@@ -15,7 +20,11 @@ const sectionTitle: React.CSSProperties = {
   marginBottom: "2rem",
 };
 
-export default function Home() {
+export default async function Home() {
+  const [{ contents: articles }, { contents: newsItems }] = await Promise.all([
+    getArticles({ limit: 3 }),
+    getNews({ limit: 3 }),
+  ]);
   return (
     <main style={{ paddingTop: 0 }}>
       {/* Hero */}
@@ -191,85 +200,67 @@ export default function Home() {
       </section>
 
       {/* Articles */}
-      <section id="articles" style={{ background: "var(--color-white)", padding: "6rem 8%" }}>
-        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-          <p style={sectionLabel}>ARTICLES</p>
-          <h2 style={sectionTitle}>コラム</h2>
-        </div>
+      {articles.length > 0 && (
+        <section id="articles" style={{ background: "var(--color-white)", padding: "6rem 8%" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p style={sectionLabel}>ARTICLES</p>
+            <h2 style={sectionTitle}>コラム</h2>
+          </div>
 
-        <div className="articles-grid">
-          {[
-            {
-              image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600",
-              category: "INTERIOR",
-              date: "2025.01.20",
-              title: "Japandiスタイルとは？Wutoのインテリアへのこだわり",
-              excerpt: "日本の美意識と北欧デザインを融合させたJapandiスタイル。Wutoで採用しているインテリアブランドと選定理由をご紹介します。",
-            },
-            {
-              image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=600",
-              category: "AREA GUIDE",
-              date: "2025.01.15",
-              title: "お花茶屋の魅力｜下町の暮らしを体験する",
-              excerpt: "東京の下町・お花茶屋エリアの魅力をご紹介。地元民に愛される商店街やおすすめスポットをお伝えします。",
-            },
-            {
-              image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600",
-              category: "BUSINESS",
-              date: "2025.01.10",
-              title: "民泊運営で大切にしている3つのこと",
-              excerpt: "私たちYuka & Hanが運営経験から学んだ、ゲストに喜ばれる民泊運営のポイントを共有します。",
-            },
-          ].map((article) => (
-            <Link key={article.title} href="/articles" className="article-card">
-              <div style={{ height: "180px", backgroundImage: `url('${article.image}')`, backgroundSize: "cover", backgroundPosition: "center" }} />
-              <div style={{ padding: "1.5rem" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.8rem" }}>
-                  <span style={{ fontSize: "0.7rem", letterSpacing: "0.1em", color: "var(--color-accent)", background: "rgba(139,115,85,0.1)", padding: "0.2rem 0.6rem", borderRadius: "3px" }}>
-                    {article.category}
-                  </span>
-                  <span style={{ fontFamily: "var(--font-en)", fontSize: "0.75rem", color: "var(--color-text-light)" }}>
-                    {article.date}
-                  </span>
+          <div className="articles-grid">
+            {articles.map((article) => (
+              <Link key={article.id} href={`/articles/${article.id}`} className="article-card">
+                <div style={{ height: "180px", backgroundImage: `url('${article.thumbnail?.url ?? FALLBACK_IMAGE}')`, backgroundSize: "cover", backgroundPosition: "center", backgroundColor: "#eee" }} />
+                <div style={{ padding: "1.5rem" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.8rem" }}>
+                    {article.category && (
+                      <span style={{ fontSize: "0.7rem", letterSpacing: "0.1em", color: "var(--color-accent)", background: "rgba(139,115,85,0.1)", padding: "0.2rem 0.6rem", borderRadius: "3px" }}>
+                        {article.category}
+                      </span>
+                    )}
+                    <span style={{ fontFamily: "var(--font-en)", fontSize: "0.75rem", color: "var(--color-text-light)" }}>
+                      {new Date(article.publishedAt).toLocaleDateString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }).replace(/\//g, ".")}
+                    </span>
+                  </div>
+                  <h3 style={{ fontSize: "1rem", fontWeight: 500, color: "var(--color-primary)", lineHeight: 1.6, marginBottom: "0.8rem" }}>
+                    {article.title}
+                  </h3>
+                  {article.excerpt && (
+                    <p style={{ fontSize: "0.85rem", color: "var(--color-text-light)", lineHeight: 1.7 }}>
+                      {article.excerpt}
+                    </p>
+                  )}
                 </div>
-                <h3 style={{ fontSize: "1rem", fontWeight: 500, color: "var(--color-primary)", lineHeight: 1.6, marginBottom: "0.8rem" }}>
-                  {article.title}
-                </h3>
-                <p style={{ fontSize: "0.85rem", color: "var(--color-text-light)", lineHeight: 1.7 }}>
-                  {article.excerpt}
-                </p>
-              </div>
-            </Link>
-          ))}
-        </div>
+              </Link>
+            ))}
+          </div>
 
-        <div style={{ textAlign: "center", marginTop: "3rem" }}>
-          <Link href="/articles" className="btn-outline">Read More</Link>
-        </div>
-      </section>
+          <div style={{ textAlign: "center", marginTop: "3rem" }}>
+            <Link href="/articles" className="btn-outline">Read More</Link>
+          </div>
+        </section>
+      )}
 
       {/* News */}
-      <section id="news" style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
-        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-          <p style={sectionLabel}>NEWS</p>
-          <h2 style={sectionTitle}>News &amp; Updates</h2>
-        </div>
+      {newsItems.length > 0 && (
+        <section id="news" style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p style={sectionLabel}>NEWS</p>
+            <h2 style={sectionTitle}>News &amp; Updates</h2>
+          </div>
 
-        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-          {[
-            { date: "2025.01.15", title: "Wuto Ohanajaya が Airbnb ゲストチョイス 2024 を受賞しました" },
-            { date: "2024.12.01", title: "民泊運営代行サービスの提供を開始しました" },
-            { date: "2024.10.20", title: "公式ウェブサイトをリニューアルしました" },
-          ].map((item) => (
-            <Link key={item.title} href="/news" className="news-item">
-              <span style={{ fontFamily: "var(--font-en)", fontSize: "0.85rem", color: "var(--color-accent)", minWidth: "100px" }}>
-                {item.date}
-              </span>
-              <span style={{ fontSize: "0.95rem", color: "var(--color-text)" }}>{item.title}</span>
-            </Link>
-          ))}
-        </div>
-      </section>
+          <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+            {newsItems.map((item) => (
+              <Link key={item.id} href="/news" className="news-item">
+                <span style={{ fontFamily: "var(--font-en)", fontSize: "0.85rem", color: "var(--color-accent)", minWidth: "100px" }}>
+                  {new Date(item.publishedAt).toLocaleDateString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }).replace(/\//g, ".")}
+                </span>
+                <span style={{ fontSize: "0.95rem", color: "var(--color-text)" }}>{item.title}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       <style>{`
         .hero-cta {
