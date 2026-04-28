@@ -12,11 +12,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const article = await getArticle(id);
     return {
-      title: `${article.title} | YUKAHAN`,
+      title: `${article.title} | Yuka-Han`,
       description: article.excerpt,
     };
   } catch {
-    return { title: "記事 | YUKAHAN" };
+    return { title: "記事 | Yuka-Han" };
   }
 }
 

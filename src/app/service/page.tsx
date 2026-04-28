@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "民泊運営代行 | YUKAHAN",
+  title: "民泊運営代行 | Yuka-Han",
   description: "Airbnb運営11年の実績を持つユカハン合同会社の民泊運営代行サービス。予約管理・ゲスト対応・清掃手配まで一括対応。",
 };
 
@@ -60,7 +60,7 @@ export default function ServicePage() {
       {/* Why Us */}
       <section style={{ background: "var(--color-white)", padding: "6rem 8%" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
-          <p style={sectionLabel}>WHY YUKAHAN</p>
+          <p style={sectionLabel}>WHY Yuka-Han</p>
           <h2 style={sectionTitle}>私たちが選ばれる理由</h2>
           <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)" }}>
             私たち夫婦はAirbnbのヘビーユーザーとして世界中の宿に泊まり、
@@ -184,7 +184,7 @@ export default function ServicePage() {
             { step: "STEP 1", title: "無料相談", text: "まずはお気軽にご連絡ください。物件の状況やご要望をヒアリングします。" },
             { step: "STEP 2", title: "現地視察・プラン提案", text: "物件を拝見し、最適な運営プランと収益シミュレーションをご提案します。" },
             { step: "STEP 3", title: "契約・準備", text: "内容にご納得いただけましたら契約を締結し、開業・運営の準備を開始します。" },
-            { step: "STEP 4", title: "運営開始", text: "リスティング公開後、すべての運営業務をYUKAHANがお引き受けします。" },
+            { step: "STEP 4", title: "運営開始", text: "リスティング公開後、すべての運営業務をYuka-Hanがお引き受けします。" },
           ].map((flow, i) => (
             <div
               key={flow.step}

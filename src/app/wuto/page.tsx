@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Home as HomeIcon, TrainFront, UtensilsCrossed, Bath, Wifi, Moon } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Wuto | YUKAHAN",
+  title: "Wuto | Yuka-Han",
   description: "Japandiスタイルのスモールラグジュアリー宿泊施設 Wuto。東京・お花茶屋エリアに展開。",
 };
 

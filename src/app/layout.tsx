@@ -17,9 +17,9 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "ユカハン合同会社 | YUKAHAN",
+  title: "株式会社ユカハン | Yuka-Han & Co.",
   description:
-    "東京を中心に宿泊施設の企画・開発・運用を行うユカハン合同会社。主力ブランド「Wuto」でスモールラグジュアリーな滞在体験を提供。民泊運営代行も。",
+    "東京を中心に宿泊施設の企画・開発・運用を行う株式会社ユカハン（Yuka-Han & Co.）。主力ブランド「Wuto」でスモールラグジュアリーな滞在体験を提供。民泊運営代行も。",
 };
 
 export default function RootLayout({

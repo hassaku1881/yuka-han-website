@@ -17,8 +17,8 @@ export default function Footer() {
             <Image
               src="/logo.png"
               alt="株式会社ユカハン"
-              width={120}
-              height={40}
+              width={258}
+              height={61}
               style={{ height: "36px", width: "auto", filter: "brightness(0) invert(1)" }}
             />
           </Link>

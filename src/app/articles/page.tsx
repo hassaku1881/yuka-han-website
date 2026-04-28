@@ -5,8 +5,8 @@ import { getArticles } from "@/lib/microcms";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "コラム | YUKAHAN",
-  description: "Japandiインテリア、東京下町エリアガイド、民泊運営のノウハウなど、YUKAHANが発信するコラム。",
+  title: "コラム | Yuka-Han",
+  description: "Japandiインテリア、東京下町エリアガイド、民泊運営のノウハウなど、Yuka-Hanが発信するコラム。",
 };
 
 const categories = ["ALL", "INTERIOR", "AREA GUIDE", "BUSINESS", "TRAVEL"];
@@ -38,7 +38,7 @@ export default async function ArticlesPage() {
         <p style={sectionLabel}>ARTICLES</p>
         <h1 style={sectionTitle}>コラム</h1>
         <p style={{ fontSize: "1rem", color: "var(--color-text-light)", maxWidth: "600px", margin: "0 auto" }}>
-          Japandiインテリア、東京下町エリアガイド、民泊運営のノウハウなど、YUKAHANが発信するコラム。
+          Japandiインテリア、東京下町エリアガイド、民泊運営のノウハウなど、Yuka-Hanが発信するコラム。
         </p>
         <div style={{ display: "flex", gap: "0.8rem", justifyContent: "center", marginTop: "2.5rem", flexWrap: "wrap" }}>
           {categories.map((cat) => (

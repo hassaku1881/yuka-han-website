@@ -4,7 +4,7 @@ import { getNews } from "@/lib/microcms";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "News | YUKAHAN",
+  title: "News | Yuka-Han",
   description: "ユカハン合同会社のお知らせ・ニュース一覧。",
 };
 

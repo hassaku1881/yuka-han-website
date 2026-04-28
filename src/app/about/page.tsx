@@ -48,7 +48,7 @@ export default function AboutPage() {
               letterSpacing: "0.05em",
             }}
           >
-            About YUKAHAN
+            About Yuka-Han
           </h1>
         </div>
       </section>
