@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 type Locale = "ja" | "en" | "zh-TW";
@@ -26,6 +27,8 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentLocale, setCurrentLocale] = useState<Locale>("ja");
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -43,7 +46,9 @@ export default function Header() {
     console.log(`Locale changed to: ${locale}`);
   };
 
-  const textColor = scrolled || isOpen ? "var(--color-primary)" : "#ffffff";
+  // トップページ以外は常に白背景・ダーク文字
+  const isTransparent = isHome && !scrolled && !isOpen;
+  const textColor = isTransparent ? "#ffffff" : "var(--color-primary)";
 
   const LangSwitch = ({ mobile = false }: { mobile?: boolean }) => (
     <div
@@ -56,7 +61,7 @@ export default function Header() {
           : {
               marginLeft: "1rem",
               paddingLeft: "1rem",
-              borderLeft: `1px solid ${scrolled ? "#ddd" : "rgba(255,255,255,0.3)"}`,
+              borderLeft: `1px solid ${isTransparent ? "rgba(255,255,255,0.3)" : "#ddd"}`,
             }),
       }}
     >
@@ -99,9 +104,9 @@ export default function Header() {
           position: "fixed",
           top: 0,
           width: "100%",
-          background: scrolled || isOpen ? "rgba(255,255,255,0.97)" : "transparent",
-          backdropFilter: scrolled || isOpen ? "blur(10px)" : "none",
-          boxShadow: scrolled ? "0 1px 0 rgba(0,0,0,0.05)" : "none",
+          background: isTransparent ? "transparent" : "rgba(255,255,255,0.97)",
+          backdropFilter: isTransparent ? "none" : "blur(10px)",
+          boxShadow: isTransparent ? "none" : "0 1px 0 rgba(0,0,0,0.05)",
           zIndex: 1000,
           padding: "1rem 4%",
           display: "flex",
@@ -123,7 +128,7 @@ export default function Header() {
             style={{
               height: "40px",
               width: "auto",
-              filter: scrolled || isOpen ? "none" : "brightness(0) invert(1)",
+              filter: isTransparent ? "brightness(0) invert(1)" : "none",
               transition: "filter 0.3s",
             }}
             priority
