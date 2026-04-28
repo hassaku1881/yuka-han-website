@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -12,14 +13,20 @@ export default function Footer() {
     >
       <div className="footer-grid">
         <div>
-          <Link href="/" className="footer-logo">
-            YUKAHAN
+          <Link href="/" style={{ display: "inline-block", marginBottom: "1rem" }}>
+            <Image
+              src="/logo.png"
+              alt="株式会社ユカハン"
+              width={120}
+              height={40}
+              style={{ height: "36px", width: "auto", filter: "brightness(0) invert(1)" }}
+            />
           </Link>
           <p style={{ fontSize: "0.85rem", opacity: 0.8, lineHeight: 1.8 }}>
-            ユカハン合同会社
+            株式会社ユカハン
             <br />〒124-0003
             <br />
-            東京都葛飾区お花茶屋
+            東京都葛飾区お花茶屋2-5-21
             <br />
             <br />
             info@yuka-han.com
@@ -54,7 +61,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2025 YUKAHAN LLC. All Rights Reserved.</p>
+        <p>&copy; 2025 株式会社ユカハン (Yuka-Han &amp; Co.) All Rights Reserved.</p>
       </div>
 
       <style>{`

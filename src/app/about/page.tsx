@@ -2,8 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "会社概要 | YUKAHAN",
-  description: "ユカハン合同会社の会社概要。東京・お花茶屋を拠点に、民泊ブランドWutoの運営と民泊運営代行サービスを提供。",
+  title: "会社概要 | 株式会社ユカハン",
+  description: "株式会社ユカハン（Yuka-Han & Co.）の会社概要。東京・葛飾区お花茶屋を拠点に、民泊ブランドWutoの運営と民泊運営代行サービスを提供。",
 };
 
 export default function AboutPage() {
@@ -59,7 +59,7 @@ export default function AboutPage() {
           <p style={sectionLabel}>MISSION</p>
           <h2 style={sectionTitle}>旅する人の「もうひとつの家」をつくる</h2>
           <p style={{ fontSize: "1rem", lineHeight: 2.4, color: "var(--color-text-light)" }}>
-            私たちユカハン合同会社は、「暮らすように泊まる」体験を通じて、
+            私たち株式会社ユカハンは、「暮らすように泊まる」体験を通じて、
             <br />
             旅人と地域を繋ぐ宿泊施設の企画・開発・運営を行っています。
             <br />
@@ -85,14 +85,14 @@ export default function AboutPage() {
         >
           {[
             {
-              name: "Yuka",
-              role: "Co-Founder / Interior Director",
+              name: "山本 悠佳",
+              role: "代表取締役 / Interior Director",
               image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400",
               text: "インテリアデザインへの深い情熱と、世界40カ国以上を旅した経験を持つ。Wutoのインテリアコンセプト設計とゲスト体験のデザインを担当。「細部への愛情が、空間の温度を決める」が信条。",
             },
             {
-              name: "Han",
-              role: "Co-Founder / Operations Director",
+              name: "范 凱翔",
+              role: "代表取締役 / Operations Director",
               image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
               text: "IT企業でのプロジェクトマネジメント経験を活かし、民泊運営のシステム化と効率化を推進。Airbnb運営11年のベテランとして、収益最大化と高評価維持の両立を実現。",
             },
@@ -139,10 +139,13 @@ export default function AboutPage() {
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <tbody>
               {[
-                { label: "社名", value: "ユカハン合同会社" },
-                { label: "英文社名", value: "YUKAHAN LLC" },
-                { label: "設立", value: "2022年" },
-                { label: "所在地", value: "〒124-0003 東京都葛飾区お花茶屋" },
+                { label: "社名", value: "株式会社ユカハン" },
+                { label: "英文社名", value: "Yuka-Han & Co." },
+                { label: "設立", value: "2020年5月1日" },
+                { label: "所在地", value: "〒124-0003 東京都葛飾区お花茶屋2-5-21" },
+                { label: "資本金", value: "3,000万円" },
+                { label: "代表者", value: "代表取締役　山本 悠佳 / 代表取締役　范 凱翔" },
+                { label: "取引銀行", value: "東京東信用金庫 / 第一勧業信用組合" },
                 { label: "事業内容", value: "宿泊施設の企画・開発・運用 / 民泊運営代行サービス" },
                 { label: "主力ブランド", value: "Wuto（スモールラグジュアリー宿泊施設）" },
                 { label: "Email", value: "info@yuka-han.com" },

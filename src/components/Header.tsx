@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 type Locale = "ja" | "en" | "zh-TW";
@@ -112,17 +113,21 @@ export default function Header() {
         <Link
           href="/"
           onClick={() => setIsOpen(false)}
-          style={{
-            fontFamily: "var(--font-en)",
-            fontSize: "1.5rem",
-            fontWeight: 600,
-            color: textColor,
-            textDecoration: "none",
-            letterSpacing: "0.1em",
-            transition: "color 0.3s",
-          }}
+          style={{ textDecoration: "none", display: "flex", alignItems: "center" }}
         >
-          YUKAHAN
+          <Image
+            src="/logo.png"
+            alt="株式会社ユカハン"
+            width={120}
+            height={40}
+            style={{
+              height: "40px",
+              width: "auto",
+              filter: scrolled || isOpen ? "none" : "brightness(0) invert(1)",
+              transition: "filter 0.3s",
+            }}
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}

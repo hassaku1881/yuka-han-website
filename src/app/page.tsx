@@ -72,7 +72,7 @@ export default async function Home() {
           <p style={sectionLabel}>ABOUT US</p>
           <h2 style={sectionTitle}>Who We Are</h2>
           <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)", marginBottom: "2rem" }}>
-            ユカハン合同会社は、東京を中心に宿泊施設の企画・開発・運用を行う会社です。
+            株式会社ユカハンは、東京を中心に宿泊施設の企画・開発・運用を行う会社です。
             <br />
             私たちは「暮らすように泊まる」をコンセプトに、
             <br />
@@ -87,7 +87,7 @@ export default async function Home() {
           </p>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "1rem", marginTop: "2rem", paddingTop: "2rem", borderTop: "1px solid #eee" }}>
             <p style={{ fontSize: "0.9rem", color: "var(--color-text-light)" }}>
-              <strong style={{ color: "var(--color-primary)" }}>Yuka &amp; Han</strong> — 創業者夫婦による直接運営。
+              <strong style={{ color: "var(--color-primary)" }}>山本 悠佳 &amp; 范 凱翔</strong> — 代表取締役夫婦による直接運営。
               <br />
               世界中を旅してきた私たちだからこそ提供できる、最高のおもてなしを。
             </p>
@@ -100,19 +100,24 @@ export default async function Home() {
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
           <p style={{ ...sectionLabel, color: "rgba(255,255,255,0.7)" }}>ACHIEVEMENTS</p>
           <h2 style={{ ...sectionTitle, color: "var(--color-white)", marginBottom: "3rem" }}>Our Track Record</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2rem", textAlign: "center" }}>
+          <div className="achievements-grid">
             {[
               { number: "11+", label: "Airbnb運営年数" },
               { number: "4.9", label: "平均レビュー評価" },
               { number: "500+", label: "年間ゲスト数" },
               { number: "3", label: "運営施設数" },
-            ].map((item) => (
-              <div key={item.label} style={{ padding: "1.5rem" }}>
-                <p style={{ fontFamily: "var(--font-en)", fontSize: "3rem", fontWeight: 400, color: "var(--color-accent)", marginBottom: "0.5rem" }}>
-                  {item.number}
-                </p>
-                <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.8)", letterSpacing: "0.05em" }}>{item.label}</p>
-              </div>
+            ].map((item, i) => (
+              <>
+                {i > 0 && (
+                  <div key={`divider-${i}`} className="achievements-divider" />
+                )}
+                <div key={item.label} style={{ padding: "1.5rem", textAlign: "center" }}>
+                  <p style={{ fontFamily: "var(--font-en)", fontSize: "3rem", fontWeight: 400, color: "var(--color-accent)", marginBottom: "0.5rem" }}>
+                    {item.number}
+                  </p>
+                  <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.8)", letterSpacing: "0.05em" }}>{item.label}</p>
+                </div>
+              </>
             ))}
           </div>
         </div>
@@ -184,7 +189,7 @@ export default async function Home() {
             { num: "02", title: "開業サポート", text: "物件選定から許認可取得、内装デザインまで新規参入をフルサポート。" },
             { num: "03", title: "収益改善", text: "価格最適化、リスティング改善で既存物件の収益アップをご提案。" },
           ].map((p) => (
-            <div key={p.num} style={{ background: "var(--color-white)", padding: "2.5rem 2rem", borderRadius: "8px", boxShadow: "0 4px 20px rgba(0,0,0,0.06)" }}>
+            <div key={p.num} className="service-card" style={{ background: "var(--color-white)", padding: "2.5rem 2rem", borderRadius: "8px" }}>
               <span style={{ fontFamily: "var(--font-en)", fontSize: "2rem", fontWeight: 400, color: "var(--color-accent)", display: "block", marginBottom: "1rem" }}>
                 {p.num}
               </span>
@@ -348,6 +353,29 @@ export default async function Home() {
         }
         .news-item:hover { opacity: 0.7; }
 
+        .achievements-grid {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+        .achievements-divider {
+          display: none;
+          width: 1px;
+          height: 48px;
+          background: rgba(255,255,255,0.2);
+        }
+        .service-card {
+          box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+          transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        @media (min-width: 768px) {
+          .achievements-divider { display: block; }
+        }
         @media (max-width: 768px) {
           .wuto-features-grid { grid-template-columns: 1fr !important; }
           .service-points-grid { grid-template-columns: 1fr !important; }
