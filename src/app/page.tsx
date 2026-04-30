@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Home as HomeIcon, TrainFront, Sparkles, Building2, Globe, Briefcase } from "lucide-react";
 import { getArticles, getNews } from "@/lib/microcms";
+import HeroSlider from "@/components/HeroSlider";
 
 export const revalidate = 60;
 
@@ -28,43 +29,8 @@ export default async function Home() {
   ]);
   return (
     <main style={{ paddingTop: 0 }}>
-      {/* Hero */}
-      <section
-        style={{
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
-          background:
-            "linear-gradient(rgba(44,62,80,0.45), rgba(44,62,80,0.65)), url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1920') center/cover",
-        }}
-      >
-        <div
-          style={{
-            textAlign: "center",
-            color: "var(--color-white)",
-            maxWidth: "800px",
-            padding: "0 2rem",
-          }}
-        >
-          <p style={{ fontFamily: "var(--font-en)", fontSize: "0.9rem", letterSpacing: "0.3em", marginBottom: "1.5rem", opacity: 0.9 }}>
-            SMALL LUXURY STAYS IN TOKYO
-          </p>
-          <h1 style={{ fontFamily: "var(--font-en)", fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 400, letterSpacing: "0.05em", marginBottom: "1rem" }}>
-            Wuto
-          </h1>
-          <p style={{ fontSize: "1.1rem", fontWeight: 300, marginBottom: "0.5rem", letterSpacing: "0.1em" }}>
-            暮らすように、泊まる。
-          </p>
-          <p style={{ fontFamily: "var(--font-en)", fontSize: "0.85rem", letterSpacing: "0.2em", opacity: 0.85, marginBottom: "2.5rem" }}>
-            — JAPANDI STYLE ACCOMMODATION —
-          </p>
-          <Link href="/wuto" className="hero-cta">
-            Explore Our Story
-          </Link>
-        </div>
-      </section>
+      {/* Hero Slider */}
+      <HeroSlider />
 
       {/* About */}
       <section id="about" style={{ background: "var(--color-white)", padding: "6rem 8%" }}>
@@ -312,19 +278,7 @@ export default async function Home() {
       )}
 
       <style>{`
-        .hero-cta {
-          display: inline-block;
-          padding: 1rem 3rem;
-          border: 1px solid var(--color-white);
-          color: var(--color-white);
-          text-decoration: none;
-          font-size: 0.9rem;
-          letter-spacing: 0.1em;
-          transition: background 0.3s, color 0.3s;
-        }
-        .hero-cta:hover { background: var(--color-white); color: var(--color-primary); }
-
-        .btn-primary {
+.btn-primary {
           display: inline-block;
           padding: 1rem 3rem;
           background: var(--color-accent);
