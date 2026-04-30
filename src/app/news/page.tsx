@@ -4,8 +4,8 @@ import { getNews } from "@/lib/microcms";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "News | Yuka-Han",
-  description: "ユカハン合同会社のお知らせ・ニュース一覧。",
+  title: "お知らせ | Yuka-Han & Co.",
+  description: "株式会社ユカハンからのお知らせ・ニュース一覧。",
 };
 
 const categoryColors: Record<string, string> = {
@@ -37,9 +37,9 @@ export default async function NewsPage() {
     <main style={{ paddingTop: "72px" }}>
       <section style={{ padding: "5rem 8% 3rem", background: "var(--color-white)", textAlign: "center" }}>
         <p style={sectionLabel}>NEWS</p>
-        <h1 style={sectionTitle}>News &amp; Updates</h1>
+        <h1 style={sectionTitle}>お知らせ</h1>
         <p style={{ fontSize: "1rem", color: "var(--color-text-light)" }}>
-          ユカハン合同会社からのお知らせ
+          株式会社ユカハンからのお知らせ
         </p>
       </section>
 

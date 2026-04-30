@@ -241,25 +241,33 @@ export default async function Home() {
       </section>
 
       {/* News */}
-      {newsItems.length > 0 && (
-        <section id="news" style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p style={sectionLabel}>NEWS</p>
-            <h2 style={sectionTitle}>News &amp; Updates</h2>
-          </div>
+      <section id="news" style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
+        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+          <p style={sectionLabel}>NEWS</p>
+          <h2 style={sectionTitle}>お知らせ</h2>
+        </div>
 
-          <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-            {newsItems.map((item) => (
-              <Link key={item.id} href="/news" className="news-item">
-                <span style={{ fontFamily: "var(--font-en)", fontSize: "0.85rem", color: "var(--color-accent)", minWidth: "100px" }}>
+        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+          {newsItems.length === 0 ? (
+            <p style={{ textAlign: "center", color: "var(--color-text-light)", padding: "2rem 0" }}>
+              お知らせはありません。
+            </p>
+          ) : (
+            newsItems.map((item) => (
+              <Link key={item.id} href="/news" className="news-item-vertical">
+                <span style={{ fontFamily: "var(--font-en)", fontSize: "0.8rem", color: "var(--color-accent)", display: "block", marginBottom: "0.4rem" }}>
                   {new Date(item.publishedAt).toLocaleDateString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }).replace(/\//g, ".")}
                 </span>
-                <span style={{ fontSize: "0.95rem", color: "var(--color-text)" }}>{item.title}</span>
+                <span style={{ fontSize: "0.95rem", color: "var(--color-text)", lineHeight: 1.6 }}>{item.title}</span>
               </Link>
-            ))}
-          </div>
-        </section>
-      )}
+            ))
+          )}
+        </div>
+
+        <div style={{ textAlign: "center", marginTop: "3rem" }}>
+          <Link href="/news" className="btn-outline">お知らせ一覧を見る</Link>
+        </div>
+      </section>
 
       {/* Articles */}
       {articles.length > 0 && (
@@ -393,16 +401,15 @@ export default async function Home() {
         }
         .article-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
 
-        .news-item {
-          display: flex;
-          gap: 2rem;
-          padding: 1.5rem 0;
+        .news-item-vertical {
+          display: block;
+          padding: 1.2rem 0;
           border-bottom: 1px solid #eee;
           text-decoration: none;
           color: inherit;
           transition: opacity 0.3s;
         }
-        .news-item:hover { opacity: 0.7; }
+        .news-item-vertical:hover { opacity: 0.7; }
 
         .achievements-grid {
           display: flex;

@@ -36,10 +36,9 @@ export default function Footer() {
         <div>
           <h4 className="footer-nav-heading">BUSINESS</h4>
           {[
-            { href: "/wuto", label: "Wuto事業" },
-            { href: "/service", label: "宿泊施設運営事業" },
-            { href: "/articles", label: "Articles" },
-            { href: "/contact", label: "お問い合わせ" },
+            { href: "/wuto", label: "Wuto" },
+            { href: "/service", label: "宿泊施設運営" },
+            { href: "/articles", label: "コラム" },
           ].map((link) => (
             <Link key={link.href} href={link.href} className="footer-nav-link">
               {link.label}
@@ -51,8 +50,7 @@ export default function Footer() {
           <h4 className="footer-nav-heading">COMPANY</h4>
           {[
             { href: "/about", label: "会社概要" },
-            { href: "/privacy", label: "プライバシーポリシー" },
-            { href: "/tokusho", label: "特定商取引法に基づく表記" },
+            { href: "/news", label: "お知らせ" },
           ].map((link) => (
             <Link key={link.href} href={link.href} className="footer-nav-link">
               {link.label}
