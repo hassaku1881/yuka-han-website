@@ -34,10 +34,11 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="footer-nav-heading">SERVICES</h4>
+          <h4 className="footer-nav-heading">BUSINESS</h4>
           {[
-            { href: "/wuto", label: "Wuto" },
-            { href: "/service", label: "運営代行" },
+            { href: "/wuto", label: "Wuto事業" },
+            { href: "/service", label: "宿泊施設運営事業" },
+            { href: "/articles", label: "Articles" },
             { href: "/contact", label: "お問い合わせ" },
           ].map((link) => (
             <Link key={link.href} href={link.href} className="footer-nav-link">

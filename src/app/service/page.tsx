@@ -2,8 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "民泊運営代行 | Yuka-Han",
-  description: "Airbnb運営11年の実績を持つユカハン合同会社の民泊運営代行サービス。予約管理・ゲスト対応・清掃手配まで一括対応。",
+  title: "宿泊施設運営事業 | Yuka-Han & Co.",
+  description: "株式会社ユカハンの宿泊施設運営事業。Airbnb運営11年の実績を活かし、民泊・短期賃貸の運営代行から開業サポート・収益改善まで一括対応。",
 };
 
 export default function ServicePage() {
@@ -39,7 +39,7 @@ export default function ServicePage() {
         }}
       >
         <div style={{ maxWidth: "700px" }}>
-          <p style={{ ...sectionLabel, color: "var(--color-accent)" }}>FOR OWNERS</p>
+          <p style={{ ...sectionLabel, color: "var(--color-accent)" }}>ACCOMMODATION OPERATIONS</p>
           <h1
             style={{
               fontFamily: "var(--font-en)",
@@ -49,7 +49,7 @@ export default function ServicePage() {
               letterSpacing: "0.05em",
             }}
           >
-            民泊運営代行・サポート
+            宿泊施設運営事業
           </h1>
           <p style={{ fontSize: "1rem", fontWeight: 300, opacity: 0.9, lineHeight: 1.8 }}>
             Airbnb運営11年の実績を活かし、あなたの物件の収益最大化をサポートします。
@@ -60,7 +60,7 @@ export default function ServicePage() {
       {/* Why Us */}
       <section style={{ background: "var(--color-white)", padding: "6rem 8%" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
-          <p style={sectionLabel}>WHY Yuka-Han</p>
+          <p style={sectionLabel}>WHY CHOOSE US</p>
           <h2 style={sectionTitle}>私たちが選ばれる理由</h2>
           <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)" }}>
             私たち夫婦はAirbnbのヘビーユーザーとして世界中の宿に泊まり、

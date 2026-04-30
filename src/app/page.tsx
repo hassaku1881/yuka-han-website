@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Home as HomeIcon, TrainFront, Sparkles } from "lucide-react";
+import { Home as HomeIcon, TrainFront, Sparkles, Building2, Globe, Briefcase } from "lucide-react";
 import { getArticles, getNews } from "@/lib/microcms";
 
 export const revalidate = 60;
@@ -95,6 +95,73 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Business */}
+      <section id="business" style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
+        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+          <p style={sectionLabel}>BUSINESS</p>
+          <h2 style={sectionTitle}>事業内容</h2>
+          <p style={{ fontSize: "1rem", color: "var(--color-text-light)", marginTop: "1rem" }}>
+            宿泊体験を軸に、4つの事業を展開しています。
+          </p>
+        </div>
+        <div className="business-grid">
+          {[
+            {
+              icon: <HomeIcon size={36} strokeWidth={1.5} />,
+              title: "Wuto事業",
+              text: "Japandiスタイルのスモールラグジュアリー宿泊ブランド「Wuto」の企画・開発・運営。",
+              href: "/wuto",
+            },
+            {
+              icon: <Building2 size={36} strokeWidth={1.5} />,
+              title: "宿泊施設運営事業",
+              text: "民泊をはじめとする宿泊施設の運営受託。予約管理・ゲスト対応・清掃まで一括サポート。",
+              href: "/service",
+            },
+            {
+              icon: <Globe size={36} strokeWidth={1.5} />,
+              title: "マーケティング事業",
+              text: "インバウンドマーケティング戦略の立案・実行、インバウンド向け施設の企画・プロデュース。",
+              href: null,
+            },
+            {
+              icon: <Briefcase size={36} strokeWidth={1.5} />,
+              title: "コンサルティング事業",
+              text: "事業開発支援、業務改善コンサルティング。民泊・宿泊業を中心とした経営課題を解決。",
+              href: null,
+            },
+          ].map((biz) => {
+            const inner = (
+              <>
+                <div style={{ marginBottom: "1.5rem", color: "var(--color-accent)" }}>{biz.icon}</div>
+                <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "1rem" }}>
+                  {biz.title}
+                </h3>
+                <p style={{ fontSize: "0.9rem", color: "var(--color-text-light)", lineHeight: 1.8 }}>{biz.text}</p>
+                {biz.href ? (
+                  <span style={{ display: "inline-block", marginTop: "1.5rem", fontSize: "0.8rem", color: "var(--color-accent)", letterSpacing: "0.05em" }}>
+                    詳しく見る →
+                  </span>
+                ) : (
+                  <span style={{ display: "inline-block", marginTop: "1.5rem", fontSize: "0.75rem", color: "var(--color-text-light)", opacity: 0.6 }}>
+                    近日公開
+                  </span>
+                )}
+              </>
+            );
+            return biz.href ? (
+              <Link key={biz.title} href={biz.href} className="business-card business-card-link">
+                {inner}
+              </Link>
+            ) : (
+              <div key={biz.title} className="business-card">
+                {inner}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
       {/* Achievements */}
       <section style={{ background: "var(--color-primary)", padding: "4rem 8%" }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
@@ -173,37 +240,26 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Service */}
-      <section id="service" style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
-        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-          <p style={sectionLabel}>FOR OWNERS</p>
-          <h2 style={sectionTitle}>民泊運営代行・サポート</h2>
-          <p style={{ fontSize: "1rem", color: "var(--color-text-light)", marginTop: "1rem" }}>
-            Airbnb運営11年の実績を活かし、物件の収益最大化をサポートします。
-          </p>
-        </div>
+      {/* News */}
+      {newsItems.length > 0 && (
+        <section id="news" style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p style={sectionLabel}>NEWS</p>
+            <h2 style={sectionTitle}>News &amp; Updates</h2>
+          </div>
 
-        <div className="service-points-grid">
-          {[
-            { num: "01", title: "運営代行", text: "予約管理、ゲスト対応、清掃手配まで。オーナー様の手間をゼロに。" },
-            { num: "02", title: "開業サポート", text: "物件選定から許認可取得、内装デザインまで新規参入をフルサポート。" },
-            { num: "03", title: "収益改善", text: "価格最適化、リスティング改善で既存物件の収益アップをご提案。" },
-          ].map((p) => (
-            <div key={p.num} className="service-card" style={{ background: "var(--color-white)", padding: "2.5rem 2rem", borderRadius: "8px" }}>
-              <span style={{ fontFamily: "var(--font-en)", fontSize: "2rem", fontWeight: 400, color: "var(--color-accent)", display: "block", marginBottom: "1rem" }}>
-                {p.num}
-              </span>
-              <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "1rem" }}>{p.title}</h3>
-              <p style={{ fontSize: "0.9rem", color: "var(--color-text-light)", lineHeight: 1.8 }}>{p.text}</p>
-            </div>
-          ))}
-        </div>
-
-        <div style={{ textAlign: "center", marginTop: "3rem" }}>
-          <Link href="/service" className="btn-primary" style={{ marginRight: "1rem" }}>詳しく見る</Link>
-          <Link href="/contact" className="btn-outline">お問い合わせ</Link>
-        </div>
-      </section>
+          <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+            {newsItems.map((item) => (
+              <Link key={item.id} href="/news" className="news-item">
+                <span style={{ fontFamily: "var(--font-en)", fontSize: "0.85rem", color: "var(--color-accent)", minWidth: "100px" }}>
+                  {new Date(item.publishedAt).toLocaleDateString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }).replace(/\//g, ".")}
+                </span>
+                <span style={{ fontSize: "0.95rem", color: "var(--color-text)" }}>{item.title}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Articles */}
       {articles.length > 0 && (
@@ -243,27 +299,6 @@ export default async function Home() {
 
           <div style={{ textAlign: "center", marginTop: "3rem" }}>
             <Link href="/articles" className="btn-outline">Read More</Link>
-          </div>
-        </section>
-      )}
-
-      {/* News */}
-      {newsItems.length > 0 && (
-        <section id="news" style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <p style={sectionLabel}>NEWS</p>
-            <h2 style={sectionTitle}>News &amp; Updates</h2>
-          </div>
-
-          <div style={{ maxWidth: "800px", margin: "0 auto" }}>
-            {newsItems.map((item) => (
-              <Link key={item.id} href="/news" className="news-item">
-                <span style={{ fontFamily: "var(--font-en)", fontSize: "0.85rem", color: "var(--color-accent)", minWidth: "100px" }}>
-                  {new Date(item.publishedAt).toLocaleDateString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }).replace(/\//g, ".")}
-                </span>
-                <span style={{ fontSize: "0.95rem", color: "var(--color-text)" }}>{item.title}</span>
-              </Link>
-            ))}
           </div>
         </section>
       )}
@@ -315,12 +350,28 @@ export default async function Home() {
           background: var(--color-primary);
         }
 
-        .service-points-grid {
+        .business-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(2, 1fr);
           gap: 2rem;
-          max-width: 1000px;
+          max-width: 900px;
           margin: 0 auto;
+        }
+        .business-card {
+          background: var(--color-white);
+          padding: 2.5rem 2rem;
+          border-radius: 8px;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+          text-decoration: none;
+          color: inherit;
+          display: block;
+        }
+        .business-card-link {
+          transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .business-card-link:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
 
         .articles-grid {
@@ -378,7 +429,7 @@ export default async function Home() {
         }
         @media (max-width: 768px) {
           .wuto-features-grid { grid-template-columns: 1fr !important; }
-          .service-points-grid { grid-template-columns: 1fr !important; }
+          .business-grid { grid-template-columns: 1fr !important; }
           .articles-grid { grid-template-columns: 1fr !important; }
           .news-item { flex-direction: column; gap: 0.5rem; }
         }
