@@ -73,8 +73,60 @@ export default async function ArticleDetailPage({ params }: Props) {
             dangerouslySetInnerHTML={{ __html: article.body }}
           />
 
+          {/* Contact CTA */}
+          <div style={{
+            marginTop: "4rem",
+            padding: "3rem",
+            background: "var(--color-bg)",
+            borderRadius: "4px",
+            textAlign: "center",
+          }}>
+            <p style={{
+              fontFamily: "var(--font-en)",
+              fontSize: "0.75rem",
+              letterSpacing: "0.2em",
+              color: "var(--color-accent)",
+              marginBottom: "0.8rem",
+            }}>
+              GET IN TOUCH
+            </p>
+            <h3 style={{
+              fontSize: "1.3rem",
+              fontWeight: 400,
+              color: "var(--color-primary)",
+              marginBottom: "1rem",
+              lineHeight: 1.6,
+            }}>
+              運営のご相談、お気軽にどうぞ。
+            </h3>
+            <p style={{
+              fontSize: "0.9rem",
+              color: "var(--color-text-light)",
+              lineHeight: 1.8,
+              marginBottom: "2rem",
+            }}>
+              GOP改善・収益最適化・運営受託など、<br />
+              宿泊施設に関するご相談を無料で承っています。
+            </p>
+            <Link
+              href="/contact"
+              style={{
+                display: "inline-block",
+                padding: "0.9rem 2.8rem",
+                background: "var(--color-primary)",
+                color: "#fff",
+                textDecoration: "none",
+                fontSize: "0.88rem",
+                letterSpacing: "0.1em",
+                transition: "opacity 0.3s",
+              }}
+            >
+              お問い合わせはこちら
+            </Link>
+          </div>
+
           {/* Back */}
-          <div style={{ marginTop: "4rem", paddingTop: "2rem", borderTop: "1px solid #eee" }}>
+          <div style={{ marginTop: "2.5rem" }}>
             <Link
               href="/articles"
               style={{
@@ -130,6 +182,33 @@ export default async function ArticleDetailPage({ params }: Props) {
           color: var(--color-text-light);
           font-style: italic;
           margin: 2rem 0;
+        }
+        .article-body table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 2rem 0;
+          font-size: 0.92rem;
+        }
+        .article-body th {
+          background: var(--color-primary);
+          color: #fff;
+          padding: 0.7rem 1rem;
+          text-align: left;
+          font-weight: 500;
+        }
+        .article-body td {
+          padding: 0.7rem 1rem;
+          border-bottom: 1px solid #eee;
+        }
+        .article-body tr:last-child td {
+          border-bottom: none;
+          font-weight: 500;
+          background: rgba(139,115,85,0.07);
+        }
+        .article-body hr {
+          border: none;
+          border-top: 1px solid #eee;
+          margin: 3rem 0 2rem;
         }
       `}</style>
     </main>
