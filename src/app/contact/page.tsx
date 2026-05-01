@@ -11,6 +11,8 @@ export default function ContactPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const sectionLabel: React.CSSProperties = {
     fontFamily: "var(--font-en)",
@@ -46,9 +48,23 @@ export default function ContactPage() {
     marginBottom: "0.5rem",
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setErrorMsg("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error();
+      setSubmitted(true);
+    } catch {
+      setErrorMsg("送信に失敗しました。しばらく経ってから再度お試しください。");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -194,22 +210,28 @@ export default function ContactPage() {
                   />
                 </div>
 
+                {errorMsg && (
+                  <p style={{ fontSize: "0.9rem", color: "#c0392b", background: "#fdf2f0", padding: "0.8rem 1rem", borderRadius: "4px" }}>
+                    {errorMsg}
+                  </p>
+                )}
                 <button
                   type="submit"
+                  disabled={loading}
                   style={{
                     padding: "1rem 2rem",
-                    background: "var(--color-accent)",
+                    background: loading ? "#b09070" : "var(--color-accent)",
                     color: "var(--color-white)",
                     border: "none",
                     borderRadius: "4px",
                     fontSize: "0.95rem",
                     letterSpacing: "0.05em",
-                    cursor: "pointer",
+                    cursor: loading ? "not-allowed" : "pointer",
                     transition: "background 0.3s",
                     fontFamily: "var(--font-jp)",
                   }}
                 >
-                  送信する
+                  {loading ? "送信中..." : "送信する"}
                 </button>
               </form>
             )}

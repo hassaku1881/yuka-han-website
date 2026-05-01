@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(export PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\")",
+      "Read(//usr/local/bin/**)",
+      "Read(//Users/yuka/.nvm/versions/**)"
+    ]
+  }
+}
