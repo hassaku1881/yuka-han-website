@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     },
     body: JSON.stringify({
       from: "Yuka-Han お問い合わせフォーム <onboarding@resend.dev>",
-      to: ["info@yuka-han.com"],
+      to: ["yuka@yuka-han.com"],
       reply_to: email,
       subject: `【お問い合わせ】${typeLabel[type] ?? type} — ${name}`,
       html: `
@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
   if (!res.ok) {
     const error = await res.text();
     console.error("Resend error:", error);
-    return NextResponse.json({ error: "送信に失敗しました" }, { status: 500 });
+    return NextResponse.json({ error: "送信に失敗しました", detail: error }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });
