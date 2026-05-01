@@ -145,25 +145,46 @@ export default async function ArticleDetailPage({ params }: Props) {
       </article>
 
       <style>{`
+        /* ── ベース ── */
         .article-body {
           font-size: 1rem;
           line-height: 2;
           color: var(--color-text);
         }
+
+        /* ── 見出し h2 ── */
         .article-body h2 {
           font-size: 1.4rem;
           font-weight: 500;
           color: var(--color-primary);
-          margin: 2.5rem 0 1rem;
-          padding-bottom: 0.5rem;
-          border-bottom: 2px solid var(--color-accent);
+          margin: 3.5rem 0 0;
+          padding: 0.6rem 1rem 0.6rem 1.2rem;
+          border-left: 4px solid var(--color-accent);
+          background: rgba(139,115,85,0.06);
+          border-radius: 0 4px 4px 0;
+          line-height: 1.5;
         }
-        .article-body h3 {
-          font-size: 1.1rem;
-          font-weight: 500;
+        /* G. h2直後の最初の段落をリード文として強調 */
+        .article-body h2 + p {
+          margin-top: 1.2rem;
+          font-size: 1.02rem;
           color: var(--color-primary);
-          margin: 2rem 0 0.8rem;
+          font-weight: 400;
         }
+
+        /* ── 見出し h3 ── E. カード風 */
+        .article-body h3 {
+          font-size: 1.05rem;
+          font-weight: 600;
+          color: var(--color-primary);
+          margin: 2.5rem 0 0.8rem;
+          padding: 0.65rem 1rem;
+          border-left: 3px solid var(--color-primary);
+          background: rgba(20,30,48,0.04);
+          border-radius: 0 4px 4px 0;
+        }
+
+        /* ── 本文 ── */
         .article-body p { margin-bottom: 1.5rem; }
         .article-body img {
           max-width: 100%;
@@ -174,15 +195,99 @@ export default async function ArticleDetailPage({ params }: Props) {
         .article-body ul, .article-body ol {
           margin: 1rem 0 1.5rem 1.5rem;
         }
-        .article-body li { margin-bottom: 0.5rem; }
+        .article-body li { margin-bottom: 0.6rem; line-height: 1.9; }
         .article-body a { color: var(--color-accent); }
+
+        /* ── D. 引用ブロック ── */
         .article-body blockquote {
-          border-left: 3px solid var(--color-accent);
-          padding-left: 1.5rem;
-          color: var(--color-text-light);
-          font-style: italic;
+          position: relative;
+          background: var(--color-bg);
+          border-left: none;
+          border-radius: 4px;
+          padding: 1.8rem 2rem 1.8rem 3.5rem;
+          margin: 2rem 0;
+          font-style: normal;
+          color: var(--color-primary);
+          font-size: 1.05rem;
+          font-weight: 500;
+          line-height: 1.9;
+        }
+        .article-body blockquote::before {
+          content: '"';
+          position: absolute;
+          left: 0.8rem;
+          top: 0.6rem;
+          font-size: 3.5rem;
+          line-height: 1;
+          color: var(--color-accent);
+          font-family: Georgia, serif;
+          opacity: 0.7;
+        }
+        .article-body blockquote p { margin-bottom: 0; }
+
+        /* ── F. 数式ボックス ── */
+        .article-body pre {
+          background: var(--color-primary);
+          color: #fff;
+          padding: 1.5rem 2rem;
+          border-radius: 6px;
+          font-family: inherit;
+          font-size: 0.95rem;
+          line-height: 2;
+          text-align: center;
+          white-space: pre-wrap;
+          word-break: break-word;
           margin: 2rem 0;
         }
+
+        /* ── B. マーカーハイライト ── */
+        .article-body mark {
+          background: linear-gradient(transparent 55%, rgba(255, 210, 60, 0.55) 55%);
+          padding: 0 2px;
+          color: inherit;
+          font-weight: inherit;
+        }
+
+        /* ── A. POINTボックス ── */
+        .article-body .point-box {
+          background: rgba(139,115,85,0.07);
+          border-left: 4px solid var(--color-accent);
+          border-radius: 0 6px 6px 0;
+          padding: 1.4rem 1.8rem;
+          margin: 2rem 0;
+        }
+        .article-body .point-box::before {
+          content: "POINT";
+          display: block;
+          font-family: var(--font-en);
+          font-size: 0.68rem;
+          letter-spacing: 0.25em;
+          color: var(--color-accent);
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+        }
+        .article-body .point-box p { margin-bottom: 0; }
+
+        /* ── C. 注意ボックス ── */
+        .article-body .warning-box {
+          background: rgba(240,160,40,0.08);
+          border-left: 4px solid #e09020;
+          border-radius: 0 6px 6px 0;
+          padding: 1.4rem 1.8rem;
+          margin: 2rem 0;
+        }
+        .article-body .warning-box::before {
+          content: "⚠ 注意";
+          display: block;
+          font-size: 0.72rem;
+          letter-spacing: 0.12em;
+          color: #c07010;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+        }
+        .article-body .warning-box p { margin-bottom: 0; }
+
+        /* ── テーブル ── */
         .article-body table {
           width: 100%;
           border-collapse: collapse;
@@ -205,10 +310,19 @@ export default async function ArticleDetailPage({ params }: Props) {
           font-weight: 500;
           background: rgba(139,115,85,0.07);
         }
+
+        /* ── 区切り線 ── */
         .article-body hr {
           border: none;
-          border-top: 1px solid #eee;
-          margin: 3rem 0 2rem;
+          border-top: 1px solid #e8e4de;
+          margin: 3.5rem 0 2.5rem;
+        }
+
+        /* ── モバイル調整 ── */
+        @media (max-width: 768px) {
+          .article-body h2 { font-size: 1.2rem; }
+          .article-body blockquote { padding: 1.4rem 1.4rem 1.4rem 3rem; font-size: 0.97rem; }
+          .article-body pre { text-align: left; font-size: 0.88rem; }
         }
       `}</style>
     </main>
