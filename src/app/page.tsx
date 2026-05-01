@@ -220,7 +220,7 @@ export default async function Home() {
             </p>
           ) : (
             newsItems.map((item) => (
-              <Link key={item.id} href="/news" className="news-item-vertical">
+              <Link key={item.id} href={`/news/${item.id}`} className="news-item-vertical">
                 <span style={{ fontFamily: "var(--font-en)", fontSize: "0.8rem", color: "var(--color-accent)", display: "block", marginBottom: "0.4rem" }}>
                   {new Date(item.publishedAt).toLocaleDateString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }).replace(/\//g, ".")}
                 </span>

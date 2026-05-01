@@ -58,7 +58,7 @@ export async function getArticle(id: string) {
   });
 }
 
-// News取得
+// News一覧取得
 export async function getNews(queries?: {
   limit?: number;
   offset?: number;
@@ -66,5 +66,13 @@ export async function getNews(queries?: {
   return client.get<MicroCMSList<NewsItem>>({
     endpoint: "news",
     queries,
+  });
+}
+
+// News個別取得
+export async function getNewsItem(id: string) {
+  return client.get<NewsItem>({
+    endpoint: "news",
+    contentId: id,
   });
 }
