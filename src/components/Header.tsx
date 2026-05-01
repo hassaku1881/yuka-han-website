@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/wuto", label: "Wuto" },
   { href: "/service", label: "Operations" },
   { href: "/articles", label: "Articles" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const locales: { key: Locale; label: string }[] = [

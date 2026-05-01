@@ -39,6 +39,7 @@ export default function Footer() {
             { href: "/wuto", label: "Wuto" },
             { href: "/service", label: "宿泊施設運営" },
             { href: "/articles", label: "コラム" },
+            { href: "/contact", label: "お問い合わせ" },
           ].map((link) => (
             <Link key={link.href} href={link.href} className="footer-nav-link">
               {link.label}
