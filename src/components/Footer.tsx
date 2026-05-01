@@ -29,7 +29,7 @@ export default function Footer() {
             東京都葛飾区お花茶屋2-5-21
             <br />
             <br />
-            info@yuka-han.com
+            contact@yuka-han.com
           </p>
         </div>
 

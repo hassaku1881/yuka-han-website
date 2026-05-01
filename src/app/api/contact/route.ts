@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     },
     body: JSON.stringify({
       from: "Yuka-Han お問い合わせフォーム <onboarding@resend.dev>",
-      to: ["yuka@yuka-han.com"],
+      to: ["contact@yuka-han.com"],
       reply_to: email,
       subject: `【お問い合わせ】${typeLabel[type] ?? type} — ${name}`,
       html: `

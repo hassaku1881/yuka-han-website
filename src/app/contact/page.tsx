@@ -261,7 +261,7 @@ export default function ContactPage() {
               </h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
                 {[
-                  { icon: "📧", label: "Email", value: "info@yuka-han.com" },
+                  { icon: "📧", label: "Email", value: "contact@yuka-han.com" },
                   { icon: "📍", label: "Address", value: "東京都葛飾区お花茶屋" },
                   { icon: "🕐", label: "対応時間", value: "9:00 – 21:00（年中無休）" },
                 ].map((info) => (

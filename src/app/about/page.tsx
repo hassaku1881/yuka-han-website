@@ -148,7 +148,7 @@ export default function AboutPage() {
                 { label: "取引銀行", value: "東京東信用金庫 / 第一勧業信用組合" },
                 { label: "事業内容", value: "宿泊施設の企画・開発・運用 / 民泊運営代行サービス" },
                 { label: "主力ブランド", value: "Wuto（スモールラグジュアリー宿泊施設）" },
-                { label: "Email", value: "info@yuka-han.com" },
+                { label: "Email", value: "contact@yuka-han.com" },
               ].map((row) => (
                 <tr key={row.label} style={{ borderBottom: "1px solid #eee" }}>
                   <td
