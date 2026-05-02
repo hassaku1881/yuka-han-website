@@ -7,7 +7,7 @@ export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "コラム | Yuka-Han",
-  description: "民泊運営の現場から。インテリア・エリア・ビジネスの視点で、Wutoとユカハンが発信するコラム。",
+  description: "「暮らすように泊まる」体験設計、本当の意味でのAirbnbのおもてなし、中長期を見据えた価値の創出。Yuka-Hanが現場から発信するコラム。",
 };
 
 const CATEGORIES = [
@@ -74,12 +74,13 @@ export default async function ArticlesPage({ searchParams }: Props) {
             fontWeight: 400, color: "#fff", marginBottom: "1.2rem", letterSpacing: "0.05em",
           }}>コラム</h1>
           <p style={{
-            fontSize: "0.95rem", color: "rgba(255,255,255,0.75)",
-            maxWidth: "520px", margin: "0 auto", lineHeight: 1.9,
+            fontSize: "0.95rem", color: "rgba(255,255,255,0.72)",
+            maxWidth: "560px", margin: "0 auto", lineHeight: 2.1,
           }}>
-            民泊運営の現場から。<br />
-            インテリア・エリア・ビジネスの視点で、<br />
-            WutoとYuka-Hanが発信するコラム。
+            「暮らすように泊まる」という体験設計。<br />
+            「民泊」ではなく、本当の意味での「Airbnb」を届けるおもてなし。<br />
+            長い業界経験に裏打ちされた、中長期を見据えた価値の創出。<br />
+            <span style={{ opacity: 0.55, fontSize: "0.88rem" }}>——その思想と実践を、現場からお届けします。</span>
           </p>
         </div>
       </section>
