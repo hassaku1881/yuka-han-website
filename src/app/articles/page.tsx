@@ -7,7 +7,7 @@ export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "コラム | Yuka-Han",
-  description: "「暮らすように泊まる」宿を作り、運営する中で考えてきたことを書いています。インテリア・運営・エリアについてのコラム。",
+  description: "宿泊施設の空間づくりと運営の現場から、インテリア・Airbnb・ビジネスについて書くコラム。",
 };
 
 const CATEGORIES = [
@@ -77,8 +77,8 @@ export default async function ArticlesPage({ searchParams }: Props) {
             fontSize: "0.95rem", color: "rgba(255,255,255,0.72)",
             maxWidth: "480px", margin: "0 auto", lineHeight: 2.0,
           }}>
-            「暮らすように泊まる」宿を作り、運営する中で<br />
-            考えてきたことを書いています。
+            宿泊施設の空間づくりと運営の現場から、<br />
+            インテリア・Airbnb・ビジネスについて書いています。
           </p>
         </div>
       </section>
