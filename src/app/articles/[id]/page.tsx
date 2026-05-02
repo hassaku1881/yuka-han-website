@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getArticle, getArticles } from "@/lib/microcms";
 import { notFound } from "next/navigation";
+import { BASE_URL } from "@/lib/constants";
 
 export const revalidate = 60;
 
@@ -11,9 +12,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   try {
     const article = await getArticle(id);
+    const canonicalUrl = `${BASE_URL}/articles/${id}`;
+    const ogImage = article.thumbnail?.url ?? `${BASE_URL}/og-default.jpg`;
     return {
-      title: `${article.title} | Yuka-Han`,
+      title: article.title,
       description: article.excerpt,
+      alternates: { canonical: canonicalUrl },
+      openGraph: {
+        type: "article",
+        url: canonicalUrl,
+        title: article.title,
+        description: article.excerpt,
+        publishedTime: article.publishedAt,
+        modifiedTime: article.updatedAt,
+        images: [{ url: ogImage, width: 1200, height: 630, alt: article.title }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: article.title,
+        description: article.excerpt,
+        images: [ogImage],
+      },
     };
   } catch {
     return { title: "記事 | Yuka-Han" };
@@ -34,8 +53,33 @@ export default async function ArticleDetailPage({ params }: Props) {
     notFound();
   }
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt,
+    url: `${BASE_URL}/articles/${article.id}`,
+    image: article.thumbnail?.url ?? `${BASE_URL}/og-default.jpg`,
+    author: {
+      "@type": "Organization",
+      name: "株式会社ユカハン",
+      url: BASE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "株式会社ユカハン",
+      logo: { "@type": "ImageObject", url: `${BASE_URL}/logo.png` },
+    },
+  };
+
   return (
     <main style={{ paddingTop: "72px" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       {/* Hero */}
       {article.thumbnail && (
         <div

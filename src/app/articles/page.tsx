@@ -2,12 +2,19 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getArticlesByCategory } from "@/lib/microcms";
 import type { Article } from "@/lib/microcms";
+import { BASE_URL } from "@/lib/constants";
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "コラム | Yuka-Han",
+  title: "コラム",
   description: "宿泊施設の空間づくりと運営の現場から、インテリア・Airbnb・ビジネスについて書くコラム。",
+  alternates: { canonical: `${BASE_URL}/articles` },
+  openGraph: {
+    url: `${BASE_URL}/articles`,
+    title: "コラム | Yuka-Han",
+    description: "宿泊施設の空間づくりと運営の現場から、インテリア・Airbnb・ビジネスについて書くコラム。",
+  },
 };
 
 const CATEGORIES = [
