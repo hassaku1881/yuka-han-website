@@ -51,6 +51,20 @@ export async function getArticles(queries?: {
   });
 }
 
+// カテゴリ別Articles取得
+export async function getArticlesByCategory(category: string, queries?: {
+  limit?: number;
+  offset?: number;
+}) {
+  return client.get<MicroCMSList<Article>>({
+    endpoint: "articles",
+    queries: {
+      ...queries,
+      filters: category !== "ALL" ? `category[equals]${category}` : undefined,
+    },
+  });
+}
+
 export async function getArticle(id: string) {
   return client.get<Article>({
     endpoint: "articles",
