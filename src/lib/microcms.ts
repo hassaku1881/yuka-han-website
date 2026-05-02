@@ -76,6 +76,7 @@ export async function getArticle(id: string) {
 export async function getNews(queries?: {
   limit?: number;
   offset?: number;
+  orders?: string;
 }) {
   return client.get<MicroCMSList<NewsItem>>({
     endpoint: "news",

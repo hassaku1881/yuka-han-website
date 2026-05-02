@@ -25,7 +25,7 @@ const sectionTitle: React.CSSProperties = {
 export default async function Home() {
   const [{ contents: articles }, { contents: newsItems }] = await Promise.all([
     getArticles({ limit: 3 }),
-    getNews({ limit: 3 }),
+    getNews({ limit: 3, orders: "-publishedAt" }),
   ]);
   return (
     <main style={{ paddingTop: 0 }}>
