@@ -106,18 +106,68 @@ const properties = [
 
 const reviews = [
   {
-    text: "ここにレビュー文を入れてください",
-    author: "ゲスト名・国",
+    text: "It was an absolute pleasure to stay at this house! It felt like having our own home while staying here for a month. The house and amenities were perfect, and the surrounding area was beautiful. Thank you so much to Yuka and Han for being excellent hosts!",
+    author: "Guest from USA",
     rating: 5,
   },
   {
-    text: "ここにレビュー文を入れてください",
-    author: "ゲスト名・国",
+    text: "一走進屋內，溫暖的擺設讓人瞬間放鬆下來。大家坐在客廳，一邊吃著東西、一邊聊天、看著電視，那種平凡卻很珍貴的時光，讓人覺得特別安心。為這趟旅行劃下了一個很溫柔、也很完整的句點。如果還有機會，一定會想再回來住一次。",
+    author: "Guest from Taiwan",
     rating: 5,
   },
   {
-    text: "ここにレビュー文を入れてください",
-    author: "ゲスト名・国",
+    text: "We had a wonderful stay at Yuka & Han's! One of the best AirBnB experiences so far. The home is more modern, very well insulated & the heated floors was absolutely wonderful. Our family felt safe & everything was within walking distance. Beds were comfortable & large windows allowed for lots of natural light. Definitely recommend!",
+    author: "Guest from USA",
+    rating: 5,
+  },
+  {
+    text: "I had an amazing experience at Yuka's house. The space was clean, spacious, and well-equipped with all the amenities I could ask for. The location was perfect—close to public transport, and great restaurants. Would definitely stay here again and highly recommend it to anyone looking for a cozy, convenient, and hassle-free experience!",
+    author: "Guest from Malaysia",
+    rating: 5,
+  },
+  {
+    text: "We had a truly enjoyable stay, very comfortable and perfectly suited for our family of 6. As someone who appreciates interior design, I loved the traditional Japanese concept of the house. The design details and wide windows brought in natural light, making the space feel bright, airy and very calming.",
+    author: "Guest from Malaysia",
+    rating: 5,
+  },
+  {
+    text: "이곳은 정말 내집처럼 편안하고 청결하고 아늑하고 가족단위 머물기 충분했습니다. 방도 이불도 넉넉해서 넉넉히 이용하고 주방거실에서 먹거리를 함께 먹기 좋았습니다. 무엇보다 숙소주인님 너무너무 친절하고 바로바로 문의에 빠른게 응답해주셨습니다. 다시한번 이용하고싶고 추천하고 싶습니다^^",
+    author: "Guest from Korea",
+    rating: 5,
+  },
+  {
+    text: "The place is exactly the Japandi-style house I was imagining. Their house is super nice, and the hosts are very responsive. They have everything we need—truly, everything was very well thought out. We will definitely come back and recommend this place to our friends and family.",
+    author: "Guest from Philippines",
+    rating: 5,
+  },
+  {
+    text: "Our family truly enjoyed our stay. The host was very friendly and always responsive. She gave great food recommendations and allowed for a late checkout. We definitely recommend this home if you're in the area.",
+    author: "Guest from USA",
+    rating: 5,
+  },
+  {
+    text: "We had a fantastic time at Yuka & Hans! Their communication was exceptional. The home was spacious and had everything we needed for a comfortable stay. We were travelling with a 1.5 year old and the house had a highchair and plates/cutlery for her which was an unexpected help!",
+    author: "Guest from New Zealand",
+    rating: 5,
+  },
+  {
+    text: "Beautiful Japanese house, clean and thoughtful designed. Peaceful atmosphere, great layout and relaxing stay. Highly recommend.",
+    author: "Guest from USA",
+    rating: 5,
+  },
+  {
+    text: "Nous sommes restés quelques jours en famille et le logement était impeccable. Nous nous sommes sentis à l'aise avec assez d'espace pour tout le monde. De plus, la gare était proche. Nous recommandons et reviendrons si nous revenons au Japon. Merci pour tout Yuka & Han.",
+    author: "Guest from Canada",
+    rating: 5,
+  },
+  {
+    text: "Yuka & Han's place is perfect if you like being in a quiet neighborhood! We felt very comfortable there. The house is large and very well equipped—you'll find everything you need. There are also shopping facilities and restaurants nearby, and the train station is right next door!",
+    author: "Guest from Switzerland",
+    rating: 5,
+  },
+  {
+    text: "It was a lovely stay at this spacious house in a peaceful neighborhood. Host was friendly and responsive. As we drove a car, we found the parking convenient to have. The bed sheets were comfortable. Overall it was a pleasant stay. Thank you!",
+    author: "Guest from Singapore",
     rating: 5,
   },
 ];
@@ -248,25 +298,16 @@ export default function WutoPage() {
           </div>
 
           {/* レビューカード */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "1.5rem",
-          }} className="reviews-grid">
+          <div className="reviews-masonry">
             {reviews.map((review, i) => (
-              <div key={i} style={{
-                background: "var(--color-white)",
-                borderRadius: "8px",
-                padding: "2rem",
-                boxShadow: "0 2px 16px rgba(0,0,0,0.05)",
-              }}>
+              <div key={i} className="review-card">
                 <div style={{ display: "flex", gap: "2px", marginBottom: "1rem" }}>
                   {[...Array(review.rating)].map((_, j) => (
                     <Star key={j} size={13} fill="var(--color-accent)" color="var(--color-accent)" />
                   ))}
                 </div>
                 <p style={{
-                  fontSize: "0.9rem",
+                  fontSize: "0.88rem",
                   lineHeight: 1.9,
                   color: "var(--color-text-light)",
                   marginBottom: "1.2rem",
@@ -513,14 +554,26 @@ export default function WutoPage() {
       </section>
 
       <style>{`
+        .reviews-masonry {
+          columns: 3;
+          column-gap: 1.5rem;
+        }
+        .review-card {
+          background: var(--color-white);
+          border-radius: 8px;
+          padding: 1.8rem;
+          box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+          break-inside: avoid;
+          margin-bottom: 1.5rem;
+        }
         @media (max-width: 768px) {
           .property-card { grid-template-columns: 1fr !important; }
           .property-image { order: 0 !important; min-height: 240px !important; }
-          .reviews-grid { grid-template-columns: 1fr !important; }
+          .reviews-masonry { columns: 1; }
           .review-divider { display: none; }
         }
         @media (min-width: 769px) and (max-width: 1024px) {
-          .reviews-grid { grid-template-columns: 1fr 1fr !important; }
+          .reviews-masonry { columns: 2; }
         }
       `}</style>
     </main>
