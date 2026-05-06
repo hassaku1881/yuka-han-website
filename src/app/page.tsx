@@ -165,7 +165,7 @@ export default async function Home() {
             alignItems: "center",
             justifyContent: "center",
             textAlign: "center",
-            background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1920') center/cover",
+            background: "linear-gradient(rgba(20,30,48,0.50), rgba(20,30,48,0.50)), url('/images/hero-property.jpg') center/cover",
             padding: "5rem 8%",
           }}
         >
