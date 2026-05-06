@@ -1,7 +1,19 @@
 import Link from "next/link";
-import { Home as HomeIcon, TrainFront, Sparkles, Building2, Globe, Briefcase } from "lucide-react";
+import { Home as HomeIcon, TrainFront, Sparkles, Building2, Globe, Briefcase, Star } from "lucide-react";
 import { getArticles, getNews } from "@/lib/microcms";
 import HeroSlider from "@/components/HeroSlider";
+import { reviews } from "@/lib/reviews";
+
+const PROPERTY_THUMBS = [
+  { name: "Wutoお花茶屋 1F", image: "/images/properties/ohanajaya-1f-main.jpg" },
+  { name: "Wutoお花茶屋 2F", image: "/images/properties/ohanajaya-2f-main.jpg" },
+  { name: "Wuto立石", image: "/images/properties/tateishi-main.jpg" },
+  { name: "Wuto堀切", image: "/images/properties/horikiri-main.jpg" },
+  { name: "Wuto青砥", image: "/images/properties/aoto-main.jpg" },
+];
+
+// 抜粋する3レビュー（バランスのとれた国・分量）
+const HOMEPAGE_REVIEW_INDICES = [0, 1, 8]; // 日本・アメリカ・ニュージーランド
 
 export const revalidate = 60;
 
@@ -70,8 +82,33 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Philosophy bridge */}
+      <section style={{
+        background: "var(--color-bg)",
+        padding: "6rem 8%",
+        textAlign: "center",
+      }}>
+        <div style={{ maxWidth: "780px", margin: "0 auto" }}>
+          <p style={sectionLabel}>OUR PHILOSOPHY</p>
+          <h2 style={{ ...sectionTitle, fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", lineHeight: 1.5, marginBottom: "2.5rem" }}>
+            日常と非日常の境目で、<br />ほっと息をつける場所を。
+          </h2>
+          <p style={{ fontSize: "0.98rem", lineHeight: 2.3, color: "var(--color-text-light)", marginBottom: "2rem" }}>
+            観光地を駆け足でめぐるだけの旅ではなく、<br />
+            その土地に溶け込み、地元の時間に身を委ねる滞在を。<br />
+            一日の終わりにほっと息をつける場所があってこそ、<br />
+            旅はより深く、豊かなものになる。
+          </p>
+          <p style={{ fontSize: "0.95rem", lineHeight: 2.3, color: "var(--color-text-light)" }}>
+            私たちが大切にしているのは、上質な日常の延長線上にある滞在。<br />
+            無垢材の温もり、本物の眠り、ゆっくり淹れる一杯のコーヒー——<br />
+            そんな当たり前の心地よさを、旅の中にもしっかりと。
+          </p>
+        </div>
+      </section>
+
       {/* Business */}
-      <section id="business" style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
+      <section id="business" style={{ background: "var(--color-white)", padding: "6rem 8%" }}>
         <div style={{ textAlign: "center", marginBottom: "3rem" }}>
           <p style={sectionLabel}>BUSINESS</p>
           <h2 style={sectionTitle}>事業内容</h2>
@@ -211,8 +248,84 @@ export default async function Home() {
           </div>
         </div>
 
-        <div style={{ textAlign: "center", padding: "0 8% 4rem", background: "var(--color-primary)" }}>
-          <Link href="/wuto" className="btn-primary">View Our Properties</Link>
+        {/* 施設サムネイル */}
+        <div style={{ background: "var(--color-primary)", padding: "1rem 8% 3rem" }}>
+          <div className="property-thumbs">
+            {PROPERTY_THUMBS.map((p) => (
+              <Link key={p.name} href="/wuto" className="property-thumb">
+                <div
+                  className="property-thumb-image"
+                  style={{ backgroundImage: `url('${p.image}')` }}
+                />
+                <p style={{
+                  fontSize: "0.78rem",
+                  color: "var(--color-white)",
+                  marginTop: "0.7rem",
+                  letterSpacing: "0.03em",
+                  textAlign: "center",
+                }}>
+                  {p.name}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ textAlign: "center", padding: "0 8% 5rem", background: "var(--color-primary)" }}>
+          <Link href="/wuto" className="btn-primary">Wutoを詳しく見る</Link>
+        </div>
+      </section>
+
+      {/* Reviews preview */}
+      <section style={{ background: "var(--color-bg)", padding: "5rem 8%" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p style={sectionLabel}>VOICES FROM AROUND THE WORLD</p>
+            <h2 style={sectionTitle}>世界中のゲストから</h2>
+          </div>
+
+          <div className="homepage-reviews">
+            {HOMEPAGE_REVIEW_INDICES.map((idx) => {
+              const r = reviews[idx];
+              return (
+                <div key={idx} className="homepage-review-card">
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
+                    <div style={{ display: "flex", gap: "2px" }}>
+                      {[...Array(r.rating)].map((_, j) => (
+                        <Star key={j} size={13} fill="var(--color-accent)" color="var(--color-accent)" />
+                      ))}
+                    </div>
+                    <span style={{ fontSize: "1.3rem" }}>{r.flag}</span>
+                  </div>
+                  <p style={{
+                    fontSize: "0.9rem",
+                    lineHeight: 1.95,
+                    color: "var(--color-text-light)",
+                    fontStyle: "italic",
+                    marginBottom: "1.2rem",
+                    display: "-webkit-box",
+                    WebkitLineClamp: 5,
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
+                  }}>
+                    &ldquo;{r.ja}&rdquo;
+                  </p>
+                  <p style={{
+                    fontSize: "0.78rem",
+                    color: "var(--color-primary)",
+                    fontFamily: "var(--font-en)",
+                    letterSpacing: "0.05em",
+                  }}>
+                    — {r.author}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          <div style={{ textAlign: "center", marginTop: "3rem" }}>
+            <Link href="/wuto#reviews" className="btn-outline">すべてのレビューを見る</Link>
+          </div>
         </div>
       </section>
 
@@ -282,7 +395,7 @@ export default async function Home() {
           </div>
 
           <div style={{ textAlign: "center", marginTop: "3rem" }}>
-            <Link href="/articles" className="btn-outline">Read More</Link>
+            <Link href="/articles" className="btn-outline">コラム一覧を見る</Link>
           </div>
         </section>
       )}
@@ -320,6 +433,43 @@ export default async function Home() {
           gap: 2rem;
           padding: 4rem 8%;
           background: var(--color-primary);
+        }
+
+        .property-thumbs {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 1.2rem;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+        .property-thumb {
+          text-decoration: none;
+          color: inherit;
+          display: block;
+        }
+        .property-thumb-image {
+          width: 100%;
+          aspect-ratio: 4 / 3;
+          background-size: cover;
+          background-position: center;
+          border-radius: 6px;
+          transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .property-thumb:hover .property-thumb-image {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+        }
+
+        .homepage-reviews {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+        }
+        .homepage-review-card {
+          background: var(--color-white);
+          border-radius: 8px;
+          padding: 1.8rem;
+          box-shadow: 0 2px 16px rgba(0,0,0,0.05);
         }
 
         .business-grid {
@@ -387,7 +537,13 @@ export default async function Home() {
           .wuto-features-grid { grid-template-columns: 1fr !important; }
           .business-grid { grid-template-columns: 1fr !important; }
           .articles-grid { grid-template-columns: 1fr !important; }
+          .property-thumbs { grid-template-columns: repeat(2, 1fr) !important; }
+          .homepage-reviews { grid-template-columns: 1fr !important; }
           .news-item { flex-direction: column; gap: 0.5rem; }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .property-thumbs { grid-template-columns: repeat(3, 1fr) !important; }
+          .homepage-reviews { grid-template-columns: 1fr 1fr !important; }
         }
       `}</style>
     </main>
