@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Home as HomeIcon, UtensilsCrossed, Bath, Wifi, Car, BedDouble, Coffee } from "lucide-react";
+import { Home as HomeIcon, UtensilsCrossed, Bath, Wifi, Car, BedDouble, Coffee, MapPin, Users } from "lucide-react";
 import { BASE_URL } from "@/lib/constants";
 import WutoReviews from "@/components/WutoReviews";
 
@@ -32,7 +32,7 @@ const properties = [
     features: ["Japandiインテリア", "フルキッチン完備", "高速Wi-Fi", "駅近5分"],
     award: "Airbnb ゲストチョイス",
     description:
-      "Wuto発祥の地、お花茶屋の1階。木の温もりが全体に宿るナチュラルな空間に、和の要素を融合させた2ベッドルーム。下町の生活感と上質な滞在が自然に共存する、原点ともいえる施設です。",
+      "かつてオーナー夫婦が実際に暮らしていた、Wutoの原点。カフェのようにゆったりと落ち着ける空間に、整った調理道具と大きな冷蔵庫を備えたキッチン、小上がりのある2ベッドルーム。日常のなかに宿る心地よさがそのまま形になった施設です。",
   },
   {
     id: "ohanajaya-2f",
@@ -49,7 +49,7 @@ const properties = [
     features: ["Japandiインテリア", "フルキッチン完備", "高速Wi-Fi", "駅近5分"],
     award: "Airbnb ゲストチョイス",
     description:
-      "桧づくりの一軒家、その2階に広がる3ベッドルーム85㎡。緑のカーテンと木の建具が織りなす穏やかな空間。グループや家族での滞在に、下町の情緒とゆとりある時間をお届けします。",
+      "1Fのナチュラルさと対をなす、より「和」を感じる3ベッドルーム。本物の檜づくりの一軒家に、畳スペースと木の建具が織りなす落ち着いた空間。日本家屋の温もりをじっくり味わいたい方に。",
   },
   {
     id: "tateishi",
@@ -67,7 +67,7 @@ const properties = [
     award: "Airbnb ゲストチョイス",
     flagship: true,
     description:
-      "吹き抜けのLDKにシーリングファンが回る、Wuto最大の4ベッドルーム95㎡。明るくモダンな空間設計と充実した設備が、グループ旅行・長期滞在の両方に応えます。売上・レビュー・稼働率、すべてでWutoのトップを走るフラグシップ施設。",
+      "吹き抜けのLDKにシーリングファンが回る、Wuto最大の4ベッドルーム。明るくモダンな空間に充実した設備が揃い、大人数のグループ旅行にも、ゆったりした長期滞在にも応えます。",
   },
   {
     id: "horikiri",
@@ -84,7 +84,7 @@ const properties = [
     features: ["Japandiインテリア", "フルキッチン完備", "高速Wi-Fi", "無料駐車場"],
     award: "Airbnb ゲストチョイス",
     description:
-      "天窓から自然光が降り注ぐ開放的なリビングが印象的な3ベッドルーム77㎡。ゴールドのペンダントライトとバスタブを備えたプレミアムな設えで、スタイリッシュな滞在を。堀切菖蒲園の四季も楽しめるロケーション。",
+      "天窓から自然光が降り注ぐ、開放感あふれる3ベッドルーム。木のペンダントライトがやわらかく空間を包み、落ち着きとスタイルを両立した設えです。",
   },
   {
     id: "aoto",
@@ -101,7 +101,7 @@ const properties = [
     features: ["Japandiインテリア", "フルキッチン完備", "高速Wi-Fi", "空港直通"],
     award: "Airbnb ゲストチョイス",
     description:
-      "和室に低床ベッドとちょうちんランプ——日本家屋の骨格をそのまま生かした、最も「和」を感じる3ベッドルーム65㎡。青砥駅から成田・羽田空港への直通アクセスも魅力です。シックで落ち着く、大人のための空間。",
+      "日本家屋の骨格をそのまま生かした、最も「和」を感じる3ベッドルーム。畳と木の組み合わせが、どこか懐かしく落ち着いた空間を作り出します。青砥駅から成田・羽田空港への直通アクセスも魅力。",
   },
 ];
 
@@ -184,7 +184,7 @@ export default function WutoPage() {
               Wutoのこだわり
             </h2>
             <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.6)", letterSpacing: "0.05em" }}>
-              自分たちが本当に泊まりたい場所を作るために、細部まで選び抜いた。
+              旅暮らしの中で気づいた、本当に心地よい滞在のかたち。
             </p>
           </div>
           <div style={{
@@ -200,7 +200,7 @@ export default function WutoPage() {
               {
                 icon: <HomeIcon size={34} strokeWidth={1.3} color="#d4a574" />,
                 title: "Japandi Interior",
-                text: "無垢材を中心にした、上質で温かみのある空間。ReCeno・無印良品・飛騨産業など厳選ブランドで統一されたインテリア。",
+                text: "無垢材を中心にした、上質で温かみのある空間。Re:CENO・無印良品・飛騨産業など、こだわりのブランドを厳選したインテリア。",
               },
               {
                 icon: <BedDouble size={34} strokeWidth={1.3} color="#d4a574" />,
@@ -215,17 +215,27 @@ export default function WutoPage() {
               {
                 icon: <UtensilsCrossed size={34} strokeWidth={1.3} color="#d4a574" />,
                 title: "Full Kitchen",
-                text: "IHコンロ・電子レンジ・炊飯器・食器類まで充実。長期滞在でも自炊を楽しめるキッチン環境を整えています。",
+                text: "充実した調理道具と食器類で、自炊を気軽に楽しめるキッチン。長期滞在でも、まるで自宅のように料理ができます。",
               },
               {
                 icon: <Coffee size={34} strokeWidth={1.3} color="#d4a574" />,
                 title: "Drink Amenity",
-                text: "コーヒー・お茶などのドリンクアメニティを用意。到着してすぐ、ほっと一息ついてもらえるように。",
+                text: "コーヒー・お茶などのドリンクアメニティを用意。ゆったりとした時間の中で、自然と会話が生まれるように。",
               },
               {
                 icon: <Wifi size={34} strokeWidth={1.3} color="#d4a574" />,
                 title: "Work & Connect",
                 text: "1Gbps超の高速Wi-Fiと本格ワークスペース。旅しながら働く、そんな使い方にもしっかり応えます。",
+              },
+              {
+                icon: <MapPin size={34} strokeWidth={1.3} color="#d4a574" />,
+                title: "Local Experience",
+                text: "ここで暮らす2人だからこそ知る、地元のおすすめをご紹介。観光地だけが東京ではない——葛飾の日常を感じる旅へ。",
+              },
+              {
+                icon: <Users size={34} strokeWidth={1.3} color="#d4a574" />,
+                title: "For Every Generation",
+                text: "ベビーベッド・ハイチェアも完備し、シニアにも配慮した空間設計。寝るだけでなく、家族みんなで大切な思い出を作れる場所に。",
               },
             ].map((f) => (
               <div key={f.title} style={{
