@@ -5,7 +5,14 @@ import HeroSlider from "@/components/HeroSlider";
 
 export const revalidate = 60;
 
-const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600";
+const FALLBACK_IMAGES: Record<string, string> = {
+  BUSINESS:     "/images/articles-business.jpg",
+  INTERIOR:     "/images/articles-interior.jpg",
+  "AREA GUIDE": "/images/articles-area-guide.jpg",
+};
+const FALLBACK_IMAGE_DEFAULT = "/images/articles-interior.jpg";
+const getFallback = (category?: string) =>
+  (category && FALLBACK_IMAGES[category]) || FALLBACK_IMAGE_DEFAULT;
 
 const sectionLabel: React.CSSProperties = {
   fontFamily: "var(--font-en)",
@@ -130,34 +137,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Achievements */}
-      <section style={{ background: "var(--color-primary)", padding: "4rem 8%" }}>
-        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
-          <p style={{ ...sectionLabel, color: "rgba(255,255,255,0.7)" }}>ACHIEVEMENTS</p>
-          <h2 style={{ ...sectionTitle, color: "var(--color-white)", marginBottom: "3rem" }}>Our Track Record</h2>
-          <div className="achievements-grid">
-            {[
-              { number: "11+", label: "Airbnb運営年数" },
-              { number: "4.9", label: "平均レビュー評価" },
-              { number: "500+", label: "年間ゲスト数" },
-              { number: "3", label: "運営施設数" },
-            ].map((item, i) => (
-              <>
-                {i > 0 && (
-                  <div key={`divider-${i}`} className="achievements-divider" />
-                )}
-                <div key={item.label} style={{ padding: "1.5rem", textAlign: "center" }}>
-                  <p style={{ fontFamily: "var(--font-en)", fontSize: "3rem", fontWeight: 400, color: "var(--color-accent)", marginBottom: "0.5rem" }}>
-                    {item.number}
-                  </p>
-                  <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.8)", letterSpacing: "0.05em" }}>{item.label}</p>
-                </div>
-              </>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Wuto Brand */}
       <section id="wuto" style={{ background: "var(--color-primary)", padding: 0 }}>
         <div
@@ -277,7 +256,7 @@ export default async function Home() {
           <div className="articles-grid">
             {articles.map((article) => (
               <Link key={article.id} href={`/articles/${article.id}`} className="article-card">
-                <div style={{ height: "180px", backgroundImage: `url('${article.thumbnail?.url ?? FALLBACK_IMAGE}')`, backgroundSize: "cover", backgroundPosition: "center", backgroundColor: "#eee" }} />
+                <div style={{ height: "180px", backgroundImage: `url('${article.thumbnail?.url ?? getFallback(article.category)}')`, backgroundSize: "cover", backgroundPosition: "center", backgroundColor: "#eee" }} />
                 <div style={{ padding: "1.5rem" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.8rem" }}>
                     {article.category && (
@@ -396,18 +375,6 @@ export default async function Home() {
         }
         .news-item-vertical:hover { opacity: 0.7; }
 
-        .achievements-grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-        }
-        .achievements-divider {
-          display: none;
-          width: 1px;
-          height: 48px;
-          background: rgba(255,255,255,0.2);
-        }
         .service-card {
           box-shadow: 0 4px 20px rgba(0,0,0,0.08);
           transition: transform 0.3s, box-shadow 0.3s;
@@ -415,9 +382,6 @@ export default async function Home() {
         .service-card:hover {
           transform: translateY(-4px);
           box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        }
-        @media (min-width: 768px) {
-          .achievements-divider { display: block; }
         }
         @media (max-width: 768px) {
           .wuto-features-grid { grid-template-columns: 1fr !important; }
