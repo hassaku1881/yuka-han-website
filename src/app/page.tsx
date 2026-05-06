@@ -42,14 +42,16 @@ export default async function Home() {
             <br />
             私たちは「暮らすように泊まる」をコンセプトに、
             <br />
-            Japandiスタイルを取り入れたスモールラグジュアリーな滞在体験を提供しています。
+            落ち着ける日本の暮らしを軸にした上質な滞在体験をお届けしています。
           </p>
           <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)", marginBottom: "2rem" }}>
-            主力ブランド「Wuto」では、駅近の好立地でありながら、
+            主力ブランド「Wuto」は、旅暮らしをしていた夫婦が
             <br />
-            ゆったりとした空間と充実した設備で、まるで自宅のようにくつろげる宿泊体験をお届けします。
+            「自分たちが本当に泊まりたい場所」を追い求めて作った宿泊施設。
             <br />
-            ReCeno、無印良品、飛騨産業など、こだわりのブランドで揃えたインテリアも魅力です。
+            Japandiな内装、本物の眠り、こだわりのアメニティで、
+            <br />
+            日常と非日常がやさしく溶けあう滞在をお届けします。
           </p>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "1rem", marginTop: "2rem", paddingTop: "2rem", borderTop: "1px solid #eee" }}>
             <p style={{ fontSize: "0.9rem", color: "var(--color-text-light)" }}>
@@ -75,7 +77,7 @@ export default async function Home() {
             {
               icon: <HomeIcon size={36} strokeWidth={1.5} />,
               title: "Wuto事業",
-              text: "Japandiスタイルのスモールラグジュアリー宿泊ブランド「Wuto」の企画・開発・運営。",
+              text: "落ち着ける日本の暮らしを軸にしたJapandiスタイル宿泊ブランド「Wuto」の企画・開発・運営。",
               href: "/wuto",
             },
             {
@@ -160,45 +162,74 @@ export default async function Home() {
       <section id="wuto" style={{ background: "var(--color-primary)", padding: 0 }}>
         <div
           style={{
-            minHeight: "500px",
+            minHeight: "560px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             textAlign: "center",
-            background: "linear-gradient(rgba(20,30,48,0.50), rgba(20,30,48,0.50)), url('/images/hero-property.jpg') center/cover",
+            background: "linear-gradient(rgba(20,30,48,0.55), rgba(20,30,48,0.55)), url('/images/hero-wuto.jpg') center/cover",
             padding: "5rem 8%",
           }}
         >
-          <div style={{ maxWidth: "700px", color: "var(--color-white)" }}>
+          <div style={{ maxWidth: "760px", color: "var(--color-white)" }}>
             <p style={{ ...sectionLabel, color: "var(--color-accent)" }}>OUR BRAND</p>
             <h2 style={{ fontFamily: "var(--font-en)", fontSize: "4rem", fontWeight: 400, letterSpacing: "0.15em", marginBottom: "0.5rem", color: "var(--color-white)" }}>
               Wuto
             </h2>
-            <p style={{ fontSize: "1.2rem", fontWeight: 300, letterSpacing: "0.2em", marginBottom: "1.5rem", opacity: 0.9 }}>
+            <p style={{ fontSize: "1.2rem", fontWeight: 300, letterSpacing: "0.2em", marginBottom: "2rem", opacity: 0.9 }}>
               暮らすように、泊まる。
             </p>
-            <p style={{ fontSize: "0.95rem", lineHeight: 2, opacity: 0.85 }}>
-              Japandiスタイルを取り入れた、スモールラグジュアリーな宿泊体験。
+            <p style={{ fontSize: "0.95rem", lineHeight: 2.2, opacity: 0.88, marginBottom: "1.5rem" }}>
+              旅暮らしをしていた夫婦が、自分たちが本当に泊まりたい場所を追い求めて作った宿泊施設。
               <br />
-              駅近の好立地で、まるで自宅のようにくつろげる滞在をお届けします。
+              落ち着ける日本の暮らしを軸に、日常と非日常がやさしく溶けあう滞在を。
+            </p>
+            <p style={{
+              fontSize: "0.78rem",
+              letterSpacing: "0.18em",
+              opacity: 0.65,
+              fontFamily: "var(--font-en)",
+            }}>
+              Wuto = 烏兎 — 太陽（烏）と月（兎）、移ろう時のやわらかな境目。
             </p>
           </div>
         </div>
 
         <div className="wuto-features-grid">
           {[
-            { icon: <HomeIcon size={40} strokeWidth={1.5} color="#d4a574" />, title: "Japandi Interior", text: "日本の美意識と北欧デザインの融合。ReCeno、無印良品、飛騨産業など厳選ブランドで統一。" },
-            { icon: <TrainFront size={40} strokeWidth={1.5} color="#d4a574" />, title: "Prime Location", text: "全施設が駅徒歩5分以内。東京の下町の暮らしを体験できるロケーション。" },
-            { icon: <Sparkles size={40} strokeWidth={1.5} color="#d4a574" />, title: "Premium Amenities", text: "高速Wi-Fi、充実のキッチン設備、こだわりのバスアメニティで快適な滞在を。" },
+            { icon: <HomeIcon size={40} strokeWidth={1.5} color="#d4a574" />, title: "Japandi Interior", text: "無垢材を中心にした、上質で温かみのある空間。Re:CENO・無印良品・飛騨産業など、こだわりのブランドを厳選。" },
+            { icon: <Sparkles size={40} strokeWidth={1.5} color="#d4a574" />, title: "Real Comfort", text: "ふかふかの羽毛布団、肌触りのよいリネン、旅先で気に入って選んだアメニティ。本物のくつろぎを、滞在の中心に。" },
+            { icon: <TrainFront size={40} strokeWidth={1.5} color="#d4a574" />, title: "Local Experience", text: "ここで暮らす2人だからこそ知る、葛飾の日常。観光地だけでは味わえない、東京下町の時間の流れを体験。" },
           ].map((f) => (
             <div key={f.title} style={{ textAlign: "center", padding: "2rem", color: "var(--color-white)" }}>
               <div style={{ marginBottom: "1rem", display: "flex", justifyContent: "center" }}>{f.icon}</div>
               <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1.1rem", fontWeight: 400, letterSpacing: "0.05em", marginBottom: "1rem", color: "var(--color-accent)" }}>
                 {f.title}
               </h3>
-              <p style={{ fontSize: "0.9rem", lineHeight: 1.8, opacity: 0.85 }}>{f.text}</p>
+              <p style={{ fontSize: "0.9rem", lineHeight: 1.9, opacity: 0.85 }}>{f.text}</p>
             </div>
           ))}
+        </div>
+
+        {/* 評価バッジ */}
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "2.5rem",
+          padding: "0 8% 2.5rem",
+          background: "var(--color-primary)",
+          flexWrap: "wrap",
+        }}>
+          <div style={{ textAlign: "center", color: "var(--color-white)" }}>
+            <p style={{ fontFamily: "var(--font-en)", fontSize: "2rem", fontWeight: 300, lineHeight: 1, color: "var(--color-accent)" }}>4.97</p>
+            <p style={{ fontSize: "0.72rem", opacity: 0.7, letterSpacing: "0.05em", marginTop: "0.3rem" }}>Airbnb 5施設平均</p>
+          </div>
+          <div style={{ width: "1px", height: "40px", background: "rgba(255,255,255,0.2)" }} />
+          <div style={{ textAlign: "center", color: "var(--color-white)" }}>
+            <p style={{ fontFamily: "var(--font-en)", fontSize: "2rem", fontWeight: 300, lineHeight: 1, color: "var(--color-accent)" }}>5/5</p>
+            <p style={{ fontSize: "0.72rem", opacity: 0.7, letterSpacing: "0.05em", marginTop: "0.3rem" }}>全施設 ゲストチョイス獲得</p>
+          </div>
         </div>
 
         <div style={{ textAlign: "center", padding: "0 8% 4rem", background: "var(--color-primary)" }}>

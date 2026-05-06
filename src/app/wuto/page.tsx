@@ -184,12 +184,35 @@ export default function WutoPage() {
             観光地を巡るだけでなく、その土地に溶け込み、地元の時間の流れを感じること。<br />
             そして帰ってきたとき、ほっと息をつける場所があること。
           </p>
-          <p style={{ fontSize: "1rem", lineHeight: 2.4, color: "var(--color-text-light)" }}>
+          <p style={{ fontSize: "1rem", lineHeight: 2.4, color: "var(--color-text-light)", marginBottom: "2.5rem" }}>
             日常の延長線上にある上質な空間、本物の眠り、使い心地のよい道具たち。<br />
             非日常の高揚感と、日常のくつろぎ——そのバランスこそがWutoのコンセプトです。<br />
             Japandiな内装に、旅先で見つけたこだわりのアメニティ。<br />
             自分たちも納得して住めるように、細部まで選び抜いた空間をどうぞ。
           </p>
+          <div style={{
+            display: "inline-block",
+            padding: "1.4rem 2rem",
+            borderTop: "1px solid var(--color-accent)",
+            borderBottom: "1px solid var(--color-accent)",
+            maxWidth: "640px",
+          }}>
+            <p style={{
+              fontFamily: "var(--font-en)",
+              fontSize: "0.72rem",
+              letterSpacing: "0.3em",
+              color: "var(--color-accent)",
+              marginBottom: "0.6rem",
+            }}>
+              ABOUT THE NAME
+            </p>
+            <p style={{ fontSize: "0.92rem", lineHeight: 2.0, color: "var(--color-text-light)" }}>
+              Wuto（ウト）の名は、日本の古語「烏兎（うと）」から。<br />
+              烏は太陽、兎は月——古来より時の流れを表す言葉です。<br />
+              昼と夜、日常と旅、日常と非日常。<br />
+              その境目をやさしく溶かしあう滞在を、この名に込めました。
+            </p>
+          </div>
         </div>
       </section>
 
