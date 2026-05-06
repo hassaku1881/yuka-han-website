@@ -29,6 +29,7 @@ const properties = [
     image: "/images/properties/ohanajaya-1f-main.jpg",
     airbnbUrl: "https://www.airbnb.jp/rooms/1167161798047093034",
     features: ["Japandiインテリア", "フルキッチン完備", "高速Wi-Fi", "駅近5分"],
+    award: "Airbnb ゲストチョイス",
     description:
       "Wuto発祥の地、お花茶屋の1階。木の温もりが全体に宿るナチュラルな空間に、和の要素を融合させた2ベッドルーム。下町の生活感と上質な滞在が自然に共存する、原点ともいえる施設です。",
   },
@@ -212,14 +213,14 @@ export default function WutoPage() {
                 color: "var(--color-primary)",
                 lineHeight: 1,
                 marginBottom: "0.3rem",
-              }}>4.9</p>
+              }}>4.97</p>
               <div style={{ display: "flex", gap: "2px", justifyContent: "center", marginBottom: "0.3rem" }}>
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} size={14} fill="var(--color-accent)" color="var(--color-accent)" />
                 ))}
               </div>
               <p style={{ fontSize: "0.78rem", color: "var(--color-text-light)", letterSpacing: "0.05em" }}>
-                Airbnb平均評価
+                Airbnb 5施設平均評価
               </p>
             </div>
             <div style={{ width: "1px", height: "60px", background: "#ddd" }} className="review-divider" />
@@ -233,8 +234,16 @@ export default function WutoPage() {
                 marginBottom: "0.3rem",
               }}>5/5</p>
               <p style={{ fontSize: "0.78rem", color: "var(--color-text-light)", letterSpacing: "0.05em" }}>
-                全施設 ゲストチョイス獲得
+                全施設 Airbnb ゲストチョイス獲得
               </p>
+            </div>
+            <div style={{ width: "1px", height: "60px", background: "#ddd" }} className="review-divider" />
+            <div style={{ textAlign: "center", fontSize: "0.8rem", color: "var(--color-text-light)", lineHeight: 2 }}>
+              <p>Wutoお花茶屋 1F <strong style={{ color: "var(--color-primary)", fontFamily: "var(--font-en)" }}>4.94</strong></p>
+              <p>Wutoお花茶屋 2F <strong style={{ color: "var(--color-primary)", fontFamily: "var(--font-en)" }}>4.98</strong></p>
+              <p>Wuto立石 <strong style={{ color: "var(--color-primary)", fontFamily: "var(--font-en)" }}>4.97</strong></p>
+              <p>Wuto堀切 <strong style={{ color: "var(--color-primary)", fontFamily: "var(--font-en)" }}>5.00</strong></p>
+              <p>Wuto青砥 <strong style={{ color: "var(--color-primary)", fontFamily: "var(--font-en)" }}>4.96</strong></p>
             </div>
           </div>
 
@@ -428,7 +437,7 @@ export default function WutoPage() {
                   marginBottom: "0.2rem",
                   letterSpacing: "0.05em",
                 }}>
-                  {prop.name}
+                  {prop.nameJa}
                 </h3>
                 <p style={{ fontSize: "0.82rem", color: "var(--color-text-light)", marginBottom: "1.2rem" }}>
                   {prop.area} | {prop.access}
