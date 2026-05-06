@@ -26,9 +26,9 @@ const CATEGORIES = [
 ];
 
 const FALLBACK_IMAGES: Record<string, string> = {
-  BUSINESS:     "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800",
-  INTERIOR:     "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800",
-  "AREA GUIDE": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800",
+  BUSINESS:     "/images/articles-business.jpg",
+  INTERIOR:     "/images/articles-interior.jpg",
+  "AREA GUIDE": "/images/articles-area-guide.jpg",
   OTHERS:       "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800",
   DEFAULT:      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800",
 };
