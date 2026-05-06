@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Home as HomeIcon, UtensilsCrossed, Bath, Wifi, Car, BedDouble, Coffee, MapPin, Users } from "lucide-react";
 import { BASE_URL } from "@/lib/constants";
 import WutoReviews from "@/components/WutoReviews";
+import PropertyImageSlider from "@/components/PropertyImageSlider";
 
 export const metadata: Metadata = {
   title: "Wuto | Yuka-Han",
@@ -27,7 +28,11 @@ const properties = [
     size: "50㎡",
     rooms: "2BR",
     parking: false,
-    image: "/images/properties/ohanajaya-1f-main.jpg",
+    images: [
+      "/images/properties/ohanajaya-1f-main.jpg",
+      "/images/properties/ohanajaya-1f-2.jpg",
+      "/images/properties/ohanajaya-1f-3.jpg",
+    ],
     airbnbUrl: "https://www.airbnb.jp/rooms/1167161798047093034",
     features: ["Japandiインテリア", "フルキッチン完備", "高速Wi-Fi", "駅近5分"],
     award: "Airbnb ゲストチョイス",
@@ -44,7 +49,11 @@ const properties = [
     size: "85㎡",
     rooms: "3BR",
     parking: false,
-    image: "/images/properties/ohanajaya-2f-main.jpg",
+    images: [
+      "/images/properties/ohanajaya-2f-main.jpg",
+      "/images/properties/ohanajaya-2f-2.jpg",
+      "/images/properties/ohanajaya-2f-3.jpg",
+    ],
     airbnbUrl: "https://www.airbnb.jp/rooms/932450594135447897",
     features: ["Japandiインテリア", "フルキッチン完備", "高速Wi-Fi", "駅近5分"],
     award: "Airbnb ゲストチョイス",
@@ -61,7 +70,11 @@ const properties = [
     size: "95㎡",
     rooms: "4BR",
     parking: true,
-    image: "/images/properties/tateishi-main.jpg",
+    images: [
+      "/images/properties/tateishi-main.jpg",
+      "/images/properties/tateishi-2.jpg",
+      "/images/properties/tateishi-3.jpg",
+    ],
     airbnbUrl: "https://www.airbnb.jp/rooms/1292012584407421176",
     features: ["Japandiインテリア", "フルキッチン完備", "高速Wi-Fi", "無料駐車場"],
     award: "Airbnb ゲストチョイス",
@@ -79,7 +92,11 @@ const properties = [
     size: "77㎡",
     rooms: "3BR",
     parking: true,
-    image: "/images/properties/horikiri-main.jpg",
+    images: [
+      "/images/properties/horikiri-main.jpg",
+      "/images/properties/horikiri-2.jpg",
+      "/images/properties/horikiri-3.jpg",
+    ],
     airbnbUrl: "https://www.airbnb.jp/rooms/1445577802479821116",
     features: ["Japandiインテリア", "フルキッチン完備", "高速Wi-Fi", "無料駐車場"],
     award: "Airbnb ゲストチョイス",
@@ -96,7 +113,11 @@ const properties = [
     size: "65㎡",
     rooms: "3BR",
     parking: false,
-    image: "/images/properties/aoto-main.jpg",
+    images: [
+      "/images/properties/aoto-main.jpg",
+      "/images/properties/aoto-2.jpg",
+      "/images/properties/aoto-3.jpg",
+    ],
     airbnbUrl: "https://www.airbnb.jp/rooms/1464127952772504828",
     features: ["Japandiインテリア", "フルキッチン完備", "高速Wi-Fi", "空港直通"],
     award: "Airbnb ゲストチョイス",
@@ -286,14 +307,13 @@ export default function WutoPage() {
             >
               <div
                 style={{
-                  backgroundImage: `url('${prop.image}')`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
                   minHeight: "340px",
                   order: i % 2 === 0 ? 0 : 1,
                 }}
                 className="property-image"
-              />
+              >
+                <PropertyImageSlider images={prop.images} alt={prop.nameJa} />
+              </div>
               <div style={{
                 padding: "3rem 2.5rem",
                 display: "flex",
