@@ -237,9 +237,13 @@ export default async function ArticleDetailPage({ params }: Props) {
           margin: 2rem 0;
         }
         .article-body ul, .article-body ol {
-          margin: 1rem 0 1.5rem 1.5rem;
+          margin: 1rem 0 1.5rem 1.8rem;
+          padding-left: 0;
         }
-        .article-body li { margin-bottom: 0.6rem; line-height: 1.9; }
+        .article-body ul { list-style: disc outside; }
+        .article-body ol { list-style: decimal outside; }
+        .article-body li { margin-bottom: 0.6rem; line-height: 1.9; padding-left: 0.3rem; }
+        .article-body li::marker { color: var(--color-accent); }
         .article-body a { color: var(--color-accent); }
 
         /* ── D. 引用ブロック ── */
