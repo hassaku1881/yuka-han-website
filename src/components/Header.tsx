@@ -11,7 +11,7 @@ type Locale = "ja" | "en" | "zh-TW";
 const navLinks = [
   { href: "/about", label: "About" },
   { href: "/wuto", label: "Wuto" },
-  { href: "/service", label: "Operations" },
+  { href: "/operations", label: "Operations" },
   { href: "/articles", label: "Articles" },
   { href: "/contact", label: "Contact" },
 ];

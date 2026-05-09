@@ -27,7 +27,7 @@ const SLIDES = [
     label: "ACCOMMODATION OPERATIONS",
     headline: "11年の実績が、\nあなたの物件を動かす。",
     sub: "予約管理・ゲスト対応・清掃手配まで一括対応。\nAirbnb平均評価4.9を支える運営ノウハウで\nオーナー様の収益を最大化します。",
-    cta: { label: "運営受託を相談する", href: "/service" },
+    cta: { label: "運営受託を相談する", href: "/operations" },
     bg: "/images/hero-operations.jpg",
     overlay: "rgba(25,35,50,0.55)",
   },

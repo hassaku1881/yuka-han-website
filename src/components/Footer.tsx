@@ -37,7 +37,7 @@ export default function Footer() {
           <h4 className="footer-nav-heading">BUSINESS</h4>
           {[
             { href: "/wuto", label: "Wuto" },
-            { href: "/service", label: "宿泊施設運営" },
+            { href: "/operations", label: "宿泊施設運営" },
             { href: "/articles", label: "コラム" },
             { href: "/contact", label: "お問い合わせ" },
           ].map((link) => (

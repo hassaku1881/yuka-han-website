@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Home as HomeIcon, TrainFront, Sparkles, Building2, Globe, Briefcase, Star } from "lucide-react";
+import { Home as HomeIcon, TrainFront, Sparkles, Building2, Globe, Briefcase, Star, LifeBuoy, Camera, KeyRound } from "lucide-react";
 import { getArticles, getNews } from "@/lib/microcms";
 import HeroSlider from "@/components/HeroSlider";
 import { reviews } from "@/lib/reviews";
@@ -102,68 +102,108 @@ export default async function Home() {
 
       {/* Business */}
       <section id="business" style={{ background: "var(--color-white)", padding: "6rem 8%" }}>
-        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+        <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <p style={sectionLabel}>BUSINESS</p>
           <h2 style={sectionTitle}>事業内容</h2>
-          <p style={{ fontSize: "1rem", color: "var(--color-text-light)", marginTop: "1rem" }}>
-            宿泊体験を軸に、4つの事業を展開しています。
-          </p>
         </div>
-        <div className="business-grid">
-          {[
-            {
-              icon: <HomeIcon size={36} strokeWidth={1.5} />,
-              title: "Wuto事業",
-              text: "落ち着ける日本の暮らしを軸にしたJapandiスタイル宿泊ブランド「Wuto」の企画・開発・運営。",
-              href: "/wuto",
-            },
-            {
-              icon: <Building2 size={36} strokeWidth={1.5} />,
-              title: "宿泊施設運営事業",
-              text: "民泊をはじめとする宿泊施設の運営受託。予約管理・ゲスト対応・清掃まで一括サポート。",
-              href: "/service",
-            },
-            {
-              icon: <Globe size={36} strokeWidth={1.5} />,
-              title: "マーケティング事業",
-              text: "インバウンドマーケティング戦略の立案・実行、インバウンド向け施設の企画・プロデュース。",
-              href: null,
-            },
-            {
-              icon: <Briefcase size={36} strokeWidth={1.5} />,
-              title: "コンサルティング事業",
-              text: "事業開発支援、業務改善コンサルティング。民泊・宿泊業を中心とした経営課題を解決。",
-              href: null,
-            },
-          ].map((biz) => {
-            const inner = (
-              <>
-                <div style={{ marginBottom: "1.5rem", color: "var(--color-accent)" }}>{biz.icon}</div>
-                <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "1rem" }}>
+
+        {/* ── メイン事業 3つ ── */}
+        <div className="business-grid-3">
+          {/* Wuto事業 */}
+          <Link href="/wuto" className="business-card business-card-link">
+            <div style={{ marginBottom: "1.5rem", color: "var(--color-accent)" }}>
+              <HomeIcon size={36} strokeWidth={1.5} />
+            </div>
+            <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "1rem" }}>
+              Wuto事業
+            </h3>
+            <p style={{ fontSize: "0.9rem", color: "var(--color-text-light)", lineHeight: 1.8 }}>
+              Japandiスタイルの宿泊ブランド「Wuto」の企画・開発・直接運営。葛飾区を中心に5施設を展開。
+            </p>
+            <span style={{ display: "inline-block", marginTop: "1.5rem", fontSize: "0.8rem", color: "var(--color-accent)", letterSpacing: "0.05em" }}>
+              詳しく見る →
+            </span>
+          </Link>
+
+          {/* 民泊運営代行事業 */}
+          <Link href="/operations" className="business-card business-card-link">
+            <div style={{ marginBottom: "1.5rem", color: "var(--color-accent)" }}>
+              <Building2 size={36} strokeWidth={1.5} />
+            </div>
+            <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "1rem" }}>
+              民泊運営代行事業
+            </h3>
+            <p style={{ fontSize: "0.9rem", color: "var(--color-text-light)", lineHeight: 1.8 }}>
+              民泊・バケーションレンタルの運営代行。予約管理・ゲスト対応・清掃手配まで一括サポート。
+            </p>
+            <span style={{ display: "inline-block", marginTop: "1.5rem", fontSize: "0.8rem", color: "var(--color-accent)", letterSpacing: "0.05em" }}>
+              詳しく見る →
+            </span>
+          </Link>
+
+          {/* 宿泊施設運営支援事業 */}
+          <div className="business-card">
+            <div style={{ marginBottom: "1.5rem", color: "var(--color-accent)" }}>
+              <LifeBuoy size={36} strokeWidth={1.5} />
+            </div>
+            <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "1rem" }}>
+              宿泊施設運営支援事業
+            </h3>
+            <p style={{ fontSize: "0.9rem", color: "var(--color-text-light)", lineHeight: 1.8 }}>
+              民泊に限らず、宿泊施設全般のコンサルティング・収益改善・運営支援。課題の種類を問わず、幅広くサポートします。
+            </p>
+            <span style={{ display: "inline-block", marginTop: "1.5rem", fontSize: "0.8rem", color: "var(--color-text-light)", opacity: 0.6 }}>
+              お気軽にご相談ください
+            </span>
+          </div>
+        </div>
+
+        {/* ── サブ事業 ── */}
+        <div style={{ marginTop: "3.5rem", paddingTop: "2.5rem", borderTop: "1px solid #ece9e3" }}>
+          <p style={{
+            textAlign: "center",
+            fontFamily: "var(--font-en)",
+            fontSize: "0.63rem",
+            letterSpacing: "0.22em",
+            color: "var(--color-text-light)",
+            marginBottom: "2rem",
+          }}>
+            OTHER BUSINESSES
+          </p>
+          <div className="sub-business-grid">
+            {[
+              {
+                icon: <Camera size={22} strokeWidth={1.5} />,
+                title: "撮影スタジオ事業",
+                text: "スタジオの企画・運営。",
+              },
+              {
+                icon: <Globe size={22} strokeWidth={1.5} />,
+                title: "マーケティング事業",
+                text: "インバウンドマーケティング戦略の立案・実行。インバウンド向け施設の企画・プロデュース。",
+              },
+              {
+                icon: <Briefcase size={22} strokeWidth={1.5} />,
+                title: "コンサルティング事業",
+                text: "経営・人事・業務改善・新規事業推進など、幅広い経営課題を支援。",
+              },
+              {
+                icon: <KeyRound size={22} strokeWidth={1.5} />,
+                title: "不動産賃貸事業",
+                text: "不動産の賃貸・管理。",
+              },
+            ].map((biz) => (
+              <div key={biz.title} className="sub-business-card">
+                <div style={{ color: "var(--color-accent)", marginBottom: "0.9rem" }}>{biz.icon}</div>
+                <h4 style={{ fontSize: "0.88rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "0.6rem" }}>
                   {biz.title}
-                </h3>
-                <p style={{ fontSize: "0.9rem", color: "var(--color-text-light)", lineHeight: 1.8 }}>{biz.text}</p>
-                {biz.href ? (
-                  <span style={{ display: "inline-block", marginTop: "1.5rem", fontSize: "0.8rem", color: "var(--color-accent)", letterSpacing: "0.05em" }}>
-                    詳しく見る →
-                  </span>
-                ) : (
-                  <span style={{ display: "inline-block", marginTop: "1.5rem", fontSize: "0.75rem", color: "var(--color-text-light)", opacity: 0.6 }}>
-                    近日公開
-                  </span>
-                )}
-              </>
-            );
-            return biz.href ? (
-              <Link key={biz.title} href={biz.href} className="business-card business-card-link">
-                {inner}
-              </Link>
-            ) : (
-              <div key={biz.title} className="business-card">
-                {inner}
+                </h4>
+                <p style={{ fontSize: "0.8rem", color: "var(--color-text-light)", lineHeight: 1.75 }}>
+                  {biz.text}
+                </p>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -465,11 +505,11 @@ export default async function Home() {
           box-shadow: 0 2px 16px rgba(0,0,0,0.05);
         }
 
-        .business-grid {
+        .business-grid-3 {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 2rem;
-          max-width: 900px;
+          max-width: 1100px;
           margin: 0 auto;
         }
         .business-card {
@@ -487,6 +527,18 @@ export default async function Home() {
         .business-card-link:hover {
           transform: translateY(-4px);
           box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        .sub-business-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+        .sub-business-card {
+          background: var(--color-bg);
+          padding: 1.6rem 1.4rem;
+          border-radius: 6px;
         }
 
         .articles-grid {
@@ -528,13 +580,16 @@ export default async function Home() {
         }
         @media (max-width: 768px) {
           .wuto-features-grid { grid-template-columns: 1fr !important; }
-          .business-grid { grid-template-columns: 1fr !important; }
+          .business-grid-3 { grid-template-columns: 1fr !important; }
+          .sub-business-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .articles-grid { grid-template-columns: 1fr !important; }
           .property-thumbs { grid-template-columns: repeat(2, 1fr) !important; }
           .homepage-reviews { grid-template-columns: 1fr !important; }
           .news-item { flex-direction: column; gap: 0.5rem; }
         }
         @media (min-width: 769px) and (max-width: 1024px) {
+          .business-grid-3 { grid-template-columns: 1fr 1fr !important; }
+          .sub-business-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .property-thumbs { grid-template-columns: repeat(3, 1fr) !important; }
           .homepage-reviews { grid-template-columns: 1fr 1fr !important; }
         }
