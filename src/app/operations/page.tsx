@@ -72,7 +72,7 @@ export default function OperationsPage() {
             letterSpacing: "0.05em",
           }}>
             <MapPin size={13} />
-            東京の東エリア（墨田・江東・葛飾・足立・江戸川 ほか）を中心に対応
+            東京の東エリア（葛飾・墨田・江東・足立・江戸川 ほか）を中心に対応
           </p>
         </div>
       </section>
@@ -138,17 +138,18 @@ export default function OperationsPage() {
             {
               icon: <Building size={28} strokeWidth={1.5} />,
               title: "ホテル・大規模宿泊施設開発のバックグラウンド",
-              body: "国内最大級規模のホステル企画・開業や、大手不動産会社との協働実績を持つメンバーが在籍。民泊運営の枠を超えた、宿泊事業全体の知見をベースにしています。",
+              body: "国内最大級規模のホステル企画・開業や、大手不動産会社との協働実績があります。民泊運営の枠を超えた、宿泊事業全体の知見をベースにしています。",
             },
             {
               icon: <Compass size={28} strokeWidth={1.5} />,
               title: "マーケティング・収益設計の専門性",
               body: "OCC・LOS・ADR・GOPなどの経営指標を起点に、リスティング戦略・OTAチャネル設計・価格運用までを一貫して設計します。数値の裏付けを伴う改善提案ができる体制です。",
+              note: "※ OCC：稼働率／LOS：平均宿泊日数／ADR：1泊あたりの平均販売単価／GOP：運営から生まれる利益／OTA：Airbnb・Booking.com等の予約サイト。",
             },
             {
               icon: <MapPin size={28} strokeWidth={1.5} />,
               title: "東京の東エリアに拠点を置く強み",
-              body: "葛飾区に本社を置き、墨田・江東・足立・江戸川などインバウンド人気エリアを面でカバー。成田・羽田両空港と都心への交通の良さに加え、下町情緒と暮らしのリアリティが残る歴史あるエリアです。地元ならではのお店紹介や、現場での迅速な対応も含めてサポートします。",
+              body: "本社は葛飾区。成田・羽田の両空港、都心へのアクセスが良く、下町情緒と暮らしのリアリティが残るインバウンド人気エリアです。地元ならではのお店紹介や、現場での迅速な対応も含めてサポートします。",
             },
           ].map((item) => (
             <div key={item.title} style={{
@@ -160,6 +161,11 @@ export default function OperationsPage() {
               <div style={{ color: "var(--color-accent)", marginBottom: "1.2rem" }}>{item.icon}</div>
               <h3 style={{ fontSize: "1rem", fontWeight: 600, color: "var(--color-primary)", marginBottom: "0.9rem" }}>{item.title}</h3>
               <p style={{ fontSize: "0.88rem", color: "var(--color-text-light)", lineHeight: 1.85 }}>{item.body}</p>
+              {item.note && (
+                <p style={{ fontSize: "0.72rem", color: "var(--color-text-light)", lineHeight: 1.75, marginTop: "0.9rem", paddingTop: "0.8rem", borderTop: "1px solid #f0ede8" }}>
+                  {item.note}
+                </p>
+              )}
             </div>
           ))}
         </div>
@@ -254,7 +260,7 @@ export default function OperationsPage() {
               <p style={{ ...subHeading, marginBottom: "0.4rem" }}>FEE</p>
               <h3 style={{ fontSize: "0.95rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "1.2rem" }}>料金</h3>
               {[
-                { label: "企画・コンサルティング費", value: "0円〜", big: true, note: "運営代行とセット、かつ1年以上ご継続の場合は不要です" },
+                { label: "企画・コンサルティング費", value: "¥0〜", big: true, note: "運営代行とセット、かつ1年以上ご継続の場合は不要です" },
                 { label: "初期導入費用", value: "¥20,000〜", big: true, note: "リスティング作成、ガイド・施設ページ・ロゴ等の制作" },
                 { label: "写真撮影・インテリアデザイン料", value: "個別見積り", big: false, note: "中間マージンはいただきません" },
                 { label: "開業諸経費", value: "個別見積り", big: false, note: "家具・備品・その他経費。実費でのご請求です" },
