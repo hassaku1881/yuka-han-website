@@ -7,12 +7,12 @@ export type TocHeading = { id: string; text: string; level: 2 | 3 };
 export default function ArticleToc({ headings }: { headings: TocHeading[] }) {
   const [active, setActive] = useState<string>("");
 
+  // スクロールスパイ
   useEffect(() => {
     if (headings.length === 0) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        // 画面上部に最も近い見出しをアクティブに
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
@@ -29,57 +29,79 @@ export default function ArticleToc({ headings }: { headings: TocHeading[] }) {
     return () => observer.disconnect();
   }, [headings]);
 
+  // クリックで見出しへスムーズスクロール
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (!el) return;
+    // ヘッダー(72px) + プログレスバー(3px) + 余白(16px)分オフセット
+    const top = el.getBoundingClientRect().top + window.scrollY - 91;
+    window.scrollTo({ top, behavior: "smooth" });
+  };
+
   if (headings.length === 0) return null;
 
   return (
-    <nav aria-label="目次">
-      <p style={{
-        fontFamily: "var(--font-en)",
-        fontSize: "0.65rem",
-        letterSpacing: "0.22em",
-        color: "var(--color-accent)",
-        marginBottom: "0.9rem",
-        fontWeight: 700,
-      }}>
-        CONTENTS
-      </p>
-      <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
-        {headings.map(({ id, text, level }) => {
-          const isActive = active === id;
-          return (
+    <>
+      <style>{`
+        .toc-link {
+          display: block;
+          padding: 0.38rem 0.55rem;
+          font-size: 0.8rem;
+          line-height: 1.55;
+          text-decoration: none;
+          color: var(--color-text-light);
+          border-left: 2px solid rgba(139,115,85,0.2);
+          cursor: pointer;
+          transition: color 0.18s, border-color 0.18s, background 0.18s;
+          border-radius: 0 3px 3px 0;
+        }
+        .toc-link:hover {
+          color: var(--color-accent);
+          border-left-color: var(--color-accent);
+          background: rgba(139,115,85,0.06);
+        }
+        .toc-link-h3 {
+          padding-left: 1.1rem;
+          font-size: 0.74rem;
+        }
+        .toc-link-active {
+          color: var(--color-accent) !important;
+          border-left-color: var(--color-accent) !important;
+          font-weight: 500;
+          background: rgba(139,115,85,0.06);
+        }
+      `}</style>
+
+      <nav aria-label="目次">
+        <p style={{
+          fontFamily: "var(--font-en)",
+          fontSize: "0.65rem",
+          letterSpacing: "0.22em",
+          color: "var(--color-accent)",
+          marginBottom: "0.9rem",
+          fontWeight: 700,
+        }}>
+          CONTENTS
+        </p>
+        <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
+          {headings.map(({ id, text, level }) => (
             <li key={id}>
               <a
                 href={`#${id}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  const el = document.getElementById(id);
-                  if (el) {
-                    const top = el.getBoundingClientRect().top + window.scrollY - 92;
-                    window.scrollTo({ top, behavior: "smooth" });
-                  }
-                }}
-                style={{
-                  display: "block",
-                  paddingTop: "0.35rem",
-                  paddingBottom: "0.35rem",
-                  paddingLeft: level === 3 ? "1.1rem" : "0.55rem",
-                  fontSize: level === 2 ? "0.8rem" : "0.74rem",
-                  lineHeight: 1.55,
-                  color: isActive ? "var(--color-accent)" : "var(--color-text-light)",
-                  textDecoration: "none",
-                  borderLeft: isActive
-                    ? "2px solid var(--color-accent)"
-                    : "2px solid rgba(139,115,85,0.18)",
-                  fontWeight: isActive ? 500 : 400,
-                  transition: "color 0.2s, border-color 0.2s, font-weight 0.2s",
-                }}
+                onClick={(e) => handleClick(e, id)}
+                className={[
+                  "toc-link",
+                  level === 3 ? "toc-link-h3" : "",
+                  active === id ? "toc-link-active" : "",
+                ].join(" ")}
               >
                 {text}
               </a>
             </li>
-          );
-        })}
-      </ol>
-    </nav>
+          ))}
+        </ol>
+      </nav>
+    </>
   );
 }
