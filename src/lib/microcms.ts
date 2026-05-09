@@ -72,6 +72,37 @@ export async function getArticle(id: string) {
   });
 }
 
+// 同カテゴリの前後記事を取得
+export async function getAdjacentArticles(
+  category: string,
+  publishedAt: string
+): Promise<{ prev: Article | null; next: Article | null }> {
+  const [prevRes, nextRes] = await Promise.all([
+    client.get<MicroCMSList<Article>>({
+      endpoint: "articles",
+      queries: {
+        limit: 1,
+        orders: "-publishedAt",
+        filters: `category[equals]${category}[and]publishedAt[less_than]${publishedAt}`,
+        fields: "id,title,publishedAt",
+      },
+    }),
+    client.get<MicroCMSList<Article>>({
+      endpoint: "articles",
+      queries: {
+        limit: 1,
+        orders: "publishedAt",
+        filters: `category[equals]${category}[and]publishedAt[greater_than]${publishedAt}`,
+        fields: "id,title,publishedAt",
+      },
+    }),
+  ]);
+  return {
+    prev: prevRes.contents[0] ?? null,
+    next: nextRes.contents[0] ?? null,
+  };
+}
+
 // News一覧取得
 export async function getNews(queries?: {
   limit?: number;

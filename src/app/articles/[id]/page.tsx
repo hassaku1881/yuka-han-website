@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getArticle, getArticles } from "@/lib/microcms";
+import { getArticle, getArticles, getAdjacentArticles } from "@/lib/microcms";
 import { notFound } from "next/navigation";
 import { BASE_URL } from "@/lib/constants";
 
@@ -52,6 +52,11 @@ export default async function ArticleDetailPage({ params }: Props) {
   } catch {
     notFound();
   }
+
+  const { prev, next } = await getAdjacentArticles(
+    article.category,
+    article.publishedAt
+  );
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -168,6 +173,77 @@ export default async function ArticleDetailPage({ params }: Props) {
               お問い合わせはこちら
             </Link>
           </div>
+
+          {/* Prev / Next nav */}
+          {(prev || next) && (
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: prev && next ? "1fr 1fr" : (prev ? "1fr auto" : "auto 1fr"),
+              gap: "1rem",
+              marginTop: "3rem",
+            }}>
+              {prev ? (
+                <Link
+                  href={`/articles/${prev.id}`}
+                  style={{
+                    display: "block",
+                    padding: "1.2rem 1.4rem",
+                    border: "1px solid #e8e4de",
+                    borderRadius: "4px",
+                    textDecoration: "none",
+                    transition: "border-color 0.2s",
+                  }}
+                >
+                  <span style={{
+                    display: "block",
+                    fontFamily: "var(--font-en)",
+                    fontSize: "0.68rem",
+                    letterSpacing: "0.15em",
+                    color: "var(--color-accent)",
+                    marginBottom: "0.5rem",
+                  }}>← PREV</span>
+                  <span style={{
+                    display: "block",
+                    fontSize: "0.85rem",
+                    color: "var(--color-primary)",
+                    lineHeight: 1.5,
+                    fontWeight: 400,
+                  }}>{prev.title}</span>
+                </Link>
+              ) : <div />}
+
+              {next ? (
+                <Link
+                  href={`/articles/${next.id}`}
+                  style={{
+                    display: "block",
+                    padding: "1.2rem 1.4rem",
+                    border: "1px solid #e8e4de",
+                    borderRadius: "4px",
+                    textDecoration: "none",
+                    textAlign: "right",
+                    transition: "border-color 0.2s",
+                  }}
+                >
+                  <span style={{
+                    display: "block",
+                    fontFamily: "var(--font-en)",
+                    fontSize: "0.68rem",
+                    letterSpacing: "0.15em",
+                    color: "var(--color-accent)",
+                    marginBottom: "0.5rem",
+                  }}>NEXT →</span>
+                  <span style={{
+                    display: "block",
+                    fontSize: "0.85rem",
+                    color: "var(--color-primary)",
+                    lineHeight: 1.5,
+                    fontWeight: 400,
+                  }}>{next.title}</span>
+                </Link>
+              ) : <div />}
+            </div>
+          )}
 
           {/* Back */}
           <div style={{ marginTop: "2.5rem" }}>
