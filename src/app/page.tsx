@@ -175,7 +175,7 @@ export default async function Home() {
               {
                 icon: <Camera size={22} strokeWidth={1.5} />,
                 title: "撮影スタジオ事業",
-                text: "宿泊施設をハウススタジオとして提供。映画・ドラマ・Web CM・商品撮影など、商業向けの動画・スチール撮影に対応。",
+                text: "セット感のない、本物の暮らしの質感。映画・ドラマ・Web CM・商品撮影など、商業クリエイティブの現場として提供。",
               },
               {
                 icon: <Globe size={22} strokeWidth={1.5} />,
