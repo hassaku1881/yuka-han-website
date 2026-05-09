@@ -11,6 +11,11 @@
   --font-en: var(--font-cormorant), serif;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 92px; /* ヘッダー + プログレスバー分のオフセット */
+}
+
 * {
   margin: 0;
   padding: 0;

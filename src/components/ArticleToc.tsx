@@ -2,15 +2,35 @@
 
 import { useEffect, useState } from "react";
 
+// サーバーからの型（page.tsxとの互換性維持）
 export type TocHeading = { id: string; text: string; level: 2 | 3 };
 
-export default function ArticleToc({ headings }: { headings: TocHeading[] }) {
+type InternalHeading = { id: string; text: string; level: 2 | 3 };
+
+export default function ArticleToc(_props: { headings: TocHeading[] }) {
+  const [headings, setHeadings] = useState<InternalHeading[]>([]);
   const [active, setActive] = useState<string>("");
 
-  // スクロールスパイ
   useEffect(() => {
-    if (headings.length === 0) return;
+    // DOMから直接h2/h3を取得してIDを上書き付与（サーバー注入に依存しない）
+    const body = document.querySelector(".article-body");
+    if (!body) return;
 
+    const els = Array.from(body.querySelectorAll<HTMLElement>("h2, h3"));
+    if (els.length === 0) return;
+
+    const discovered: InternalHeading[] = els.map((el, i) => {
+      const id = `toc-${i}`;
+      el.id = id; // DOMに直接書き込み
+      return {
+        id,
+        text: el.textContent?.trim() ?? "",
+        level: (el.tagName === "H2" ? 2 : 3) as 2 | 3,
+      };
+    });
+    setHeadings(discovered);
+
+    // スクロールスパイ
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -20,21 +40,14 @@ export default function ArticleToc({ headings }: { headings: TocHeading[] }) {
       },
       { rootMargin: "-80px 0px -60% 0px", threshold: 0 }
     );
-
-    headings.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
+    els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [headings]);
+  }, []);
 
-  // クリックで見出しへスムーズスクロール
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const el = document.getElementById(id);
     if (!el) return;
-    // ヘッダー(72px) + プログレスバー(3px) + 余白(16px)分オフセット
     const top = el.getBoundingClientRect().top + window.scrollY - 91;
     window.scrollTo({ top, behavior: "smooth" });
   };
