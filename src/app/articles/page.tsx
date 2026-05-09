@@ -63,17 +63,30 @@ export default async function ArticlesPage({ searchParams }: Props) {
   const offset = (currentPage - 1) * PAGE_SIZE;
 
   // 記事一覧 + カテゴリ別件数（並行取得）
-  const [{ contents: articles, totalCount }, { contents: allArticles }] = await Promise.all([
+  // microCMSはlimit上限100なので、件数集計はカテゴリ別totalCountを並行取得
+  const [
+    { contents: articles, totalCount },
+    countAll,
+    countBusiness,
+    countInterior,
+    countAreaGuide,
+    countOthers,
+  ] = await Promise.all([
     getArticlesByCategory(activeCategory, { limit: PAGE_SIZE, offset }),
-    getArticles({ limit: 200 }),
+    getArticles({ limit: 1 }),
+    getArticlesByCategory("BUSINESS", { limit: 1 }),
+    getArticlesByCategory("INTERIOR", { limit: 1 }),
+    getArticlesByCategory("AREA GUIDE", { limit: 1 }),
+    getArticlesByCategory("OTHERS", { limit: 1 }),
   ]);
 
-  // カテゴリ別件数を集計
-  const categoryCounts: Record<string, number> = {};
-  allArticles.forEach((a) => {
-    categoryCounts[a.category] = (categoryCounts[a.category] ?? 0) + 1;
-  });
-  const grandTotal = allArticles.length;
+  const categoryCounts: Record<string, number> = {
+    BUSINESS: countBusiness.totalCount,
+    INTERIOR: countInterior.totalCount,
+    "AREA GUIDE": countAreaGuide.totalCount,
+    OTHERS: countOthers.totalCount,
+  };
+  const grandTotal = countAll.totalCount;
 
   const totalPages = Math.ceil(totalCount / PAGE_SIZE);
   const showFeatured = currentPage === 1;
