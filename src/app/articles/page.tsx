@@ -66,9 +66,9 @@ export default async function ArticlesPage({ searchParams }: Props) {
       }}>
         <div style={{
           position: "absolute", inset: 0,
-          backgroundImage: "url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1600')",
+          backgroundImage: "url('/images/20241109-32.jpg')",
           backgroundSize: "cover", backgroundPosition: "center",
-          opacity: 0.12,
+          opacity: 0.18,
         }} />
         <div style={{ position: "relative", zIndex: 1 }}>
           <p style={{
