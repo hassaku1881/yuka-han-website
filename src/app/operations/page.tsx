@@ -42,7 +42,7 @@ export default function OperationsPage() {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        background: "linear-gradient(rgba(20,30,48,0.68), rgba(20,30,48,0.78)), url('/images/hero-operations.jpg') center/cover",
+        background: "linear-gradient(rgba(20,30,48,0.6), rgba(20,30,48,0.7)), url('/images/20250711-02.jpg') center/cover",
         color: "var(--color-white)",
         padding: "5rem 2rem",
       }}>
@@ -143,12 +143,12 @@ export default function OperationsPage() {
             {
               icon: <Compass size={28} strokeWidth={1.5} />,
               title: "マーケティング・収益設計の専門性",
-              body: "ADR・LOS・GOPなどの経営指標を起点に、リスティング戦略・OTAチャネル設計・価格運用までを一貫して設計します。数値の裏付けを伴う改善提案ができる体制です。",
+              body: "OCC・LOS・ADR・GOPなどの経営指標を起点に、リスティング戦略・OTAチャネル設計・価格運用までを一貫して設計します。数値の裏付けを伴う改善提案ができる体制です。",
             },
             {
               icon: <MapPin size={28} strokeWidth={1.5} />,
               title: "東京の東エリアに拠点を置く強み",
-              body: "本社は葛飾区。成田・羽田の両空港、都心へのアクセスが良く、下町情緒と暮らしのリアリティが残るインバウンド人気エリアです。地元ならではの店舗紹介・現場対応も含めて支援します。",
+              body: "葛飾区に本社を置き、墨田・江東・足立・江戸川などインバウンド人気エリアを面でカバー。成田・羽田両空港と都心への交通の良さに加え、下町情緒と暮らしのリアリティが残る歴史あるエリアです。地元ならではのお店紹介や、現場での迅速な対応も含めてサポートします。",
             },
           ].map((item) => (
             <div key={item.title} style={{
@@ -184,29 +184,29 @@ export default function OperationsPage() {
                 "清掃・リネン手配",
                 "消耗品・備品の補充",
                 "月次レポート（数値分析と改善提案）",
-                "価格・ADR・LOSの継続最適化",
+                "OCC・LOS・ADRの継続最適化",
               ].map((item) => (
                 <div key={item} style={{ display: "flex", gap: "0.7rem", alignItems: "flex-start", padding: "0.7rem 0", borderBottom: "1px solid #f0ede8" }}>
                   <ArrowRight size={14} color="var(--color-accent)" style={{ marginTop: "3px", flexShrink: 0 }} />
                   <span style={{ fontSize: "0.88rem", color: "var(--color-text)", lineHeight: 1.6 }}>{item}</span>
                 </div>
               ))}
-              <p style={{ marginTop: "1rem", fontSize: "0.74rem", color: "var(--color-text-light)", lineHeight: 1.7 }}>
-                ※ ADR：1泊あたりの平均販売単価／LOS：平均宿泊日数。いずれも収益設計の基本指標です。
+              <p style={{ marginTop: "1rem", fontSize: "0.74rem", color: "var(--color-text-light)", lineHeight: 1.75 }}>
+                ※ OCC：稼働率／LOS：平均宿泊日数／ADR：1泊あたりの平均販売単価。
               </p>
             </div>
             <div>
               <p style={{ ...subHeading, marginBottom: "0.4rem" }}>FEE</p>
               <h3 style={{ fontSize: "0.95rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "1.2rem" }}>料金</h3>
               {[
-                { label: "運営代行手数料", value: "20%", note: "OTA手数料控除後の月間売上に対して" },
-                { label: "清掃費", value: "個別見積り", note: "清掃業者へのお支払い額をそのまま反映。中間マージンはいただきません" },
-                { label: "消耗品・備品", value: "実費", note: "ご使用分のみ請求します" },
+                { label: "運営代行手数料", value: "20%", big: true, note: "OTA手数料控除後の月間売上に対して" },
+                { label: "清掃費", value: "個別見積り", big: false, note: "清掃業者へのお支払い額をそのまま反映。中間マージンはいただきません" },
+                { label: "消耗品・備品", value: "実費", big: false, note: "ご使用分のみ請求します" },
               ].map((item) => (
                 <div key={item.label} style={{ padding: "1rem 0", borderBottom: "1px solid #f0ede8" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.3rem", gap: "1rem" }}>
                     <span style={{ fontSize: "0.88rem", color: "var(--color-primary)", fontWeight: 500 }}>{item.label}</span>
-                    <span style={{ fontFamily: "var(--font-en)", fontSize: "1rem", color: "var(--color-accent)", fontWeight: 400, whiteSpace: "nowrap" }}>{item.value}</span>
+                    <span style={{ fontFamily: "var(--font-en)", fontSize: item.big ? "1.4rem" : "0.88rem", color: "var(--color-accent)", fontWeight: 400, whiteSpace: "nowrap" }}>{item.value}</span>
                   </div>
                   <p style={{ fontSize: "0.78rem", color: "var(--color-text-light)", lineHeight: 1.65 }}>{item.note}</p>
                 </div>
@@ -228,7 +228,8 @@ export default function OperationsPage() {
           <p style={sectionLabel}>SERVICE 02</p>
           <h2 style={{ ...sectionTitle, marginBottom: "0.5rem" }}>立ち上げ支援</h2>
           <p style={{ fontSize: "0.9rem", color: "var(--color-text-light)", marginBottom: "3rem" }}>
-            コンセプト設計からリスティング公開まで、立ち上げ全体を伴走します。
+            コンセプト設計からリスティング公開、立ち上がり期のサポートと運営改善企画まで、
+            軌道に乗るまで一貫して伴走します。
           </p>
           <div className="ops-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "start" }}>
             <div>
@@ -240,6 +241,8 @@ export default function OperationsPage() {
                 "写真撮影",
                 "リスティング作成",
                 "ガイド・施設ページ・ロゴ等の制作",
+                "立ち上がり期のサポート",
+                "運営改善企画（リスティング・価格・体験の見直し）",
               ].map((item) => (
                 <div key={item} style={{ display: "flex", gap: "0.7rem", alignItems: "flex-start", padding: "0.7rem 0", borderBottom: "1px solid #e8e4de" }}>
                   <ArrowRight size={14} color="var(--color-accent)" style={{ marginTop: "3px", flexShrink: 0 }} />
@@ -251,15 +254,15 @@ export default function OperationsPage() {
               <p style={{ ...subHeading, marginBottom: "0.4rem" }}>FEE</p>
               <h3 style={{ fontSize: "0.95rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "1.2rem" }}>料金</h3>
               {[
-                { label: "企画・コンサルティング費", value: "0円〜", note: "運営代行とセット、かつ1年以上ご継続の場合は不要です" },
-                { label: "初期導入費用", value: "¥20,000〜", note: "リスティング作成、ガイド・施設ページ・ロゴ等の制作" },
-                { label: "写真撮影・インテリアデザイン料", value: "個別見積り", note: "中間マージンはいただきません" },
-                { label: "開業諸経費", value: "個別見積り", note: "家具・備品・その他経費。実費でのご請求です" },
+                { label: "企画・コンサルティング費", value: "0円〜", big: true, note: "運営代行とセット、かつ1年以上ご継続の場合は不要です" },
+                { label: "初期導入費用", value: "¥20,000〜", big: true, note: "リスティング作成、ガイド・施設ページ・ロゴ等の制作" },
+                { label: "写真撮影・インテリアデザイン料", value: "個別見積り", big: false, note: "中間マージンはいただきません" },
+                { label: "開業諸経費", value: "個別見積り", big: false, note: "家具・備品・その他経費。実費でのご請求です" },
               ].map((item) => (
                 <div key={item.label} style={{ padding: "1rem 0", borderBottom: "1px solid #e8e4de" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.3rem", gap: "1rem" }}>
                     <span style={{ fontSize: "0.88rem", color: "var(--color-primary)", fontWeight: 500 }}>{item.label}</span>
-                    <span style={{ fontFamily: "var(--font-en)", fontSize: "1rem", color: "var(--color-accent)", fontWeight: 400, whiteSpace: "nowrap" }}>{item.value}</span>
+                    <span style={{ fontFamily: "var(--font-en)", fontSize: item.big ? "1.15rem" : "0.88rem", color: "var(--color-accent)", fontWeight: 400, whiteSpace: "nowrap" }}>{item.value}</span>
                   </div>
                   <p style={{ fontSize: "0.78rem", color: "var(--color-text-light)", lineHeight: 1.65 }}>{item.note}</p>
                 </div>
@@ -312,9 +315,11 @@ export default function OperationsPage() {
           <h2 style={{ fontFamily: "var(--font-en)", fontSize: "1.9rem", fontWeight: 400, color: "var(--color-white)", marginBottom: "1.5rem" }}>
             新規受注は計画的にお受けしています
           </h2>
-          <p style={{ fontSize: "0.92rem", color: "rgba(255,255,255,0.82)", lineHeight: 2.1, marginBottom: "2rem" }}>
-            提供品質を一定に保つため、同時にお受けする案件数を計画的に管理しています。
-            既存物件の運営代行への切り替え、新規立ち上げのいずれもご相談を受け付けていますが、
+          <p style={{ fontSize: "0.92rem", color: "rgba(255,255,255,0.82)", lineHeight: 2, marginBottom: "1.4rem" }}>
+            提供品質を一定に保つため、同時にお受けする案件数を管理しています。
+          </p>
+          <p style={{ fontSize: "0.88rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.95, marginBottom: "2.2rem" }}>
+            既存物件の運営代行への切り替え、新規立ち上げのいずれも受付中です。
             タイミングによってはお待ちいただく場合があります。
           </p>
           <Link
@@ -424,14 +429,19 @@ export default function OperationsPage() {
         </div>
       </section>
 
-      {/* ── その他の支援 ── */}
+      {/* ── 宿泊施設運営全般 ── */}
       <section style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
         <div style={{ maxWidth: "880px", margin: "0 auto" }}>
-          <p style={sectionLabel}>OTHER SUPPORT</p>
-          <h2 style={{ ...sectionTitle, marginBottom: "1.2rem" }}>民泊以外の宿泊施設についても</h2>
-          <p style={{ fontSize: "0.95rem", color: "var(--color-text-light)", lineHeight: 2.05, marginBottom: "2.5rem" }}>
-            ホテル・ホステル・ゲストハウス・アパートメントホテル、また一棟民泊や複数施設をまとめて受託する大規模民泊についてもご相談いただけます。
-            民泊運営代行で培った知見に加え、ホテル開発や大規模施設の開業に携わってきた経験を活用し、施設形態・規模に応じた支援を行っています。
+          <p style={sectionLabel}>HOSPITALITY OPERATIONS</p>
+          <h2 style={{ ...sectionTitle, marginBottom: "1.2rem" }}>宿泊施設運営全般</h2>
+          <p style={{ fontSize: "0.95rem", color: "var(--color-text-light)", lineHeight: 2.05, marginBottom: "1.4rem" }}>
+            上記の民泊運営代行に加えて、宿泊施設運営にまつわるご相談を幅広くお受けしています。
+            ホテル・ホステル・ゲストハウス・アパートメントホテル、一棟民泊や複数施設をまとめた大規模民泊などの施設形態を問わず、
+            運営代行・コンサルティング・収益改善・新規開業サポートまで対応可能です。
+          </p>
+          <p style={{ fontSize: "0.92rem", color: "var(--color-text-light)", lineHeight: 2, marginBottom: "2.5rem" }}>
+            民泊運営代行で培った知見に加え、ホテル開発や大規模施設の開業に携わってきた経験を背景に、
+            施設の規模・体制に応じて柔軟に支援を組み立てます。
           </p>
 
           <p style={{ ...subHeading, marginBottom: "0.7rem" }}>SCOPE</p>
@@ -462,8 +472,15 @@ export default function OperationsPage() {
           <h3 style={{ fontSize: "0.95rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "1rem" }}>法人案件・ファンド案件</h3>
           <p style={{ fontSize: "0.88rem", color: "var(--color-text-light)", lineHeight: 1.95, marginBottom: "1.5rem" }}>
             法人の新規事業立ち上げ、不動産・ホテルファンド案件、指定管理者案件にも対応しています。
-            SPC・GK-TMKを含む各種スキームへの対応経験があり、契約形式は通常委託に加えて
-            プロフィットシェア・リース・フランチャイズなど、案件特性に応じて柔軟に組成可能です。
+            SPC・GK-TMKを含む各種スキームへの対応経験があり、契約形式は MC・リース・フランチャイズ など、
+            案件特性に応じて柔軟に組成可能です。
+          </p>
+
+          <p style={{ ...subHeading, marginBottom: "0.7rem" }}>FEE STRUCTURE</p>
+          <h3 style={{ fontSize: "0.95rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "1rem" }}>報酬形態の柔軟性</h3>
+          <p style={{ fontSize: "0.88rem", color: "var(--color-text-light)", lineHeight: 1.95, marginBottom: "1.5rem" }}>
+            業務委託としてのレベニューシェア型に加え、利害をより強く共にするプロフィットシェア型、
+            両者を組み合わせたミックス型、共同経営型など、案件の体制・狙いに応じてご提案します。
           </p>
 
           <p style={{ fontSize: "0.85rem", color: "var(--color-text-light)", lineHeight: 1.85 }}>
