@@ -94,7 +94,7 @@ export default async function ArticlesPage({ searchParams }: Props) {
         <div style={{
           position: "absolute", inset: 0,
           backgroundImage: "url('/images/20241109-32.jpg')",
-          backgroundSize: "cover", backgroundPosition: "center",
+          backgroundSize: "cover", backgroundPosition: "center 66%",
           opacity: 0.18,
         }} />
         <div style={{ position: "relative", zIndex: 1 }}>

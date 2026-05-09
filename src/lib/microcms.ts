@@ -39,7 +39,7 @@ export type MicroCMSList<T> = {
   limit: number;
 };
 
-// Articles取得
+// Articles取得（公開日降順）
 export async function getArticles(queries?: {
   limit?: number;
   offset?: number;
@@ -47,11 +47,14 @@ export async function getArticles(queries?: {
 }) {
   return client.get<MicroCMSList<Article>>({
     endpoint: "articles",
-    queries,
+    queries: {
+      orders: "-publishedAt",
+      ...queries,
+    },
   });
 }
 
-// カテゴリ別Articles取得
+// カテゴリ別Articles取得（公開日降順）
 export async function getArticlesByCategory(category: string, queries?: {
   limit?: number;
   offset?: number;
@@ -59,6 +62,7 @@ export async function getArticlesByCategory(category: string, queries?: {
   return client.get<MicroCMSList<Article>>({
     endpoint: "articles",
     queries: {
+      orders: "-publishedAt",
       ...queries,
       filters: category !== "ALL" ? `category[equals]${category}` : undefined,
     },
