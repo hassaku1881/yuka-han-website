@@ -21,7 +21,7 @@ export default function ArticleToc(_props: { headings: TocHeading[] }) {
 
     const discovered: InternalHeading[] = els.map((el, i) => {
       const id = `toc-${i}`;
-      el.id = id; // DOMに直接書き込み
+      el.id = id;
       return {
         id,
         text: el.textContent?.trim() ?? "",
@@ -30,18 +30,22 @@ export default function ArticleToc(_props: { headings: TocHeading[] }) {
     });
     setHeadings(discovered);
 
-    // スクロールスパイ
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible.length > 0) setActive(visible[0].target.id);
-      },
-      { rootMargin: "-80px 0px -60% 0px", threshold: 0 }
-    );
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    // スクロールスパイ：scrollイベントで「画面上端より上にある最後の見出し」をアクティブに
+    const OFFSET = 100;
+    const onScroll = () => {
+      let current = "";
+      for (const { id } of discovered) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top < OFFSET) {
+          current = id;
+        }
+      }
+      setActive(current);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // 初期チェック
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
