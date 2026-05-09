@@ -1,9 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Us | 株式会社ユカハン",
-  description: "株式会社ユカハン（Yuka-Han & Co.）について。宿泊体験の解像度と事業運営の専門性を一体として扱う会社です。",
+  description: "株式会社ユカハン（Yuka-Han & Co.）について。感性とロジックの両輪で、人の心が動く瞬間を事業として成立させる会社です。",
 };
 
 const sectionLabel: React.CSSProperties = {
@@ -40,7 +41,7 @@ const values = [
   {
     en: "equity and symphony",
     ja: "胸を張って歩けるように",
-    body: "情報の非対称性を利用して利益を得ることを良しとしない。「誠実」という言葉は曖昧すぎるから、あえてこう言う。旅行・宿泊と地域社会の共存も含め、関わるすべての人が胸を張って歩けるように。",
+    body: "情報の非対称性を利用して利益を得ることを良しとしない。「誠実」という言葉は曖昧すぎるから、あえてこう言う。関わるすべての人が胸を張って歩けるように、調和のなかで事業を進める。",
   },
 ];
 
@@ -55,7 +56,7 @@ export default function AboutPage() {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        background: "linear-gradient(rgba(20,30,48,0.55), rgba(20,30,48,0.68)), url('/images/20231003_katsushika-02.jpg') center/cover no-repeat",
+        background: "linear-gradient(rgba(20,30,48,0.55), rgba(20,30,48,0.68)), url('/images/20231003_katsushika-02.jpg') 25% 75% / cover no-repeat",
         color: "var(--color-white)",
         padding: "5rem 2rem",
       }}>
@@ -75,53 +76,67 @@ export default function AboutPage() {
 
       {/* ── Story ── */}
       <section style={{ background: "var(--color-white)", padding: "6rem 8%" }}>
-        <div style={{ maxWidth: "860px", margin: "0 auto" }}>
+        <div style={{ maxWidth: "780px", margin: "0 auto" }}>
           <p style={sectionLabel}>STORY</p>
-          <h2 style={sectionTitle}>なぜこの会社があるのか</h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.8rem" }}>
-            <p style={{ fontSize: "0.97rem", lineHeight: 2.2, color: "var(--color-text-light)" }}>
-              2022年春、私たちは家を手放すことにした。車一台で日本全国を旅しながら働く生活。仕事用のパソコンとモニターを積んで、今週の家はここ、来週の家はここ、と軽やかに旅をした。
+          <h2 style={sectionTitle}>Our Story</h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.7rem" }}>
+            <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)" }}>
+              私たちは旅をしてきた。アジア、ヨーロッパ、ラテンアメリカ。日本でも、家を手放して車一台で全国をめぐったことがある。
             </p>
-            <p style={{ fontSize: "0.97rem", lineHeight: 2.2, color: "var(--color-text-light)" }}>
-              旅のスタイルはいつも「暮らすような旅」だった。数日で移動を繰り返すのではなく、1週間じっくりひとつの場所に滞在する。観光地を巡るよりも、家の近所を散歩する。スーパーで地元の食材を買って、キッチンで料理をする。そうしているうちに「少しここに引っ越してきた」ような感覚になって、「また帰ってきたい」と思える場所が増えていった。
+            <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)" }}>
+              滞在のしかたはいつも「暮らすような旅」だった。1週間ひとつの場所にとどまって、近所のスーパーで食材を買い、商店街を歩き、その土地の音楽を聴く。観光地を駆け抜けるのではなく、空気を吸い込むように街と関わる。そういう滞在のなかでしか見えてこないものを、私たちはたくさん集めてきた。
             </p>
-            <p style={{ fontSize: "0.97rem", lineHeight: 2.2, color: "var(--color-text-light)" }}>
-              2023年夏、自分たちの宿を持つことにした。日本全国を旅してきた私たちだからこそ作れる宿がある——そう思った。東京を拠点に、世界中からやってきた旅人と出会いたい。のんびり、くつろいで、暮らすように旅してもらえる場所をつくりたい。
+            <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)" }}>
+              そこで気づいたことがある。良い体験は、感性だけでも、ロジックだけでも生まれない。空間の手ざわり、人と人との温度、数字に裏打ちされた運営判断——そのすべてが噛み合ったときに、人の記憶に残る。
             </p>
-            <p style={{ fontSize: "0.97rem", lineHeight: 2.2, color: "var(--color-text-light)" }}>
-              宿を運営するにつれて、問題意識が生まれた。体験設計と事業運営を別物として扱う会社が多すぎる。空間はこだわっているが数字が読めない。収益は追っているが体験がおざなりになる。この二つを一体として扱える会社をつくりたい——それが、ユカハンの出発点だ。
+            <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)" }}>
+              ところが現実には、それらは別々の人・別々の会社が担当することが多い。空間をつくる人は数字を見ない。運営する人は世界観を語らない。マーケティングを描く人は現場に立たない。それぞれの専門性が分断されたまま事業が組み立てられている。
+            </p>
+            <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)" }}>
+              ユカハンは、この分断を一つの視点から組み立て直すための会社だ。インテリアの細部まで語れる人間が、収益モデルも設計する。マーケティングを描く人間が、ゲストへのメッセージも書く。事業のあらゆる面を、感性とロジックの両輪で。
+            </p>
+            <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)" }}>
+              いま、宿泊施設の企画・運営を主軸に、運営代行、撮影スタジオ、マーケティング、コンサルティングと、領域は広がりつつある。共通しているのは「人の心が動く瞬間を、事業として成立させる」という関心。これからも、その輪郭をすこしずつ広げていく。
             </p>
           </div>
         </div>
       </section>
 
       {/* ── Purpose ── */}
-      <section style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
-        <div style={{ maxWidth: "860px", margin: "0 auto", textAlign: "center" }}>
+      <section style={{ background: "var(--color-bg)", padding: "7rem 8%" }}>
+        <div style={{ maxWidth: "920px", margin: "0 auto", textAlign: "center" }}>
           <p style={sectionLabel}>PURPOSE</p>
-          <h2 style={{ ...sectionTitle, marginBottom: "0.6rem" }}>
-            人生にちょっと刺激を、人生をちょっと面白く
+          <h2 style={{
+            fontFamily: "var(--font-jp, inherit)",
+            fontSize: "clamp(1.7rem, 4.2vw, 2.6rem)",
+            fontWeight: 500,
+            color: "var(--color-primary)",
+            lineHeight: 1.55,
+            letterSpacing: "0.04em",
+            marginBottom: "1.2rem",
+          }}>
+            人生にちょっと刺激を、<br />人生をちょっと面白く
           </h2>
           <p style={{
             fontFamily: "var(--font-en)",
-            fontSize: "0.9rem",
+            fontSize: "1.05rem",
             color: "var(--color-text-light)",
             letterSpacing: "0.04em",
-            marginBottom: "3rem",
+            marginBottom: "3.5rem",
             fontStyle: "italic",
           }}>
             A little more spark in life. A little more wonder in the everyday.
           </p>
           <p style={{
-            fontSize: "0.97rem",
+            fontSize: "1.02rem",
             lineHeight: 2.2,
             color: "var(--color-text-light)",
             textAlign: "left",
-            maxWidth: "680px",
+            maxWidth: "720px",
             margin: "0 auto",
           }}>
             旅は、日常に刺激を与えてくれるものだと信じています。私たちにとって旅は非日常ではなく、生活の一部。誰かの「もうちょっと面白い日常」のきっかけになりたい。<br /><br />
-            押しつけではなく、ちょっとした余白で。訪れた場所の暮らしに少し触れるように。そういう体験と空間を、東京の下町から発信していきます。
+            押しつけではなく、ちょっとした余白で。訪れた場所の暮らしに少し触れるように。そういう体験と空間を、私たちは事業として届けていきます。
           </p>
         </div>
       </section>
@@ -137,30 +152,36 @@ export default function AboutPage() {
             {values.map((v) => (
               <div key={v.en} style={{
                 background: "var(--color-bg)",
-                padding: "2.2rem 2rem",
+                padding: "2.4rem 2.2rem",
                 borderRadius: "8px",
                 boxShadow: "0 4px 20px rgba(0,0,0,0.05)",
               }}>
-                <p style={{
+                <h3 style={{
                   fontFamily: "var(--font-en)",
-                  fontSize: "0.72rem",
-                  letterSpacing: "0.06em",
-                  color: "var(--color-accent)",
-                  marginBottom: "0.6rem",
+                  fontSize: "1.4rem",
+                  fontWeight: 500,
+                  color: "var(--color-primary)",
+                  letterSpacing: "0.02em",
+                  lineHeight: 1.35,
+                  marginBottom: "0.4rem",
                   fontStyle: "italic",
                 }}>
                   {v.en}
-                </p>
-                <h3 style={{
-                  fontSize: "1.1rem",
-                  fontWeight: 600,
-                  color: "var(--color-primary)",
-                  marginBottom: "1rem",
-                  lineHeight: 1.45,
+                </h3>
+                <p style={{
+                  fontSize: "0.85rem",
+                  color: "var(--color-accent)",
+                  letterSpacing: "0.04em",
+                  marginBottom: "1.4rem",
+                  fontWeight: 400,
                 }}>
                   {v.ja}
-                </h3>
-                <p style={{ fontSize: "0.88rem", color: "var(--color-text-light)", lineHeight: 1.9 }}>
+                </p>
+                <p style={{
+                  fontSize: "0.95rem",
+                  color: "var(--color-text-light)",
+                  lineHeight: 2,
+                }}>
                   {v.body}
                 </p>
               </div>
@@ -172,53 +193,51 @@ export default function AboutPage() {
       {/* ── Leadership ── */}
       <section style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <p style={sectionLabel}>LEADERSHIP</p>
             <h2 style={sectionTitle}>Our Team</h2>
           </div>
+
+          {/* イラスト */}
+          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+            <Image
+              src="/images/leadership-illustration.png"
+              alt="Yuka-Han Leadership Illustration"
+              width={520}
+              height={420}
+              style={{
+                maxWidth: "min(420px, 80vw)",
+                height: "auto",
+                margin: "0 auto",
+                display: "block",
+              }}
+            />
+          </div>
+
           <div className="founders-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem" }}>
             {[
               {
                 name: "范 凱翔",
                 nameEn: "Fan Kaixiang",
-                role: "代表社員",
+                role: "代表取締役",
                 origin: "中国吉林省生まれ、神奈川・大阪育ち",
                 edu: "京都大学総合人間学部卒業",
-                bio: "人事・企画の経験を経て、2018年より宿泊施設の企画・立ち上げに従事。東京・白馬・福岡での大型ホステル・ホテル開発、民泊運営代行、清掃事業を担当。2015年より自宅を活用したAirbnbホスティングを開始し、現在に至る。学生時代にインド グルガオンでのビジネスインターンシップを経験。日本語・中国語・英語の3言語対応。ユカハン合同会社では事業開発およびバックオフィス全般を担当。",
+                bio: "人事・企画の領域でキャリアを積んだのち、2018年より宿泊施設の企画・立ち上げに従事。東京・白馬・福岡での大型ホステル・ホテル開発、民泊運営代行、清掃事業を担当。2015年より自宅を活用したAirbnbホスティングを開始し、現在に至る。学生時代にインド・グルガオンでのビジネスインターンシップを経験。日本語・中国語・英語の3言語対応。事業開発と収益設計、バックオフィス全般を担当。",
                 charge: "事業開発 / 収益設計 / バックオフィス",
               },
               {
                 name: "山本 悠佳",
                 nameEn: "Yamamoto Yuka",
-                role: "代表社員",
+                role: "代表取締役",
                 origin: "福岡生まれ、兵庫育ち",
                 edu: "京都大学農学部、東京大学医科学研究科卒業",
-                bio: "製品の研究開発に携わったのち、新製品のブランディングおよびマーケティングを担当。全国47都道府県、世界50カ国以上を旅した経験を持つ。学生時代にカナダ マギル大学への留学、ドイツ・スイスの多国籍企業でのビジネスインターンシップを経験。ゲストとして世界中のAirbnbに滞在してきた視点を、空間設計とゲスト体験に活かす。ユカハン合同会社では施設のブランディング、ゲスト体験設計、QA（品質維持）を担当。",
+                bio: "製品の研究開発を経て、新製品のブランディングおよびマーケティングを担当。学生時代にカナダ・マギル大学への留学、ドイツ・スイスの多国籍企業でのビジネスインターンシップを経験。これまでに全国47都道府県、世界50カ国以上を旅し、世界中のAirbnbにゲストとして滞在してきた視点を、空間設計とゲスト体験に活かす。施設のブランディング、ゲスト体験設計、QA（品質維持）を担当。",
                 charge: "施設ブランディング / ゲスト体験設計 / QA",
               },
             ].map((person) => (
-              <div key={person.name} style={{ textAlign: "center" }}>
-                <div style={{
-                  width: "120px",
-                  height: "120px",
-                  borderRadius: "50%",
-                  background: "var(--color-white)",
-                  margin: "0 auto 1.4rem",
-                  border: "2px solid #f0ede8",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}>
-                  <span style={{
-                    fontSize: "2rem",
-                    color: "rgba(139,115,85,0.35)",
-                    fontWeight: 300,
-                  }}>
-                    {person.name.charAt(0)}
-                  </span>
-                </div>
+              <div key={person.name}>
                 <h3 style={{
-                  fontSize: "1.5rem",
+                  fontSize: "1.55rem",
                   fontWeight: 500,
                   color: "var(--color-primary)",
                   marginBottom: "0.2rem",
@@ -228,43 +247,43 @@ export default function AboutPage() {
                 </h3>
                 <p style={{
                   fontFamily: "var(--font-en)",
-                  fontSize: "0.78rem",
+                  fontSize: "0.82rem",
                   color: "var(--color-text-light)",
-                  marginBottom: "0.3rem",
+                  marginBottom: "0.8rem",
                   letterSpacing: "0.04em",
                 }}>
                   {person.nameEn}
+                </p>
+                <p style={{
+                  fontSize: "0.78rem",
+                  color: "var(--color-accent)",
+                  fontFamily: "var(--font-en)",
+                  letterSpacing: "0.06em",
+                  marginBottom: "1.6rem",
+                }}>
+                  {person.role}
+                </p>
+                <p style={{ fontSize: "0.86rem", color: "var(--color-text-light)", marginBottom: "0.2rem" }}>
+                  {person.origin}
+                </p>
+                <p style={{ fontSize: "0.86rem", color: "var(--color-text-light)", marginBottom: "1.6rem" }}>
+                  {person.edu}
+                </p>
+                <p style={{
+                  fontSize: "0.92rem",
+                  lineHeight: 2,
+                  color: "var(--color-text-light)",
+                  marginBottom: "1.4rem",
+                }}>
+                  {person.bio}
                 </p>
                 <p style={{
                   fontSize: "0.75rem",
                   color: "var(--color-accent)",
                   fontFamily: "var(--font-en)",
                   letterSpacing: "0.06em",
-                  marginBottom: "1.4rem",
-                }}>
-                  {person.role}
-                </p>
-                <p style={{ fontSize: "0.78rem", color: "var(--color-text-light)", marginBottom: "0.2rem" }}>
-                  {person.origin}
-                </p>
-                <p style={{ fontSize: "0.78rem", color: "var(--color-text-light)", marginBottom: "1.6rem" }}>
-                  {person.edu}
-                </p>
-                <p style={{
-                  fontSize: "0.88rem",
-                  lineHeight: 1.95,
-                  color: "var(--color-text-light)",
-                  textAlign: "left",
-                  marginBottom: "1.2rem",
-                }}>
-                  {person.bio}
-                </p>
-                <p style={{
-                  fontSize: "0.72rem",
-                  color: "var(--color-accent)",
-                  fontFamily: "var(--font-en)",
-                  letterSpacing: "0.06em",
-                  textAlign: "left",
+                  paddingTop: "1rem",
+                  borderTop: "1px solid #e8e3da",
                 }}>
                   {person.charge}
                 </p>
@@ -276,7 +295,7 @@ export default function AboutPage() {
 
       {/* ── Company Info ── */}
       <section style={{ background: "var(--color-white)", padding: "6rem 8%" }}>
-        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+        <div style={{ maxWidth: "820px", margin: "0 auto" }}>
           <p style={sectionLabel}>COMPANY INFO</p>
           <h2 style={sectionTitle}>会社概要</h2>
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
@@ -287,24 +306,41 @@ export default function AboutPage() {
                 { label: "設立", value: "2020年5月1日" },
                 { label: "所在地", value: "〒124-0003 東京都葛飾区お花茶屋2-5-21" },
                 { label: "資本金", value: "3,000万円" },
-                { label: "代表者", value: "范 凱翔 / 山本 悠佳" },
+                {
+                  label: "代表者",
+                  value: (
+                    <>
+                      代表取締役　范 凱翔<br />
+                      代表取締役　山本 悠佳
+                    </>
+                  ),
+                },
                 { label: "取引銀行", value: "第一勧業信用組合 / 東京東信用金庫" },
-                { label: "事業内容", value: "宿泊施設の企画・開発・運用 / 民泊運営代行サービス" },
-                { label: "主力ブランド", value: "Wuto（スモールラグジュアリー宿泊施設）" },
+                {
+                  label: "事業内容",
+                  value: "宿泊施設の企画・開発・運営（Wuto）／民泊運営代行／宿泊施設運営支援／撮影スタジオ事業／マーケティング事業／コンサルティング事業／不動産賃貸事業",
+                },
+                { label: "主力ブランド", value: "Wuto" },
                 { label: "Email", value: "contact@yuka-han.com" },
               ].map((row) => (
                 <tr key={row.label} style={{ borderBottom: "1px solid #f0ede8" }}>
                   <td style={{
-                    padding: "1.2rem 1rem 1.2rem 0",
+                    padding: "1.3rem 1rem 1.3rem 0",
                     fontSize: "0.85rem",
                     color: "var(--color-text-light)",
                     whiteSpace: "nowrap",
-                    width: "160px",
+                    width: "150px",
                     fontWeight: 500,
+                    verticalAlign: "top",
                   }}>
                     {row.label}
                   </td>
-                  <td style={{ padding: "1.2rem 0", fontSize: "0.95rem", color: "var(--color-text)" }}>
+                  <td style={{
+                    padding: "1.3rem 0",
+                    fontSize: "0.95rem",
+                    color: "var(--color-text)",
+                    lineHeight: 1.9,
+                  }}>
                     {row.value}
                   </td>
                 </tr>
