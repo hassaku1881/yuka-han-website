@@ -64,21 +64,14 @@ export default async function Home() {
             落ち着ける日本の暮らしを軸にした上質な滞在体験をお届けしています。
           </p>
           <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)", marginBottom: "2rem" }}>
-            主力ブランド「Wuto」は、旅暮らしをしていた夫婦が
+            主力ブランド「Wuto」は、その理念を体現する場所です。
             <br />
-            「自分たちが本当に泊まりたい場所」を追い求めて作った宿泊施設。
+            宿泊のクオリティを上げることは、ゲストの旅の記憶を豊かにするだけでなく、
             <br />
-            Japandiな内装、本物の眠り、こだわりのアメニティで、
+            オーナーの収益を高め、日本を訪れる人の文化体験そのものを底上げする。
             <br />
-            日常と非日常がやさしく溶けあう滞在をお届けします。
+            ゲスト・ホスト・まちの三者にとって良い宿泊のかたちを、東京から発信しています。
           </p>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "1rem", marginTop: "2rem", paddingTop: "2rem", borderTop: "1px solid #eee" }}>
-            <p style={{ fontSize: "0.9rem", color: "var(--color-text-light)" }}>
-              <strong style={{ color: "var(--color-primary)" }}>山本 悠佳 &amp; 范 凱翔</strong> — 代表取締役夫婦による直接運営。
-              <br />
-              世界中を旅してきた私たちだからこそ提供できる、最高のおもてなしを。
-            </p>
-          </div>
         </div>
       </section>
 
@@ -101,7 +94,7 @@ export default async function Home() {
           </p>
           <p style={{ fontSize: "0.95rem", lineHeight: 2.3, color: "var(--color-text-light)" }}>
             私たちが大切にしているのは、上質な日常の延長線上にある滞在。<br />
-            無垢材の温もり、本物の眠り、ゆっくり淹れる一杯のコーヒー——<br />
+            無垢材の温もり、本物の眠り、ゆっくり淹れる一杯のコーヒー。<br />
             そんな当たり前の心地よさを、旅の中にもしっかりと。
           </p>
         </div>
@@ -215,7 +208,7 @@ export default async function Home() {
           {[
             { icon: <HomeIcon size={40} strokeWidth={1.5} color="#d4a574" />, title: "Japandi Interior", text: "無垢材を中心にした、上質で温かみのある空間。Re:CENO・無印良品・飛騨産業など、こだわりのブランドを厳選。" },
             { icon: <Sparkles size={40} strokeWidth={1.5} color="#d4a574" />, title: "Real Comfort", text: "ふかふかの羽毛布団、肌触りのよいリネン、旅先で気に入って選んだアメニティ。本物のくつろぎを、滞在の中心に。" },
-            { icon: <TrainFront size={40} strokeWidth={1.5} color="#d4a574" />, title: "Local Experience", text: "ここで暮らす2人だからこそ知る、葛飾の日常。観光地だけでは味わえない、東京下町の時間の流れを体験。" },
+            { icon: <TrainFront size={40} strokeWidth={1.5} color="#d4a574" />, title: "Local Experience", text: "ここで暮らすからこそ知る、東京下町の日常。観光地だけでは味わえない、この街の時間の流れを体験。" },
           ].map((f) => (
             <div key={f.title} style={{ textAlign: "center", padding: "2rem", color: "var(--color-white)" }}>
               <div style={{ marginBottom: "1rem", display: "flex", justifyContent: "center" }}>{f.icon}</div>
