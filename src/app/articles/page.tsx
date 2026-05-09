@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getArticlesByCategory } from "@/lib/microcms";
+import { getArticles, getArticlesByCategory } from "@/lib/microcms";
 import type { Article } from "@/lib/microcms";
 import { BASE_URL } from "@/lib/constants";
 
@@ -18,19 +18,19 @@ export const metadata: Metadata = {
 };
 
 const CATEGORIES = [
-  { key: "ALL",        label: "ALL" },
-  { key: "BUSINESS",  label: "BUSINESS" },
-  { key: "INTERIOR",  label: "INTERIOR" },
-  { key: "AREA GUIDE",label: "AREA GUIDE" },
-  { key: "OTHERS",    label: "OTHERS" },
+  { key: "ALL",         label: "ALL" },
+  { key: "BUSINESS",   label: "BUSINESS" },
+  { key: "INTERIOR",   label: "INTERIOR" },
+  { key: "AREA GUIDE", label: "AREA GUIDE" },
+  { key: "OTHERS",     label: "OTHERS" },
 ];
 
 const FALLBACK_IMAGES: Record<string, string> = {
   BUSINESS:     "/images/articles-business.jpg",
   INTERIOR:     "/images/articles-interior.jpg",
   "AREA GUIDE": "/images/articles-area-guide.jpg",
-  OTHERS:       "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800",
-  DEFAULT:      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800",
+  OTHERS:       "/images/20241109-32.jpg",
+  DEFAULT:      "/images/20241109-32.jpg",
 };
 
 function getFallback(category?: string) {
@@ -43,15 +43,42 @@ function getReadingTime(body: string): number {
   return Math.max(1, Math.ceil(chars / 500));
 }
 
-type Props = { searchParams: Promise<{ category?: string }> };
+// ページネーション URL 生成
+function buildHref(page: number, category: string) {
+  const params = new URLSearchParams();
+  if (category !== "ALL") params.set("category", category);
+  if (page > 1) params.set("page", String(page));
+  const q = params.toString();
+  return q ? `/articles?${q}` : "/articles";
+}
+
+const PAGE_SIZE = 12;
+
+type Props = { searchParams: Promise<{ category?: string; page?: string }> };
 
 export default async function ArticlesPage({ searchParams }: Props) {
-  const { category: rawCategory } = await searchParams;
+  const { category: rawCategory, page: rawPage } = await searchParams;
   const activeCategory = CATEGORIES.find((c) => c.key === rawCategory)?.key ?? "ALL";
+  const currentPage = Math.max(1, parseInt(rawPage ?? "1") || 1);
+  const offset = (currentPage - 1) * PAGE_SIZE;
 
-  const { contents: articles } = await getArticlesByCategory(activeCategory, { limit: 24 });
+  // 記事一覧 + カテゴリ別件数（並行取得）
+  const [{ contents: articles, totalCount }, { contents: allArticles }] = await Promise.all([
+    getArticlesByCategory(activeCategory, { limit: PAGE_SIZE, offset }),
+    getArticles({ limit: 200 }),
+  ]);
 
-  const [featured, ...rest] = articles;
+  // カテゴリ別件数を集計
+  const categoryCounts: Record<string, number> = {};
+  allArticles.forEach((a) => {
+    categoryCounts[a.category] = (categoryCounts[a.category] ?? 0) + 1;
+  });
+  const grandTotal = allArticles.length;
+
+  const totalPages = Math.ceil(totalCount / PAGE_SIZE);
+  const showFeatured = currentPage === 1;
+  const featured = showFeatured ? articles[0] : null;
+  const rest = showFeatured ? articles.slice(1) : articles;
 
   return (
     <main style={{ paddingTop: "72px" }}>
@@ -102,12 +129,17 @@ export default async function ArticlesPage({ searchParams }: Props) {
         }} className="cat-tabs">
           {CATEGORIES.map((cat) => {
             const isActive = cat.key === activeCategory;
+            const count = cat.key === "ALL"
+              ? grandTotal
+              : (categoryCounts[cat.key] ?? 0);
             return (
               <Link
                 key={cat.key}
                 href={cat.key === "ALL" ? "/articles" : `/articles?category=${encodeURIComponent(cat.key)}`}
                 style={{
-                  display: "block",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.4rem",
                   padding: "1.1rem 1.6rem",
                   fontFamily: "var(--font-en)",
                   fontSize: "0.72rem",
@@ -121,6 +153,16 @@ export default async function ArticlesPage({ searchParams }: Props) {
                 }}
               >
                 {cat.label}
+                {count > 0 && (
+                  <span style={{
+                    fontSize: "0.65rem",
+                    color: isActive ? "var(--color-accent)" : "rgba(139,115,85,0.6)",
+                    fontWeight: 400,
+                    letterSpacing: "0",
+                  }}>
+                    ({count})
+                  </span>
+                )}
               </Link>
             );
           })}
@@ -137,7 +179,7 @@ export default async function ArticlesPage({ searchParams }: Props) {
             </p>
           ) : (
             <>
-              {/* Featured card */}
+              {/* Featured card（1ページ目のみ） */}
               {featured && (
                 <Link
                   href={`/articles/${featured.id}`}
@@ -200,7 +242,7 @@ export default async function ArticlesPage({ searchParams }: Props) {
 
               {/* Rest grid */}
               {rest.length > 0 && (
-                <div className="articles-grid" style={{ marginTop: "2rem" }}>
+                <div className="articles-grid" style={{ marginTop: featured ? "2rem" : "0" }}>
                   {rest.map((article: Article) => (
                     <Link
                       key={article.id}
@@ -261,6 +303,46 @@ export default async function ArticlesPage({ searchParams }: Props) {
                   ))}
                 </div>
               )}
+
+              {/* ── ページネーション ── */}
+              {totalPages > 1 && (
+                <div style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "0.4rem",
+                  marginTop: "3.5rem",
+                }}>
+                  {/* 前へ */}
+                  {currentPage > 1 ? (
+                    <Link href={buildHref(currentPage - 1, activeCategory)} className="page-btn">
+                      ←
+                    </Link>
+                  ) : (
+                    <span className="page-btn page-btn-disabled">←</span>
+                  )}
+
+                  {/* ページ番号 */}
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                    <Link
+                      key={page}
+                      href={buildHref(page, activeCategory)}
+                      className={`page-btn ${page === currentPage ? "page-btn-active" : ""}`}
+                    >
+                      {page}
+                    </Link>
+                  ))}
+
+                  {/* 次へ */}
+                  {currentPage < totalPages ? (
+                    <Link href={buildHref(currentPage + 1, activeCategory)} className="page-btn">
+                      →
+                    </Link>
+                  ) : (
+                    <span className="page-btn page-btn-disabled">→</span>
+                  )}
+                </div>
+              )}
             </>
           )}
         </div>
@@ -317,6 +399,38 @@ export default async function ArticlesPage({ searchParams }: Props) {
           background-size: cover;
           background-position: center;
           flex-shrink: 0;
+        }
+
+        /* ページネーション */
+        .page-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 38px;
+          height: 38px;
+          border-radius: 4px;
+          font-family: var(--font-en);
+          font-size: 0.82rem;
+          text-decoration: none;
+          color: var(--color-text-light);
+          background: var(--color-white);
+          border: 1px solid #e8e4de;
+          transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+        .page-btn:hover {
+          background: var(--color-bg);
+          border-color: var(--color-accent);
+          color: var(--color-accent);
+        }
+        .page-btn-active {
+          background: var(--color-primary) !important;
+          color: #fff !important;
+          border-color: var(--color-primary) !important;
+          font-weight: 600;
+        }
+        .page-btn-disabled {
+          opacity: 0.3;
+          cursor: default;
         }
 
         /* Category tabs scroll on mobile */

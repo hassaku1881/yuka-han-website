@@ -1,35 +1,27 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getArticle, getArticles, getAdjacentArticles } from "@/lib/microcms";
+import { getArticle, getArticles, getAdjacentArticles, getRelatedArticles } from "@/lib/microcms";
 import { notFound } from "next/navigation";
 import { BASE_URL } from "@/lib/constants";
 import ArticleToc, { type TocHeading } from "@/components/ArticleToc";
 import ArticleShareButtons from "@/components/ArticleShareButtons";
+import ArticleProgress from "@/components/ArticleProgress";
 
 export const revalidate = 60;
 
 type Props = { params: Promise<{ id: string }> };
 
-// ── 見出し抽出 & ID付与 ─────────────────────────────────────────
+// ── 見出し抽出 & 連番ID付与（toc-0, toc-1…）──────────────────────
 function extractHeadings(html: string): { processedHtml: string; headings: TocHeading[] } {
   const headings: TocHeading[] = [];
-  const counts: Record<string, number> = {};
+  let idx = 0;
 
   const processedHtml = html.replace(
     /<(h[23])([^>]*)>([\s\S]*?)<\/\1>/g,
     (_match, tag, attrs, inner) => {
       const text = inner.replace(/<[^>]+>/g, "").trim();
       const level = parseInt(tag[1]) as 2 | 3;
-
-      let base = text
-        .replace(/[^\w぀-ゟ゠-ヿ一-鿿㐀-䶿]/g, "-")
-        .replace(/-+/g, "-")
-        .replace(/^-|-$/g, "")
-        .toLowerCase() || `h${level}`;
-
-      counts[base] = (counts[base] ?? 0) + 1;
-      const id = counts[base] > 1 ? `${base}-${counts[base]}` : base;
-
+      const id = `toc-${idx++}`;
       headings.push({ id, text, level });
       return `<${tag}${attrs} id="${id}">${inner}</${tag}>`;
     }
@@ -83,10 +75,10 @@ export default async function ArticleDetailPage({ params }: Props) {
     notFound();
   }
 
-  const { prev, next } = await getAdjacentArticles(
-    article.category,
-    article.publishedAt
-  );
+  const [{ prev, next }, related] = await Promise.all([
+    getAdjacentArticles(article.category, article.publishedAt),
+    getRelatedArticles(article.category, article.id, 3),
+  ]);
 
   const { processedHtml, headings } = extractHeadings(article.body);
   const shareUrl = `${BASE_URL}/articles/${article.id}`;
@@ -119,6 +111,9 @@ export default async function ArticleDetailPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
 
+      {/* スクロールプログレスバー */}
+      <ArticleProgress />
+
       {/* Hero */}
       {article.thumbnail && (
         <div
@@ -132,7 +127,6 @@ export default async function ArticleDetailPage({ params }: Props) {
       )}
 
       <article style={{ background: "var(--color-white)", padding: "4rem 8%" }}>
-        {/* ── 2カラムレイアウト（本文 + TOCサイドバー） ── */}
         <div className="article-layout">
 
           {/* ── メインコンテンツ ── */}
@@ -309,7 +303,7 @@ export default async function ArticleDetailPage({ params }: Props) {
             <div style={{
               position: "sticky",
               top: "96px",
-              padding: "1.4rem 1.4rem",
+              padding: "1.4rem",
               background: "var(--color-bg)",
               borderRadius: "6px",
               borderLeft: "3px solid rgba(139,115,85,0.2)",
@@ -321,6 +315,72 @@ export default async function ArticleDetailPage({ params }: Props) {
         </div>
       </article>
 
+      {/* ── 関連記事 ── */}
+      {related.length > 0 && (
+        <section style={{ background: "var(--color-bg)", padding: "4rem 8%" }}>
+          <div style={{ maxWidth: "1120px", margin: "0 auto" }}>
+            <p style={{
+              fontFamily: "var(--font-en)",
+              fontSize: "0.68rem",
+              letterSpacing: "0.22em",
+              color: "var(--color-accent)",
+              marginBottom: "0.6rem",
+            }}>RELATED</p>
+            <h2 style={{
+              fontSize: "1.1rem",
+              fontWeight: 500,
+              color: "var(--color-primary)",
+              marginBottom: "2rem",
+            }}>関連記事</h2>
+            <div className="related-grid">
+              {related.map((rel) => (
+                <Link
+                  key={rel.id}
+                  href={`/articles/${rel.id}`}
+                  className="related-card"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <div
+                    className="related-card-img"
+                    style={{
+                      backgroundImage: `url('${rel.thumbnail?.url ?? "/images/articles-" + rel.category.toLowerCase().replace(" ", "-") + ".jpg"}')`,
+                    }}
+                  />
+                  <div style={{ padding: "1.1rem 1.2rem" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "0.6rem" }}>
+                      {rel.category && (
+                        <span style={{
+                          fontSize: "0.65rem", letterSpacing: "0.1em",
+                          color: "var(--color-accent)",
+                          background: "rgba(139,115,85,0.1)",
+                          padding: "0.2rem 0.6rem", borderRadius: "3px",
+                        }}>{rel.category}</span>
+                      )}
+                      <span style={{
+                        fontFamily: "var(--font-en)", fontSize: "0.72rem",
+                        color: "var(--color-text-light)",
+                      }}>
+                        {new Date(rel.publishedAt).toLocaleDateString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit" }).replace(/\//g, ".")}
+                      </span>
+                    </div>
+                    <p style={{
+                      fontSize: "0.88rem",
+                      fontWeight: 500,
+                      color: "var(--color-primary)",
+                      lineHeight: 1.6,
+                      display: "-webkit-box",
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                    }}>{rel.title}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <style>{`
         /* ── レイアウト ── */
         .article-layout {
@@ -331,17 +391,41 @@ export default async function ArticleDetailPage({ params }: Props) {
           margin: 0 auto;
           align-items: start;
         }
-        .article-toc-aside {
-          /* sticky はインラインで設定 */
-        }
         @media (max-width: 1024px) {
           .article-layout {
             grid-template-columns: 1fr;
             max-width: 800px;
           }
-          .article-toc-aside {
-            display: none;
-          }
+          .article-toc-aside { display: none; }
+        }
+
+        /* ── 関連記事グリッド ── */
+        .related-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+        }
+        .related-card {
+          background: var(--color-white);
+          border-radius: 6px;
+          overflow: hidden;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+          transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .related-card:hover {
+          box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+          transform: translateY(-3px);
+        }
+        .related-card-img {
+          height: 160px;
+          background-size: cover;
+          background-position: center;
+        }
+        @media (max-width: 768px) {
+          .related-grid { grid-template-columns: 1fr; }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .related-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         /* ── ベース ── */
@@ -363,7 +447,6 @@ export default async function ArticleDetailPage({ params }: Props) {
           border-radius: 0 4px 4px 0;
           line-height: 1.5;
         }
-        /* h2直後の最初の段落をリード文として強調 */
         .article-body h2 + p {
           margin-top: 1.2rem;
           font-size: 1.02rem;

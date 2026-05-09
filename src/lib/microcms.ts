@@ -103,6 +103,19 @@ export async function getAdjacentArticles(
   };
 }
 
+// 同カテゴリの関連記事取得（自記事除く）
+export async function getRelatedArticles(category: string, excludeId: string, limit = 3) {
+  const { contents } = await client.get<MicroCMSList<Article>>({
+    endpoint: "articles",
+    queries: {
+      limit: limit + 1,
+      orders: "-publishedAt",
+      filters: `category[equals]${category}`,
+    },
+  });
+  return contents.filter((a) => a.id !== excludeId).slice(0, limit);
+}
+
 // News一覧取得
 export async function getNews(queries?: {
   limit?: number;
