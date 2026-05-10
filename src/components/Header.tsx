@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { LOCALE_LABELS, type Locale } from "@/lib/i18n";
+import { LOCALE_LABELS, TRANSLATED_ARTICLE_BASE_IDS, type Locale } from "@/lib/i18n";
 
 const navLinks = [
   { href: "/about", label: "About" },
@@ -17,28 +17,40 @@ const navLinks = [
 
 const locales: Locale[] = ["ja", "en", "zh-TW"];
 
-/** Parses pathname to determine current locale context and article base ID */
+/** Parses pathname to determine current locale and which locales have a page here */
 function parseLocaleContext(pathname: string): {
   locale: Locale;
   baseId: string | null;
-  showSwitcher: boolean;
+  availableLocales: Locale[];
 } {
   // /en/articles/2026010045 or /zh-TW/articles/2026010045
+  // (these pages only exist for translated articles, so all locales are available)
   const localeArticle = pathname.match(/^\/(en|zh-TW)\/articles\/([^/]+)/);
   if (localeArticle) {
-    return { locale: localeArticle[1] as Locale, baseId: localeArticle[2], showSwitcher: true };
+    return { locale: localeArticle[1] as Locale, baseId: localeArticle[2], availableLocales: ["ja", "en", "zh-TW"] };
   }
-  // /articles/2026010045
+  // /articles/2026010045 — only translated if baseId is in the list
   const jaArticle = pathname.match(/^\/articles\/([^/]+)/);
   if (jaArticle) {
-    return { locale: "ja", baseId: jaArticle[1], showSwitcher: true };
+    const baseId = jaArticle[1];
+    const hasTranslation = TRANSLATED_ARTICLE_BASE_IDS.includes(baseId);
+    return {
+      locale: "ja",
+      baseId,
+      availableLocales: hasTranslation ? ["ja", "en", "zh-TW"] : ["ja"],
+    };
   }
-  // /en or /zh-TW (locale top page)
+  // /en or /zh-TW (locale top page) — all locales have a top page
   const localePage = pathname.match(/^\/(en|zh-TW)\/?$/);
   if (localePage) {
-    return { locale: localePage[1] as Locale, baseId: null, showSwitcher: true };
+    return { locale: localePage[1] as Locale, baseId: null, availableLocales: ["ja", "en", "zh-TW"] };
   }
-  return { locale: "ja", baseId: null, showSwitcher: false };
+  // / (home) — can switch to /en or /zh-TW top pages
+  if (pathname === "/") {
+    return { locale: "ja", baseId: null, availableLocales: ["ja", "en", "zh-TW"] };
+  }
+  // Other pages (/about, /wuto, /operations, /contact, /articles list, etc.) — JA only
+  return { locale: "ja", baseId: null, availableLocales: ["ja"] };
 }
 
 export default function Header() {
@@ -48,7 +60,7 @@ export default function Header() {
   const router = useRouter();
   const isHome = pathname === "/";
 
-  const { locale: currentLocale, baseId, showSwitcher } = parseLocaleContext(pathname);
+  const { locale: currentLocale, baseId, availableLocales } = parseLocaleContext(pathname);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -63,6 +75,7 @@ export default function Header() {
 
   const handleLocaleChange = (newLocale: Locale) => {
     if (newLocale === currentLocale) return;
+    if (!availableLocales.includes(newLocale)) return;
     if (baseId) {
       // On article detail page — navigate to translated version
       if (newLocale === "ja") {
@@ -99,31 +112,39 @@ export default function Header() {
             }),
       }}
     >
-      {locales.map((locale, index) => (
-        <span key={locale} style={{ display: "flex", alignItems: "center", gap: mobile ? "0.6rem" : "0.4rem" }}>
-          {index > 0 && (
-            <span style={{ opacity: 0.4, fontSize: mobile ? "0.9rem" : "0.75rem", color: mobile ? "var(--color-primary)" : textColor }}>
-              /
-            </span>
-          )}
-          <button
-            onClick={() => handleLocaleChange(locale)}
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              fontSize: mobile ? "1rem" : "0.75rem",
-              fontWeight: currentLocale === locale ? 700 : 400,
-              color: mobile ? "var(--color-primary)" : textColor,
-              opacity: currentLocale === locale ? 1 : 0.6,
-              padding: 0,
-              transition: "opacity 0.2s",
-            }}
-          >
-            {LOCALE_LABELS[locale]}
-          </button>
-        </span>
-      ))}
+      {locales.map((locale, index) => {
+        const isActive = currentLocale === locale;
+        const isAvailable = availableLocales.includes(locale);
+        return (
+          <span key={locale} style={{ display: "flex", alignItems: "center", gap: mobile ? "0.6rem" : "0.4rem" }}>
+            {index > 0 && (
+              <span style={{ opacity: 0.3, fontSize: mobile ? "0.9rem" : "0.75rem", color: mobile ? "var(--color-primary)" : textColor }}>
+                /
+              </span>
+            )}
+            <button
+              onClick={() => handleLocaleChange(locale)}
+              disabled={!isAvailable}
+              title={!isAvailable ? "No translation available" : undefined}
+              style={{
+                background: "none",
+                border: "none",
+                cursor: isAvailable ? "pointer" : "not-allowed",
+                fontSize: mobile ? "1rem" : "0.75rem",
+                fontWeight: isActive ? 700 : 400,
+                color: mobile
+                  ? isAvailable ? "var(--color-primary)" : "#bbb"
+                  : isAvailable ? textColor : isTransparent ? "rgba(255,255,255,0.3)" : "#ccc",
+                opacity: isActive ? 1 : isAvailable ? 0.6 : 0.35,
+                padding: 0,
+                transition: "opacity 0.2s",
+              }}
+            >
+              {LOCALE_LABELS[locale]}
+            </button>
+          </span>
+        );
+      })}
     </div>
   );
 
@@ -177,7 +198,7 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          {showSwitcher && <LangSwitch />}
+          <LangSwitch />
         </nav>
 
         {/* Hamburger */}
@@ -246,7 +267,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            {showSwitcher && <LangSwitch mobile />}
+            <LangSwitch mobile />
           </nav>
         </div>
       )}
