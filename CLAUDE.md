@@ -5,6 +5,24 @@
 
 ---
 
+## ⚠️ 最重要：デプロイ手順（毎回必ず守ること）
+
+**このプロジェクトは常に Vercel で確認する。ローカル dev server は使わない。**
+
+コード変更後は必ず以下を実行すること：
+
+```bash
+git -C /Users/gaisho/yuka-han-website add <変更ファイル>
+git -C /Users/gaisho/yuka-han-website commit -m "..."
+git -C /Users/gaisho/yuka-han-website push origin main
+```
+
+- `npm run dev` を起動して「確認してください」は**絶対NG**
+- push すれば Vercel が自動デプロイ（1〜2分で反映）
+- コンテキスト圧縮後もこのルールは変わらない
+
+---
+
 ## プロジェクト概要
 
 - **会社**: 株式会社ユカハン（Yuka-Han & Co.）
