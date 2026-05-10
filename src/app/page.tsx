@@ -51,25 +51,47 @@ export default async function Home() {
       {/* Hero Slider */}
       <HeroSlider />
 
-      {/* Philosophy — タイポグラフィのみのステートメントセクション */}
+      {/* Philosophy */}
       <section id="about" className="philosophy-section">
         <div className="philosophy-inner">
           <p style={sectionLabel}>OUR PHILOSOPHY</p>
-          <div className="philosophy-text">
-            <span className="philosophy-line-large">
-              私たちの旅はいつも、観光マップの外にある。
-            </span>
-            <span className="philosophy-line-body">
-              ガイドブックに載っていない店、地元の人しかいないスーパー、<br className="philosophy-br" />
-              名前も読めない食材を買って宿に帰る夜。
-            </span>
-            <span className="philosophy-line-closing">
-              その普通の日常の中に、旅の本質を見つけたい。
-            </span>
+          <div className="philosophy-layout">
+
+            {/* 詩 */}
+            <div className="philosophy-poem">
+              <p className="poem-stanza poem-large">
+                私たちの旅はいつも、<br />
+                観光マップの外にある。
+              </p>
+              <p className="poem-stanza poem-mid">
+                ガイドブックに載っていない店、<br />
+                地元の人しかいないスーパー、<br />
+                名前も読めない食材を<br />
+                買って宿に帰る夜。
+              </p>
+              <p className="poem-stanza poem-close">
+                その普通の日常の中に、<br />
+                旅の本質を見つけたい。
+              </p>
+            </div>
+
+            {/* 本文 */}
+            <div className="philosophy-body">
+              <p className="philosophy-body-p">
+                私たちはAirbnbに泊まり、現地に暮らし、周辺の人に自然とあいさつをするような旅をしています。
+              </p>
+              <p className="philosophy-body-p">
+                その町に暮らし、溶け込み、人と話していると——観光では見えてこない本当のその国、その町、その人が見えてきます。
+              </p>
+              <p className="philosophy-body-p">
+                「住宅を使った宿泊施設」ではなく、「Airbnb」だからこその価値を作り出していきます。
+              </p>
+              <Link href="/about" className="btn-outline" style={{ marginTop: "1rem", display: "inline-block" }}>
+                私たちについて
+              </Link>
+            </div>
+
           </div>
-          <Link href="/about" className="btn-outline">
-            私たちについて
-          </Link>
         </div>
       </section>
 
@@ -390,45 +412,56 @@ export default async function Home() {
         .philosophy-section {
           background: var(--color-bg);
           padding: 8rem 8%;
-          text-align: center;
         }
         .philosophy-inner {
-          max-width: 740px;
+          max-width: 1060px;
           margin: 0 auto;
         }
-        .philosophy-text {
-          margin: 2rem 0 3rem;
+        .philosophy-layout {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 5rem;
+          margin-top: 2.5rem;
+          align-items: start;
+        }
+        .philosophy-poem {
           display: flex;
           flex-direction: column;
-          gap: 1.8rem;
+          gap: 2.2rem;
         }
-        .philosophy-line-large {
-          display: block;
-          font-size: clamp(1.4rem, 2.6vw, 2rem);
-          font-weight: 400;
-          color: var(--color-primary);
-          line-height: 1.6;
+        .poem-stanza {
+          margin: 0;
+          line-height: 1.85;
           letter-spacing: 0.04em;
-        }
-        .philosophy-line-body {
-          display: block;
-          font-size: clamp(0.95rem, 1.4vw, 1.05rem);
           font-weight: 400;
+        }
+        .poem-large {
+          font-size: clamp(1.5rem, 2.5vw, 2rem);
+          color: var(--color-primary);
+        }
+        .poem-mid {
+          font-size: clamp(0.92rem, 1.3vw, 1rem);
           color: var(--color-text-light);
-          line-height: 2.1;
-          letter-spacing: 0.03em;
         }
-        .philosophy-line-closing {
-          display: block;
-          font-size: clamp(1.15rem, 2vw, 1.5rem);
-          font-weight: 400;
+        .poem-close {
+          font-size: clamp(1.15rem, 1.9vw, 1.5rem);
           color: var(--color-primary);
-          line-height: 1.6;
-          letter-spacing: 0.04em;
+        }
+        .philosophy-body {
+          display: flex;
+          flex-direction: column;
+          gap: 1.6rem;
+          padding-top: 0.4rem;
+        }
+        .philosophy-body-p {
+          margin: 0;
+          font-size: 0.92rem;
+          line-height: 2;
+          color: var(--color-text-light);
         }
         @media (max-width: 768px) {
           .philosophy-section { padding: 5rem 8%; }
-          .philosophy-br { display: none; }
+          .philosophy-layout { grid-template-columns: 1fr; gap: 3rem; }
         }
 
 .btn-primary {
