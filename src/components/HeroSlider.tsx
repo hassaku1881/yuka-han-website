@@ -7,8 +7,8 @@ const SLIDES = [
   {
     id: "about",
     label: "WHO WE ARE",
-    headline: "宿をつくり、\n場所を育てる。",
-    sub: "東京を拠点に、宿泊施設の企画・開発・運営を行う会社です。\nゲスト・オーナー・まち、三者にとって良い宿泊のかたちを。",
+    headline: "私たちの旅はいつも、\n観光マップの外にある。",
+    sub: "旅暮らしから生まれた会社。\nガイドブックの外にある、ローカルな日常を旅する人たちのために。",
     cta: { label: "私たちについて", href: "/about" },
     bg: "/images/hero-vision.jpg",
     overlay: "rgba(20,30,48,0.52)",

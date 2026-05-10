@@ -51,49 +51,23 @@ export default async function Home() {
       {/* Hero Slider */}
       <HeroSlider />
 
-      {/* Statement — About + Philosophy 統合 */}
-      <section id="about" className="statement-section">
-        {/* 左：物件内観写真 */}
-        <div
-          className="statement-image"
-          style={{ backgroundImage: "url('/images/properties/ohanajaya-1f-main.jpg')" }}
-        />
-
-        {/* 右：テキスト */}
-        <div className="statement-body">
-          <p style={sectionLabel}>WHO WE ARE</p>
-          <h2 className="statement-headline">
-            暮らすように、<br />泊まる。
-          </h2>
-          <p style={{ fontSize: "0.97rem", lineHeight: 2.1, color: "var(--color-text-light)", marginBottom: "2.5rem" }}>
-            その土地に溶け込み、地元の時間に身を委ねる滞在を。
-            <br />
-            無垢材の温もり、本物の眠り、ゆっくり淹れる一杯のコーヒー。
-            <br />
-            ゲスト・オーナー・まち、三者にとって良い宿泊のかたちを
-            <br />
-            東京から発信しています。
-          </p>
-
-          {/* 数字バッジ */}
-          <div className="statement-stats">
-            <div className="statement-stat">
-              <span className="statement-stat-num">5</span>
-              <span className="statement-stat-label">施設展開中</span>
-            </div>
-            <div className="statement-stat-divider" />
-            <div className="statement-stat">
-              <span className="statement-stat-num">4.97</span>
-              <span className="statement-stat-label">Airbnb 平均評価</span>
-            </div>
-            <div className="statement-stat-divider" />
-            <div className="statement-stat">
-              <span className="statement-stat-num">全施設</span>
-              <span className="statement-stat-label">ゲストチョイス獲得</span>
-            </div>
-          </div>
-
-          <Link href="/about" className="btn-outline" style={{ display: "inline-block", marginTop: "2.5rem" }}>
+      {/* Philosophy — タイポグラフィのみのステートメントセクション */}
+      <section id="about" className="philosophy-section">
+        <div className="philosophy-inner">
+          <p className="philosophy-label">WHO WE ARE</p>
+          <blockquote className="philosophy-text">
+            <span className="philosophy-line-large">
+              私たちの旅はいつも、観光マップの外にある。
+            </span>
+            <span className="philosophy-line-body">
+              ガイドブックに載っていない店、地元の人しかいないスーパー、<br className="philosophy-br" />
+              名前も読めない食材を買って宿に帰る夜。
+            </span>
+            <span className="philosophy-line-closing">
+              その普通の日常の中に、旅の本質を見つけたい。
+            </span>
+          </blockquote>
+          <Link href="/about" className="philosophy-cta">
             私たちについて
           </Link>
         </div>
@@ -412,64 +386,72 @@ export default async function Home() {
       )}
 
       <style>{`
-        /* ── Statement section ── */
-        .statement-section {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          min-height: 600px;
+        /* ── Philosophy section ── */
+        .philosophy-section {
           background: var(--color-white);
+          padding: 8rem 8%;
+          text-align: center;
         }
-        .statement-image {
-          background-size: cover;
-          background-position: center;
-          min-height: 480px;
+        .philosophy-inner {
+          max-width: 740px;
+          margin: 0 auto;
         }
-        .statement-body {
-          padding: 5rem 6%;
+        .philosophy-label {
+          font-family: var(--font-en);
+          font-size: 0.72rem;
+          letter-spacing: 0.35em;
+          color: var(--color-accent);
+          margin-bottom: 3rem;
+        }
+        .philosophy-text {
+          margin: 0 0 3rem;
+          padding: 0;
+          border: none;
           display: flex;
           flex-direction: column;
-          justify-content: center;
-        }
-        .statement-headline {
-          font-family: var(--font-jp);
-          font-size: clamp(1.8rem, 3vw, 2.6rem);
-          font-weight: 400;
-          color: var(--color-primary);
-          line-height: 1.55;
-          margin-bottom: 2rem;
-          letter-spacing: 0.04em;
-        }
-        .statement-stats {
-          display: flex;
-          align-items: center;
           gap: 1.8rem;
         }
-        .statement-stat {
-          display: flex;
-          flex-direction: column;
-          gap: 0.3rem;
-        }
-        .statement-stat-num {
-          font-family: var(--font-en);
-          font-size: 1.6rem;
-          font-weight: 300;
-          color: var(--color-accent);
-          line-height: 1;
-        }
-        .statement-stat-label {
-          font-size: 0.72rem;
-          color: var(--color-text-light);
+        .philosophy-line-large {
+          display: block;
+          font-family: var(--font-jp);
+          font-size: clamp(1.4rem, 2.6vw, 2rem);
+          font-weight: 400;
+          color: var(--color-primary);
+          line-height: 1.6;
           letter-spacing: 0.04em;
         }
-        .statement-stat-divider {
-          width: 1px;
-          height: 36px;
-          background: #e0dbd3;
+        .philosophy-line-body {
+          display: block;
+          font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+          font-weight: 300;
+          color: var(--color-text-light);
+          line-height: 2.1;
+          letter-spacing: 0.03em;
         }
+        .philosophy-line-closing {
+          display: block;
+          font-family: var(--font-jp);
+          font-size: clamp(1.15rem, 2vw, 1.5rem);
+          font-weight: 400;
+          color: var(--color-primary);
+          line-height: 1.6;
+          letter-spacing: 0.04em;
+        }
+        .philosophy-cta {
+          display: inline-block;
+          font-family: var(--font-en);
+          font-size: 0.78rem;
+          letter-spacing: 0.22em;
+          color: var(--color-accent);
+          text-decoration: none;
+          border-bottom: 1px solid currentColor;
+          padding-bottom: 2px;
+          transition: opacity 0.25s;
+        }
+        .philosophy-cta:hover { opacity: 0.6; }
         @media (max-width: 768px) {
-          .statement-section { grid-template-columns: 1fr; }
-          .statement-image { min-height: 280px; }
-          .statement-body { padding: 3rem 8%; }
+          .philosophy-section { padding: 5rem 8%; }
+          .philosophy-br { display: none; }
         }
 
 .btn-primary {
