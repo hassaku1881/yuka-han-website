@@ -54,8 +54,8 @@ export default async function Home() {
       {/* Philosophy — タイポグラフィのみのステートメントセクション */}
       <section id="about" className="philosophy-section">
         <div className="philosophy-inner">
-          <p className="philosophy-label">WHO WE ARE</p>
-          <blockquote className="philosophy-text">
+          <p style={sectionLabel}>OUR PHILOSOPHY</p>
+          <div className="philosophy-text">
             <span className="philosophy-line-large">
               私たちの旅はいつも、観光マップの外にある。
             </span>
@@ -66,8 +66,8 @@ export default async function Home() {
             <span className="philosophy-line-closing">
               その普通の日常の中に、旅の本質を見つけたい。
             </span>
-          </blockquote>
-          <Link href="/about" className="philosophy-cta">
+          </div>
+          <Link href="/about" className="btn-outline">
             私たちについて
           </Link>
         </div>
@@ -388,7 +388,7 @@ export default async function Home() {
       <style>{`
         /* ── Philosophy section ── */
         .philosophy-section {
-          background: var(--color-white);
+          background: var(--color-bg);
           padding: 8rem 8%;
           text-align: center;
         }
@@ -396,24 +396,14 @@ export default async function Home() {
           max-width: 740px;
           margin: 0 auto;
         }
-        .philosophy-label {
-          font-family: var(--font-en);
-          font-size: 0.72rem;
-          letter-spacing: 0.35em;
-          color: var(--color-accent);
-          margin-bottom: 3rem;
-        }
         .philosophy-text {
-          margin: 0 0 3rem;
-          padding: 0;
-          border: none;
+          margin: 2rem 0 3rem;
           display: flex;
           flex-direction: column;
           gap: 1.8rem;
         }
         .philosophy-line-large {
           display: block;
-          font-family: var(--font-jp);
           font-size: clamp(1.4rem, 2.6vw, 2rem);
           font-weight: 400;
           color: var(--color-primary);
@@ -422,33 +412,20 @@ export default async function Home() {
         }
         .philosophy-line-body {
           display: block;
-          font-size: clamp(0.95rem, 1.4vw, 1.1rem);
-          font-weight: 300;
+          font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+          font-weight: 400;
           color: var(--color-text-light);
           line-height: 2.1;
           letter-spacing: 0.03em;
         }
         .philosophy-line-closing {
           display: block;
-          font-family: var(--font-jp);
           font-size: clamp(1.15rem, 2vw, 1.5rem);
           font-weight: 400;
           color: var(--color-primary);
           line-height: 1.6;
           letter-spacing: 0.04em;
         }
-        .philosophy-cta {
-          display: inline-block;
-          font-family: var(--font-en);
-          font-size: 0.78rem;
-          letter-spacing: 0.22em;
-          color: var(--color-accent);
-          text-decoration: none;
-          border-bottom: 1px solid currentColor;
-          padding-bottom: 2px;
-          transition: opacity 0.25s;
-        }
-        .philosophy-cta:hover { opacity: 0.6; }
         @media (max-width: 768px) {
           .philosophy-section { padding: 5rem 8%; }
           .philosophy-br { display: none; }
