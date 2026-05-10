@@ -22,6 +22,9 @@ export const LOCALE_SUFFIX: Record<SupportedLocale, string> = {
 
 /** Base article IDs that have EN + ZH translations in microCMS */
 export const TRANSLATED_ARTICLE_BASE_IDS = [
+  "2026010012",
+  "2026010023",
+  "2026010034",
   "2026010045",
   "2026010056",
   "2026010067",
