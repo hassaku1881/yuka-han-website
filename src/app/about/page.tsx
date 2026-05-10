@@ -81,7 +81,7 @@ export default function AboutPage() {
           <h2 style={sectionTitle}>Our Story</h2>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.7rem" }}>
             <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)" }}>
-              私たちは旅をしてきた。アジア、ヨーロッパ、ラテンアメリカ。日本でも、家を手放して車一台で全国をめぐったことがある。
+              私たちは旅をしてきた。アジア、ヨーロッパ、南北アメリカ、アフリカ、気づけば南極まで。日本でも、家を手放して車一台で全国をめぐったことがある。
             </p>
             <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)" }}>
               滞在のしかたはいつも「暮らすような旅」だった。1週間ひとつの場所にとどまって、近所のスーパーで食材を買い、商店街を歩き、その土地の音楽を聴く。観光地を駆け抜けるのではなく、空気を吸い込むように街と関わる。そういう滞在のなかでしか見えてこないものを、私たちはたくさん集めてきた。
