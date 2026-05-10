@@ -266,7 +266,7 @@ export default async function TranslatedArticlePage({ params }: Props) {
             {/* Back */}
             <div style={{ marginTop: "2.5rem" }}>
               <Link
-                href={`/${locale}`}
+                href={`/${locale}/articles`}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",

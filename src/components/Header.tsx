@@ -38,7 +38,12 @@ function parseLocaleContext(pathname: string): {
     const has = TRANSLATED_ARTICLE_BASE_IDS.includes(baseId);
     return { locale: "ja", baseId, availableLocales: has ? ["ja", "en", "zh-TW"] : ["ja"], route: "article-detail" };
   }
-  // /en or /zh-TW (locale top = article listing)
+  // /en/articles or /zh-TW/articles (locale article listing)
+  const localeArticles = pathname.match(/^\/(en|zh-TW)\/articles\/?$/);
+  if (localeArticles) {
+    return { locale: localeArticles[1] as Locale, baseId: null, availableLocales: ["ja", "en", "zh-TW"], route: "articles-list" };
+  }
+  // /en or /zh-TW (redirects to /en/articles — keep recognized so switcher still works mid-redirect)
   const localePage = pathname.match(/^\/(en|zh-TW)\/?$/);
   if (localePage) {
     return { locale: localePage[1] as Locale, baseId: null, availableLocales: ["ja", "en", "zh-TW"], route: "articles-list" };
@@ -89,7 +94,7 @@ export default function Header() {
     if (route === "article-detail" && baseId) {
       router.push(newLocale === "ja" ? `/articles/${baseId}` : `/${newLocale}/articles/${baseId}`);
     } else if (route === "articles-list") {
-      router.push(newLocale === "ja" ? "/articles" : `/${newLocale}`);
+      router.push(newLocale === "ja" ? "/articles" : `/${newLocale}/articles`);
     } else if (route === "contact") {
       router.push(newLocale === "ja" ? "/contact" : `/${newLocale}/contact`);
     } else {

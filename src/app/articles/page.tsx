@@ -3,13 +3,20 @@ import type { Metadata } from "next";
 import { getArticles, getArticlesByCategory } from "@/lib/microcms";
 import type { Article } from "@/lib/microcms";
 import { BASE_URL } from "@/lib/constants";
+import { getFallback, getReadingTime, ARTICLE_CATEGORIES } from "@/lib/articleUtils";
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "コラム",
   description: "宿泊施設の空間づくりと運営の現場から、インテリア・Airbnb・ビジネスについて書くコラム。",
-  alternates: { canonical: `${BASE_URL}/articles` },
+  alternates: {
+    canonical: `${BASE_URL}/articles`,
+    languages: {
+      en: `${BASE_URL}/en/articles`,
+      "x-default": `${BASE_URL}/articles`,
+    },
+  },
   openGraph: {
     url: `${BASE_URL}/articles`,
     title: "コラム | Yuka-Han",
@@ -17,31 +24,7 @@ export const metadata: Metadata = {
   },
 };
 
-const CATEGORIES = [
-  { key: "ALL",         label: "ALL" },
-  { key: "BUSINESS",   label: "BUSINESS" },
-  { key: "INTERIOR",   label: "INTERIOR" },
-  { key: "AREA GUIDE", label: "AREA GUIDE" },
-  { key: "OTHERS",     label: "OTHERS" },
-];
-
-const FALLBACK_IMAGES: Record<string, string> = {
-  BUSINESS:     "/images/articles-business.jpg",
-  INTERIOR:     "/images/articles-interior.jpg",
-  "AREA GUIDE": "/images/articles-area-guide.jpg",
-  OTHERS:       "/images/20241109-32.jpg",
-  DEFAULT:      "/images/20241109-32.jpg",
-};
-
-function getFallback(category?: string) {
-  if (!category) return FALLBACK_IMAGES.DEFAULT;
-  return FALLBACK_IMAGES[category] ?? FALLBACK_IMAGES.DEFAULT;
-}
-
-function getReadingTime(body: string): number {
-  const chars = body.replace(/<[^>]+>/g, "").length;
-  return Math.max(1, Math.ceil(chars / 500));
-}
+const CATEGORIES = ARTICLE_CATEGORIES;
 
 // ページネーション URL 生成
 function buildHref(page: number, category: string) {
