@@ -58,13 +58,17 @@ export async function getArticles(queries?: {
 export async function getArticlesByCategory(category: string, queries?: {
   limit?: number;
   offset?: number;
+  filters?: string;
 }) {
+  const catFilter = category !== "ALL" ? `category[equals]${category}` : undefined;
+  const filters = [catFilter, queries?.filters].filter(Boolean).join("[and]") || undefined;
   return client.get<MicroCMSList<Article>>({
     endpoint: "articles",
     queries: {
       orders: "-publishedAt",
-      ...queries,
-      filters: category !== "ALL" ? `category[equals]${category}` : undefined,
+      limit: queries?.limit,
+      offset: queries?.offset,
+      filters,
     },
   });
 }

@@ -64,6 +64,9 @@ export default async function ArticlesPage({ searchParams }: Props) {
 
   // 記事一覧 + カテゴリ別件数（並行取得）
   // microCMSはlimit上限100なので、件数集計はカテゴリ別totalCountを並行取得
+  // 翻訳記事（-en / -zh suffix）を除外するフィルター
+  const jaFilter = "id[not_contains]-en[and]id[not_contains]-zh";
+
   const [
     { contents: articles, totalCount },
     countAll,
@@ -72,12 +75,12 @@ export default async function ArticlesPage({ searchParams }: Props) {
     countAreaGuide,
     countOthers,
   ] = await Promise.all([
-    getArticlesByCategory(activeCategory, { limit: PAGE_SIZE, offset }),
-    getArticles({ limit: 1 }),
-    getArticlesByCategory("BUSINESS", { limit: 1 }),
-    getArticlesByCategory("INTERIOR", { limit: 1 }),
-    getArticlesByCategory("AREA GUIDE", { limit: 1 }),
-    getArticlesByCategory("OTHERS", { limit: 1 }),
+    getArticlesByCategory(activeCategory, { limit: PAGE_SIZE, offset, filters: jaFilter }),
+    getArticles({ limit: 1, filters: jaFilter }),
+    getArticlesByCategory("BUSINESS",   { limit: 1, filters: jaFilter }),
+    getArticlesByCategory("INTERIOR",   { limit: 1, filters: jaFilter }),
+    getArticlesByCategory("AREA GUIDE", { limit: 1, filters: jaFilter }),
+    getArticlesByCategory("OTHERS",     { limit: 1, filters: jaFilter }),
   ]);
 
   const categoryCounts: Record<string, number> = {
