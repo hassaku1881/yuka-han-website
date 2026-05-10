@@ -22,35 +22,35 @@ function parseLocaleContext(pathname: string): {
   locale: Locale;
   baseId: string | null;
   availableLocales: Locale[];
+  isArticlesList: boolean;
 } {
   // /en/articles/2026010045 or /zh-TW/articles/2026010045
-  // (these pages only exist for translated articles, so all locales are available)
   const localeArticle = pathname.match(/^\/(en|zh-TW)\/articles\/([^/]+)/);
   if (localeArticle) {
-    return { locale: localeArticle[1] as Locale, baseId: localeArticle[2], availableLocales: ["ja", "en", "zh-TW"] };
+    return { locale: localeArticle[1] as Locale, baseId: localeArticle[2], availableLocales: ["ja", "en", "zh-TW"], isArticlesList: false };
   }
   // /articles/2026010045 — only translated if baseId is in the list
   const jaArticle = pathname.match(/^\/articles\/([^/]+)/);
   if (jaArticle) {
     const baseId = jaArticle[1];
     const hasTranslation = TRANSLATED_ARTICLE_BASE_IDS.includes(baseId);
-    return {
-      locale: "ja",
-      baseId,
-      availableLocales: hasTranslation ? ["ja", "en", "zh-TW"] : ["ja"],
-    };
+    return { locale: "ja", baseId, availableLocales: hasTranslation ? ["ja", "en", "zh-TW"] : ["ja"], isArticlesList: false };
   }
-  // /en or /zh-TW (locale top page) — all locales have a top page
+  // /en or /zh-TW (locale top = article listing) — all locales available
   const localePage = pathname.match(/^\/(en|zh-TW)\/?$/);
   if (localePage) {
-    return { locale: localePage[1] as Locale, baseId: null, availableLocales: ["ja", "en", "zh-TW"] };
+    return { locale: localePage[1] as Locale, baseId: null, availableLocales: ["ja", "en", "zh-TW"], isArticlesList: true };
   }
-  // / (home) — can switch to /en or /zh-TW top pages
+  // /articles (Japanese article listing) — EN/ZH go to /en, /zh-TW
+  if (pathname === "/articles") {
+    return { locale: "ja", baseId: null, availableLocales: ["ja", "en", "zh-TW"], isArticlesList: true };
+  }
+  // / (home) — EN/ZH go to locale top pages
   if (pathname === "/") {
-    return { locale: "ja", baseId: null, availableLocales: ["ja", "en", "zh-TW"] };
+    return { locale: "ja", baseId: null, availableLocales: ["ja", "en", "zh-TW"], isArticlesList: false };
   }
-  // Other pages (/about, /wuto, /operations, /contact, /articles list, etc.) — JA only
-  return { locale: "ja", baseId: null, availableLocales: ["ja"] };
+  // Other pages (/about, /wuto, /operations, /contact, etc.) — JA only
+  return { locale: "ja", baseId: null, availableLocales: ["ja"], isArticlesList: false };
 }
 
 export default function Header() {
@@ -60,7 +60,7 @@ export default function Header() {
   const router = useRouter();
   const isHome = pathname === "/";
 
-  const { locale: currentLocale, baseId, availableLocales } = parseLocaleContext(pathname);
+  const { locale: currentLocale, baseId, availableLocales, isArticlesList } = parseLocaleContext(pathname);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -77,14 +77,21 @@ export default function Header() {
     if (newLocale === currentLocale) return;
     if (!availableLocales.includes(newLocale)) return;
     if (baseId) {
-      // On article detail page — navigate to translated version
+      // Article detail page
       if (newLocale === "ja") {
         router.push(`/articles/${baseId}`);
       } else {
         router.push(`/${newLocale}/articles/${baseId}`);
       }
+    } else if (isArticlesList) {
+      // Article listing: /articles ↔ /en ↔ /zh-TW
+      if (newLocale === "ja") {
+        router.push("/articles");
+      } else {
+        router.push(`/${newLocale}`);
+      }
     } else {
-      // On locale top page — navigate to other locale top
+      // Home and other locale-capable pages
       if (newLocale === "ja") {
         router.push("/");
       } else {
