@@ -25,7 +25,7 @@ const SLIDES = [
   {
     id: "operations",
     label: "MINPAKU OPERATIONS",
-    headline: "オーナーと同じ方向を、\n向く運営代行。",
+    headline: "オーナーと、\n同じ方向へ。",
     sub: "Airbnb運営11年、ホテル・大規模施設の開発経験を背景に、\n運営代行から収益改善まで一括でお引き受けします。",
     cta: { label: "運営代行を見る", href: "/operations" },
     bg: "/images/hero-operations.jpg",
