@@ -45,9 +45,9 @@ function parseLocaleContext(pathname: string): {
   if (pathname === "/articles") {
     return { locale: "ja", baseId: null, availableLocales: ["ja", "en", "zh-TW"], isArticlesList: true };
   }
-  // / (home) — EN/ZH go to locale top pages
+  // / (home) — Japanese only, no EN/ZH equivalent
   if (pathname === "/") {
-    return { locale: "ja", baseId: null, availableLocales: ["ja", "en", "zh-TW"], isArticlesList: false };
+    return { locale: "ja", baseId: null, availableLocales: ["ja"], isArticlesList: false };
   }
   // Other pages (/about, /wuto, /operations, /contact, etc.) — JA only
   return { locale: "ja", baseId: null, availableLocales: ["ja"], isArticlesList: false };
