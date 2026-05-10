@@ -51,52 +51,51 @@ export default async function Home() {
       {/* Hero Slider */}
       <HeroSlider />
 
-      {/* About */}
-      <section id="about" style={{ background: "var(--color-white)", padding: "6rem 8%" }}>
-        <div style={{ maxWidth: "900px", margin: "0 auto", textAlign: "center" }}>
-          <p style={sectionLabel}>ABOUT US</p>
-          <h2 style={sectionTitle}>Who We Are</h2>
-          <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)", marginBottom: "2rem" }}>
-            株式会社ユカハンは、東京を中心に宿泊施設の企画・開発・運用を行う会社です。
-            <br />
-            私たちは「暮らすように泊まる」をコンセプトに、
-            <br />
-            落ち着ける日本の暮らしを軸にした上質な滞在体験をお届けしています。
-          </p>
-          <p style={{ fontSize: "1rem", lineHeight: 2.2, color: "var(--color-text-light)", marginBottom: "2rem" }}>
-            主力ブランド「Wuto」は、その理念を体現する場所です。
-            <br />
-            宿泊のクオリティを上げることは、ゲストの旅の記憶を豊かにするだけでなく、
-            <br />
-            オーナーの収益を高め、日本を訪れる人の文化体験そのものを底上げする。
-            <br />
-            ゲスト・ホスト・まちの三者にとって良い宿泊のかたちを、東京から発信しています。
-          </p>
-        </div>
-      </section>
+      {/* Statement — About + Philosophy 統合 */}
+      <section id="about" className="statement-section">
+        {/* 左：物件内観写真 */}
+        <div
+          className="statement-image"
+          style={{ backgroundImage: "url('/images/properties/ohanajaya-1f-main.jpg')" }}
+        />
 
-      {/* Philosophy bridge */}
-      <section style={{
-        background: "var(--color-bg)",
-        padding: "6rem 8%",
-        textAlign: "center",
-      }}>
-        <div style={{ maxWidth: "780px", margin: "0 auto" }}>
-          <p style={sectionLabel}>OUR PHILOSOPHY</p>
-          <h2 style={{ ...sectionTitle, fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)", lineHeight: 1.5, marginBottom: "2.5rem" }}>
-            日常と非日常の境目で、<br />ほっと息をつける場所を。
+        {/* 右：テキスト */}
+        <div className="statement-body">
+          <p style={sectionLabel}>WHO WE ARE</p>
+          <h2 className="statement-headline">
+            暮らすように、<br />泊まる。
           </h2>
-          <p style={{ fontSize: "0.98rem", lineHeight: 2.3, color: "var(--color-text-light)", marginBottom: "2rem" }}>
-            観光地を駆け足でめぐるだけの旅ではなく、<br />
-            その土地に溶け込み、地元の時間に身を委ねる滞在を。<br />
-            一日の終わりにほっと息をつける場所があってこそ、<br />
-            旅はより深く、豊かなものになる。
+          <p style={{ fontSize: "0.97rem", lineHeight: 2.1, color: "var(--color-text-light)", marginBottom: "2.5rem" }}>
+            その土地に溶け込み、地元の時間に身を委ねる滞在を。
+            <br />
+            無垢材の温もり、本物の眠り、ゆっくり淹れる一杯のコーヒー。
+            <br />
+            ゲスト・オーナー・まち、三者にとって良い宿泊のかたちを
+            <br />
+            東京から発信しています。
           </p>
-          <p style={{ fontSize: "0.95rem", lineHeight: 2.3, color: "var(--color-text-light)" }}>
-            私たちが大切にしているのは、上質な日常の延長線上にある滞在。<br />
-            無垢材の温もり、本物の眠り、ゆっくり淹れる一杯のコーヒー。<br />
-            そんな当たり前の心地よさを、旅の中にもしっかりと。
-          </p>
+
+          {/* 数字バッジ */}
+          <div className="statement-stats">
+            <div className="statement-stat">
+              <span className="statement-stat-num">5</span>
+              <span className="statement-stat-label">施設展開中</span>
+            </div>
+            <div className="statement-stat-divider" />
+            <div className="statement-stat">
+              <span className="statement-stat-num">4.97</span>
+              <span className="statement-stat-label">Airbnb 平均評価</span>
+            </div>
+            <div className="statement-stat-divider" />
+            <div className="statement-stat">
+              <span className="statement-stat-num">全施設</span>
+              <span className="statement-stat-label">ゲストチョイス獲得</span>
+            </div>
+          </div>
+
+          <Link href="/about" className="btn-outline" style={{ display: "inline-block", marginTop: "2.5rem" }}>
+            私たちについて
+          </Link>
         </div>
       </section>
 
@@ -260,27 +259,6 @@ export default async function Home() {
           ))}
         </div>
 
-        {/* 評価バッジ */}
-        <div style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "2.5rem",
-          padding: "0 8% 2.5rem",
-          background: "var(--color-primary)",
-          flexWrap: "wrap",
-        }}>
-          <div style={{ textAlign: "center", color: "var(--color-white)" }}>
-            <p style={{ fontFamily: "var(--font-en)", fontSize: "2rem", fontWeight: 300, lineHeight: 1, color: "var(--color-accent)" }}>4.97</p>
-            <p style={{ fontSize: "0.72rem", opacity: 0.7, letterSpacing: "0.05em", marginTop: "0.3rem" }}>Airbnb 5施設平均</p>
-          </div>
-          <div style={{ width: "1px", height: "40px", background: "rgba(255,255,255,0.2)" }} />
-          <div style={{ textAlign: "center", color: "var(--color-white)" }}>
-            <p style={{ fontFamily: "var(--font-en)", fontSize: "2rem", fontWeight: 300, lineHeight: 1, color: "var(--color-accent)" }}>5/5</p>
-            <p style={{ fontSize: "0.72rem", opacity: 0.7, letterSpacing: "0.05em", marginTop: "0.3rem" }}>全施設 ゲストチョイス獲得</p>
-          </div>
-        </div>
-
         {/* 施設サムネイル */}
         <div style={{ background: "var(--color-primary)", padding: "1rem 8% 3rem" }}>
           <div className="property-thumbs">
@@ -434,6 +412,66 @@ export default async function Home() {
       )}
 
       <style>{`
+        /* ── Statement section ── */
+        .statement-section {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          min-height: 600px;
+          background: var(--color-white);
+        }
+        .statement-image {
+          background-size: cover;
+          background-position: center;
+          min-height: 480px;
+        }
+        .statement-body {
+          padding: 5rem 6%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+        .statement-headline {
+          font-family: var(--font-jp);
+          font-size: clamp(1.8rem, 3vw, 2.6rem);
+          font-weight: 400;
+          color: var(--color-primary);
+          line-height: 1.55;
+          margin-bottom: 2rem;
+          letter-spacing: 0.04em;
+        }
+        .statement-stats {
+          display: flex;
+          align-items: center;
+          gap: 1.8rem;
+        }
+        .statement-stat {
+          display: flex;
+          flex-direction: column;
+          gap: 0.3rem;
+        }
+        .statement-stat-num {
+          font-family: var(--font-en);
+          font-size: 1.6rem;
+          font-weight: 300;
+          color: var(--color-accent);
+          line-height: 1;
+        }
+        .statement-stat-label {
+          font-size: 0.72rem;
+          color: var(--color-text-light);
+          letter-spacing: 0.04em;
+        }
+        .statement-stat-divider {
+          width: 1px;
+          height: 36px;
+          background: #e0dbd3;
+        }
+        @media (max-width: 768px) {
+          .statement-section { grid-template-columns: 1fr; }
+          .statement-image { min-height: 280px; }
+          .statement-body { padding: 3rem 8%; }
+        }
+
 .btn-primary {
           display: inline-block;
           padding: 1rem 3rem;
