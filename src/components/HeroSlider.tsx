@@ -5,15 +5,6 @@ import Link from "next/link";
 
 const SLIDES = [
   {
-    id: "about",
-    label: "OUR STORY",
-    headline: "私たちの旅はいつも、\n観光マップの外にある。",
-    sub: "旅暮らしから生まれた会社。\nガイドブックの外にある、ローカルな日常を旅する人たちのために。",
-    cta: { label: "私たちについて", href: "/about" },
-    bg: "/images/hero-vision.jpg",
-    overlay: "rgba(20,30,48,0.52)",
-  },
-  {
     id: "wuto",
     label: "OUR FLAGSHIP BRAND",
     headline: "Wuto",
@@ -21,6 +12,15 @@ const SLIDES = [
     cta: { label: "Wutoを見る", href: "/wuto" },
     bg: "/images/hero-wuto.jpg",
     overlay: "rgba(20,30,48,0.45)",
+  },
+  {
+    id: "about",
+    label: "ABOUT US",
+    headline: "人生に残る\n日本の旅をつくる",
+    sub: "東京の下町で暮らすように旅をし、日本を好きになってもらう。\nそれが私たちの目指すものです。",
+    cta: { label: "私たちについて", href: "/about" },
+    bg: "/images/hero-vision.jpg",
+    overlay: "rgba(20,30,48,0.52)",
   },
   {
     id: "operations",
