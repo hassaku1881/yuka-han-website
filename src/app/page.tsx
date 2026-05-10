@@ -43,7 +43,7 @@ const sectionTitle: React.CSSProperties = {
 
 export default async function Home() {
   const [{ contents: articles }, { contents: newsItems }] = await Promise.all([
-    getArticles({ limit: 3 }),
+    getArticles({ limit: 3, filters: "id[not_contains]-en[and]id[not_contains]-zh" }),
     getNews({ limit: 3, orders: "-publishedAt" }),
   ]);
   return (
