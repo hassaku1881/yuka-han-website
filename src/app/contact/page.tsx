@@ -91,13 +91,9 @@ export default function ContactPage() {
         </p>
       </section>
 
-      {/* Form + Info */}
+      {/* Form */}
       <section style={{ background: "var(--color-bg)", padding: "4rem 8% 6rem" }}>
-        <div
-          style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "4rem", maxWidth: "1100px", margin: "0 auto" }}
-          className="contact-grid"
-        >
-          {/* Form */}
+        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
           <div>
             {submitted ? (
               <div
@@ -259,53 +255,8 @@ export default function ContactPage() {
               </form>
             )}
           </div>
-
-          {/* Info */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            <div
-              style={{
-                background: "var(--color-white)",
-                padding: "2rem",
-                borderRadius: "8px",
-                boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
-              }}
-            >
-              <h3
-                style={{
-                  fontFamily: "var(--font-en)",
-                  fontSize: "1rem",
-                  fontWeight: 500,
-                  color: "var(--color-primary)",
-                  marginBottom: "1.2rem",
-                  letterSpacing: "0.05em",
-                }}
-              >
-                Contact Info
-              </h3>
-              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                {[
-                  { label: "Email", value: "contact@yuka-han.com" },
-                  { label: "所在地", value: "東京都葛飾区お花茶屋" },
-                  { label: "返信目安", value: "2営業日以内" },
-                ].map((info) => (
-                  <div key={info.label}>
-                    <p style={{ fontSize: "0.7rem", color: "var(--color-accent)", letterSpacing: "0.1em", marginBottom: "0.2rem" }}>
-                      {info.label}
-                    </p>
-                    <p style={{ fontSize: "0.9rem", color: "var(--color-text)" }}>{info.value}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
-
-      <style>{`
-        @media (max-width: 768px) {
-          .contact-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </main>
   );
 }
