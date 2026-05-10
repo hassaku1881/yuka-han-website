@@ -1,7 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const { type, company, name, email, phone, address, message, attachment } = await req.json();
+  const { type, company, name, email, phone, address, message, attachment, recaptchaToken } = await req.json();
+
+  // reCAPTCHA v3 verification
+  const verifyRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
+  });
+  const verifyData = await verifyRes.json();
+  if (!verifyData.success || verifyData.score < 0.5) {
+    console.warn("reCAPTCHA failed:", verifyData);
+    return NextResponse.json({ error: "認証に失敗しました" }, { status: 400 });
+  }
 
   const typeLabel: Record<string, string> = {
     guest: "施設・ご予約に関するお問い合わせ",

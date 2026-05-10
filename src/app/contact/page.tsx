@@ -1,6 +1,15 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
+}
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -17,6 +26,18 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!;
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`;
+    script.async = true;
+    document.head.appendChild(script);
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, [siteKey]);
 
   const sectionLabel: React.CSSProperties = {
     fontFamily: "var(--font-en)",
@@ -71,14 +92,26 @@ export default function ContactPage() {
     setLoading(true);
     setErrorMsg("");
 
+    // reCAPTCHA v3 token
+    let recaptchaToken = "";
+    try {
+      recaptchaToken = await new Promise<string>((resolve, reject) => {
+        window.grecaptcha.ready(() => {
+          window.grecaptcha.execute(siteKey, { action: "contact" }).then(resolve).catch(reject);
+        });
+      });
+    } catch {
+      setErrorMsg("認証に失敗しました。ページを再読み込みしてお試しください。");
+      setLoading(false);
+      return;
+    }
+
+    // File to base64
     let attachment: { filename: string; content: string } | null = null;
     if (file) {
       const base64 = await new Promise<string>((resolve, reject) => {
         const reader = new FileReader();
-        reader.onload = () => {
-          const result = reader.result as string;
-          resolve(result.split(",")[1]);
-        };
+        reader.onload = () => resolve((reader.result as string).split(",")[1]);
         reader.onerror = reject;
         reader.readAsDataURL(file);
       });
@@ -89,7 +122,7 @@ export default function ContactPage() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, attachment }),
+        body: JSON.stringify({ ...formData, attachment, recaptchaToken }),
       });
       if (!res.ok) throw new Error();
       setSubmitted(true);
@@ -347,6 +380,16 @@ export default function ContactPage() {
               >
                 {loading ? "送信中..." : "送信する"}
               </button>
+
+              <p style={{ fontSize: "0.75rem", color: "var(--color-text-light)", textAlign: "center", lineHeight: 1.8 }}>
+                このフォームはreCAPTCHAで保護されています。
+                <br />
+                Googleの
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-accent)" }}>プライバシーポリシー</a>
+                と
+                <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-accent)" }}>利用規約</a>
+                が適用されます。
+              </p>
             </form>
           )}
         </div>

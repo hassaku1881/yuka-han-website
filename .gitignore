@@ -42,3 +42,7 @@ next-env.d.ts
 
 # raw photo source (not for repo)
 /photos-raw/
+
+# key files (secrets, not for repo)
+*_KEY
+*_KEY.*
