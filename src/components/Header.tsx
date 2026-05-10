@@ -43,10 +43,10 @@ function parseLocaleContext(pathname: string): {
   if (localeArticles) {
     return { locale: localeArticles[1] as Locale, baseId: null, availableLocales: ["ja", "en", "zh-TW"], route: "articles-list" };
   }
-  // /en or /zh-TW (redirects to /en/articles — keep recognized so switcher still works mid-redirect)
+  // /en or /zh-TW — top page not yet implemented, treat as current locale only
   const localePage = pathname.match(/^\/(en|zh-TW)\/?$/);
   if (localePage) {
-    return { locale: localePage[1] as Locale, baseId: null, availableLocales: ["ja", "en", "zh-TW"], route: "articles-list" };
+    return { locale: localePage[1] as Locale, baseId: null, availableLocales: [localePage[1] as Locale], route: "other" };
   }
   // /articles (Japanese article listing)
   if (pathname === "/articles") {
