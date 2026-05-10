@@ -8,6 +8,7 @@ export default function ContactPage() {
     name: "",
     email: "",
     phone: "",
+    address: "",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -48,6 +49,8 @@ export default function ContactPage() {
     marginBottom: "0.5rem",
   };
 
+  const isNeighbor = formData.type === "neighbor";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -79,10 +82,12 @@ export default function ContactPage() {
       >
         <p style={sectionLabel}>CONTACT</p>
         <h1 style={sectionTitle}>お問い合わせ</h1>
-        <p style={{ fontSize: "1rem", color: "var(--color-text-light)", maxWidth: "600px", margin: "0 auto", lineHeight: 1.9 }}>
-          Wutoのご予約、民泊運営代行のご相談など、
+        <p style={{ fontSize: "1rem", color: "var(--color-text-light)", maxWidth: "640px", margin: "0 auto", lineHeight: 1.9 }}>
+          民泊運営代行・コンサルティングのご相談、取材・メディア掲載のご依頼、
           <br />
-          お気軽にご連絡ください。通常2営業日以内にご返信いたします。
+          また近隣にお住まいの方からのご連絡もこちらから受け付けています。
+          <br />
+          通常2営業日以内にご返信いたします。
         </p>
       </section>
 
@@ -147,11 +152,29 @@ export default function ContactPage() {
                     style={inputStyle}
                   >
                     <option value="">選択してください</option>
-                    <option value="wuto">Wutoのご予約・お問い合わせ</option>
-                    <option value="service">民泊運営代行のご相談</option>
+                    <option value="operations">民泊運営代行・コンサルティングのご相談</option>
+                    <option value="media">取材・メディア掲載のご依頼</option>
+                    <option value="neighbor">近隣・地域住民の方からのご連絡</option>
                     <option value="other">その他</option>
                   </select>
                 </div>
+
+                {/* Neighbor address (conditional) */}
+                {isNeighbor && (
+                  <div>
+                    <label style={labelStyle}>お住まいの住所・施設名（任意）</label>
+                    <input
+                      type="text"
+                      placeholder="例：お花茶屋〇〇マンション、または施設名"
+                      value={formData.address}
+                      onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                      style={inputStyle}
+                    />
+                    <p style={{ fontSize: "0.8rem", color: "var(--color-text-light)", marginTop: "0.4rem" }}>
+                      ご不便・ご不満があれば、遠慮なくお知らせください。
+                    </p>
+                  </div>
+                )}
 
                 {/* Name */}
                 <div>
@@ -203,7 +226,7 @@ export default function ContactPage() {
                   <textarea
                     required
                     rows={6}
-                    placeholder="ご質問・ご要望などをお書きください"
+                    placeholder={isNeighbor ? "お気づきの点やご要望などをお書きください" : "ご質問・ご要望などをお書きください"}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     style={{ ...inputStyle, resize: "vertical" }}
@@ -253,60 +276,26 @@ export default function ContactPage() {
                   fontSize: "1rem",
                   fontWeight: 500,
                   color: "var(--color-primary)",
-                  marginBottom: "1rem",
+                  marginBottom: "1.2rem",
                   letterSpacing: "0.05em",
                 }}
               >
                 Contact Info
               </h3>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
                 {[
-                  { icon: "📧", label: "Email", value: "contact@yuka-han.com" },
-                  { icon: "📍", label: "Address", value: "東京都葛飾区お花茶屋" },
-                  { icon: "🕐", label: "対応時間", value: "9:00 – 21:00（年中無休）" },
+                  { label: "Email", value: "contact@yuka-han.com" },
+                  { label: "所在地", value: "東京都葛飾区お花茶屋" },
+                  { label: "返信目安", value: "2営業日以内" },
                 ].map((info) => (
-                  <div key={info.label} style={{ display: "flex", gap: "0.8rem", alignItems: "flex-start" }}>
-                    <span style={{ fontSize: "1.1rem" }}>{info.icon}</span>
-                    <div>
-                      <p style={{ fontSize: "0.7rem", color: "var(--color-accent)", letterSpacing: "0.1em", marginBottom: "0.2rem" }}>
-                        {info.label}
-                      </p>
-                      <p style={{ fontSize: "0.9rem", color: "var(--color-text)" }}>{info.value}</p>
-                    </div>
+                  <div key={info.label}>
+                    <p style={{ fontSize: "0.7rem", color: "var(--color-accent)", letterSpacing: "0.1em", marginBottom: "0.2rem" }}>
+                      {info.label}
+                    </p>
+                    <p style={{ fontSize: "0.9rem", color: "var(--color-text)" }}>{info.value}</p>
                   </div>
                 ))}
               </div>
-            </div>
-
-            <div
-              style={{
-                background: "var(--color-primary)",
-                padding: "2rem",
-                borderRadius: "8px",
-                color: "var(--color-white)",
-              }}
-            >
-              <h3
-                style={{
-                  fontFamily: "var(--font-en)",
-                  fontSize: "1rem",
-                  fontWeight: 500,
-                  marginBottom: "1rem",
-                  letterSpacing: "0.05em",
-                }}
-              >
-                よくあるご質問
-              </h3>
-              {[
-                { q: "予約の空き状況は？", a: "お問い合わせフォームよりご希望日をお知らせください。" },
-                { q: "最少宿泊数は？", a: "基本的に1泊からご利用いただけます。" },
-                { q: "ペット同伴は可能？", a: "申し訳ありませんが、ペット同伴はお断りしております。" },
-              ].map((faq) => (
-                <div key={faq.q} style={{ marginBottom: "1rem", paddingBottom: "1rem", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
-                  <p style={{ fontSize: "0.85rem", fontWeight: 500, marginBottom: "0.3rem" }}>Q. {faq.q}</p>
-                  <p style={{ fontSize: "0.8rem", opacity: 0.8 }}>A. {faq.a}</p>
-                </div>
-              ))}
             </div>
           </div>
         </div>

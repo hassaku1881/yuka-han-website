@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-  const { type, name, email, phone, message } = await req.json();
+  const { type, name, email, phone, address, message } = await req.json();
 
   const typeLabel: Record<string, string> = {
-    wuto: "Wutoのご予約・お問い合わせ",
-    service: "民泊運営代行のご相談",
+    operations: "民泊運営代行・コンサルティングのご相談",
+    media: "取材・メディア掲載のご依頼",
+    neighbor: "近隣・地域住民の方からのご連絡",
     other: "その他",
   };
 
@@ -27,6 +28,7 @@ export async function POST(req: NextRequest) {
           <tr><td style="padding:8px 12px;background:#f5f5f3;font-weight:bold">お名前</td><td style="padding:8px 12px;border-bottom:1px solid #eee">${name}</td></tr>
           <tr><td style="padding:8px 12px;background:#f5f5f3;font-weight:bold">メール</td><td style="padding:8px 12px;border-bottom:1px solid #eee">${email}</td></tr>
           <tr><td style="padding:8px 12px;background:#f5f5f3;font-weight:bold">電話</td><td style="padding:8px 12px;border-bottom:1px solid #eee">${phone || "未記入"}</td></tr>
+          ${address ? `<tr><td style="padding:8px 12px;background:#f5f5f3;font-weight:bold">住所・施設名</td><td style="padding:8px 12px;border-bottom:1px solid #eee">${address}</td></tr>` : ""}
           <tr><td style="padding:8px 12px;background:#f5f5f3;font-weight:bold;vertical-align:top">内容</td><td style="padding:8px 12px;white-space:pre-wrap">${message}</td></tr>
         </table>
       `,
