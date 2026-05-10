@@ -3,10 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
-
-type Locale = "ja" | "en" | "zh-TW";
+import { LOCALE_LABELS, type Locale } from "@/lib/i18n";
 
 const navLinks = [
   { href: "/about", label: "About" },
@@ -16,18 +15,40 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-const locales: { key: Locale; label: string }[] = [
-  { key: "ja", label: "JP" },
-  { key: "en", label: "EN" },
-  { key: "zh-TW", label: "繁中" },
-];
+const locales: Locale[] = ["ja", "en", "zh-TW"];
+
+/** Parses pathname to determine current locale context and article base ID */
+function parseLocaleContext(pathname: string): {
+  locale: Locale;
+  baseId: string | null;
+  showSwitcher: boolean;
+} {
+  // /en/articles/2026010045 or /zh-TW/articles/2026010045
+  const localeArticle = pathname.match(/^\/(en|zh-TW)\/articles\/([^/]+)/);
+  if (localeArticle) {
+    return { locale: localeArticle[1] as Locale, baseId: localeArticle[2], showSwitcher: true };
+  }
+  // /articles/2026010045
+  const jaArticle = pathname.match(/^\/articles\/([^/]+)/);
+  if (jaArticle) {
+    return { locale: "ja", baseId: jaArticle[1], showSwitcher: true };
+  }
+  // /en or /zh-TW (locale top page)
+  const localePage = pathname.match(/^\/(en|zh-TW)\/?$/);
+  if (localePage) {
+    return { locale: localePage[1] as Locale, baseId: null, showSwitcher: true };
+  }
+  return { locale: "ja", baseId: null, showSwitcher: false };
+}
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentLocale, setCurrentLocale] = useState<Locale>("ja");
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const isHome = pathname === "/";
+
+  const { locale: currentLocale, baseId, showSwitcher } = parseLocaleContext(pathname);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -40,12 +61,26 @@ export default function Header() {
     return () => { document.body.style.overflow = "unset"; };
   }, [isOpen]);
 
-  const handleLocaleChange = (locale: Locale) => {
-    setCurrentLocale(locale);
-    console.log(`Locale changed to: ${locale}`);
+  const handleLocaleChange = (newLocale: Locale) => {
+    if (newLocale === currentLocale) return;
+    if (baseId) {
+      // On article detail page — navigate to translated version
+      if (newLocale === "ja") {
+        router.push(`/articles/${baseId}`);
+      } else {
+        router.push(`/${newLocale}/articles/${baseId}`);
+      }
+    } else {
+      // On locale top page — navigate to other locale top
+      if (newLocale === "ja") {
+        router.push("/");
+      } else {
+        router.push(`/${newLocale}`);
+      }
+    }
+    if (isOpen) setIsOpen(false);
   };
 
-  // トップページ以外は常に白背景・ダーク文字
   const isTransparent = isHome && !scrolled && !isOpen;
   const textColor = isTransparent ? "#ffffff" : "var(--color-primary)";
 
@@ -65,30 +100,27 @@ export default function Header() {
       }}
     >
       {locales.map((locale, index) => (
-        <span key={locale.key} style={{ display: "flex", alignItems: "center", gap: mobile ? "0.6rem" : "0.4rem" }}>
+        <span key={locale} style={{ display: "flex", alignItems: "center", gap: mobile ? "0.6rem" : "0.4rem" }}>
           {index > 0 && (
-            <span style={{ opacity: 0.4, fontSize: mobile ? "0.9rem" : "0.75rem", color: "var(--color-primary)" }}>
+            <span style={{ opacity: 0.4, fontSize: mobile ? "0.9rem" : "0.75rem", color: mobile ? "var(--color-primary)" : textColor }}>
               /
             </span>
           )}
           <button
-            onClick={() => {
-              handleLocaleChange(locale.key);
-              if (mobile) setIsOpen(false);
-            }}
+            onClick={() => handleLocaleChange(locale)}
             style={{
               background: "none",
               border: "none",
               cursor: "pointer",
               fontSize: mobile ? "1rem" : "0.75rem",
-              fontWeight: currentLocale === locale.key ? 700 : 400,
+              fontWeight: currentLocale === locale ? 700 : 400,
               color: mobile ? "var(--color-primary)" : textColor,
-              opacity: currentLocale === locale.key ? 1 : 0.6,
+              opacity: currentLocale === locale ? 1 : 0.6,
               padding: 0,
               transition: "opacity 0.2s",
             }}
           >
-            {locale.label}
+            {LOCALE_LABELS[locale]}
           </button>
         </span>
       ))}
@@ -97,7 +129,6 @@ export default function Header() {
 
   return (
     <>
-      {/* ─── Header bar ─── */}
       <header
         style={{
           position: "fixed",
@@ -146,7 +177,7 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <LangSwitch />
+          {showSwitcher && <LangSwitch />}
         </nav>
 
         {/* Hamburger */}
@@ -169,22 +200,19 @@ export default function Header() {
         </button>
       </header>
 
-      {/* ─── Mobile Menu Overlay（headerの外・兄弟要素） ─── */}
+      {/* Mobile Menu */}
       {isOpen && (
         <div
           style={{
             position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
+            top: 0, left: 0, right: 0, bottom: 0,
             background: "rgba(255,255,255,0.98)",
-            zIndex: 998,          // header(1000)の下・ページコンテンツの上
+            zIndex: 998,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            paddingTop: "64px",   // ヘッダー分を確保
+            paddingTop: "64px",
           }}
         >
           <nav
@@ -218,7 +246,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <LangSwitch mobile />
+            {showSwitcher && <LangSwitch mobile />}
           </nav>
         </div>
       )}

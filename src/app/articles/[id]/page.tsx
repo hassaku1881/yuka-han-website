@@ -6,6 +6,7 @@ import { BASE_URL } from "@/lib/constants";
 import ArticleToc, { type TocHeading } from "@/components/ArticleToc";
 import ArticleShareButtons from "@/components/ArticleShareButtons";
 import ArticleProgress from "@/components/ArticleProgress";
+import { TRANSLATED_ARTICLE_BASE_IDS } from "@/lib/i18n";
 
 export const revalidate = 60;
 
@@ -39,7 +40,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: article.title,
       description: article.excerpt,
-      alternates: { canonical: canonicalUrl },
+      alternates: {
+        canonical: canonicalUrl,
+        ...(TRANSLATED_ARTICLE_BASE_IDS.includes(id) && {
+          languages: {
+            en: `${BASE_URL}/en/articles/${id}`,
+            "zh-TW": `${BASE_URL}/zh-TW/articles/${id}`,
+            "x-default": canonicalUrl,
+          },
+        }),
+      },
       openGraph: {
         type: "article",
         url: canonicalUrl,
