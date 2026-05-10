@@ -17,40 +17,50 @@ const navLinks = [
 
 const locales: Locale[] = ["ja", "en", "zh-TW"];
 
+type RouteKind = "article-detail" | "articles-list" | "contact" | "home" | "other";
+
 /** Parses pathname to determine current locale and which locales have a page here */
 function parseLocaleContext(pathname: string): {
   locale: Locale;
   baseId: string | null;
   availableLocales: Locale[];
-  isArticlesList: boolean;
+  route: RouteKind;
 } {
   // /en/articles/2026010045 or /zh-TW/articles/2026010045
   const localeArticle = pathname.match(/^\/(en|zh-TW)\/articles\/([^/]+)/);
   if (localeArticle) {
-    return { locale: localeArticle[1] as Locale, baseId: localeArticle[2], availableLocales: ["ja", "en", "zh-TW"], isArticlesList: false };
+    return { locale: localeArticle[1] as Locale, baseId: localeArticle[2], availableLocales: ["ja", "en", "zh-TW"], route: "article-detail" };
   }
-  // /articles/2026010045 — only translated if baseId is in the list
+  // /articles/id — only translated if baseId is in the list
   const jaArticle = pathname.match(/^\/articles\/([^/]+)/);
   if (jaArticle) {
     const baseId = jaArticle[1];
-    const hasTranslation = TRANSLATED_ARTICLE_BASE_IDS.includes(baseId);
-    return { locale: "ja", baseId, availableLocales: hasTranslation ? ["ja", "en", "zh-TW"] : ["ja"], isArticlesList: false };
+    const has = TRANSLATED_ARTICLE_BASE_IDS.includes(baseId);
+    return { locale: "ja", baseId, availableLocales: has ? ["ja", "en", "zh-TW"] : ["ja"], route: "article-detail" };
   }
-  // /en or /zh-TW (locale top = article listing) — all locales available
+  // /en or /zh-TW (locale top = article listing)
   const localePage = pathname.match(/^\/(en|zh-TW)\/?$/);
   if (localePage) {
-    return { locale: localePage[1] as Locale, baseId: null, availableLocales: ["ja", "en", "zh-TW"], isArticlesList: true };
+    return { locale: localePage[1] as Locale, baseId: null, availableLocales: ["ja", "en", "zh-TW"], route: "articles-list" };
   }
-  // /articles (Japanese article listing) — EN/ZH go to /en, /zh-TW
+  // /articles (Japanese article listing)
   if (pathname === "/articles") {
-    return { locale: "ja", baseId: null, availableLocales: ["ja", "en", "zh-TW"], isArticlesList: true };
+    return { locale: "ja", baseId: null, availableLocales: ["ja", "en", "zh-TW"], route: "articles-list" };
   }
-  // / (home) — Japanese only, no EN/ZH equivalent
+  // /contact or /en/contact or /zh-TW/contact
+  const localeContact = pathname.match(/^\/(en|zh-TW)\/contact/);
+  if (localeContact) {
+    return { locale: localeContact[1] as Locale, baseId: null, availableLocales: ["ja", "en", "zh-TW"], route: "contact" };
+  }
+  if (pathname === "/contact") {
+    return { locale: "ja", baseId: null, availableLocales: ["ja", "en", "zh-TW"], route: "contact" };
+  }
+  // / (home) — JA only
   if (pathname === "/") {
-    return { locale: "ja", baseId: null, availableLocales: ["ja"], isArticlesList: false };
+    return { locale: "ja", baseId: null, availableLocales: ["ja"], route: "home" };
   }
-  // Other pages (/about, /wuto, /operations, /contact, etc.) — JA only
-  return { locale: "ja", baseId: null, availableLocales: ["ja"], isArticlesList: false };
+  // Other pages (/about, /wuto, /operations, etc.) — JA only
+  return { locale: "ja", baseId: null, availableLocales: ["ja"], route: "other" };
 }
 
 export default function Header() {
@@ -60,7 +70,7 @@ export default function Header() {
   const router = useRouter();
   const isHome = pathname === "/";
 
-  const { locale: currentLocale, baseId, availableLocales, isArticlesList } = parseLocaleContext(pathname);
+  const { locale: currentLocale, baseId, availableLocales, route } = parseLocaleContext(pathname);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -76,27 +86,14 @@ export default function Header() {
   const handleLocaleChange = (newLocale: Locale) => {
     if (newLocale === currentLocale) return;
     if (!availableLocales.includes(newLocale)) return;
-    if (baseId) {
-      // Article detail page
-      if (newLocale === "ja") {
-        router.push(`/articles/${baseId}`);
-      } else {
-        router.push(`/${newLocale}/articles/${baseId}`);
-      }
-    } else if (isArticlesList) {
-      // Article listing: /articles ↔ /en ↔ /zh-TW
-      if (newLocale === "ja") {
-        router.push("/articles");
-      } else {
-        router.push(`/${newLocale}`);
-      }
+    if (route === "article-detail" && baseId) {
+      router.push(newLocale === "ja" ? `/articles/${baseId}` : `/${newLocale}/articles/${baseId}`);
+    } else if (route === "articles-list") {
+      router.push(newLocale === "ja" ? "/articles" : `/${newLocale}`);
+    } else if (route === "contact") {
+      router.push(newLocale === "ja" ? "/contact" : `/${newLocale}/contact`);
     } else {
-      // Home and other locale-capable pages
-      if (newLocale === "ja") {
-        router.push("/");
-      } else {
-        router.push(`/${newLocale}`);
-      }
+      router.push(newLocale === "ja" ? "/" : `/${newLocale}`);
     }
     if (isOpen) setIsOpen(false);
   };
