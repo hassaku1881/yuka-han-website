@@ -24,22 +24,22 @@ const sectionTitle: React.CSSProperties = {
 
 const values = [
   {
-    en: "work hard, live hard",
+    en: "Work Hard, Live Hard",
     ja: "何事もとことん",
     body: "仕事にも、旅にも、日常のすべてに全力で向き合う。最高のアウトプットを出すプロとしての深みと、質の高いインプットとしての「生きること」。どちらも手を抜かない。",
   },
   {
-    en: "pure inspiration, bold creativity",
+    en: "Pure Inspiration, Bold Creativity",
     ja: "刺激を創造に",
     body: "先入観を外し、純粋に刺激を受け取る。創造するときは大胆に、10倍の発想で。インスピレーションなくして、本当の創造は生まれない。",
   },
   {
-    en: "data-driven, poetry-crafted",
+    en: "Data-Driven, Poetry-Crafted",
     ja: "99%のロジックと1%のひらめき",
     body: "すべての事業判断はロジックと数字から始まる。ただし、純粋なロジックだけでは生み出せないものがある。データが骨格なら、詩はその魂。",
   },
   {
-    en: "equity and symphony",
+    en: "Equity and Symphony",
     ja: "胸を張って歩けるように",
     body: "情報の非対称性を利用して利益を得ることを良しとしない。「誠実」という言葉は曖昧すぎるから、あえてこう言う。関わるすべての人が胸を張って歩けるように、調和のなかで事業を進める。",
   },
