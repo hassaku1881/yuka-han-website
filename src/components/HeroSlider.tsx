@@ -6,7 +6,7 @@ import Link from "next/link";
 const SLIDES = [
   {
     id: "about",
-    label: "WHO WE ARE",
+    label: "OUR STORY",
     headline: "私たちの旅はいつも、\n観光マップの外にある。",
     sub: "旅暮らしから生まれた会社。\nガイドブックの外にある、ローカルな日常を旅する人たちのために。",
     cta: { label: "私たちについて", href: "/about" },
@@ -24,10 +24,10 @@ const SLIDES = [
   },
   {
     id: "operations",
-    label: "ACCOMMODATION OPERATIONS",
+    label: "MINPAKU OPERATIONS",
     headline: "物件の可能性を、\n最大限に引き出す。",
-    sub: "予約管理・ゲスト対応・清掃手配まで一括対応。\nAirbnb平均評価4.97を支える運営ノウハウで\nオーナー様の収益を最大化します。",
-    cta: { label: "運営受託を相談する", href: "/operations" },
+    sub: "Airbnb運営11年、ホテル・大規模施設の開発経験を背景に、\n運営代行から収益改善まで一括でお引き受けします。",
+    cta: { label: "まず相談する（無料）", href: "/operations" },
     bg: "/images/hero-operations.jpg",
     overlay: "rgba(25,35,50,0.55)",
   },
