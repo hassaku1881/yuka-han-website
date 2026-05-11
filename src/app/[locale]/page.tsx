@@ -345,7 +345,7 @@ export default async function LocaleTopPage({ params }: Props) {
       {/* Philosophy */}
       <section id="about" className="philosophy-section">
         <div className="philosophy-inner">
-          <p style={sectionLabel}>{tr.philosophyLabel}</p>
+          <p style={{ ...sectionLabel, textAlign: "center" }}>{tr.philosophyLabel}</p>
           <div className="philosophy-layout">
             {/* Poem */}
             <div className="philosophy-poem">{tr.philosophyPoem}</div>
