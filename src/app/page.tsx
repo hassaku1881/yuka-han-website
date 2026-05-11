@@ -86,9 +86,11 @@ export default async function Home() {
               <p className="philosophy-body-p">
                 「住宅を使った宿泊施設」ではなく、「Airbnb」だからこその価値を作り出していきます。
               </p>
-              <Link href="/about" className="btn-outline" style={{ marginTop: "1rem", display: "inline-block" }}>
-                私たちについて
-              </Link>
+              <div style={{ textAlign: "center" }} className="philosophy-cta">
+                <Link href="/about" className="btn-outline">
+                  私たちについて
+                </Link>
+              </div>
             </div>
 
           </div>
@@ -458,9 +460,11 @@ export default async function Home() {
           line-height: 2.1;
           color: var(--color-text);
         }
+        .philosophy-cta { text-align: left; }
         @media (max-width: 768px) {
           .philosophy-section { padding: 5rem 8%; }
           .philosophy-layout { grid-template-columns: 1fr; gap: 3rem; }
+          .philosophy-cta { text-align: center; }
         }
 
 .btn-primary {
@@ -611,6 +615,8 @@ export default async function Home() {
           .wuto-features-grid { grid-template-columns: 1fr !important; }
           .business-grid-3 { grid-template-columns: 1fr !important; }
           .sub-business-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .sub-business-card { padding: 1.2rem 1rem !important; text-align: center; }
+          .sub-business-card p { display: none; }
           .articles-grid { grid-template-columns: 1fr !important; }
           .property-thumbs { grid-template-columns: repeat(2, 1fr) !important; }
           .homepage-reviews { grid-template-columns: 1fr !important; }
