@@ -64,7 +64,7 @@ function ReviewCard({ review }: { review: Review }) {
           fontFamily: "var(--font-en)",
           letterSpacing: "0.05em",
         }}>
-          — {review.author}
+          {review.author}
         </p>
         <button
           onClick={() => setExpanded(!expanded)}

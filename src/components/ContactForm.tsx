@@ -57,7 +57,7 @@ const T = {
   en: {
     sectionLabel: "CONTACT",
     heading: "Contact",
-    description: "For property or reservation inquiries, operations consulting, media requests,\nor messages from local residents — please use the form below.\nWe typically respond within 2 business days.",
+    description: "For property or reservation inquiries, operations consulting, media requests,\nor messages from local residents, please use the form below.\nWe typically respond within 2 business days.",
     typeLabel: "Inquiry type",
     typePlaceholder: "Please select",
     typeGuest: "Property / Reservation inquiry",

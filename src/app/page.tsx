@@ -81,7 +81,7 @@ export default async function Home() {
                 私たちはAirbnbに泊まり、現地に暮らし、周辺の人に自然とあいさつをするような旅をしています。
               </p>
               <p className="philosophy-body-p">
-                その町に暮らし、溶け込み、人と話していると——観光では見えてこない本当のその国、その町、その人が見えてきます。
+                その町に暮らし、溶け込み、人と話していると、観光では見えてこない本当のその国、その町、その人が見えてきます。
               </p>
               <p className="philosophy-body-p">
                 「住宅を使った宿泊施設」ではなく、「Airbnb」だからこその価値を作り出していきます。
@@ -234,7 +234,7 @@ export default async function Home() {
               opacity: 0.65,
               fontFamily: "var(--font-en)",
             }}>
-              Wuto = 烏兎 — 太陽（烏）と月（兎）、移ろう時のやわらかな境目。
+              Wuto = 烏兎。太陽（烏）と月（兎）、移ろう時のやわらかな境目。
             </p>
           </div>
         </div>
@@ -323,7 +323,7 @@ export default async function Home() {
                     fontFamily: "var(--font-en)",
                     letterSpacing: "0.05em",
                   }}>
-                    — {r.author}
+                    {r.author}
                   </p>
                 </div>
               );

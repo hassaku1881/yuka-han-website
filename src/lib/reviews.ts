@@ -21,7 +21,7 @@ export const reviews: Review[] = [
     rating: 5,
   },
   {
-    ja: "到着した瞬間、温かいインテリアに思わずほっとしました。みんなでリビングに座って、食べながら話して、テレビを見て——何気ない、でもとても大切な時間。旅の締めくくりとして、これ以上ない柔らかな終わり方でした。また機会があれば、必ず戻ってきたいです。",
+    ja: "到着した瞬間、温かいインテリアに思わずほっとしました。みんなでリビングに座って、食べながら話して、テレビを見て。何気ない、でもとても大切な時間。旅の締めくくりとして、これ以上ない柔らかな終わり方でした。また機会があれば、必ず戻ってきたいです。",
     original: "一走進屋內，溫暖的擺設讓人瞬間放鬆下來。大家坐在客廳，一邊吃著東西、一邊聊天、看著電視，那種平凡卻很珍貴的時光，讓人覺得特別安心。為這趟旅行劃下了一個很溫柔、也很完整的句點。如果還有機會，一定會想再回來住一次。",
     author: "台湾より",
     flag: "🇹🇼",
@@ -35,7 +35,7 @@ export const reviews: Review[] = [
     rating: 5,
   },
   {
-    ja: "素晴らしい滞在でした。スペースは清潔で広く、必要なアメニティが全て揃っていました。場所も最高——交通アクセスが良く、近くに良いレストランも。また絶対に泊まりたいし、友人にも強くおすすめします！",
+    ja: "素晴らしい滞在でした。スペースは清潔で広く、必要なアメニティが全て揃っていました。場所も最高で、交通アクセスが良く、近くに良いレストランも。また絶対に泊まりたいし、友人にも強くおすすめします！",
     original: "I had an amazing experience at Yuka's house. The space was clean, spacious, and well-equipped with all the amenities I could ask for. The location was perfect—close to public transport, and great restaurants. Would definitely stay here again and highly recommend it to anyone looking for a cozy, convenient, and hassle-free experience!",
     author: "マレーシアより",
     flag: "🇲🇾",
@@ -91,7 +91,7 @@ export const reviews: Review[] = [
     rating: 5,
   },
   {
-    ja: "静かな住宅街でゆっくりしたい方にぴったりの場所です！とても快適で居心地が良く、家は広くて設備も充実——必要なものは全て揃っています。周辺にはショッピング施設やレストランもあり、駅もすぐそこです！ゆかさん・はんさん、素晴らしい滞在をありがとうございました。",
+    ja: "静かな住宅街でゆっくりしたい方にぴったりの場所です！とても快適で居心地が良く、家は広くて設備も充実しており、必要なものは全て揃っています。周辺にはショッピング施設やレストランもあり、駅もすぐそこです！ゆかさん・はんさん、素晴らしい滞在をありがとうございました。",
     original: "Yuka & Han's place is perfect if you like being in a quiet neighborhood! We felt very comfortable there. The house is large and very well equipped—you'll find everything you need. There are also shopping facilities and restaurants nearby, and the train station is right next door!",
     author: "スイスより",
     flag: "🇨🇭",

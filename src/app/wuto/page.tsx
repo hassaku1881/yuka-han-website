@@ -80,7 +80,7 @@ const properties = [
     award: "Airbnb ゲストチョイス",
     flagship: true,
     description:
-      "Wuto最大の4ベッドルーム。光が降り注ぐ吹き抜けのLDKを中心に、それぞれが思い思いに過ごせる距離感を持った間取りです。みんなで集まる時間も、ひとりで静かに過ごす時間も、自然に共存できる——大人数のグループ旅行や家族の長期滞在に、ちょうどいい余白を備えた空間。",
+      "Wuto最大の4ベッドルーム。光が降り注ぐ吹き抜けのLDKを中心に、それぞれが思い思いに過ごせる距離感を持った間取りです。みんなで集まる時間も、ひとりで静かに過ごす時間も、自然に共存できます。大人数のグループ旅行や家族の長期滞在に、ちょうどいい余白を備えた空間。",
   },
   {
     id: "horikiri",
@@ -186,7 +186,7 @@ export default function WutoPage() {
           </p>
           <p style={{ fontSize: "1rem", lineHeight: 2.4, color: "var(--color-text-light)", marginBottom: "2.5rem" }}>
             日常の延長線上にある上質な空間、本物の眠り、使い心地のよい道具たち。<br />
-            非日常の高揚感と、日常のくつろぎ——そのバランスこそがWutoのコンセプトです。<br />
+            非日常の高揚感と、日常のくつろぎ。そのバランスこそがWutoのコンセプトです。<br />
             Japandiな内装に、旅先で見つけたこだわりのアメニティ。<br />
             自分たちも納得して住めるように、細部まで選び抜いた空間をどうぞ。
           </p>
@@ -208,7 +208,7 @@ export default function WutoPage() {
             </p>
             <p style={{ fontSize: "0.92rem", lineHeight: 2.0, color: "var(--color-text-light)" }}>
               Wuto（ウト）の名は、日本の古語「烏兎（うと）」から。<br />
-              烏は太陽、兎は月——古来より時の流れを表す言葉です。<br />
+              烏は太陽、兎は月。古来より時の流れを表す言葉です。<br />
               昼と夜、日常と旅、日常と非日常。<br />
               その境目をやさしく溶かしあう滞在を、この名に込めました。
             </p>
@@ -271,7 +271,7 @@ export default function WutoPage() {
               {
                 icon: <MapPin size={34} strokeWidth={1.3} color="#d4a574" />,
                 title: "Local Experience",
-                text: "ここで暮らす2人だからこそ知る、地元のおすすめをご紹介。観光地だけが東京ではない——葛飾の日常を感じる旅へ。",
+                text: "ここで暮らす2人だからこそ知る、地元のおすすめをご紹介。観光地だけが東京ではありません。葛飾の日常を感じる旅へ。",
               },
               {
                 icon: <Users size={34} strokeWidth={1.3} color="#d4a574" />,

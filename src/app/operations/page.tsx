@@ -84,7 +84,7 @@ export default function OperationsPage() {
           <h2 style={{ ...sectionTitle, marginBottom: "1.5rem" }}>こんな状況、心当たりはありませんか</h2>
           <p style={{ fontSize: "0.95rem", color: "var(--color-text-light)", lineHeight: 2, marginBottom: "3rem" }}>
             インバウンド需要の急回復から数年が経過し、民泊市場は調整局面に入っています。
-            自然に埋まっていた予約が入らなくなる、収益が思うように伸びない——これらは多くの場合、
+            自然に埋まっていた予約が入らなくなる、収益が思うように伸びない。これらは多くの場合、
             運営体制が市況変化に追いついていないことに起因します。
           </p>
           <div className="ops-pain-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.2rem" }}>
