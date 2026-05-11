@@ -37,9 +37,8 @@ export default function Footer() {
           <h4 className="footer-nav-heading">BUSINESS</h4>
           {[
             { href: "/wuto", label: "Wuto" },
-            { href: "/operations", label: "宿泊施設運営" },
+            { href: "/operations", label: "民泊運営代行" },
             { href: "/articles", label: "コラム" },
-            { href: "/contact", label: "お問い合わせ" },
           ].map((link) => (
             <Link key={link.href} href={link.href} className="footer-nav-link">
               {link.label}
@@ -52,6 +51,7 @@ export default function Footer() {
           {[
             { href: "/about", label: "会社概要" },
             { href: "/news", label: "お知らせ" },
+            { href: "/contact", label: "お問い合わせ" },
             { href: "/privacy", label: "プライバシーポリシー" },
           ].map((link) => (
             <Link key={link.href} href={link.href} className="footer-nav-link">
@@ -62,7 +62,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2025–2026 株式会社ユカハン (Yuka-Han &amp; Co.) All Rights Reserved.</p>
+        <p>&copy; 2025 株式会社ユカハン (Yuka-Han &amp; Co.) All Rights Reserved.</p>
       </div>
 
       <style>{`
