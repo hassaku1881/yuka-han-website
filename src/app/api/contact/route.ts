@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
   };
 
   const body: Record<string, unknown> = {
-    from: "Yuka-Han お問い合わせフォーム <onboarding@resend.dev>",
+    from: "Yuka-Han お問い合わせフォーム <contact@yuka-han.com>",
     to: ["contact@yuka-han.com"],
     reply_to: email,
     subject: `【お問い合わせ】${typeLabel[type] ?? type} — ${name}`,
