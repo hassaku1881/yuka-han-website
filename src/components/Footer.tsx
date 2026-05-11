@@ -52,6 +52,7 @@ export default function Footer() {
           {[
             { href: "/about", label: "会社概要" },
             { href: "/news", label: "お知らせ" },
+            { href: "/privacy", label: "プライバシーポリシー" },
           ].map((link) => (
             <Link key={link.href} href={link.href} className="footer-nav-link">
               {link.label}
@@ -61,7 +62,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2025 株式会社ユカハン (Yuka-Han &amp; Co.) All Rights Reserved.</p>
+        <p>&copy; 2025–2026 株式会社ユカハン (Yuka-Han &amp; Co.) All Rights Reserved.</p>
       </div>
 
       <style>{`
