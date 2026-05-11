@@ -431,21 +431,20 @@ export default async function Home() {
         }
         .poem-stanza {
           margin: 0;
-          line-height: 1.85;
+          line-height: 2;
           letter-spacing: 0.04em;
           font-weight: 400;
-        }
-        .poem-large {
-          font-size: clamp(1.5rem, 2.5vw, 2rem);
-          color: var(--color-primary);
-        }
-        .poem-mid {
-          font-size: clamp(0.92rem, 1.3vw, 1rem);
           color: var(--color-text-light);
         }
+        .poem-large {
+          font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+        }
+        .poem-mid {
+          font-size: clamp(0.82rem, 1vw, 0.88rem);
+          opacity: 0.8;
+        }
         .poem-close {
-          font-size: clamp(1.15rem, 1.9vw, 1.5rem);
-          color: var(--color-primary);
+          font-size: clamp(0.95rem, 1.2vw, 1.05rem);
         }
         .philosophy-body {
           display: flex;
@@ -455,9 +454,9 @@ export default async function Home() {
         }
         .philosophy-body-p {
           margin: 0;
-          font-size: 0.92rem;
-          line-height: 2;
-          color: var(--color-text-light);
+          font-size: clamp(0.97rem, 1.3vw, 1.05rem);
+          line-height: 2.1;
+          color: var(--color-text);
         }
         @media (max-width: 768px) {
           .philosophy-section { padding: 5rem 8%; }
