@@ -46,3 +46,6 @@ next-env.d.ts
 # key files (secrets, not for repo)
 *_KEY
 *_KEY.*
+
+# drafts (managed in Google Drive)
+/drafts
