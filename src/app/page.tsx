@@ -54,7 +54,7 @@ export default async function Home() {
       {/* Philosophy */}
       <section id="about" className="philosophy-section">
         <div className="philosophy-inner">
-          <p style={sectionLabel}>OUR PHILOSOPHY</p>
+          <p style={{ ...sectionLabel, textAlign: "center" }}>OUR PHILOSOPHY</p>
           <div className="philosophy-layout">
 
             {/* 詩 */}
