@@ -62,7 +62,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2025 株式会社ユカハン (Yuka-Han &amp; Co.) All Rights Reserved.</p>
+        <p>&copy; 2026 株式会社ユカハン (Yuka-Han &amp; Co.) All Rights Reserved.</p>
       </div>
 
       <style>{`
