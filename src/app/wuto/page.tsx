@@ -429,23 +429,6 @@ export default function WutoPage() {
                   }}>
                     予約・お問い合わせ
                   </Link>
-                  <a href={prop.airbnbUrl} target="_blank" rel="noopener noreferrer" style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.45rem",
-                    padding: "0.8rem 2rem",
-                    border: "1px solid var(--color-primary)",
-                    color: "var(--color-primary)",
-                    textDecoration: "none",
-                    fontSize: "0.85rem",
-                    letterSpacing: "0.05em",
-                    borderRadius: "4px",
-                  }}>
-                    <svg width="15" height="15" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-                      <path d="M16 1C10.7 1 2 12.3 2 19.4c0 4.7 3.1 8.1 7.1 8.1 2.3 0 4.4-1.1 6.9-4.4 2.5 3.3 4.6 4.4 6.9 4.4 4 0 7.1-3.4 7.1-8.1C30 12.3 21.3 1 16 1zm-6.9 24c-2.6 0-4.6-2.1-4.6-5.6 0-5.8 7-15.5 10.1-18.6C17.8 4 24.5 13.6 24.5 19.4c0 3.5-2 5.6-4.6 5.6-1.8 0-3.6-1.1-5.9-4.5-2.3 3.4-4.1 4.5-5.9 4.5z"/>
-                    </svg>
-                    Airbnbで見る
-                  </a>
                 </div>
               </div>
             </div>
