@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import crypto from "crypto";
 
 export async function POST(req: NextRequest) {
   const { type, company, name, email, phone, address, message, attachment, recaptchaToken } = await req.json();
@@ -47,6 +48,7 @@ export async function POST(req: NextRequest) {
     body.attachments = [{ filename: attachment.filename, content: attachment.content }];
   }
 
+  // Send email via Resend
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -60,6 +62,56 @@ export async function POST(req: NextRequest) {
     const error = await res.text();
     console.error("Resend error:", error);
     return NextResponse.json({ error: "送信に失敗しました", detail: error }, { status: 500 });
+  }
+
+  // Add to Mailchimp（失敗してもフォーム送信は成功扱い）
+  try {
+    const mcApiKey = process.env.MAILCHIMP_API_KEY;
+    const mcListId = process.env.MAILCHIMP_LIST_ID;
+    const mcServer = mcApiKey?.split("-")[1]; // e.g. "us20"
+
+    if (mcApiKey && mcListId && mcServer) {
+      const emailHash = crypto.createHash("md5").update(email.toLowerCase()).digest("hex");
+      const mcBase = `https://${mcServer}.api.mailchimp.com/3.0/lists/${mcListId}/members`;
+
+      // Add/update member
+      await fetch(`${mcBase}/${emailHash}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `apikey ${mcApiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email_address: email,
+          status_if_new: "subscribed",
+          merge_fields: { FNAME: name },
+        }),
+      });
+
+      // Add tags: 全員に "contact_form" + カテゴリ別タグ
+      const tagMap: Record<string, string> = {
+        guest:      "contact_guest",
+        operations: "contact_operations",
+        media:      "contact_media",
+        neighbor:   "contact_neighbor",
+        other:      "contact_other",
+      };
+      await fetch(`${mcBase}/${emailHash}/tags`, {
+        method: "POST",
+        headers: {
+          Authorization: `apikey ${mcApiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          tags: [
+            { name: "contact_form", status: "active" },
+            { name: tagMap[type] ?? "contact_other", status: "active" },
+          ],
+        }),
+      });
+    }
+  } catch (err) {
+    console.error("Mailchimp error:", err);
   }
 
   return NextResponse.json({ ok: true });
