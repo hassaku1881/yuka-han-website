@@ -55,10 +55,10 @@ function parseLocaleContext(pathname: string): {
   if (localeArticles) {
     return { locale: localeArticles[1] as Locale, baseId: null, availableLocales: ["ja", "en", "zh-TW"], route: "articles-list" };
   }
-  // /en or /zh-TW — top page not yet implemented, treat as current locale only
+  // /en or /zh-TW — locale top page
   const localePage = pathname.match(/^\/(en|zh-TW)\/?$/);
   if (localePage) {
-    return { locale: localePage[1] as Locale, baseId: null, availableLocales: [localePage[1] as Locale], route: "other" };
+    return { locale: localePage[1] as Locale, baseId: null, availableLocales: ["ja", "en", "zh-TW"], route: "home" };
   }
   // /articles (Japanese article listing)
   if (pathname === "/articles") {
@@ -85,7 +85,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const isHome = pathname === "/";
+  const isHome = pathname === "/" || /^\/(en|zh-TW)\/?$/.test(pathname);
 
   const { locale: currentLocale, baseId, availableLocales, route } = parseLocaleContext(pathname);
 

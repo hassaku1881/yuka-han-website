@@ -3,7 +3,17 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 
-const SLIDES = [
+type Slide = {
+  id: string;
+  label: string;
+  headline: string;
+  sub: string;
+  cta: { label: string; href: string };
+  bg: string;
+  overlay: string;
+};
+
+const SLIDES_JA: Slide[] = [
   {
     id: "wuto",
     label: "OUR FLAGSHIP BRAND",
@@ -42,9 +52,95 @@ const SLIDES = [
   },
 ];
 
+const SLIDES_EN: Slide[] = [
+  {
+    id: "wuto",
+    label: "OUR FLAGSHIP BRAND",
+    headline: "Wuto",
+    sub: "Live like a local.\nCreated by a traveling couple for those seeking a calm Japanese home.",
+    cta: { label: "Explore Wuto", href: "/en/wuto" },
+    bg: "/images/hero-wuto.jpg",
+    overlay: "rgba(20,30,48,0.45)",
+  },
+  {
+    id: "about",
+    label: "ABOUT US",
+    headline: "Creating Japanese travels\nthat last a lifetime",
+    sub: "Travel like a local in Tokyo's shitamachi,\nand fall in love with Japan.",
+    cta: { label: "About Us", href: "/en/about" },
+    bg: "/images/hero-vision.jpg",
+    overlay: "rgba(20,30,48,0.52)",
+  },
+  {
+    id: "operations",
+    label: "MINPAKU OPERATIONS",
+    headline: "Aligned with\nour owners.",
+    sub: "11 years of Airbnb, backed by hotel development experience.\nFull-service vacation rental management.",
+    cta: { label: "Our Services", href: "/en/operations" },
+    bg: "/images/hero-operations.jpg",
+    overlay: "rgba(25,35,50,0.55)",
+  },
+  {
+    id: "wildcard",
+    label: "COMING SOON",
+    headline: "New property,\ncoming soon.",
+    sub: "Yuka-Han's newest accommodation is on its way.\nStay tuned for details.",
+    cta: { label: "News", href: "/news" },
+    bg: "/images/hero-wildcard.jpg",
+    overlay: "rgba(30,25,20,0.55)",
+  },
+];
+
+const SLIDES_ZH: Slide[] = [
+  {
+    id: "wuto",
+    label: "OUR FLAGSHIP BRAND",
+    headline: "Wuto",
+    sub: "像住家一樣，住宿。\n由旅居夫妻打造，追求真正舒適的日本居家體驗。",
+    cta: { label: "了解Wuto", href: "/zh-TW/wuto" },
+    bg: "/images/hero-wuto.jpg",
+    overlay: "rgba(20,30,48,0.45)",
+  },
+  {
+    id: "about",
+    label: "ABOUT US",
+    headline: "創造留存一生的\n日本旅行記憶",
+    sub: "像在東京下町生活一樣地旅行，\n愛上日本。",
+    cta: { label: "關於我們", href: "/zh-TW/about" },
+    bg: "/images/hero-vision.jpg",
+    overlay: "rgba(20,30,48,0.52)",
+  },
+  {
+    id: "operations",
+    label: "MINPAKU OPERATIONS",
+    headline: "與業主\n同一方向。",
+    sub: "11年的Airbnb運營經驗，以飯店開發為背景，\n提供民宿代營運全方位服務。",
+    cta: { label: "了解服務", href: "/zh-TW/operations" },
+    bg: "/images/hero-operations.jpg",
+    overlay: "rgba(25,35,50,0.55)",
+  },
+  {
+    id: "wildcard",
+    label: "COMING SOON",
+    headline: "新設施，\n即將登場。",
+    sub: "Yuka-Han的全新住宿設施即將誕生。\n詳情敬請期待。",
+    cta: { label: "最新消息", href: "/news" },
+    bg: "/images/hero-wildcard.jpg",
+    overlay: "rgba(30,25,20,0.55)",
+  },
+];
+
+const SLIDES_BY_LOCALE: Record<string, Slide[]> = {
+  ja: SLIDES_JA,
+  en: SLIDES_EN,
+  "zh-TW": SLIDES_ZH,
+};
+
 const DURATION = 7000;
 
-export default function HeroSlider() {
+export default function HeroSlider({ locale = "ja" }: { locale?: string }) {
+  const SLIDES = SLIDES_BY_LOCALE[locale] ?? SLIDES_JA;
+
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -58,12 +154,12 @@ export default function HeroSlider() {
   const next = useCallback(() => {
     setCurrent((c) => (c + 1) % SLIDES.length);
     setProgress(0);
-  }, []);
+  }, [SLIDES.length]);
 
   const prev = useCallback(() => {
     setCurrent((c) => (c - 1 + SLIDES.length) % SLIDES.length);
     setProgress(0);
-  }, []);
+  }, [SLIDES.length]);
 
   // 自動再生 + プログレスバー
   useEffect(() => {
@@ -121,7 +217,7 @@ export default function HeroSlider() {
         />
       ))}
 
-      {/* テキストコンテンツ（keyでスライド毎にアニメーション再起動） */}
+      {/* テキストコンテンツ */}
       <div
         style={{
           position: "relative",
@@ -204,7 +300,7 @@ export default function HeroSlider() {
           <button
             key={s.id}
             onClick={() => goTo(i)}
-            aria-label={`スライド ${i + 1}`}
+            aria-label={`Slide ${i + 1}`}
             style={{
               width: i === current ? "28px" : "8px",
               height: "8px",
@@ -220,8 +316,8 @@ export default function HeroSlider() {
       </div>
 
       {/* 前後矢印ボタン */}
-      <button onClick={prev} aria-label="前のスライド" className="hero-arrow hero-arrow-prev">‹</button>
-      <button onClick={next} aria-label="次のスライド" className="hero-arrow hero-arrow-next">›</button>
+      <button onClick={prev} aria-label="Previous slide" className="hero-arrow hero-arrow-prev">‹</button>
+      <button onClick={next} aria-label="Next slide" className="hero-arrow hero-arrow-next">›</button>
 
       <style>{`
         .hero-anim {

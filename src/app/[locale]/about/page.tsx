@@ -94,7 +94,7 @@ const t: Record<
       },
       {
         title: "Equity and Symphony",
-        subtitle: "Walk Tall",
+        subtitle: "With Heads Held High",
         body: "We don't accept profiting from information asymmetry. 'Integrity' is too vague a word—so we say it this way: we advance our business in harmony, so that everyone involved can walk with their head held high.",
       },
     ],
@@ -109,8 +109,8 @@ const t: Record<
         charge: "Facility Branding / Guest Experience Design / QA",
       },
       {
-        name: "Han Kaixiang",
-        nameEn: "Han",
+        name: "Gaisho Han",
+        nameEn: "Gaisho",
         role: "CEO",
         origin: "Born in Jilin, China; raised in Kanagawa and Osaka",
         edu: "Kyoto University, Faculty of Integrated Human Studies",
@@ -120,7 +120,7 @@ const t: Record<
     ],
     companyInfoTitle: "Company Info",
     companyRows: [
-      { label: "Company Name", value: "Yuka-Han & Co., Ltd." },
+      { label: "Company Name", value: "株式会社ユカハン" },
       { label: "English Name", value: "Yuka-Han & Co., Ltd." },
       { label: "Founded", value: "May 1, 2020" },
       { label: "Address", value: "2-5-21 Ohanajaya, Katsushika-ku, Tokyo, Japan" },
@@ -129,7 +129,7 @@ const t: Record<
         label: "Directors",
         value: (
           <>
-            Han Kaixiang, CEO
+            Gaisho Han, CEO
             <br />
             Yuka Yamamoto, CEO
           </>
