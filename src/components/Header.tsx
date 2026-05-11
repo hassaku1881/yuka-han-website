@@ -211,16 +211,19 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className="header-desktop-nav">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`header-nav-link ${scrolled ? "header-nav-link-scrolled" : "header-nav-link-top"}`}
-              style={{ color: textColor }}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const href = currentLocale === "ja" ? link.href : `/${currentLocale}${link.href}`;
+            return (
+              <Link
+                key={link.href}
+                href={href}
+                className={`header-nav-link ${scrolled ? "header-nav-link-scrolled" : "header-nav-link-top"}`}
+                style={{ color: textColor }}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
           <LangSwitch />
         </nav>
 
@@ -268,10 +271,12 @@ export default function Header() {
               padding: "0 8%",
             }}
           >
-            {navLinks.map((link) => (
+            {navLinks.map((link) => {
+              const href = currentLocale === "ja" ? link.href : `/${currentLocale}${link.href}`;
+              return (
               <Link
                 key={link.href}
-                href={link.href}
+                href={href}
                 onClick={() => setIsOpen(false)}
                 style={{
                   textDecoration: "none",
@@ -289,7 +294,8 @@ export default function Header() {
               >
                 {link.label}
               </Link>
-            ))}
+              );
+            })}
             <LangSwitch mobile />
           </nav>
         </div>
