@@ -17,7 +17,8 @@ const navLinks = [
 
 const locales: Locale[] = ["ja", "en", "zh-TW"];
 
-type RouteKind = "article-detail" | "articles-list" | "contact" | "home" | "other";
+type RouteKind = "article-detail" | "articles-list" | "contact" | "simple-page" | "home" | "other";
+
 
 /** Parses pathname to determine current locale and which locales have a page here */
 function parseLocaleContext(pathname: string): {
@@ -38,6 +39,17 @@ function parseLocaleContext(pathname: string): {
     const has = TRANSLATED_ARTICLE_BASE_IDS.includes(baseId);
     return { locale: "ja", baseId, availableLocales: has ? ["ja", "en", "zh-TW"] : ["ja"], route: "article-detail" };
   }
+  // /en/about, /zh-TW/wuto, etc.
+  const localeSimple = pathname.match(/^\/(en|zh-TW)\/(about|wuto|operations)\/?$/);
+  if (localeSimple) {
+    return { locale: localeSimple[1] as Locale, baseId: localeSimple[2], availableLocales: ["ja", "en", "zh-TW"], route: "simple-page" };
+  }
+  // /about, /wuto, /operations (Japanese)
+  const jaSimple = pathname.match(/^\/(about|wuto|operations)\/?$/);
+  if (jaSimple) {
+    return { locale: "ja", baseId: jaSimple[1], availableLocales: ["ja", "en", "zh-TW"], route: "simple-page" };
+  }
+
   // /en/articles or /zh-TW/articles (locale article listing)
   const localeArticles = pathname.match(/^\/(en|zh-TW)\/articles\/?$/);
   if (localeArticles) {
@@ -97,6 +109,8 @@ export default function Header() {
       router.push(newLocale === "ja" ? "/articles" : `/${newLocale}/articles`);
     } else if (route === "contact") {
       router.push(newLocale === "ja" ? "/contact" : `/${newLocale}/contact`);
+    } else if (route === "simple-page" && baseId) {
+      router.push(newLocale === "ja" ? `/${baseId}` : `/${newLocale}/${baseId}`);
     } else {
       router.push(newLocale === "ja" ? "/" : `/${newLocale}`);
     }
