@@ -72,9 +72,9 @@ function parseLocaleContext(pathname: string): {
   if (pathname === "/contact") {
     return { locale: "ja", baseId: null, availableLocales: ["ja", "en", "zh-TW"], route: "contact" };
   }
-  // / (home) — JA only
+  // / (home)
   if (pathname === "/") {
-    return { locale: "ja", baseId: null, availableLocales: ["ja"], route: "home" };
+    return { locale: "ja", baseId: null, availableLocales: ["ja", "en", "zh-TW"], route: "home" };
   }
   // Other pages (/about, /wuto, /operations, etc.) — JA only
   return { locale: "ja", baseId: null, availableLocales: ["ja"], route: "other" };
