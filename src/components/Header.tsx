@@ -190,7 +190,7 @@ export default function Header() {
         }}
       >
         <Link
-          href="/"
+          href={currentLocale === "ja" ? "/" : `/${currentLocale}`}
           onClick={() => setIsOpen(false)}
           style={{ textDecoration: "none", display: "flex", alignItems: "center" }}
         >
