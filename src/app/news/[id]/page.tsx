@@ -126,14 +126,22 @@ export default async function NewsItemPage({ params }: Props) {
 
           {/* 本文 */}
           {item.body && (
-            <div style={{
-              fontSize: "0.95rem",
-              color: "var(--color-text)",
-              lineHeight: 2.2,
-              whiteSpace: "pre-line",
-            }}>
-              {item.body}
-            </div>
+            <>
+              <style>{`
+                .news-body p { margin: 0 0 1.4em; font-size: 0.95rem; color: var(--color-text); line-height: 2.2; }
+                .news-body ul, .news-body ol { margin: 0 0 1.4em 1.5em; }
+                .news-body li { font-size: 0.95rem; color: var(--color-text); line-height: 2.0; margin-bottom: 0.3em; }
+                .news-body a { color: var(--color-accent); text-decoration: underline; }
+                .news-body strong { font-weight: 600; }
+                .news-body .news-release-table { width: 100%; border-collapse: collapse; margin: 1.2em 0 1.8em; font-size: 0.9rem; }
+                .news-body .news-release-table th, .news-body .news-release-table td { padding: 0.6em 1em; border: 1px solid #e0dbd2; text-align: left; line-height: 1.8; }
+                .news-body .news-release-table th { background: #f5f3ef; font-weight: 500; width: 40%; }
+              `}</style>
+              <div
+                className="news-body"
+                dangerouslySetInnerHTML={{ __html: item.body }}
+              />
+            </>
           )}
         </article>
 
