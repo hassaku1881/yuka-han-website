@@ -16,6 +16,21 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "認証に失敗しました" }, { status: 400 });
   }
 
+  // バリデーション
+  const validTypes = ["guest", "operations", "media", "neighbor", "other"];
+  if (!validTypes.includes(type)) {
+    return NextResponse.json({ error: "種別が不正です" }, { status: 400 });
+  }
+  if (!name?.trim()) {
+    return NextResponse.json({ error: "お名前は必須です" }, { status: 400 });
+  }
+  if (!email?.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return NextResponse.json({ error: "メールアドレスが不正です" }, { status: 400 });
+  }
+  if (!message?.trim() || message.trim().length < 10) {
+    return NextResponse.json({ error: "お問い合わせ内容は10文字以上入力してください" }, { status: 400 });
+  }
+
   const typeLabel: Record<string, string> = {
     guest: "施設・ご予約に関するお問い合わせ",
     operations: "民泊運営代行・コンサルティングのご相談",
