@@ -81,17 +81,23 @@ export async function getArticle(id: string) {
 }
 
 // 同カテゴリの前後記事を取得
+// idSuffix: "" = 日本語, "-en" = 英語, "-zh" = 繁体字中国語
 export async function getAdjacentArticles(
   category: string,
-  publishedAt: string
+  publishedAt: string,
+  idSuffix: string = ""
 ): Promise<{ prev: Article | null; next: Article | null }> {
+  const langFilter = idSuffix === ""
+    ? "[and]id[not_contains]-en[and]id[not_contains]-zh"
+    : `[and]id[contains]${idSuffix}`;
+
   const [prevRes, nextRes] = await Promise.all([
     client.get<MicroCMSList<Article>>({
       endpoint: "articles",
       queries: {
         limit: 1,
         orders: "-publishedAt",
-        filters: `category[equals]${category}[and]publishedAt[less_than]${publishedAt}`,
+        filters: `category[equals]${category}[and]publishedAt[less_than]${publishedAt}${langFilter}`,
         fields: "id,title,publishedAt",
       },
     }),
@@ -100,7 +106,7 @@ export async function getAdjacentArticles(
       queries: {
         limit: 1,
         orders: "publishedAt",
-        filters: `category[equals]${category}[and]publishedAt[greater_than]${publishedAt}`,
+        filters: `category[equals]${category}[and]publishedAt[greater_than]${publishedAt}${langFilter}`,
         fields: "id,title,publishedAt",
       },
     }),
@@ -112,13 +118,18 @@ export async function getAdjacentArticles(
 }
 
 // 同カテゴリの関連記事取得（自記事除く）
-export async function getRelatedArticles(category: string, excludeId: string, limit = 3) {
+// idSuffix: "" = 日本語, "-en" = 英語, "-zh" = 繁体字中国語
+export async function getRelatedArticles(category: string, excludeId: string, limit = 3, idSuffix: string = "") {
+  const langFilter = idSuffix === ""
+    ? "[and]id[not_contains]-en[and]id[not_contains]-zh"
+    : `[and]id[contains]${idSuffix}`;
+
   const { contents } = await client.get<MicroCMSList<Article>>({
     endpoint: "articles",
     queries: {
       limit: limit + 1,
       orders: "-publishedAt",
-      filters: `category[equals]${category}`,
+      filters: `category[equals]${category}${langFilter}`,
     },
   });
   return contents.filter((a) => a.id !== excludeId).slice(0, limit);
