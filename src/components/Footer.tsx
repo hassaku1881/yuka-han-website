@@ -1,7 +1,75 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { type Locale } from "@/lib/i18n";
+
+type LinkDef = { path: string; label: string; localized: boolean };
+
+const t: Record<
+  Locale,
+  {
+    companyLines: string[];
+    business: LinkDef[];
+    company: LinkDef[];
+  }
+> = {
+  ja: {
+    companyLines: ["株式会社ユカハン", "〒124-0003", "東京都葛飾区お花茶屋2-5-21"],
+    business: [
+      { path: "/wuto", label: "Wuto", localized: true },
+      { path: "/operations", label: "民泊運営代行", localized: true },
+      { path: "/articles", label: "コラム", localized: true },
+    ],
+    company: [
+      { path: "/about", label: "会社概要", localized: true },
+      { path: "/news", label: "お知らせ", localized: false },
+      { path: "/contact", label: "お問い合わせ", localized: true },
+      { path: "/privacy", label: "プライバシーポリシー", localized: true },
+    ],
+  },
+  en: {
+    companyLines: ["Yuka-Han & Co.", "2-5-21 Ohanajaya, Katsushika-ku", "Tokyo 124-0003, Japan"],
+    business: [
+      { path: "/wuto", label: "Wuto", localized: true },
+      { path: "/operations", label: "Operations", localized: true },
+      { path: "/articles", label: "Articles", localized: true },
+    ],
+    company: [
+      { path: "/about", label: "About", localized: true },
+      { path: "/news", label: "News", localized: false },
+      { path: "/contact", label: "Contact", localized: true },
+      { path: "/privacy", label: "Privacy Policy", localized: true },
+    ],
+  },
+  "zh-TW": {
+    companyLines: ["株式会社ユカハン（Yuka-Han & Co.）", "〒124-0003", "東京都葛飾區お花茶屋2-5-21"],
+    business: [
+      { path: "/wuto", label: "Wuto", localized: true },
+      { path: "/operations", label: "民宿營運代行", localized: true },
+      { path: "/articles", label: "專欄", localized: true },
+    ],
+    company: [
+      { path: "/about", label: "公司概要", localized: true },
+      { path: "/news", label: "最新消息", localized: false },
+      { path: "/contact", label: "聯絡我們", localized: true },
+      { path: "/privacy", label: "隱私權政策", localized: true },
+    ],
+  },
+};
 
 export default function Footer() {
+  const pathname = usePathname();
+  const match = pathname.match(/^\/(en|zh-TW)(\/|$)/);
+  const locale = (match ? match[1] : "ja") as Locale;
+  const content = t[locale];
+
+  // ロケール版があるページのみ言語プレフィックスを付与
+  const href = (link: LinkDef) =>
+    locale === "ja" || !link.localized ? link.path : `/${locale}${link.path}`;
+  const homeHref = locale === "ja" ? "/" : `/${locale}`;
+
   return (
     <footer
       id="contact"
@@ -13,7 +81,7 @@ export default function Footer() {
     >
       <div className="footer-grid">
         <div>
-          <Link href="/" style={{ display: "inline-block", marginBottom: "1rem" }}>
+          <Link href={homeHref} style={{ display: "inline-block", marginBottom: "1rem" }}>
             <Image
               src="/logo.png"
               alt="株式会社ユカハン"
@@ -23,24 +91,19 @@ export default function Footer() {
             />
           </Link>
           <p style={{ fontSize: "0.85rem", opacity: 0.8, lineHeight: 1.8 }}>
-            株式会社ユカハン
-            <br />〒124-0003
-            <br />
-            東京都葛飾区お花茶屋2-5-21
-            <br />
-            <br />
-            contact@yuka-han.com
+            {content.companyLines.map((line, i) => (
+              <span key={i}>
+                {line}
+                {i < content.companyLines.length - 1 && <br />}
+              </span>
+            ))}
           </p>
         </div>
 
         <div>
           <h4 className="footer-nav-heading">BUSINESS</h4>
-          {[
-            { href: "/wuto", label: "Wuto" },
-            { href: "/operations", label: "民泊運営代行" },
-            { href: "/articles", label: "コラム" },
-          ].map((link) => (
-            <Link key={link.href} href={link.href} className="footer-nav-link">
+          {content.business.map((link) => (
+            <Link key={link.path} href={href(link)} className="footer-nav-link">
               {link.label}
             </Link>
           ))}
@@ -48,13 +111,8 @@ export default function Footer() {
 
         <div>
           <h4 className="footer-nav-heading">COMPANY</h4>
-          {[
-            { href: "/about", label: "会社概要" },
-            { href: "/news", label: "お知らせ" },
-            { href: "/contact", label: "お問い合わせ" },
-            { href: "/privacy", label: "プライバシーポリシー" },
-          ].map((link) => (
-            <Link key={link.href} href={link.href} className="footer-nav-link">
+          {content.company.map((link) => (
+            <Link key={link.path} href={href(link)} className="footer-nav-link">
               {link.label}
             </Link>
           ))}
