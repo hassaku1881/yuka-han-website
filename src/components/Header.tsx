@@ -40,12 +40,12 @@ function parseLocaleContext(pathname: string): {
     return { locale: "ja", baseId, availableLocales: has ? ["ja", "en", "zh-TW"] : ["ja"], route: "article-detail" };
   }
   // /en/about, /zh-TW/wuto, etc.
-  const localeSimple = pathname.match(/^\/(en|zh-TW)\/(about|wuto|operations)\/?$/);
+  const localeSimple = pathname.match(/^\/(en|zh-TW)\/(about|wuto|operations|privacy)\/?$/);
   if (localeSimple) {
     return { locale: localeSimple[1] as Locale, baseId: localeSimple[2], availableLocales: ["ja", "en", "zh-TW"], route: "simple-page" };
   }
   // /about, /wuto, /operations (Japanese)
-  const jaSimple = pathname.match(/^\/(about|wuto|operations)\/?$/);
+  const jaSimple = pathname.match(/^\/(about|wuto|operations|privacy)\/?$/);
   if (jaSimple) {
     return { locale: "ja", baseId: jaSimple[1], availableLocales: ["ja", "en", "zh-TW"], route: "simple-page" };
   }
