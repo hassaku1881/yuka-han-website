@@ -113,7 +113,7 @@ const sections: { heading: string; body: string | string[] }[] = [
 export default function PrivacyPage() {
   return (
     <main style={{ paddingTop: "80px", paddingBottom: "8rem", minHeight: "100vh" }}>
-      <div style={{ maxWidth: "760px", margin: "0 auto", padding: "4rem 8% 0" }}>
+      <div style={{ maxWidth: "900px", margin: "0 auto", padding: "4rem 8% 0" }}>
         <p style={{
           fontFamily: "var(--font-en)",
           fontSize: "0.75rem",
