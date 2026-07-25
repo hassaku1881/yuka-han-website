@@ -5,7 +5,7 @@ import { CheckCircle2, MapPin, Building, BarChart3, Compass, ArrowRight, FileTex
 export const metadata: Metadata = {
   title: "民泊運営代行 | Yuka-Han & Co.",
   description:
-    "東京の東エリアを中心とした民泊運営代行。Airbnb運営11年、ホテル・大規模宿泊施設の開発経験を背景に、運営代行と収益改善を提供します。",
+    "東京の東エリアを中心とした民泊運営代行。Airbnb運営12年、ホテル・大規模宿泊施設の開発経験を背景に、運営代行と収益改善を提供します。",
 };
 
 const sectionLabel: React.CSSProperties = {
@@ -59,7 +59,7 @@ export default function OperationsPage() {
             民泊運営代行
           </h1>
           <p style={{ fontSize: "1rem", fontWeight: 300, opacity: 0.92, lineHeight: 1.95, marginBottom: "1rem" }}>
-            Airbnb運営11年、ホテル・大規模宿泊施設の開発経験を背景に、
+            Airbnb運営12年、ホテル・大規模宿泊施設の開発経験を背景に、
             <br />
             民泊の運営代行と収益改善を提供します。
           </p>
@@ -132,7 +132,7 @@ export default function OperationsPage() {
           {[
             {
               icon: <BarChart3 size={28} strokeWidth={1.5} />,
-              title: "Airbnb運営11年の実績",
+              title: "Airbnb運営12年の実績",
               body: "Airbnb日本展開の黎明期から現在の調整局面まで、市況の浮き沈みを経験してきました。短期の波に振り回されず、変化に対応した運営判断ができる蓄積があります。",
             },
             {

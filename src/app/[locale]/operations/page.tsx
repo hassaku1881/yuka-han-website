@@ -91,12 +91,12 @@ const t: Record<SupportedLocale, {
     meta: {
       title: "Vacation Rental Management | Yuka-Han & Co.",
       description:
-        "Tokyo vacation rental management services. Backed by 11 years of Airbnb hosting and hotel development experience, we handle everything from operations management to revenue optimization.",
+        "Tokyo vacation rental management services. Backed by 12 years of Airbnb hosting and hotel development experience, we handle everything from operations management to revenue optimization.",
     },
     hero: {
       label: "MINPAKU OPERATIONS",
       headline: "Vacation Rental\nManagement",
-      sub: "Backed by 11 years of Airbnb hosting and hotel development experience,\nwe handle everything from operations management to revenue optimization.",
+      sub: "Backed by 12 years of Airbnb hosting and hotel development experience,\nwe handle everything from operations management to revenue optimization.",
       area: "Primarily serving Tokyo's east area (Katsushika, Sumida, Koto, Adachi, Edogawa, and more)",
     },
     challenges: {
@@ -313,12 +313,12 @@ const t: Record<SupportedLocale, {
     meta: {
       title: "民宿代營運 | 株式会社ユカハン",
       description:
-        "東京民宿代營運服務。憑藉11年的Airbnb運營經驗及飯店開發背景，提供從代營運到收益改善的一站式服務。",
+        "東京民宿代營運服務。憑藉12年的Airbnb運營經驗及飯店開發背景，提供從代營運到收益改善的一站式服務。",
     },
     hero: {
       label: "MINPAKU OPERATIONS",
       headline: "民宿\n代營運服務",
-      sub: "憑藉11年的Airbnb運營經驗及飯店・大型住宿設施的開發背景，\n提供從代營運到收益改善的全方位服務。",
+      sub: "憑藉12年的Airbnb運營經驗及飯店・大型住宿設施的開發背景，\n提供從代營運到收益改善的全方位服務。",
       area: "以東京東部地區（葛飾・墨田・江東・足立・江戶川等）為中心提供服務",
     },
     challenges: {
@@ -341,7 +341,7 @@ const t: Record<SupportedLocale, {
       heading: "選擇Yuka-Han的理由",
       items: [
         {
-          title: "11年的Airbnb運營實績",
+          title: "12年的Airbnb運營實績",
           body: "從Airbnb在日本展開初期至今日的調整期，我們經歷了市況的起伏波動。積累了豐富的運營決策經驗，能夠不被短期波動左右，靈活應對市場變化。",
         },
         {
