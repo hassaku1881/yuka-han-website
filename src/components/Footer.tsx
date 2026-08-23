@@ -13,6 +13,8 @@ const t: Record<
     companyLines: string[];
     business: LinkDef[];
     company: LinkDef[];
+    /** 「STUDIOウト」の後ろに付ける補足。アンカーテキスト本体は全ロケール固定 */
+    studioSuffix: string;
   }
 > = {
   ja: {
@@ -28,6 +30,7 @@ const t: Record<
       { path: "/contact", label: "お問い合わせ", localized: true },
       { path: "/privacy", label: "プライバシーポリシー", localized: true },
     ],
+    studioSuffix: "（撮影スタジオ）",
   },
   en: {
     companyLines: ["Yuka-Han & Co.", "2-5-21 Ohanajaya, Katsushika-ku", "Tokyo 124-0003, Japan"],
@@ -42,6 +45,7 @@ const t: Record<
       { path: "/contact", label: "Contact", localized: true },
       { path: "/privacy", label: "Privacy Policy", localized: true },
     ],
+    studioSuffix: " (Photo Studio)",
   },
   "zh-TW": {
     companyLines: ["株式会社ユカハン（Yuka-Han & Co.）", "〒124-0003", "東京都葛飾區お花茶屋2-5-21"],
@@ -56,6 +60,7 @@ const t: Record<
       { path: "/contact", label: "聯絡我們", localized: true },
       { path: "/privacy", label: "隱私權政策", localized: true },
     ],
+    studioSuffix: "（攝影棚）",
   },
 };
 
@@ -107,6 +112,10 @@ export default function Footer() {
               {link.label}
             </Link>
           ))}
+          {/* 撮影スタジオ（外部サブドメイン・全ロケール共通で固定URL） */}
+          <a href="https://studio.yuka-han.com/wuto" className="footer-nav-link">
+            STUDIOウト{content.studioSuffix}
+          </a>
         </div>
 
         <div>

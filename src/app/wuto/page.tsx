@@ -398,9 +398,21 @@ export default function WutoPage() {
                   )}
                 </div>
 
-                <p style={{ fontSize: "0.93rem", lineHeight: 2, color: "var(--color-text-light)", marginBottom: "1.6rem" }}>
+                <p style={{ fontSize: "0.93rem", lineHeight: 2, color: "var(--color-text-light)", marginBottom: prop.id === "ohanajaya-2f" ? "0.6rem" : "1.6rem" }}>
                   {prop.description}
                 </p>
+                {prop.id === "ohanajaya-2f" && (
+                  <p style={{ fontSize: "0.82rem", lineHeight: 1.9, color: "var(--color-text-light)", marginBottom: "1.6rem" }}>
+                    この建物は撮影スタジオ「
+                    <a
+                      href="https://studio.yuka-han.com/wuto"
+                      style={{ color: "var(--color-accent)", textDecoration: "underline" }}
+                    >
+                      STUDIOウト
+                    </a>
+                    」としてもご利用いただけます。
+                  </p>
+                )}
 
                 <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "2rem" }}>
                   {prop.features.map((feat) => (
