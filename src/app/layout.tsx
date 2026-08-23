@@ -74,20 +74,51 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
+              "@id": `${BASE_URL}/#organization`,
               name: "株式会社ユカハン",
-              alternateName: "Yuka-Han & Co.",
+              legalName: "株式会社ユカハン",
+              alternateName: ["Yuka-Han & Co.", "ユカハン", "Yuka-Han"],
               url: BASE_URL,
-              logo: `${BASE_URL}/logo.png`,
+              logo: {
+                "@type": "ImageObject",
+                url: `${BASE_URL}/logo.png`,
+                width: 258,
+                height: 61,
+              },
+              image: `${BASE_URL}/og-default.jpg`,
+              description:
+                "東京を中心とした宿泊施設の企画・開発・運用、民泊運営代行、撮影スタジオ運営を行う会社。",
+              foundingDate: "2020-05-01",
+              founders: [
+                { "@type": "Person", name: "范 凱翔", alternateName: "Han Gaisho", jobTitle: "代表取締役" },
+                { "@type": "Person", name: "山本 悠佳", alternateName: "Yuka Yamamoto", jobTitle: "代表取締役" },
+              ],
+              // 国税庁 法人番号
+              taxID: "1011703002545",
+              email: "contact@yuka-han.com",
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "customer service",
-                availableLanguage: ["Japanese"],
+                email: "contact@yuka-han.com",
+                url: `${BASE_URL}/contact`,
+                availableLanguage: ["Japanese", "English", "Chinese"],
               },
               address: {
                 "@type": "PostalAddress",
                 addressCountry: "JP",
+                postalCode: "124-0003",
                 addressRegion: "東京都",
+                addressLocality: "葛飾区",
+                streetAddress: "お花茶屋2-5-21",
               },
+              brand: [
+                { "@type": "Brand", name: "Wuto", url: `${BASE_URL}/wuto` },
+                { "@type": "Brand", name: "STUDIOウト", url: "https://studio.yuka-han.com/wuto" },
+              ],
+              sameAs: [
+                "https://studio.yuka-han.com",
+                "https://www.houjin-bangou.nta.go.jp/henkorireki-johoto.html?selHouzinNo=1011703002545",
+              ],
             }),
           }}
         />
