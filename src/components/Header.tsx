@@ -10,7 +10,7 @@ import { LOCALE_LABELS, TRANSLATED_ARTICLE_BASE_IDS, type Locale } from "@/lib/i
 // ナビラベルはロケール別（運営代行の集客を主目的に、日本語ユーザーには日本語表記）
 const navLinks: { href: string; labels: Record<Locale, string> }[] = [
   { href: "/about", labels: { ja: "私たちについて", en: "About", "zh-TW": "關於我們" } },
-  { href: "/wuto", labels: { ja: "Wuto", en: "Wuto", "zh-TW": "Wuto" } },
+  { href: "/wuto", labels: { ja: "Wutoについて", en: "Wuto", "zh-TW": "Wuto" } },
   { href: "/operations", labels: { ja: "運営代行", en: "Operations", "zh-TW": "民宿營運代行" } },
   { href: "/articles", labels: { ja: "コラム", en: "Articles", "zh-TW": "專欄" } },
   { href: "/contact", labels: { ja: "お問い合わせ", en: "Contact", "zh-TW": "聯絡我們" } },
