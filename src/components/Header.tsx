@@ -7,12 +7,13 @@ import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { LOCALE_LABELS, TRANSLATED_ARTICLE_BASE_IDS, type Locale } from "@/lib/i18n";
 
-const navLinks = [
-  { href: "/about", label: "About" },
-  { href: "/wuto", label: "Wuto" },
-  { href: "/operations", label: "Operations" },
-  { href: "/articles", label: "Articles" },
-  { href: "/contact", label: "Contact" },
+// ナビラベルはロケール別（運営代行の集客を主目的に、日本語ユーザーには日本語表記）
+const navLinks: { href: string; labels: Record<Locale, string> }[] = [
+  { href: "/about", labels: { ja: "私たちについて", en: "About", "zh-TW": "關於我們" } },
+  { href: "/wuto", labels: { ja: "Wuto", en: "Wuto", "zh-TW": "Wuto" } },
+  { href: "/operations", labels: { ja: "運営代行", en: "Operations", "zh-TW": "民宿營運代行" } },
+  { href: "/articles", labels: { ja: "コラム", en: "Articles", "zh-TW": "專欄" } },
+  { href: "/contact", labels: { ja: "お問い合わせ", en: "Contact", "zh-TW": "聯絡我們" } },
 ];
 
 const locales: Locale[] = ["ja", "en", "zh-TW"];
@@ -220,7 +221,7 @@ export default function Header() {
                 className={`header-nav-link ${scrolled ? "header-nav-link-scrolled" : "header-nav-link-top"}`}
                 style={{ color: textColor }}
               >
-                {link.label}
+                {link.labels[currentLocale]}
               </Link>
             );
           })}
@@ -273,6 +274,9 @@ export default function Header() {
           >
             {navLinks.map((link) => {
               const href = currentLocale === "ja" ? link.href : `/${currentLocale}${link.href}`;
+              const label = link.labels[currentLocale];
+              // 和文・中文ラベルに欧文セリフ体（Cormorant）を当てない
+              const isLatin = /^[\x20-\x7e]+$/.test(label);
               return (
               <Link
                 key={link.href}
@@ -281,9 +285,9 @@ export default function Header() {
                 style={{
                   textDecoration: "none",
                   color: "var(--color-primary)",
-                  fontSize: "1.4rem",
+                  fontSize: isLatin ? "1.4rem" : "1.2rem",
                   fontWeight: 400,
-                  fontFamily: "var(--font-en)",
+                  fontFamily: isLatin ? "var(--font-en)" : "inherit",
                   letterSpacing: "0.1em",
                   padding: "1rem 0",
                   width: "100%",
@@ -292,7 +296,7 @@ export default function Header() {
                   transition: "color 0.2s",
                 }}
               >
-                {link.label}
+                {label}
               </Link>
               );
             })}
