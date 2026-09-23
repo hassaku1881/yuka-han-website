@@ -25,6 +25,17 @@ const UI = {
     toAirwork: "Airワークの応募フォームに移動します。",
     applyTo: "応募先",
     mailSubject: "【応募】",
+    employer: "募集者",
+    employerRows: [
+      { label: "名称", value: "株式会社ユカハン" },
+      { label: "所在地", value: "〒124-0003 東京都葛飾区お花茶屋2-5-21" },
+      { label: "連絡先", value: "contact@yuka-han.com" },
+    ],
+    posted: "掲載開始日",
+    updated: "最終更新日",
+    privacy: "ご応募いただいた個人情報は、採用選考および選考に関するご連絡・採否の通知のために使用し、それ以外の目的には使用しません。詳しくは",
+    privacyLink: "プライバシーポリシー",
+    privacyTail: "をご覧ください。",
     categories: JOB_CATEGORY_LABELS,
     occupations: OCCUPATION_LABELS,
   },
@@ -38,6 +49,17 @@ const UI = {
     toAirwork: "You will be taken to our application form on Airwork.",
     applyTo: "Send to",
     mailSubject: "[Application] ",
+    employer: "Hiring company",
+    employerRows: [
+      { label: "Name", value: "Yuka-Han & Co. (株式会社ユカハン)" },
+      { label: "Address", value: "2-5-21 Ohanajaya, Katsushika-ku, Tokyo 124-0003, Japan" },
+      { label: "Contact", value: "contact@yuka-han.com" },
+    ],
+    posted: "Posted",
+    updated: "Last updated",
+    privacy: "The personal information you send us is used only for the selection process and for contacting you about it and its result. See our",
+    privacyLink: "Privacy Policy",
+    privacyTail: ".",
     categories: JOB_CATEGORY_LABELS_EN,
     occupations: OCCUPATION_LABELS_EN,
   },
@@ -45,6 +67,15 @@ const UI = {
 
 const occupationOrder: Occupation[] = ["facility", "support", "sales"];
 const categoryOrder: JobCategory[] = ["part", "contract", "registered"];
+const fmtDate = (d: string, locale: RecruitLocale) =>
+  new Date(`${d}T00:00:00+09:00`).toLocaleDateString(locale === "ja" ? "ja-JP" : "en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "Asia/Tokyo",
+  });
+const privacyPath = (locale: RecruitLocale) => (locale === "ja" ? "/privacy" : `/${locale}/privacy`);
+
 const basePath = (locale: RecruitLocale) => (locale === "ja" ? "/recruit" : `/${locale}/recruit`);
 
 const sharedStyles = `
@@ -128,6 +159,11 @@ export function RecruitList({ locale, jobs, intro }: { locale: RecruitLocale; jo
 
       <section style={{ background: "var(--color-bg)", padding: "4rem 8% 6rem" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          {jobs.length > 0 && (
+            <p style={{ textAlign: "right", fontSize: "0.8rem", color: "var(--color-text-light)", marginBottom: "1.5rem" }}>
+              {ui.updated}：{fmtDate(jobs.map((j) => j.updatedAt).sort().at(-1)!, locale)}
+            </p>
+          )}
           {groups.length === 0 && <p style={{ textAlign: "center", color: "var(--color-text-light)" }}>{ui.empty}</p>}
           {groups.map(({ occ, subs }) => (
             <div key={occ} style={{ marginBottom: "3.5rem" }}>
@@ -240,6 +276,9 @@ export function RecruitDetail({ job, locale }: { job: Job; locale: RecruitLocale
             {c.title}
           </h1>
           <p style={{ fontSize: "0.95rem", color: "var(--color-accent)" }}>{c.wage}</p>
+          <p style={{ fontSize: "0.8rem", color: "var(--color-text-light)", marginTop: "0.8rem" }}>
+            {ui.posted}：{fmtDate(job.datePosted, locale)}　{ui.updated}：{fmtDate(job.updatedAt, locale)}
+          </p>
         </div>
       </section>
 
@@ -268,6 +307,20 @@ export function RecruitDetail({ job, locale }: { job: Job; locale: RecruitLocale
             </div>
           )}
 
+          <div style={{ marginBottom: "2.5rem" }}>
+            <h2 className="recruit-h2">{ui.employer}</h2>
+            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+              <tbody>
+                {ui.employerRows.map((r) => (
+                  <tr key={r.label}>
+                    <th className="recruit-th">{r.label}</th>
+                    <td className="recruit-td">{r.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
           <div style={{ textAlign: "center", paddingTop: "1rem" }}>
             <a
               href={applyHref}
@@ -293,6 +346,9 @@ export function RecruitDetail({ job, locale }: { job: Job; locale: RecruitLocale
                   {ui.applyTo}: contact@yuka-han.com
                 </>
               )}
+            </p>
+            <p style={{ fontSize: "0.75rem", color: "var(--color-text-light)", marginTop: "0.8rem", lineHeight: 1.8, textAlign: "left" }}>
+              {ui.privacy} <Link href={privacyPath(locale)} style={{ color: "var(--color-accent)" }}>{ui.privacyLink}</Link>{ui.privacyTail}
             </p>
           </div>
         </div>

@@ -37,8 +37,9 @@ export type Job = {
   note?: string; // 応募ボタン付近の補足
   applyUrl?: string; // Airワーク等の応募URL（無ければメール応募）
   // JobPosting 構造化データ用
-  employmentType: "PART_TIME" | "CONTRACTOR";
-  datePosted: string;
+  employmentType: "PART_TIME" | "CONTRACTOR" | ("PART_TIME" | "CONTRACTOR")[];
+  datePosted: string; // 自社サイト掲載開始日
+  updatedAt: string; // 最終更新日（条件を変えたら必ず更新）
   remote?: boolean;
   locality?: string; // 例: 葛飾区
   streetAddress?: string;
@@ -67,9 +68,11 @@ export const jobs: Job[] = [
     area: "葛飾エリア",
     wage: "時給1,300円＋日直手当500円/日",
     summary:
-      "葛飾区内の宿泊施設を自転車やバイクで回り、見回りと管理をお願いします。巡回の時間帯は午前か夕方から選べます。ダブルワークやシニアの方も歓迎します。",
+      "葛飾区内の宿泊施設を自転車やバイクで回り、見回りと管理をお願いします。巡回の時間帯は午前か夕方から選べます。ダブルワークや60歳以上の方も歓迎します。",
     facts: [
-      { label: "雇用形態", value: "パート（3か月契約・原則更新／試用期間なし）" },
+      { label: "雇用形態", value: "パート" },
+      { label: "契約期間", value: "3か月（契約更新の可能性あり・原則更新／更新上限なし）" },
+      { label: "試用期間", value: "なし" },
       {
         label: "勤務地",
         value: "葛飾区内の当社運営施設を自転車やバイクで巡回します（集合・解散場所は応相談）",
@@ -87,7 +90,7 @@ export const jobs: Job[] = [
       },
       { label: "休日", value: "週1日（曜日は応相談で、面接時に決めます）" },
       { label: "休憩・時間外労働", value: "休憩なし／時間外労働なし" },
-      { label: "加入保険", value: "雇用保険・労災保険" },
+      { label: "加入保険", value: "雇用保険・労災保険（健康保険・厚生年金は適用なし）" },
       { label: "賞与・昇給", value: "賞与なし／昇給あり" },
       { label: "正社員登用", value: "あり" },
       { label: "通勤手当", value: "なし" },
@@ -107,12 +110,13 @@ export const jobs: Job[] = [
     sections: [
       {
         heading: "仕事内容",
-        text: "葛飾区内にある宿泊施設を自転車やバイクで回り、施設の見回りと管理をお願いします。ダブルワークやシニアの方も歓迎します。\n\n【毎日の巡回・2時間程度】\n・施設の見回りと、スマホでの写真報告\n・共用部の簡単な清掃、ゴミの整理\n\n【その他の作業・週8時間程度／シフト制】\n・新しい施設の開業準備（設置、開梱、清掃）\n・備品や消耗品の買い出しと補充、草取り\n・電球交換など簡単な修繕、業者の立ち会い\n・清掃業者が入ったあとの仕上がり確認",
+        text: "葛飾区内にある宿泊施設を自転車やバイクで回り、施設の見回りと管理をお願いします。ダブルワークや60歳以上の方も歓迎します。\n\n【毎日の巡回・2時間程度】\n・施設の見回りと、スマホでの写真報告\n・共用部の簡単な清掃、ゴミの整理\n\n【その他の作業・週8時間程度／シフト制】\n・新しい施設の開業準備（設置、開梱、清掃）\n・備品や消耗品の買い出しと補充、草取り\n・電球交換など簡単な修繕、業者の立ち会い\n・清掃業者が入ったあとの仕上がり確認",
       },
     ],
     note: "応募は履歴書をメールでお送りください。",
     employmentType: "PART_TIME",
-    datePosted: "2026-09-01",
+    datePosted: "2026-09-23",
+    updatedAt: "2026-09-24",
     locality: "葛飾区",
     streetAddress: "お花茶屋2-5-21",
     hourlyWage: 1300,
@@ -128,7 +132,9 @@ export const jobs: Job[] = [
     summary:
       "週1回・最長15分の見回りで月6,000円。留学生の方も、資格外活動の週28時間の枠をほとんど使わずに働けます。",
     facts: [
-      { label: "雇用形態", value: "パート（3か月契約・原則更新／試用期間なし）" },
+      { label: "雇用形態", value: "パート" },
+      { label: "契約期間", value: "3か月（契約更新の可能性あり・原則更新／更新上限なし）" },
+      { label: "試用期間", value: "なし" },
       { label: "勤務地", value: "東京都新宿区新宿5-11-2（新宿三丁目駅 徒歩3分）" },
       {
         label: "報酬",
@@ -138,9 +144,10 @@ export const jobs: Job[] = [
       { label: "勤務時間", value: "週1日程度・9:00〜20:00の間の1時間程度" },
       { label: "休日", value: "勤務日以外" },
       { label: "休憩・時間外労働", value: "休憩なし／時間外労働なし" },
-      { label: "加入保険", value: "労災保険" },
+      { label: "加入保険", value: "労災保険（雇用保険・健康保険・厚生年金は適用なし）" },
       { label: "通勤手当", value: "なし。徒歩や自転車で通える範囲の方に向いた仕事です" },
       { label: "受動喫煙対策", value: "屋内禁煙" },
+      { label: "変更の範囲", value: "業務内容・就業場所ともに変更なし（転勤なし）" },
       { label: "賞与・昇給", value: "賞与なし／昇給あり" },
       { label: "応募資格", value: "年齢・学歴・経験・資格すべて不問。日本語力は問いません。スマートフォンで写真を撮って送ることができる方" },
       {
@@ -171,7 +178,9 @@ export const jobs: Job[] = [
       summary:
         "One check a week, 15 minutes at most, for ¥6,000 a month. International students can take this job while using almost none of their 28-hour weekly work limit.",
       facts: [
-        { label: "Employment", value: "Part-time (3-month contract, normally renewed / no probation period)" },
+        { label: "Employment", value: "Part-time" },
+        { label: "Contract period", value: "3 months (may be renewed — renewal is the norm / no cap on renewals)" },
+        { label: "Probation period", value: "None" },
         { label: "Location", value: "5-11-2 Shinjuku, Shinjuku-ku, Tokyo (3 min walk from Shinjuku-sanchome Station)" },
         {
           label: "Pay",
@@ -181,9 +190,10 @@ export const jobs: Job[] = [
         { label: "Hours", value: "About 1 day a week, around 1 hour between 9:00 and 20:00" },
         { label: "Days off", value: "Any day other than your working day" },
         { label: "Breaks / overtime", value: "No breaks / No overtime" },
-        { label: "Insurance", value: "Workers' accident compensation insurance" },
+        { label: "Insurance", value: "Workers' accident compensation insurance (employment insurance, health insurance and employees' pension do not apply)" },
         { label: "Commuting allowance", value: "Not provided. This job suits people who can walk or cycle to the site." },
         { label: "Smoking", value: "No smoking indoors" },
+        { label: "Scope of changes", value: "No change to duties or workplace (no transfers)" },
         { label: "Bonus / raises", value: "No bonus / Raises available" },
         {
           label: "Requirements",
@@ -207,6 +217,7 @@ export const jobs: Job[] = [
     },
     employmentType: "PART_TIME",
     datePosted: "2026-09-23",
+    updatedAt: "2026-09-24",
     locality: "新宿区",
     streetAddress: "新宿5-11-2",
     hourlyWage: 1300,
@@ -252,7 +263,8 @@ export const jobs: Job[] = [
     ],
     applyUrl: "https://arwrk.net/recruit/hmgi14si0uenqxf/9932023/",
     employmentType: "CONTRACTOR",
-    datePosted: "2026-07-08",
+    datePosted: "2026-09-23",
+    updatedAt: "2026-09-24",
     remote: true,
   },
   {
@@ -268,6 +280,7 @@ export const jobs: Job[] = [
     sections: [],
     employmentType: "CONTRACTOR",
     datePosted: "2026-09-23",
+    updatedAt: "2026-09-24",
   },
 
   // ── 登録スタッフ（業務委託） ─────────────────────────
@@ -317,7 +330,7 @@ export const jobs: Job[] = [
       summary:
         "民泊施設の「困った！」を解決するお仕事。時給ではなく対応1件ごとのお支払いなので、空いた時間の副業に向いています。",
       facts: [
-        { label: "契約形態", value: "業務委託（登録制）" },
+        { label: "契約形態", value: "登録制。登録後にお仕事をご依頼します。単発の作業は業務委託契約、アルバイトのお仕事の場合は別途雇用契約を結びます" },
         { label: "対応エリア", value: `${a.areaDetail}の各施設` },
         {
           label: "報酬",
@@ -351,7 +364,7 @@ export const jobs: Job[] = [
         summary:
           "Help solve problems at vacation rentals. You are paid per job, not by the hour, so it works well as a side job in your free time.",
         facts: [
-          { label: "Contract", value: "Freelance (registered on-call staff)" },
+          { label: "Contract", value: "Registration-based. After you register, we send you jobs. One-off tasks are done under a freelance (service) contract; if a part-time job comes up, we sign a separate employment contract." },
           { label: "Area", value: `Properties in ${a.areaDetailEn}` },
           {
             label: "Pay",
@@ -379,8 +392,9 @@ export const jobs: Job[] = [
         ],
         note: "Feel free to email us first — we will explain the details.",
       },
-      employmentType: "CONTRACTOR",
+      employmentType: ["CONTRACTOR", "PART_TIME"],
       datePosted: "2026-09-23",
+    updatedAt: "2026-09-24",
       locality: a.locality,
     })
   ),

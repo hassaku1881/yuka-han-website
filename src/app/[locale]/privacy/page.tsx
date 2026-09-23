@@ -26,7 +26,7 @@ const t: Record<
     },
     label: "PRIVACY POLICY",
     title: "Privacy Policy",
-    dateLine: "Effective: May 1, 2020　Last updated: July 22, 2026",
+    dateLine: "Effective: May 1, 2020　Last updated: September 24, 2026",
     contactBtn: "Contact",
     sections: [
       {
@@ -58,7 +58,9 @@ const t: Record<
           "・Booking information (check-in and check-out dates, number of guests, estimated arrival and departure times, means of transportation, etc.)",
           "・The guest's name, address, date of birth, nationality, and occupation",
           "・For foreign guests without an address in Japan, passport information and a copy (image) of the passport",
-          "(4) Automatically, when you use this website",
+          "(4) When you apply for a job with us",
+          "・Name, contact details, information in your résumé and other application documents, and information obtained during the selection process",
+          "(5) Automatically, when you use this website",
           "・Cookies, access logs, browsing history, IP address, device and browser information, etc.",
         ],
       },
@@ -74,6 +76,7 @@ const t: Record<
           "・Preparing and retaining the guest register as required by the Inns and Hotels Act",
           "・Communications and guidance regarding your use of the accommodation facility",
           "・Distributing information such as discounts and campaigns for returning guests (email address only)",
+          "・Selection of job applicants, contacting applicants about the selection process, and notifying them of the result (for job applicants)",
           "・Business communications incidental to the above",
         ],
       },
@@ -102,6 +105,8 @@ const t: Record<
           "・Vercel (USA): website hosting",
           "・Google Analytics (Google LLC, USA): access analysis",
           "・Google reCAPTCHA (Google LLC, USA): prevention of fraudulent submissions",
+          "・Google Workspace (Google LLC, USA): sending and receiving email, storing application documents",
+          "・Airワーク Recruitment Management (Recruit Co., Ltd., Japan): receiving and managing applications for some positions",
         ],
       },
       {
@@ -110,7 +115,7 @@ const t: Record<
       },
       {
         heading: "10. Security Measures",
-        body: "The Company takes necessary and appropriate security measures—such as access-rights management, encryption of communications, and monitoring of handling status—to prevent the leakage, loss, or damage of the personal information it collects. In addition, the guest register and copies of passports are retained for three years as required by the Inns and Hotels Act, and are appropriately deleted after the retention period. This information will not be provided to third parties except when requested by an administrative agency in accordance with the law.",
+        body: "The Company takes necessary and appropriate security measures—such as access-rights management, encryption of communications, and monitoring of handling status—to prevent the leakage, loss, or damage of the personal information it collects. In addition, the guest register and copies of passports are retained for three years as required by the Inns and Hotels Act, and are appropriately deleted after the retention period. This information will not be provided to third parties except when requested by an administrative agency in accordance with the law. Personal information of job applicants is not used for any purpose other than selection, and is promptly deleted once it no longer needs to be kept after the selection process ends. We will also delete it upon the applicant's request.",
       },
       {
         heading: "11. Disclosure, Correction, and Suspension of Use",
@@ -138,7 +143,7 @@ const t: Record<
     },
     label: "PRIVACY POLICY",
     title: "隱私權政策",
-    dateLine: "制定日：2020年5月1日　最後更新：2026年7月22日",
+    dateLine: "制定日：2020年5月1日　最後更新：2026年9月24日",
     contactBtn: "聯絡我們",
     sections: [
       {
@@ -170,7 +175,9 @@ const t: Record<
           "・住宿預約相關資訊（入住・退房日期、住宿人數、預計抵達・離開時間、交通方式等）",
           "・住宿者的姓名、地址、出生年月日、國籍、職業",
           "・於日本國內無住所之外國籍住宿者的護照資訊及護照影本（影像）",
-          "（4）使用本網站時（自動取得的資訊）",
+          "（4）應徵本公司職缺時",
+          "・姓名、聯絡方式、履歷等應徵文件所載事項，以及於甄選過程中詢問之事項",
+          "（5）使用本網站時（自動取得的資訊）",
           "・Cookie、存取紀錄、瀏覽紀錄、IP位址、裝置與瀏覽器資訊等",
         ],
       },
@@ -186,6 +193,7 @@ const t: Record<
           "・依旅館業法製作及保管住宿者名簿",
           "・關於宿泊設施使用的聯絡與說明",
           "・寄送回頭客專屬折扣及活動等資訊（僅限電子郵件地址）",
+          "・進行應徵者之甄選、甄選相關聯絡及錄取與否之通知（限應徵者）",
           "・上述各項附帶的業務聯絡",
         ],
       },
@@ -214,6 +222,8 @@ const t: Record<
           "・Vercel（美國）：網站的主機代管",
           "・Google Analytics（Google LLC，美國）：存取分析",
           "・Google reCAPTCHA（Google LLC，美國）：防止不正當的表單送出",
+          "・Google Workspace（Google LLC，美國）：電子郵件的收發、應徵文件等的保管",
+          "・Airワーク 採用管理（株式会社リクルート，日本）：部分職缺的應徵受理與應徵者管理",
         ],
       },
       {
@@ -222,7 +232,7 @@ const t: Record<
       },
       {
         heading: "10. 安全管理措施",
-        body: "本公司為防止所取得個人資訊的外洩、滅失或毀損等，採取存取權限管理、通訊加密、掌握處理狀況等必要且適當的安全管理措施。此外，住宿者名簿及護照影本將依旅館業法保管三年，並於保管期間屆滿後適當刪除。除依法令有行政機關要求的情形外，這些資訊不會提供予第三方。",
+        body: "本公司為防止所取得個人資訊的外洩、滅失或毀損等，採取存取權限管理、通訊加密、掌握處理狀況等必要且適當的安全管理措施。此外，住宿者名簿及護照影本將依旅館業法保管三年，並於保管期間屆滿後適當刪除。除依法令有行政機關要求的情形外，這些資訊不會提供予第三方。應徵者的個人資訊不會用於甄選以外之目的，並於甄選結束後、無保管必要時迅速銷毀或刪除；應徵者本人要求刪除時亦同。",
       },
       {
         heading: "11. 開示・更正・停止利用等的請求",
