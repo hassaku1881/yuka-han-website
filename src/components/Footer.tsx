@@ -18,7 +18,11 @@ const t: Record<
   }
 > = {
   ja: {
-    companyLines: ["株式会社ユカハン", "〒124-0003", "東京都葛飾区お花茶屋2-5-21"],
+    companyLines: [
+      "株式会社ユカハン",
+      "本社：〒124-0003 東京都葛飾区お花茶屋2-5-21",
+      "新宿オフィス：〒160-0022 東京都新宿区新宿1-36-2 新宿第七葉山ビル3F",
+    ],
     business: [
       { path: "/wuto", label: "Wuto", localized: true },
       { path: "/operations", label: "民泊運営代行", localized: true },
@@ -33,7 +37,11 @@ const t: Record<
     studioSuffix: "（撮影スタジオ）",
   },
   en: {
-    companyLines: ["Yuka-Han & Co.", "2-5-21 Ohanajaya, Katsushika-ku", "Tokyo 124-0003, Japan"],
+    companyLines: [
+      "Yuka-Han & Co.",
+      "HQ: 2-5-21 Ohanajaya, Katsushika-ku, Tokyo 124-0003",
+      "Shinjuku Office: Shinjuku Dai-7 Hayama Bldg. 3F, 1-36-2 Shinjuku, Shinjuku-ku, Tokyo 160-0022",
+    ],
     business: [
       { path: "/wuto", label: "Wuto", localized: true },
       { path: "/operations", label: "Operations", localized: true },
@@ -48,7 +56,11 @@ const t: Record<
     studioSuffix: " (Photo Studio)",
   },
   "zh-TW": {
-    companyLines: ["株式会社ユカハン（Yuka-Han & Co.）", "〒124-0003", "東京都葛飾區お花茶屋2-5-21"],
+    companyLines: [
+      "株式会社ユカハン（Yuka-Han & Co.）",
+      "總部：〒124-0003 東京都葛飾區お花茶屋2-5-21",
+      "新宿辦公室：〒160-0022 東京都新宿區新宿1-36-2 新宿第七葉山ビル3F",
+    ],
     business: [
       { path: "/wuto", label: "Wuto", localized: true },
       { path: "/operations", label: "民宿營運代行", localized: true },

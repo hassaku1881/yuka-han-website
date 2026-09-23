@@ -5,7 +5,7 @@ import { CheckCircle2, MapPin, Building, BarChart3, Compass, ArrowRight, FileTex
 export const metadata: Metadata = {
   title: "民泊運営代行 | Yuka-Han & Co.",
   description:
-    "東京の東エリアを中心とした民泊運営代行。Airbnb運営12年、ホテル・大規模宿泊施設の開発経験を背景に、運営代行と収益改善を提供します。",
+    "東京の民泊運営代行。葛飾本社・新宿オフィスの2拠点体制で、東エリアから都心部まで対応。Airbnb運営12年、ホテル・大規模宿泊施設の開発経験を背景に、運営代行と収益改善を提供します。",
 };
 
 const sectionLabel: React.CSSProperties = {
@@ -72,7 +72,7 @@ export default function OperationsPage() {
             letterSpacing: "0.05em",
           }}>
             <MapPin size={13} />
-            東京の東エリア（葛飾・墨田・江東・足立・江戸川 ほか）を中心に対応
+            東京の東エリア（葛飾・墨田・江東・足立・江戸川 ほか）を中心に、都心部の物件にも対応
           </p>
         </div>
       </section>
@@ -148,8 +148,8 @@ export default function OperationsPage() {
             },
             {
               icon: <MapPin size={28} strokeWidth={1.5} />,
-              title: "東京の東エリアに拠点を置く強み",
-              body: "本社は葛飾区。成田・羽田の両空港、都心へのアクセスが良く、下町情緒と暮らしのリアリティが残るインバウンド人気エリアです。地元ならではのお店紹介や、現場での迅速な対応も含めてサポートします。",
+              title: "葛飾本社＋新宿オフィスの2拠点体制",
+              body: "本社は葛飾区、都心側の窓口として新宿オフィスを構えています。成田・羽田の両空港へのアクセスが良い東エリアの土地勘に加え、都心部の物件にも機動的に対応。地元ならではのお店紹介や、現場での迅速な駆けつけも含めてサポートします。お打ち合わせは新宿オフィスでも可能です。",
             },
           ].map((item) => (
             <div key={item.title} style={{

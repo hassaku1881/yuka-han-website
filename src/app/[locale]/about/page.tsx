@@ -121,9 +121,17 @@ const t: Record<
     companyInfoTitle: "Company Info",
     companyRows: [
       { label: "Company Name", value: "株式会社ユカハン" },
-      { label: "English Name", value: "Yuka-Han & Co., Ltd." },
+      { label: "English Name", value: "Yuka-Han & Co." },
       { label: "Founded", value: "May 1, 2020" },
-      { label: "Address", value: "2-5-21 Ohanajaya, Katsushika-ku, Tokyo, Japan" },
+      {
+        label: "Address",
+        value: (
+          <>
+            HQ: 2-5-21 Ohanajaya, Katsushika-ku, Tokyo, Japan<br />
+            Shinjuku Office: Shinjuku Dai-7 Hayama Bldg. 3F, 1-36-2 Shinjuku, Shinjuku-ku, Tokyo, Japan
+          </>
+        ),
+      },
       { label: "Capital", value: "¥30,000,000" },
       {
         label: "Directors",
@@ -244,9 +252,17 @@ const t: Record<
     companyInfoTitle: "公司概要",
     companyRows: [
       { label: "公司名稱", value: "株式会社ユカハン" },
-      { label: "英文名稱", value: "Yuka-Han & Co., Ltd." },
+      { label: "英文名稱", value: "Yuka-Han & Co." },
       { label: "成立日期", value: "2020年5月1日" },
-      { label: "所在地", value: "東京都葛飾區御花茶屋2-5-21" },
+      {
+        label: "所在地",
+        value: (
+          <>
+            總部：東京都葛飾區お花茶屋2-5-21<br />
+            新宿辦公室：東京都新宿區新宿1-36-2 新宿第七葉山ビル3F
+          </>
+        ),
+      },
       { label: "資本金", value: "3,000萬日圓" },
       {
         label: "代表人",

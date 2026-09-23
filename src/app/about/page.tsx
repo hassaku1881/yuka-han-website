@@ -304,7 +304,15 @@ export default function AboutPage() {
                 { label: "社名", value: "株式会社ユカハン" },
                 { label: "英文社名", value: "Yuka-Han & Co." },
                 { label: "設立", value: "2020年5月1日" },
-                { label: "所在地", value: "東京都葛飾区お花茶屋2-5-21" },
+                {
+                  label: "所在地",
+                  value: (
+                    <>
+                      本社：東京都葛飾区お花茶屋2-5-21<br />
+                      新宿オフィス：東京都新宿区新宿1-36-2 新宿第七葉山ビル3F
+                    </>
+                  ),
+                },
                 { label: "資本金", value: "3,000万円" },
                 {
                   label: "代表者",

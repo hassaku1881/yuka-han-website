@@ -111,6 +111,32 @@ export default function RootLayout({
                 addressLocality: "葛飾区",
                 streetAddress: "お花茶屋2-5-21",
               },
+              location: [
+                {
+                  "@type": "Place",
+                  name: "本社",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressCountry: "JP",
+                    postalCode: "124-0003",
+                    addressRegion: "東京都",
+                    addressLocality: "葛飾区",
+                    streetAddress: "お花茶屋2-5-21",
+                  },
+                },
+                {
+                  "@type": "Place",
+                  name: "新宿オフィス",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressCountry: "JP",
+                    postalCode: "160-0022",
+                    addressRegion: "東京都",
+                    addressLocality: "新宿区",
+                    streetAddress: "新宿1-36-2 新宿第七葉山ビル3F",
+                  },
+                },
+              ],
               brand: [
                 { "@type": "Brand", name: "Wuto", url: `${BASE_URL}/wuto` },
                 { "@type": "Brand", name: "STUDIOウト", url: "https://studio.yuka-han.com/wuto" },

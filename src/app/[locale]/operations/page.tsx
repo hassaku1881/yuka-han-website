@@ -97,7 +97,7 @@ const t: Record<SupportedLocale, {
       label: "MINPAKU OPERATIONS",
       headline: "Vacation Rental\nManagement",
       sub: "Backed by 12 years of Airbnb hosting and hotel development experience,\nwe handle everything from operations management to revenue optimization.",
-      area: "Primarily serving Tokyo's east area (Katsushika, Sumida, Koto, Adachi, Edogawa, and more)",
+      area: "Primarily serving Tokyo's east area (Katsushika, Sumida, Koto, Adachi, Edogawa, and more) — central Tokyo properties also covered",
     },
     challenges: {
       heading: "Does any of this sound familiar?",
@@ -132,8 +132,8 @@ const t: Record<SupportedLocale, {
           note: "OCC: Occupancy Rate / LOS: Length of Stay / ADR: Average Daily Rate / GOP: Gross Operating Profit / OTA: Booking platforms such as Airbnb and Booking.com",
         },
         {
-          title: "Based in Tokyo's East — Our Home Turf Advantage",
-          body: "Our headquarters is in Katsushika. Excellent access to both Narita and Haneda airports and central Tokyo, in an area beloved by inbound visitors for its shitamachi atmosphere and authentic local life. We support you with neighborhood recommendations and rapid on-site response.",
+          title: "Two Tokyo Bases — Katsushika HQ & Shinjuku Office",
+          body: "Our headquarters is in Katsushika, with a Shinjuku office as our central-Tokyo base. Deep local knowledge of the east side — with excellent access to both Narita and Haneda — combined with rapid response for properties in central Tokyo. We support you with neighborhood recommendations and quick on-site action, and meetings at our Shinjuku office are welcome.",
         },
       ],
     },
@@ -319,7 +319,7 @@ const t: Record<SupportedLocale, {
       label: "MINPAKU OPERATIONS",
       headline: "民宿\n代營運服務",
       sub: "憑藉12年的Airbnb運營經驗及飯店・大型住宿設施的開發背景，\n提供從代營運到收益改善的全方位服務。",
-      area: "以東京東部地區（葛飾・墨田・江東・足立・江戶川等）為中心提供服務",
+      area: "以東京東部地區（葛飾・墨田・江東・足立・江戶川等）為中心，市中心物件亦可對應",
     },
     challenges: {
       heading: "您是否有以下煩惱？",
@@ -354,8 +354,8 @@ const t: Record<SupportedLocale, {
           note: "OCC：入住率／LOS：平均住宿天數／ADR：每晚平均銷售單價／GOP：運營產生的利潤／OTA：Airbnb、Booking.com等預訂平台。",
         },
         {
-          title: "紮根東京東部的在地優勢",
-          body: "總部位於葛飾區。交通方便，可達成田・羽田兩大機場及市中心，同時是保有下町情懷與真實生活氣息的入境旅遊熱門地區。提供在地化的店家推薦，以及現場快速回應的全面支援。",
+          title: "葛飾總部＋新宿辦公室的雙據點體制",
+          body: "總部位於葛飾區，並於新宿設有辦公室作為市中心據點。兼具可達成田・羽田兩大機場的東部在地優勢，與市中心物件的機動應對能力。提供在地化的店家推薦與現場快速回應，亦歡迎於新宿辦公室洽談。",
         },
       ],
     },
