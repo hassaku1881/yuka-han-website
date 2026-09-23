@@ -86,9 +86,13 @@ export const jobs: Job[] = [
           "シフト制・週6日程度。巡回は (1) 9:00〜13:00 か (2) 16:00〜20:00 のいずれかを選んで固定し、1日2〜3時間。その他の作業はシフト制で時間は応相談。1日の労働時間は2〜6時間程度",
       },
       { label: "休日", value: "週1日（曜日は応相談で、面接時に決めます）" },
+      { label: "休憩・時間外労働", value: "休憩なし／時間外労働なし" },
+      { label: "加入保険", value: "雇用保険・労災保険" },
       { label: "賞与・昇給", value: "賞与なし／昇給あり" },
       { label: "正社員登用", value: "あり" },
       { label: "通勤手当", value: "なし" },
+      { label: "受動喫煙対策", value: "屋内禁煙" },
+      { label: "変更の範囲", value: "業務内容・就業場所ともに変更なし（転勤なし）" },
       {
         label: "応募資格",
         value:
@@ -132,7 +136,11 @@ export const jobs: Job[] = [
           "巡回手当 月6,000円（週1回・最長15分の見回り）／時給1,300円（見回り以外の作業・1分単位）／緊急駆けつけ 1回3,000円＋時給（深夜は割増）",
       },
       { label: "勤務時間", value: "週1日程度・9:00〜20:00の間の1時間程度" },
+      { label: "休日", value: "勤務日以外" },
+      { label: "休憩・時間外労働", value: "休憩なし／時間外労働なし" },
+      { label: "加入保険", value: "労災保険" },
       { label: "通勤手当", value: "なし。徒歩や自転車で通える範囲の方に向いた仕事です" },
+      { label: "受動喫煙対策", value: "屋内禁煙" },
       { label: "賞与・昇給", value: "賞与なし／昇給あり" },
       { label: "応募資格", value: "年齢・学歴・経験・資格すべて不問。日本語力は問いません。スマートフォンで写真を撮って送ることができる方" },
       {
@@ -171,7 +179,11 @@ export const jobs: Job[] = [
             "Patrol allowance ¥6,000/month (one weekly check, up to 15 min) / ¥1,300 per hour for other tasks (paid by the minute) / Emergency call-out ¥3,000 per visit + hourly pay (late-night premium applies)",
         },
         { label: "Hours", value: "About 1 day a week, around 1 hour between 9:00 and 20:00" },
+        { label: "Days off", value: "Any day other than your working day" },
+        { label: "Breaks / overtime", value: "No breaks / No overtime" },
+        { label: "Insurance", value: "Workers' accident compensation insurance" },
         { label: "Commuting allowance", value: "Not provided. This job suits people who can walk or cycle to the site." },
+        { label: "Smoking", value: "No smoking indoors" },
         { label: "Bonus / raises", value: "No bonus / Raises available" },
         {
           label: "Requirements",
