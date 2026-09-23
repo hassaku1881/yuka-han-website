@@ -86,8 +86,6 @@ export const jobs: Job[] = [
           "シフト制・週6日程度。巡回は (1) 9:00〜13:00 か (2) 16:00〜20:00 のいずれかを選んで固定し、1日2〜3時間。その他の作業はシフト制で時間は応相談。1日の労働時間は2〜6時間程度",
       },
       { label: "休日", value: "週1日（曜日は応相談で、面接時に決めます）" },
-      { label: "年次有給休暇", value: "6か月経過後 10日" },
-      { label: "加入保険", value: "各種保険は採用後に加入" },
       { label: "賞与・昇給", value: "賞与なし／昇給あり" },
       { label: "正社員登用", value: "あり" },
       { label: "通勤手当", value: "なし" },
@@ -99,11 +97,7 @@ export const jobs: Job[] = [
       {
         label: "選考",
         value:
-          "面接1回のあと、有給の体験勤務（2回）を行い、双方合意のうえ採用を決定します。結果は面接後7日以内にメールでお知らせします。履歴書は不要です",
-      },
-      {
-        label: "体験勤務",
-        value: "1回2時間（休憩なし）・日額2,600円（交通費なし）。開始時刻は10:00〜17:00の間で応相談。場所は葛飾区内の施設のいずれか（面接時にご説明します）",
+          "書類選考（履歴書）→ 面接。結果は面接後7日以内にメールでお知らせします",
       },
     ],
     sections: [
@@ -112,7 +106,7 @@ export const jobs: Job[] = [
         text: "葛飾区内にある宿泊施設を自転車やバイクで回り、施設の見回りと管理をお願いします。ダブルワークやシニアの方も歓迎します。\n\n【毎日の巡回・2時間程度】\n・施設の見回りと、スマホでの写真報告\n・共用部の簡単な清掃、ゴミの整理\n\n【その他の作業・週8時間程度／シフト制】\n・新しい施設の開業準備（設置、開梱、清掃）\n・備品や消耗品の買い出しと補充、草取り\n・電球交換など簡単な修繕、業者の立ち会い\n・清掃業者が入ったあとの仕上がり確認",
       },
     ],
-    note: "まずはメールでお気軽にご連絡ください（履歴書は不要です）。",
+    note: "応募は履歴書をメールでお送りください。",
     employmentType: "PART_TIME",
     datePosted: "2026-09-01",
     locality: "葛飾区",
@@ -137,17 +131,13 @@ export const jobs: Job[] = [
         value:
           "巡回手当 月6,000円（週1回・最長15分の見回り）／時給1,300円（見回り以外の作業・1分単位）／緊急駆けつけ 1回3,000円＋時給（深夜は割増）",
       },
-      { label: "収入の目安", value: "見回りだけの月 6,000円／軽作業が入った月 1万円前後" },
       { label: "勤務時間", value: "週1日程度・9:00〜20:00の間の1時間程度" },
-      { label: "休日", value: "勤務日以外" },
-      { label: "年次有給休暇", value: "6か月経過後 1日" },
       { label: "通勤手当", value: "なし。徒歩や自転車で通える範囲の方に向いた仕事です" },
-      { label: "加入保険", value: "労災保険" },
       { label: "賞与・昇給", value: "賞与なし／昇給あり" },
       { label: "応募資格", value: "年齢・学歴・経験・資格すべて不問。日本語力は問いません。スマートフォンで写真を撮って送ることができる方" },
       {
         label: "選考",
-        value: "面接1回（オンライン可）。履歴書（写真貼付）をご用意ください。結果は面接後7日以内にメールでお知らせします",
+        value: "書類選考（履歴書・写真貼付）→ 面接（オンライン可）。結果は面接後7日以内にメールでお知らせします",
       },
       { label: "採用人数", value: "1名" },
     ],
@@ -180,19 +170,15 @@ export const jobs: Job[] = [
           value:
             "Patrol allowance ¥6,000/month (one weekly check, up to 15 min) / ¥1,300 per hour for other tasks (paid by the minute) / Emergency call-out ¥3,000 per visit + hourly pay (late-night premium applies)",
         },
-        { label: "Expected income", value: "¥6,000 in months with patrols only / around ¥10,000 in months with extra tasks" },
         { label: "Hours", value: "About 1 day a week, around 1 hour between 9:00 and 20:00" },
-        { label: "Days off", value: "Any day you are not scheduled" },
-        { label: "Paid leave", value: "1 day after 6 months" },
         { label: "Commuting allowance", value: "Not provided. This job suits people who can walk or cycle to the site." },
-        { label: "Insurance", value: "Workers' accident compensation insurance" },
         { label: "Bonus / raises", value: "No bonus / Raises available" },
         {
           label: "Requirements",
           value:
             "No requirements for age, education, experience, or qualifications. Japanese language ability is not required. You need to be able to take and send photos with a smartphone.",
         },
-        { label: "Selection", value: "One interview (online OK). Please prepare a résumé with a photo. We will email you the result within 7 days of the interview." },
+        { label: "Selection", value: "Document screening (résumé with a photo) → interview (online OK). We will email you the result within 7 days of the interview." },
         { label: "Openings", value: "1" },
       ],
       sections: [
@@ -328,6 +314,7 @@ export const jobs: Job[] = [
         },
         { label: "支払い", value: "日払い（翌営業日振り込み）" },
         { label: "勤務時間", value: "決まった勤務時間はありません。対応が必要になったときのみ" },
+        { label: "選考", value: "書類選考 → 面接" },
         {
           label: "応募資格",
           value:
@@ -361,6 +348,7 @@ export const jobs: Job[] = [
           },
           { label: "Payment", value: "Paid daily (transferred the next business day)" },
           { label: "Hours", value: "No fixed hours — only when a job comes up" },
+          { label: "Selection", value: "Document screening → interview" },
           {
             label: "Requirements",
             value:
