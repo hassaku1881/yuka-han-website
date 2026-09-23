@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { LOCALE_LABELS, TRANSLATED_ARTICLE_BASE_IDS, type Locale } from "@/lib/i18n";
+import { publishedJobsEn } from "@/lib/jobs";
 
 // ナビラベルはロケール別（運営代行の集客を主目的に、日本語ユーザーには日本語表記）
 const navLinks: { href: string; labels: Record<Locale, string> }[] = [
@@ -18,7 +19,7 @@ const navLinks: { href: string; labels: Record<Locale, string> }[] = [
 
 const locales: Locale[] = ["ja", "en", "zh-TW"];
 
-type RouteKind = "article-detail" | "articles-list" | "contact" | "simple-page" | "home" | "other";
+type RouteKind = "article-detail" | "articles-list" | "contact" | "simple-page" | "recruit" | "home" | "other";
 
 
 /** Parses pathname to determine current locale and which locales have a page here */
@@ -77,6 +78,18 @@ function parseLocaleContext(pathname: string): {
   if (pathname === "/") {
     return { locale: "ja", baseId: null, availableLocales: ["ja", "en", "zh-TW"], route: "home" };
   }
+  // /recruit, /recruit/id, /en/recruit, /en/recruit/id — 英語版は日本語不要の求人のみ
+  const recruit = pathname.match(/^(?:\/(en))?\/recruit(?:\/([^/]+))?\/?$/);
+  if (recruit) {
+    const jobId = recruit[2] ?? null;
+    const hasEn = jobId === null || publishedJobsEn.some((j) => j.id === jobId);
+    return {
+      locale: (recruit[1] ?? "ja") as Locale,
+      baseId: jobId,
+      availableLocales: hasEn ? ["ja", "en"] : ["ja"],
+      route: "recruit",
+    };
+  }
   // Other pages (/about, /wuto, /operations, etc.) — JA only
   return { locale: "ja", baseId: null, availableLocales: ["ja"], route: "other" };
 }
@@ -110,6 +123,9 @@ export default function Header() {
       router.push(newLocale === "ja" ? "/articles" : `/${newLocale}/articles`);
     } else if (route === "contact") {
       router.push(newLocale === "ja" ? "/contact" : `/${newLocale}/contact`);
+    } else if (route === "recruit") {
+      const path = baseId ? `/recruit/${baseId}` : "/recruit";
+      router.push(newLocale === "ja" ? path : `/${newLocale}${path}`);
     } else if (route === "simple-page" && baseId) {
       router.push(newLocale === "ja" ? `/${baseId}` : `/${newLocale}/${baseId}`);
     } else {

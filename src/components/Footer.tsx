@@ -52,7 +52,7 @@ const t: Record<
       { path: "/about", label: "About", localized: true },
       { path: "/news", label: "News", localized: false },
       { path: "/contact", label: "Contact", localized: true },
-      { path: "/recruit", label: "Careers", localized: false },
+      { path: "/recruit", label: "Careers", localized: true },
       { path: "/privacy", label: "Privacy Policy", localized: true },
     ],
     studioSuffix: " (Photo Studio)",

@@ -28,6 +28,17 @@ export type Job = {
   locality?: string; // 例: 葛飾区
   streetAddress?: string;
   hourlyWage?: number; // 時給ベースの場合のみ
+  en?: JobContent; // 英語版（日本語が必須でない求人のみ）
+};
+
+export type JobContent = Pick<Job, "title" | "area" | "wage" | "summary" | "facts" | "sections" | "note">;
+
+export type RecruitLocale = "ja" | "en";
+
+export const JOB_CATEGORY_LABELS_EN: Record<JobCategory, string> = {
+  part: "Part-time",
+  contract: "Freelance / Contract",
+  registered: "Registered Staff",
 };
 
 export const jobs: Job[] = [
@@ -94,7 +105,7 @@ export const jobs: Job[] = [
       { label: "通勤手当", value: "支給はありません。徒歩や自転車で通える範囲の方に向いた仕事です" },
       { label: "加入保険", value: "労災保険" },
       { label: "賞与・昇給", value: "賞与なし／昇給あり（業務量の変更に応じて手当を見直し）" },
-      { label: "応募資格", value: "年齢・学歴・経験・資格すべて不問。スマートフォンで写真の撮影・送信ができる方" },
+      { label: "応募資格", value: "年齢・学歴・経験・資格すべて不問。日本語力は問いません。スマートフォンで写真の撮影・送信ができる方" },
       { label: "選考", value: "書類選考＋面接1回（オンライン可）。履歴書をご用意ください" },
       { label: "採用人数", value: "1名" },
     ],
@@ -113,6 +124,45 @@ export const jobs: Job[] = [
       },
     ],
     note: "応募は履歴書（写真貼付なし）をメールでお送りください。ハローワークからの紹介でも応募できます。",
+    en: {
+      title: "Property Check & Maintenance Staff",
+      area: "Shinjuku (4 min walk from Shinjuku-sanchome Sta.)",
+      wage: "¥6,000/month patrol allowance + ¥1,300/hour for other tasks",
+      summary:
+        "One check a week, 15 minutes at most, for ¥6,000 a month. International students can take this job while using almost none of their 28-hour weekly work limit.",
+      facts: [
+        { label: "Employment", value: "Part-time (3-month contract, normally renewed / no probation period)" },
+        { label: "Location", value: "5-11-2 Shinjuku, Shinjuku-ku, Tokyo (4 min walk from Shinjuku-sanchome Station)" },
+        {
+          label: "Pay",
+          value:
+            "Patrol allowance ¥6,000/month (one weekly check, up to 15 min) / ¥1,300 per hour for other tasks (paid by the minute) / Emergency call-out ¥3,000 per visit + hourly pay (late-night premium applies)",
+        },
+        { label: "Expected income", value: "¥6,000 in months with patrols only / around ¥10,000 in months with extra tasks" },
+        { label: "Hours", value: "Between 9:00 and 20:00 (day and time fixed by mutual agreement)" },
+        { label: "Commuting allowance", value: "Not provided. This job suits people who can walk or cycle to the site." },
+        { label: "Insurance", value: "Workers' accident compensation insurance" },
+        { label: "Bonus / raises", value: "No bonus / Raises available (allowance reviewed as the workload changes)" },
+        {
+          label: "Requirements",
+          value:
+            "No requirements for age, education, experience, or qualifications. Japanese language ability is not required. You need to be able to take and send photos with a smartphone.",
+        },
+        { label: "Selection", value: "Document screening + one interview (online OK). Please prepare a résumé." },
+        { label: "Openings", value: "1" },
+      ],
+      sections: [
+        {
+          heading: "Job description",
+          text: "Check on and look after one apartment building (5 units), a 4-minute walk from Shinjuku-sanchome Station. The units are on floors 1–3 and there is no elevator (stairs only).\n\n[Weekly check — once a week, 15 minutes at most]\n・Check the entrance and the garbage area\n・Light cleaning of shared areas\n・Check and collect the mail\n・Take photos with your smartphone and send a completion report\nIt can take just a few minutes. Your allowance stays the same even when it is quick.\n\n[Other tasks — occasional, ¥1,300/hour, paid by the minute]\n・Cleaning inside guest rooms, weeding\n・Buying and restocking supplies\n・Replacing light bulbs and batteries, simple assembly\n・Being present for construction work or equipment inspections (weekday daytime)\n\n[Emergency call-outs]\nWe may ask you to go to the site when there is trouble. You receive ¥3,000 per visit plus hourly pay, with a late-night premium. If you are not available, another staff member will handle it.",
+        },
+        {
+          heading: "For international students",
+          text: "The weekly check takes about 15 minutes — less than 1% of the 28 hours a week you are allowed to work. You can easily combine it with another part-time job. You need permission to engage in activities outside your status of residence (shown on the back of your residence card).",
+        },
+      ],
+      note: "To apply, email us your résumé (English or Japanese, no photo needed). Applications through a Hello Work referral are also accepted.",
+    },
     employmentType: "PART_TIME",
     datePosted: "2026-09-23",
     locality: "新宿区",
@@ -202,3 +252,12 @@ export const jobs: Job[] = [
 
 export const publishedJobs = jobs.filter((j) => j.published);
 export const getJob = (id: string) => publishedJobs.find((j) => j.id === id);
+
+/** 英語版がある公開求人 */
+export const publishedJobsEn = publishedJobs.filter((j) => j.en);
+
+/** 表示言語に応じた本文を返す（英語版が無ければ null） */
+export function jobContent(job: Job, locale: RecruitLocale): JobContent | null {
+  if (locale === "en") return job.en ?? null;
+  return job;
+}
