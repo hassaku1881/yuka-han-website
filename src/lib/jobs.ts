@@ -67,44 +67,54 @@ export const jobs: Job[] = [
     area: "葛飾エリア",
     wage: "時給1,300円＋日直手当500円/日",
     summary:
-      "葛飾区内の宿泊施設を自転車やバイクで回り、見回りと軽作業をお願いします。未経験歓迎、週20時間。午前か夕方か、巡回の時間帯を選べます。",
+      "葛飾区内の宿泊施設を自転車やバイクで回り、見回りと管理をお願いします。巡回の時間帯は午前か夕方から選べます。ダブルワークやシニアの方も歓迎します。",
     facts: [
       { label: "雇用形態", value: "パート（3か月契約・原則更新／試用期間なし）" },
-      { label: "勤務地", value: "東京都葛飾区内の当社運営・受託施設（事業所：葛飾区お花茶屋2-5-21）" },
       {
-        label: "報酬",
+        label: "勤務地",
+        value: "葛飾区内の当社運営施設を自転車やバイクで巡回します（集合・解散場所は応相談）",
+      },
+      { label: "報酬", value: "時給1,300円" },
+      {
+        label: "手当",
         value:
-          "時給1,300円（試用期間なし・最初から同額）＋日直手当 500円/日（巡回を担当した日）。月額換算 約126,000円",
+          "日直（巡回）を担当した日は1日500円。業務で使う自転車・バイクの費用と、業務連絡用スマートフォンの通信費を含みます",
       },
       {
         label: "勤務時間",
         value:
-          "週20時間・週6日。巡回は 9:00〜13:00 または 16:00〜20:00 の間で2〜3時間（どちらかを面接時に決定）。その他の作業はシフト制（応相談）。1日2〜6時間程度",
+          "シフト制・週6日程度。巡回は (1) 9:00〜13:00 か (2) 16:00〜20:00 のいずれかを選んで固定し、1日2〜3時間。その他の作業はシフト制で時間は応相談。1日の労働時間は2〜6時間程度",
       },
-      { label: "休日", value: "週1日（曜日は応相談）" },
-      { label: "加入保険", value: "雇用保険・労災保険" },
-      { label: "賞与・昇給", value: "賞与なし／昇給あり（6か月経過後に評価）" },
+      { label: "休日", value: "週1日（曜日は応相談で、面接時に決めます）" },
+      { label: "年次有給休暇", value: "6か月経過後 10日" },
+      { label: "加入保険", value: "各種保険は採用後に加入" },
+      { label: "賞与・昇給", value: "賞与なし／昇給あり" },
+      { label: "正社員登用", value: "あり" },
       { label: "通勤手当", value: "なし" },
       {
         label: "応募資格",
         value:
-          "年齢・学歴・経験・資格すべて不問。スマートフォンで写真の撮影・送信ができる方。自転車またはバイクをお持ちで、区内を移動できる方",
+          "年齢・学歴・経験・資格すべて不問。自転車またはバイクで葛飾区内を移動できる方（車両はご自身のものをお使いいただきます）。スマートフォンで写真を撮って送ることができる方",
       },
-      { label: "選考", value: "面接1回＋有給の体験勤務（半日×2回・時給をお支払いします）。履歴書は不要です" },
+      {
+        label: "選考",
+        value:
+          "面接1回のあと、有給の体験勤務（2回）を行い、双方合意のうえ採用を決定します。結果は面接後7日以内にメールでお知らせします。履歴書は不要です",
+      },
+      {
+        label: "体験勤務",
+        value: "1回2時間（休憩なし）・日額2,600円（交通費なし）。開始時刻は10:00〜17:00の間で応相談。場所は葛飾区内の施設のいずれか（面接時にご説明します）",
+      },
     ],
     sections: [
       {
         heading: "仕事内容",
-        text: "葛飾区内にある宿泊施設を自転車またはバイクで回り、施設の見回りと管理をお願いします。\n\n【毎日の巡回・2時間程度】\n・施設の見回りと、スマホでの写真報告\n・共用部の簡単な清掃、ゴミの整理\n\n【その他の作業・週8時間程度／シフト制】\n・新しい施設の開業準備（家具や備品の設置、開梱、清掃）\n・備品や消耗品の買い出しと補充\n・草取りなど、外まわりの手入れ\n・電球交換など簡単な修繕、業者の立ち会い\n・清掃業者が入ったあとの仕上がり確認\n\n施設は今後も増える予定です。ひとりで自分のペースで動ける仕事です。",
-      },
-      {
-        heading: "働き方",
-        text: "毎日の巡回は2時間程度。午前（9〜13時のうち2時間）か夕方（16〜20時のうち2時間）か、ご都合のよいほうを選べます。巡回以外の作業はシフト制で、ご自身の予定に合わせて組めます。巡回だけの2時間で終わる日と、清掃などをまとめて行う長めの日があります。\n\n・勤務地はすべて葛飾区内。作業は一人で行います\n・試用期間はありません。最初から同じ時給です\n・ダブルワークの方も歓迎します\n・施設の増加にあわせて、契約社員・正社員への登用制度があります",
+        text: "葛飾区内にある宿泊施設を自転車やバイクで回り、施設の見回りと管理をお願いします。ダブルワークやシニアの方も歓迎します。\n\n【毎日の巡回・2時間程度】\n・施設の見回りと、スマホでの写真報告\n・共用部の簡単な清掃、ゴミの整理\n\n【その他の作業・週8時間程度／シフト制】\n・新しい施設の開業準備（設置、開梱、清掃）\n・備品や消耗品の買い出しと補充、草取り\n・電球交換など簡単な修繕、業者の立ち会い\n・清掃業者が入ったあとの仕上がり確認",
       },
     ],
     note: "まずはメールでお気軽にご連絡ください（履歴書は不要です）。",
     employmentType: "PART_TIME",
-    datePosted: "2026-09-05",
+    datePosted: "2026-09-01",
     locality: "葛飾区",
     streetAddress: "お花茶屋2-5-21",
     hourlyWage: 1300,
@@ -128,18 +138,23 @@ export const jobs: Job[] = [
           "巡回手当 月6,000円（週1回・最長15分の見回り）／時給1,300円（見回り以外の作業・1分単位）／緊急駆けつけ 1回3,000円＋時給（深夜は割増）",
       },
       { label: "収入の目安", value: "見回りだけの月 6,000円／軽作業が入った月 1万円前後" },
-      { label: "勤務時間", value: "9:00〜20:00の間（曜日と時間は相談のうえ固定）" },
-      { label: "通勤手当", value: "支給はありません。徒歩や自転車で通える範囲の方に向いた仕事です" },
+      { label: "勤務時間", value: "週1日程度・9:00〜20:00の間の1時間程度" },
+      { label: "休日", value: "勤務日以外" },
+      { label: "年次有給休暇", value: "6か月経過後 1日" },
+      { label: "通勤手当", value: "なし。徒歩や自転車で通える範囲の方に向いた仕事です" },
       { label: "加入保険", value: "労災保険" },
-      { label: "賞与・昇給", value: "賞与なし／昇給あり（業務量の変更に応じて手当を見直し）" },
-      { label: "応募資格", value: "年齢・学歴・経験・資格すべて不問。日本語力は問いません。スマートフォンで写真の撮影・送信ができる方" },
-      { label: "選考", value: "書類選考＋面接1回（オンライン可）。履歴書をご用意ください" },
+      { label: "賞与・昇給", value: "賞与なし／昇給あり" },
+      { label: "応募資格", value: "年齢・学歴・経験・資格すべて不問。日本語力は問いません。スマートフォンで写真を撮って送ることができる方" },
+      {
+        label: "選考",
+        value: "面接1回（オンライン可）。履歴書（写真貼付）をご用意ください。結果は面接後7日以内にメールでお知らせします",
+      },
       { label: "採用人数", value: "1名" },
     ],
     sections: [
       {
         heading: "仕事内容",
-        text: "新宿三丁目駅から徒歩3分のマンション1棟（5部屋）の見回りと管理をお願いします。対象の部屋は1〜3階にあり、エレベーターはありません（階段を使います）。\n\n【週1回の見回り・最長15分】\n・玄関とゴミ置き場の様子を確認\n・共用部のちょっとした清掃\n・郵便物の確認と回収\n・スマホで写真を撮って完了報告\n早ければ数分で終わります。時間が短くても手当は減りません。\n\n【軽作業・不定期／時給1,300円・1分単位】\n・客室内の清掃、草取り\n・消耗品の買い出しと補充\n・電球や電池の交換、簡単な組立\n・工事や設備点検の立ち会い（平日日中）\n\n【緊急駆けつけ】\nトラブルのときの駆けつけをお願いすることがあります。1回3,000円の手当と時給で、深夜は割増します。都合がつかないときは別の担当者が対応します。",
+        text: "新宿三丁目駅から徒歩3分のマンションにある宿泊施設の見回りと管理をお願いします。対象の部屋は1階から3階にあり、階段を使います。\n\n【週1回の見回り・最長15分】\n・玄関とゴミ置き場の様子を確認\n・共用部のちょっとした清掃と郵便物の回収\n・スマホで写真を撮って完了報告\n長くても15分、早ければ数分で終わります。時間が短くても手当は減りません。\n\n【そのほかの軽作業・不定期・時給制】\n・客室内の清掃、草取り\n・消耗品の買い出しと補充、電球や電池の交換\n・工事や設備点検の立ち会い\n見回り以外の作業は、時給1,300円を1分単位でお支払いします。\n\n【緊急の駆けつけ】\nトラブルのときの駆けつけをお願いすることがあります。1回3,000円の手当と時給で、深夜は割増します。都合がつかないときは別の担当者が対応します。",
       },
       {
         heading: "留学生の方へ",
@@ -147,10 +162,10 @@ export const jobs: Job[] = [
       },
       {
         heading: "やさしい にほんご",
-        text: "■ １しゅうかんに １かい：見まわり（ながくても １５分）\n・げんかんと ゴミおきばを 見ます\n・きょうようぶを かんたんに そうじします\n・ゆうびんぶつを かくにんして とります\n・スマホで しゃしんを とって、ほうこくします\n　→ はやいときは ２ふんで おわります\n　→ みじかくても 手当は へりません\n\n■ おきゅうりょう\n・見まわり手当　１かげつ ６，０００円\n・時給　１，３００円（見まわり いがいの さぎょう）\n・こうつうひは 出ません\n\n■ 留学生の みなさんへ\nこのしごとは、１しゅうかんに １５ふんだけです。\n「しかくがい かつどう」の ２８じかんのうち、\nつかうのは １％より すくないです。\nほかの アルバイトと いっしょに できます。\n（ざいりゅうカードの「資格外活動許可」が ひつようです）\n\n■ おうぼ\nメールで りれきしょを おくってください。\ncontact@yuka-han.com",
+        text: "■ １しゅうかんに １かい：見まわり（ながくても １５分）\n・げんかんと ゴミおきばを 見ます\n・きょうようぶを かんたんに そうじします\n・ゆうびんぶつを かくにんして とります\n・スマホで しゃしんを とって、ほうこくします\n　→ はやいときは ２ふんで おわります\n　→ みじかくても 手当は へりません\n\n■ おきゅうりょう\n・見まわり手当　１かげつ ６，０００円\n・時給　１，３００円（見まわり いがいの さぎょう）\n・こうつうひは 出ません\n\n■ 留学生の みなさんへ\nこのしごとは、１しゅうかんに １５ふんだけです。\n「しかくがい かつどう」の ２８じかんのうち、\nつかうのは １％より すくないです。\nほかの アルバイトと いっしょに できます。\n（ざいりゅうカードの「資格外活動許可」が ひつようです）\n\n■ おうぼ\nしゃしんを はった りれきしょを、メールで おくってください。\ncontact@yuka-han.com",
       },
     ],
-    note: "応募は履歴書（写真貼付なし）をメールでお送りください。",
+    note: "応募は履歴書（写真貼付）をメールでお送りください。",
     en: {
       title: "Property Check & Maintenance Staff",
       area: "Shinjuku (3 min walk from Shinjuku-sanchome Sta.)",
@@ -166,29 +181,31 @@ export const jobs: Job[] = [
             "Patrol allowance ¥6,000/month (one weekly check, up to 15 min) / ¥1,300 per hour for other tasks (paid by the minute) / Emergency call-out ¥3,000 per visit + hourly pay (late-night premium applies)",
         },
         { label: "Expected income", value: "¥6,000 in months with patrols only / around ¥10,000 in months with extra tasks" },
-        { label: "Hours", value: "Between 9:00 and 20:00 (day and time fixed by mutual agreement)" },
+        { label: "Hours", value: "About 1 day a week, around 1 hour between 9:00 and 20:00" },
+        { label: "Days off", value: "Any day you are not scheduled" },
+        { label: "Paid leave", value: "1 day after 6 months" },
         { label: "Commuting allowance", value: "Not provided. This job suits people who can walk or cycle to the site." },
         { label: "Insurance", value: "Workers' accident compensation insurance" },
-        { label: "Bonus / raises", value: "No bonus / Raises available (allowance reviewed as the workload changes)" },
+        { label: "Bonus / raises", value: "No bonus / Raises available" },
         {
           label: "Requirements",
           value:
             "No requirements for age, education, experience, or qualifications. Japanese language ability is not required. You need to be able to take and send photos with a smartphone.",
         },
-        { label: "Selection", value: "Document screening + one interview (online OK). Please prepare a résumé." },
+        { label: "Selection", value: "One interview (online OK). Please prepare a résumé with a photo. We will email you the result within 7 days of the interview." },
         { label: "Openings", value: "1" },
       ],
       sections: [
         {
           heading: "Job description",
-          text: "Check on and look after one apartment building (5 units), a 3-minute walk from Shinjuku-sanchome Station. The units are on floors 1–3 and there is no elevator (stairs only).\n\n[Weekly check — once a week, 15 minutes at most]\n・Check the entrance and the garbage area\n・Light cleaning of shared areas\n・Check and collect the mail\n・Take photos with your smartphone and send a completion report\nIt can take just a few minutes. Your allowance stays the same even when it is quick.\n\n[Other tasks — occasional, ¥1,300/hour, paid by the minute]\n・Cleaning inside guest rooms, weeding\n・Buying and restocking supplies\n・Replacing light bulbs and batteries, simple assembly\n・Being present for construction work or equipment inspections (weekday daytime)\n\n[Emergency call-outs]\nWe may ask you to go to the site when there is trouble. You receive ¥3,000 per visit plus hourly pay, with a late-night premium. If you are not available, another staff member will handle it.",
+          text: "Check on and look after our vacation rental units in an apartment building, a 3-minute walk from Shinjuku-sanchome Station. The units are on floors 1–3 and you will use the stairs.\n\n[Weekly check — once a week, 15 minutes at most]\n・Check the entrance and the garbage area\n・Light cleaning of shared areas and collecting the mail\n・Take photos with your smartphone and send a completion report\nIt takes 15 minutes at most, and often just a few. Your allowance stays the same even when it is quick.\n\n[Other tasks — occasional, hourly pay]\n・Cleaning inside guest rooms, weeding\n・Buying and restocking supplies, replacing light bulbs and batteries\n・Being present for construction work or equipment inspections\nTasks other than the weekly check are paid at ¥1,300 per hour, calculated by the minute.\n\n[Emergency call-outs]\nWe may ask you to go to the site when there is trouble. You receive ¥3,000 per visit plus hourly pay, with a late-night premium. If you are not available, another staff member will handle it.",
         },
         {
           heading: "For international students",
           text: "The weekly check takes about 15 minutes — less than 1% of the 28 hours a week you are allowed to work. You can easily combine it with another part-time job. You need permission to engage in activities outside your status of residence (shown on the back of your residence card).",
         },
       ],
-      note: "To apply, email us your résumé (English or Japanese, no photo needed).",
+      note: "To apply, email us your résumé with a photo (English or Japanese).",
     },
     employmentType: "PART_TIME",
     datePosted: "2026-09-23",
