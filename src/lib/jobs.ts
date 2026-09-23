@@ -115,13 +115,13 @@ export const jobs: Job[] = [
     occupation: "facility",
     category: "part",
     title: "宿泊施設の見回り・管理スタッフ",
-    area: "新宿エリア（新宿三丁目駅 徒歩4分）",
+    area: "新宿エリア（新宿三丁目駅 徒歩3分）",
     wage: "巡回手当 月6,000円＋時給1,300円（見回り以外の作業）",
     summary:
       "週1回・最長15分の見回りで月6,000円。留学生の方も、資格外活動の週28時間の枠をほとんど使わずに働けます。",
     facts: [
       { label: "雇用形態", value: "パート（3か月契約・原則更新／試用期間なし）" },
-      { label: "勤務地", value: "東京都新宿区新宿5-11-2（新宿三丁目駅 徒歩4分）" },
+      { label: "勤務地", value: "東京都新宿区新宿5-11-2（新宿三丁目駅 徒歩3分）" },
       {
         label: "報酬",
         value:
@@ -139,7 +139,7 @@ export const jobs: Job[] = [
     sections: [
       {
         heading: "仕事内容",
-        text: "新宿三丁目駅から徒歩4分のマンション1棟（5部屋）の見回りと管理をお願いします。対象の部屋は1〜3階にあり、エレベーターはありません（階段を使います）。\n\n【週1回の見回り・最長15分】\n・玄関とゴミ置き場の様子を確認\n・共用部のちょっとした清掃\n・郵便物の確認と回収\n・スマホで写真を撮って完了報告\n早ければ数分で終わります。時間が短くても手当は減りません。\n\n【軽作業・不定期／時給1,300円・1分単位】\n・客室内の清掃、草取り\n・消耗品の買い出しと補充\n・電球や電池の交換、簡単な組立\n・工事や設備点検の立ち会い（平日日中）\n\n【緊急駆けつけ】\nトラブルのときの駆けつけをお願いすることがあります。1回3,000円の手当と時給で、深夜は割増します。都合がつかないときは別の担当者が対応します。",
+        text: "新宿三丁目駅から徒歩3分のマンション1棟（5部屋）の見回りと管理をお願いします。対象の部屋は1〜3階にあり、エレベーターはありません（階段を使います）。\n\n【週1回の見回り・最長15分】\n・玄関とゴミ置き場の様子を確認\n・共用部のちょっとした清掃\n・郵便物の確認と回収\n・スマホで写真を撮って完了報告\n早ければ数分で終わります。時間が短くても手当は減りません。\n\n【軽作業・不定期／時給1,300円・1分単位】\n・客室内の清掃、草取り\n・消耗品の買い出しと補充\n・電球や電池の交換、簡単な組立\n・工事や設備点検の立ち会い（平日日中）\n\n【緊急駆けつけ】\nトラブルのときの駆けつけをお願いすることがあります。1回3,000円の手当と時給で、深夜は割増します。都合がつかないときは別の担当者が対応します。",
       },
       {
         heading: "留学生の方へ",
@@ -153,13 +153,13 @@ export const jobs: Job[] = [
     note: "応募は履歴書（写真貼付なし）をメールでお送りください。",
     en: {
       title: "Property Check & Maintenance Staff",
-      area: "Shinjuku (4 min walk from Shinjuku-sanchome Sta.)",
+      area: "Shinjuku (3 min walk from Shinjuku-sanchome Sta.)",
       wage: "¥6,000/month patrol allowance + ¥1,300/hour for other tasks",
       summary:
         "One check a week, 15 minutes at most, for ¥6,000 a month. International students can take this job while using almost none of their 28-hour weekly work limit.",
       facts: [
         { label: "Employment", value: "Part-time (3-month contract, normally renewed / no probation period)" },
-        { label: "Location", value: "5-11-2 Shinjuku, Shinjuku-ku, Tokyo (4 min walk from Shinjuku-sanchome Station)" },
+        { label: "Location", value: "5-11-2 Shinjuku, Shinjuku-ku, Tokyo (3 min walk from Shinjuku-sanchome Station)" },
         {
           label: "Pay",
           value:
@@ -181,7 +181,7 @@ export const jobs: Job[] = [
       sections: [
         {
           heading: "Job description",
-          text: "Check on and look after one apartment building (5 units), a 4-minute walk from Shinjuku-sanchome Station. The units are on floors 1–3 and there is no elevator (stairs only).\n\n[Weekly check — once a week, 15 minutes at most]\n・Check the entrance and the garbage area\n・Light cleaning of shared areas\n・Check and collect the mail\n・Take photos with your smartphone and send a completion report\nIt can take just a few minutes. Your allowance stays the same even when it is quick.\n\n[Other tasks — occasional, ¥1,300/hour, paid by the minute]\n・Cleaning inside guest rooms, weeding\n・Buying and restocking supplies\n・Replacing light bulbs and batteries, simple assembly\n・Being present for construction work or equipment inspections (weekday daytime)\n\n[Emergency call-outs]\nWe may ask you to go to the site when there is trouble. You receive ¥3,000 per visit plus hourly pay, with a late-night premium. If you are not available, another staff member will handle it.",
+          text: "Check on and look after one apartment building (5 units), a 3-minute walk from Shinjuku-sanchome Station. The units are on floors 1–3 and there is no elevator (stairs only).\n\n[Weekly check — once a week, 15 minutes at most]\n・Check the entrance and the garbage area\n・Light cleaning of shared areas\n・Check and collect the mail\n・Take photos with your smartphone and send a completion report\nIt can take just a few minutes. Your allowance stays the same even when it is quick.\n\n[Other tasks — occasional, ¥1,300/hour, paid by the minute]\n・Cleaning inside guest rooms, weeding\n・Buying and restocking supplies\n・Replacing light bulbs and batteries, simple assembly\n・Being present for construction work or equipment inspections (weekday daytime)\n\n[Emergency call-outs]\nWe may ask you to go to the site when there is trouble. You receive ¥3,000 per visit plus hourly pay, with a late-night premium. If you are not available, another staff member will handle it.",
         },
         {
           heading: "For international students",
