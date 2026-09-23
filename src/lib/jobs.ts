@@ -102,7 +102,7 @@ export const jobs: Job[] = [
         text: "毎日の巡回は2時間程度。午前（9〜13時のうち2時間）か夕方（16〜20時のうち2時間）か、ご都合のよいほうを選べます。巡回以外の作業はシフト制で、ご自身の予定に合わせて組めます。巡回だけの2時間で終わる日と、清掃などをまとめて行う長めの日があります。\n\n・勤務地はすべて葛飾区内。作業は一人で行います\n・試用期間はありません。最初から同じ時給です\n・ダブルワークの方も歓迎します\n・施設の増加にあわせて、契約社員・正社員への登用制度があります",
       },
     ],
-    note: "ハローワークにも掲載中です（ハローワーク墨田・求人番号 13120-18911661）。メールでも直接ご応募いただけます。",
+    note: "まずはメールでお気軽にご連絡ください（履歴書は不要です）。",
     employmentType: "PART_TIME",
     datePosted: "2026-09-05",
     locality: "葛飾区",
@@ -150,7 +150,7 @@ export const jobs: Job[] = [
         text: "■ １しゅうかんに １かい：見まわり（ながくても １５分）\n・げんかんと ゴミおきばを 見ます\n・きょうようぶを かんたんに そうじします\n・ゆうびんぶつを かくにんして とります\n・スマホで しゃしんを とって、ほうこくします\n　→ はやいときは ２ふんで おわります\n　→ みじかくても 手当は へりません\n\n■ おきゅうりょう\n・見まわり手当　１かげつ ６，０００円\n・時給　１，３００円（見まわり いがいの さぎょう）\n・こうつうひは 出ません\n\n■ 留学生の みなさんへ\nこのしごとは、１しゅうかんに １５ふんだけです。\n「しかくがい かつどう」の ２８じかんのうち、\nつかうのは １％より すくないです。\nほかの アルバイトと いっしょに できます。\n（ざいりゅうカードの「資格外活動許可」が ひつようです）\n\n■ おうぼ\nメールで りれきしょを おくってください。\ncontact@yuka-han.com",
       },
     ],
-    note: "応募は履歴書（写真貼付なし）をメールでお送りください。ハローワークからの紹介でも応募できます。",
+    note: "応募は履歴書（写真貼付なし）をメールでお送りください。",
     en: {
       title: "Property Check & Maintenance Staff",
       area: "Shinjuku (4 min walk from Shinjuku-sanchome Sta.)",
@@ -188,7 +188,7 @@ export const jobs: Job[] = [
           text: "The weekly check takes about 15 minutes — less than 1% of the 28 hours a week you are allowed to work. You can easily combine it with another part-time job. You need permission to engage in activities outside your status of residence (shown on the back of your residence card).",
         },
       ],
-      note: "To apply, email us your résumé (English or Japanese, no photo needed). Applications through a Hello Work referral are also accepted.",
+      note: "To apply, email us your résumé (English or Japanese, no photo needed).",
     },
     employmentType: "PART_TIME",
     datePosted: "2026-09-23",
@@ -256,23 +256,112 @@ export const jobs: Job[] = [
   },
 
   // ── 登録スタッフ（業務委託） ─────────────────────────
+  // 条件は2025/9のジモティー掲載（京成線エリア）を全エリア共通で使用
   ...[
-    { id: "oncall-keisei", area: "葛飾区・京成線エリア", locality: "葛飾区" },
-    { id: "oncall-shinkoiwa", area: "葛飾区・新小岩エリア", locality: "葛飾区" },
-    { id: "oncall-shinjuku", area: "新宿エリア", locality: "新宿区" },
-    { id: "oncall-ichinoe", area: "江戸川区・一之江/瑞江エリア", locality: "江戸川区" },
+    {
+      id: "oncall-keisei",
+      area: "葛飾区・京成線エリア",
+      areaDetail: "葛飾区の京成線エリア（堀切菖蒲園・お花茶屋・青砥・四ツ木・京成立石）",
+      areaEn: "Katsushika – Keisei Line area",
+      areaDetailEn: "the Keisei Line area of Katsushika (Horikiri-shobuen, Ohanajaya, Aoto, Yotsugi, Keisei-Tateishi)",
+      locality: "葛飾区",
+    },
+    {
+      id: "oncall-shinkoiwa",
+      area: "葛飾区・新小岩エリア",
+      areaDetail: "葛飾区の新小岩エリア",
+      areaEn: "Katsushika – Shin-Koiwa area",
+      areaDetailEn: "the Shin-Koiwa area of Katsushika",
+      locality: "葛飾区",
+    },
+    {
+      id: "oncall-shinjuku",
+      area: "新宿エリア",
+      areaDetail: "新宿区の新宿エリア",
+      areaEn: "Shinjuku area",
+      areaDetailEn: "the Shinjuku area",
+      locality: "新宿区",
+    },
+    {
+      id: "oncall-ichinoe",
+      area: "江戸川区・一之江/瑞江エリア",
+      areaDetail: "江戸川区の一之江・瑞江エリア",
+      areaEn: "Edogawa – Ichinoe / Mizue area",
+      areaDetailEn: "the Ichinoe / Mizue area of Edogawa",
+      locality: "江戸川区",
+    },
   ].map(
     (a): Job => ({
       id: a.id,
-      published: false,
+      published: true,
       occupation: "facility",
       category: "registered",
-      title: `施設管理・駆け付け登録スタッフ（${a.area}）`,
+      title: `駆け付け・施設管理 登録スタッフ（${a.area}）`,
       area: a.area,
-      wage: "1回あたりの手当制",
-      summary: "お近くの宿泊施設でトラブルがあった際の駆け付け・現地確認をお願いする登録制スタッフです。",
-      facts: [],
-      sections: [],
+      wage: "緊急駆け付け 1件5,000円／緊急でない対応 1件2,500円",
+      summary:
+        "民泊施設の「困った！」を解決するお仕事。時給ではなく対応1件ごとのお支払いなので、空いた時間の副業に向いています。",
+      facts: [
+        { label: "契約形態", value: "業務委託（登録制）" },
+        { label: "対応エリア", value: `${a.areaDetail}の各施設` },
+        {
+          label: "報酬",
+          value:
+            "緊急駆け付け対応（60分以内）：1件5,000円／緊急でない対応（60分以内）：1件2,500円／60分を超えた場合は以降30分ごとに1,500円",
+        },
+        { label: "支払い", value: "日払い（翌営業日振り込み）" },
+        { label: "勤務時間", value: "決まった勤務時間はありません。対応が必要になったときのみ" },
+        {
+          label: "応募資格",
+          value:
+            "経験不問。日本語力は問いません。自転車やバイクでフットワーク軽く動ける方。英語や中国語で日常会話ができる方は優遇します",
+        },
+      ],
+      sections: [
+        {
+          heading: "仕事内容",
+          text: `${a.areaDetail}にある民泊施設の「困った！」を解決していただくお仕事です。\n\n【ゲストからの緊急連絡への対応】\n・鍵の紛失、設備の故障、騒音トラブルなど\n\n【ちょっとした施設管理・清掃】\n・備品の補充、壊れた物の買い替え\n・簡単な整理整頓や清掃\n\n時給ではなく対応ごとにお支払いするので、ご自身の空いた時間で副業として働きたい方におすすめです。`,
+        },
+        {
+          heading: "こんな方を求めています",
+          text: "・担当エリアに詳しく、自転車やバイクでフットワーク軽く動ける方\n・責任感があり、臨機応変に対応できる方\n・民泊の仕事の経験は問いません\n・英語や中国語で日常会話ができる方は優遇します",
+        },
+      ],
+      note: "まずはメールでお気軽にお問い合わせください。詳しくご説明します。",
+      en: {
+        title: `On-call Property Support Staff (${a.areaEn})`,
+        area: a.areaEn,
+        wage: "¥5,000 per emergency call-out / ¥2,500 per non-urgent task",
+        summary:
+          "Help solve problems at vacation rentals. You are paid per job, not by the hour, so it works well as a side job in your free time.",
+        facts: [
+          { label: "Contract", value: "Freelance (registered on-call staff)" },
+          { label: "Area", value: `Properties in ${a.areaDetailEn}` },
+          {
+            label: "Pay",
+            value:
+              "Emergency call-out (up to 60 min): ¥5,000 per job / Non-urgent task (up to 60 min): ¥2,500 per job / Beyond 60 min: ¥1,500 for every additional 30 min",
+          },
+          { label: "Payment", value: "Paid daily (transferred the next business day)" },
+          { label: "Hours", value: "No fixed hours — only when a job comes up" },
+          {
+            label: "Requirements",
+            value:
+              "No experience needed. Japanese language ability is not required. You can get around quickly by bicycle or motorbike. Everyday English or Chinese is a plus.",
+          },
+        ],
+        sections: [
+          {
+            heading: "Job description",
+            text: `Help solve problems at vacation rental properties in ${a.areaDetailEn}.\n\n[Responding to guest emergencies]\n・Lost keys, broken equipment, noise complaints, etc.\n\n[Light property upkeep and cleaning]\n・Restocking supplies, replacing broken items\n・Simple tidying and cleaning\n\nYou are paid per job rather than by the hour, so this suits people looking for a side job in their free time.`,
+          },
+          {
+            heading: "Who we are looking for",
+            text: "・You know the area well and can get around quickly by bicycle or motorbike\n・You are responsible and can adapt to the situation\n・No vacation rental experience needed\n・Everyday English or Chinese is a plus",
+          },
+        ],
+        note: "Feel free to email us first — we will explain the details.",
+      },
       employmentType: "CONTRACTOR",
       datePosted: "2026-09-23",
       locality: a.locality,
