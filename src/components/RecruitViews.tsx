@@ -4,7 +4,10 @@ import { BASE_URL } from "@/lib/constants";
 import {
   JOB_CATEGORY_LABELS,
   JOB_CATEGORY_LABELS_EN,
+  OCCUPATION_LABELS,
+  OCCUPATION_LABELS_EN,
   jobContent,
+  type Occupation,
   type Job,
   type JobCategory,
   type JobContent,
@@ -23,6 +26,7 @@ const UI = {
     applyTo: "応募先",
     mailSubject: "【応募】",
     categories: JOB_CATEGORY_LABELS,
+    occupations: OCCUPATION_LABELS,
   },
   en: {
     heading: "Careers",
@@ -35,9 +39,11 @@ const UI = {
     applyTo: "Send to",
     mailSubject: "[Application] ",
     categories: JOB_CATEGORY_LABELS_EN,
+    occupations: OCCUPATION_LABELS_EN,
   },
 } as const;
 
+const occupationOrder: Occupation[] = ["facility", "support", "sales"];
 const categoryOrder: JobCategory[] = ["part", "contract", "registered"];
 const basePath = (locale: RecruitLocale) => (locale === "ja" ? "/recruit" : `/${locale}/recruit`);
 
@@ -92,15 +98,21 @@ const sharedStyles = `
 
 export function RecruitList({ locale, jobs, intro }: { locale: RecruitLocale; jobs: Job[]; intro: ReactNode }) {
   const ui = UI[locale];
-  const groups = categoryOrder
-    .map((cat) => ({
-      cat,
-      items: jobs
-        .filter((j) => j.category === cat)
-        .map((j) => ({ job: j, c: jobContent(j, locale) }))
-        .filter((x): x is { job: Job; c: JobContent } => x.c !== null),
+  // 職種 → その中を雇用区分で分ける
+  const groups = occupationOrder
+    .map((occ) => ({
+      occ,
+      subs: categoryOrder
+        .map((cat) => ({
+          cat,
+          items: jobs
+            .filter((j) => j.occupation === occ && j.category === cat)
+            .map((j) => ({ job: j, c: jobContent(j, locale) }))
+            .filter((x): x is { job: Job; c: JobContent } => x.c !== null),
+        }))
+        .filter((s) => s.items.length > 0),
     }))
-    .filter((g) => g.items.length > 0);
+    .filter((g) => g.subs.length > 0);
 
   return (
     <main style={{ paddingTop: "72px" }}>
@@ -117,23 +129,30 @@ export function RecruitList({ locale, jobs, intro }: { locale: RecruitLocale; jo
       <section style={{ background: "var(--color-bg)", padding: "4rem 8% 6rem" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           {groups.length === 0 && <p style={{ textAlign: "center", color: "var(--color-text-light)" }}>{ui.empty}</p>}
-          {groups.map(({ cat, items }) => (
-            <div key={cat} style={{ marginBottom: "3.5rem" }}>
-              <h2 className="recruit-h2" style={{ fontSize: "1.1rem", marginBottom: "1.2rem" }}>{ui.categories[cat]}</h2>
-              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                {items.map(({ job, c }) => (
-                  <Link key={job.id} href={`${basePath(locale)}/${job.id}`} className="recruit-card">
-                    <div style={{ marginBottom: "0.6rem" }}>
-                      <span className="recruit-tag">{c.area}</span>
-                    </div>
-                    <h3 style={{ fontSize: "1.05rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "0.5rem", lineHeight: 1.6 }}>
-                      {c.title}
-                    </h3>
-                    <p style={{ fontSize: "0.85rem", color: "var(--color-accent)", marginBottom: "0.6rem" }}>{c.wage}</p>
-                    <p style={{ fontSize: "0.88rem", color: "var(--color-text-light)", lineHeight: 1.8 }}>{c.summary}</p>
-                  </Link>
-                ))}
-              </div>
+          {groups.map(({ occ, subs }) => (
+            <div key={occ} style={{ marginBottom: "3.5rem" }}>
+              <h2 className="recruit-h2" style={{ fontSize: "1.2rem", marginBottom: "1.4rem" }}>{ui.occupations[occ]}</h2>
+              {subs.map(({ cat, items }) => (
+                <div key={cat} style={{ marginBottom: "1.8rem" }}>
+                  <h3 style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--color-text-light)", letterSpacing: "0.05em", marginBottom: "0.8rem" }}>
+                    {ui.categories[cat]}
+                  </h3>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                    {items.map(({ job, c }) => (
+                      <Link key={job.id} href={`${basePath(locale)}/${job.id}`} className="recruit-card">
+                        <div style={{ marginBottom: "0.6rem" }}>
+                          <span className="recruit-tag">{c.area}</span>
+                        </div>
+                        <h4 style={{ fontSize: "1.05rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "0.5rem", lineHeight: 1.6 }}>
+                          {c.title}
+                        </h4>
+                        <p style={{ fontSize: "0.85rem", color: "var(--color-accent)", marginBottom: "0.6rem" }}>{c.wage}</p>
+                        <p style={{ fontSize: "0.88rem", color: "var(--color-text-light)", lineHeight: 1.8 }}>{c.summary}</p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           ))}
         </div>
@@ -213,6 +232,7 @@ export function RecruitDetail({ job, locale }: { job: Job; locale: RecruitLocale
             {ui.back}
           </Link>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", margin: "1.8rem 0 0.9rem" }}>
+            <span className="recruit-tag">{ui.occupations[job.occupation]}</span>
             <span className="recruit-tag">{ui.categories[job.category]}</span>
             <span className="recruit-tag">{c.area}</span>
           </div>

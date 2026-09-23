@@ -3,6 +3,20 @@
 
 export type JobCategory = "part" | "contract" | "registered";
 
+export type Occupation = "facility" | "support" | "sales";
+
+export const OCCUPATION_LABELS: Record<Occupation, string> = {
+  facility: "施設管理",
+  support: "カスタマーサポート",
+  sales: "営業",
+};
+
+export const OCCUPATION_LABELS_EN: Record<Occupation, string> = {
+  facility: "Facility Management",
+  support: "Customer Support",
+  sales: "Sales",
+};
+
 export const JOB_CATEGORY_LABELS: Record<JobCategory, string> = {
   part: "パート・アルバイト",
   contract: "業務委託",
@@ -12,6 +26,7 @@ export const JOB_CATEGORY_LABELS: Record<JobCategory, string> = {
 export type Job = {
   id: string;
   published: boolean;
+  occupation: Occupation;
   category: JobCategory;
   title: string;
   area: string; // 表示用エリア
@@ -47,6 +62,7 @@ export const jobs: Job[] = [
     id: "katsushika-facility",
     // 2026/9 充足済み（1名稼働中）。欠員時に true へ
     published: false,
+    occupation: "facility",
     category: "part",
     title: "宿泊施設の管理スタッフ（見回り・軽作業）",
     area: "葛飾エリア",
@@ -86,6 +102,7 @@ export const jobs: Job[] = [
   {
     id: "shinjuku-facility",
     published: true,
+    occupation: "facility",
     category: "part",
     title: "宿泊施設の見回り・管理スタッフ",
     area: "新宿エリア（新宿三丁目駅 徒歩4分）",
@@ -174,6 +191,7 @@ export const jobs: Job[] = [
   {
     id: "customer-support",
     published: true,
+    occupation: "support",
     category: "contract",
     title: "宿泊施設のカスタマーサポート",
     area: "フルリモート",
@@ -215,6 +233,7 @@ export const jobs: Job[] = [
   {
     id: "sales",
     published: false,
+    occupation: "sales",
     category: "contract",
     title: "営業（民泊運営代行）",
     area: "東京",
@@ -236,6 +255,7 @@ export const jobs: Job[] = [
     (a): Job => ({
       id: a.id,
       published: false,
+      occupation: "facility",
       category: "registered",
       title: `施設管理・駆け付け登録スタッフ（${a.area}）`,
       area: a.area,
