@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { BASE_URL } from "@/lib/constants";
 import { getArticles, getNews } from "@/lib/microcms";
+import { publishedJobs } from "@/lib/jobs";
 
 export const revalidate = 3600;
 
@@ -13,6 +14,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/articles`,    lastModified: new Date(), changeFrequency: "weekly",   priority: 0.9 },
     { url: `${BASE_URL}/news`,        lastModified: new Date(), changeFrequency: "weekly",   priority: 0.7 },
     { url: `${BASE_URL}/contact`,     lastModified: new Date(), changeFrequency: "yearly",   priority: 0.6 },
+    { url: `${BASE_URL}/recruit`,     lastModified: new Date(), changeFrequency: "weekly",   priority: 0.7 },
+    ...publishedJobs.map((j) => ({
+      url: `${BASE_URL}/recruit/${j.id}`,
+      lastModified: new Date(j.datePosted),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
   ];
 
   const [articlesData, newsData] = await Promise.all([
