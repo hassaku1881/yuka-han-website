@@ -36,6 +36,7 @@ const UI = {
     privacy: "ご応募いただいた個人情報は、採用選考および選考に関するご連絡・採否の通知のために使用し、それ以外の目的には使用しません。詳しくは",
     privacyLink: "プライバシーポリシー",
     privacyTail: "をご覧ください。",
+    terms: "お仕事の条件の詳細（登録スタッフ規約）",
     categories: JOB_CATEGORY_LABELS,
     occupations: OCCUPATION_LABELS,
   },
@@ -60,6 +61,7 @@ const UI = {
     privacy: "The personal information you send us is used only for the selection process and for contacting you about it and its result. See our",
     privacyLink: "Privacy Policy",
     privacyTail: ".",
+    terms: "Full work conditions (Registered Staff Terms, in Japanese)",
     categories: JOB_CATEGORY_LABELS_EN,
     occupations: OCCUPATION_LABELS_EN,
   },
@@ -290,6 +292,14 @@ export function RecruitDetail({ job, locale }: { job: Job; locale: RecruitLocale
               <p style={{ fontSize: "0.95rem", lineHeight: 2, color: "var(--color-text)", whiteSpace: "pre-line" }}>{s.text}</p>
             </div>
           ))}
+
+          {job.termsUrl && (
+            <p style={{ marginBottom: "2.5rem", fontSize: "0.9rem" }}>
+              <a href={job.termsUrl} target="_blank" rel="noopener" style={{ color: "var(--color-accent)", textDecoration: "underline" }}>
+                {ui.terms}
+              </a>
+            </p>
+          )}
 
           {c.facts.length > 0 && (
             <div style={{ marginBottom: "2.5rem" }}>

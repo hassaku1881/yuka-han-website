@@ -36,6 +36,7 @@ export type Job = {
   sections: { heading: string; text: string }[]; // 詳細本文（textは改行可）
   note?: string; // 応募ボタン付近の補足
   applyUrl?: string; // Airワーク等の応募URL（無ければメール応募）
+  termsUrl?: string; // 登録スタッフ規約など、条件の詳細（公開Googleドキュメント）
   // JobPosting 構造化データ用
   employmentType: "PART_TIME" | "CONTRACTOR" | ("PART_TIME" | "CONTRACTOR")[];
   datePosted: string; // 自社サイト掲載開始日
@@ -294,10 +295,10 @@ export const jobs: Job[] = [
       areaEn: "Katsushika – Keisei Line area",
       areaDetailEn: "the Keisei Line area of Katsushika (Horikiri-shobuen, Ohanajaya, Aoto, Yotsugi, Keisei-Tateishi)",
       locality: "葛飾区",
-      patrol: "巡回（6軒・75分程度）：1回3,000円",
-      patrolEn: "Patrol (6 properties, about 75 min): ¥3,000 per round",
-      patrolCard: "巡回 1回3,000円",
-      patrolCardEn: "Patrol ¥3,000",
+      patrol: "巡回（75分程度）：1回3,300円",
+      patrolEn: "Patrol (about 75 min): ¥3,300 per round",
+      patrolCard: "巡回 1回3,300円",
+      patrolCardEn: "Patrol ¥3,300",
     },
     {
       id: "oncall-shinkoiwa",
@@ -306,10 +307,10 @@ export const jobs: Job[] = [
       areaEn: "Katsushika – Shin-Koiwa area",
       areaDetailEn: "the Shin-Koiwa area of Katsushika",
       locality: "葛飾区",
-      patrol: "巡回（1棟・最長10分）：1回700円",
-      patrolEn: "Patrol (1 building, up to 10 min): ¥700 per round",
-      patrolCard: "巡回 1回700円",
-      patrolCardEn: "Patrol ¥700",
+      patrol: "巡回（10分程度）：1回550円",
+      patrolEn: "Patrol (about 10 min): ¥550 per round",
+      patrolCard: "巡回 1回550円",
+      patrolCardEn: "Patrol ¥550",
     },
     {
       id: "oncall-shinjuku",
@@ -375,6 +376,7 @@ export const jobs: Job[] = [
         },
       ],
       note: "まずはメールでお気軽にお問い合わせください。",
+      termsUrl: "https://docs.google.com/document/d/e/2PACX-1vTHf_x1y3_D9ykI41nu6FTbhPzBOBBC5mycZqZThoktBx9GY0mWDX_4nELu-sE1H3RTbdVQusX4MGdX/pub",
       en: {
         title: `On-call Property Support Staff (${a.areaEn})`,
         area: a.areaEn,
