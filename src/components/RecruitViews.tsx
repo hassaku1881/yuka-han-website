@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { BASE_URL } from "@/lib/constants";
@@ -159,13 +160,16 @@ export function RecruitList({ locale, jobs, intro }: { locale: RecruitLocale; jo
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          background:
-            "linear-gradient(rgba(20,30,48,0.5), rgba(20,30,48,0.65)), url('/images/20250711-02.jpg') center / cover no-repeat",
+          position: "relative",
+          overflow: "hidden",
+          background: "var(--color-primary)",
           color: "var(--color-white)",
           padding: "5rem 2rem",
         }}
       >
-        <div>
+        <Image src="/images/20250711-02.jpg" alt="" fill priority sizes="100vw" quality={70} style={{ objectFit: "cover" }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, background: "linear-gradient(rgba(20,30,48,0.5), rgba(20,30,48,0.65))" }} />
+        <div style={{ position: "relative" }}>
           <p style={{ fontFamily: "var(--font-en)", fontSize: "0.75rem", letterSpacing: "0.3em", color: "var(--color-accent)", marginBottom: "0.8rem" }}>
             RECRUIT
           </p>
