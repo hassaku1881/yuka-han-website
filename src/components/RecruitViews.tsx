@@ -113,10 +113,11 @@ const sharedStyles = `
     padding: 0.8rem 0.9rem;
     border-bottom: 1px solid #eee;
     font-size: 0.9rem;
-    line-height: 1.8;
+    line-height: 1.9;
     text-align: left;
     vertical-align: top;
   }
+  .recruit-td { white-space: pre-line; }
   .recruit-th {
     width: 28%;
     background: #f8f6f2;
@@ -151,12 +152,29 @@ export function RecruitList({ locale, jobs, intro }: { locale: RecruitLocale; jo
 
   return (
     <main style={{ paddingTop: "72px" }}>
-      <section style={{ padding: "5rem 8% 3rem", background: "var(--color-white)", textAlign: "center" }}>
-        <p style={{ fontFamily: "var(--font-en)", fontSize: "0.75rem", letterSpacing: "0.3em", color: "var(--color-accent)", marginBottom: "0.5rem" }}>
-          RECRUIT
-        </p>
-        <h1 style={{ fontSize: "2rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "2rem" }}>{ui.heading}</h1>
-        <div style={{ maxWidth: "680px", margin: "0 auto", textAlign: "left", fontSize: "0.95rem", lineHeight: 2, color: "var(--color-text-light)" }}>
+      <section
+        style={{
+          minHeight: "50vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          background:
+            "linear-gradient(rgba(20,30,48,0.5), rgba(20,30,48,0.65)), url('/images/20250711-02.jpg') center / cover no-repeat",
+          color: "var(--color-white)",
+          padding: "5rem 2rem",
+        }}
+      >
+        <div>
+          <p style={{ fontFamily: "var(--font-en)", fontSize: "0.75rem", letterSpacing: "0.3em", color: "var(--color-accent)", marginBottom: "0.8rem" }}>
+            RECRUIT
+          </p>
+          <h1 style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 500, letterSpacing: "0.08em" }}>{ui.heading}</h1>
+        </div>
+      </section>
+
+      <section style={{ padding: "4.5rem 8% 4rem", background: "var(--color-white)" }}>
+        <div style={{ maxWidth: "680px", margin: "0 auto", fontSize: "0.98rem", lineHeight: 2.1, color: "var(--color-text-light)" }}>
           {intro}
         </div>
       </section>

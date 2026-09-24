@@ -82,12 +82,12 @@ export const jobs: Job[] = [
       {
         label: "手当",
         value:
-          "日直（巡回）を担当した日は1日500円。業務で使う自転車・バイクの費用と、業務連絡用スマートフォンの通信費を含みます",
+          "日直（巡回）を担当した日：1日500円\n※業務で使う自転車・バイクの費用と、業務連絡用スマートフォンの通信費を含みます",
       },
       {
         label: "勤務時間",
         value:
-          "シフト制・週6日程度。巡回は (1) 9:00〜13:00 か (2) 16:00〜20:00 のいずれかを選んで固定し、1日2〜3時間。その他の作業はシフト制で時間は応相談。1日の労働時間は2〜6時間程度",
+          "シフト制・週6日程度\n巡回：9:00〜13:00 か 16:00〜20:00 のどちらかを選んで固定（1日2〜3時間）\nその他の作業：シフト制（時間は応相談）\n1日の労働時間は2〜6時間程度",
       },
       { label: "休日", value: "週1日（曜日は応相談で、面接時に決めます）" },
       { label: "休憩・時間外労働", value: "休憩なし／時間外労働なし" },
@@ -100,12 +100,12 @@ export const jobs: Job[] = [
       {
         label: "応募資格",
         value:
-          "年齢・学歴・経験・資格すべて不問。自転車またはバイクで葛飾区内を移動できる方（車両はご自身のものをお使いいただきます）。スマートフォンで写真を撮って送ることができる方",
+          "年齢・学歴・経験・資格すべて不問\n自転車またはバイクで葛飾区内を移動できる方（車両はご自身のものをお使いいただきます）\nスマートフォンで写真を撮って送ることができる方",
       },
       {
         label: "選考",
         value:
-          "書類選考（履歴書）→ 面接。結果は面接後7日以内にメールでお知らせします",
+          "書類選考（履歴書）→ 面接\n結果は面接後7日以内にメールでお知らせします",
       },
     ],
     sections: [
@@ -140,20 +140,20 @@ export const jobs: Job[] = [
       {
         label: "報酬",
         value:
-          "巡回手当 月6,000円（週1回・最長15分の見回り）／時給1,300円（見回り以外の作業・1分単位）／緊急駆けつけ 1回3,000円＋時給（深夜は割増）",
+          "巡回手当：月6,000円（週1回・最長15分の見回り）\n時給：1,300円（見回り以外の作業・1分単位）\n緊急の駆けつけ：1回3,000円＋時給（深夜は割増）",
       },
-      { label: "勤務時間", value: "週1日程度・9:00〜20:00の間の1時間程度" },
-      { label: "休日", value: "勤務日以外" },
+      { label: "勤務時間", value: "週1回の見回り（最長15分）\n曜日と時間帯は、9:00〜20:00の間で相談して決めます\nそのほかの作業は、必要なときにその都度お願いします" },
+      { label: "休日", value: "見回りの日以外" },
       { label: "休憩・時間外労働", value: "休憩なし／時間外労働なし" },
       { label: "加入保険", value: "労災保険（雇用保険・健康保険・厚生年金は適用なし）" },
       { label: "通勤手当", value: "なし。徒歩や自転車で通える範囲の方に向いた仕事です" },
       { label: "受動喫煙対策", value: "屋内禁煙" },
       { label: "変更の範囲", value: "業務内容・就業場所ともに変更なし（転勤なし）" },
       { label: "賞与・昇給", value: "賞与なし／昇給あり" },
-      { label: "応募資格", value: "年齢・学歴・経験・資格すべて不問。日本語力は問いません。スマートフォンで写真を撮って送ることができる方" },
+      { label: "応募資格", value: "年齢・学歴・経験・資格すべて不問\n日本語力は問いません\nスマートフォンで写真を撮って送ることができる方" },
       {
         label: "選考",
-        value: "書類選考（履歴書・写真貼付）→ 面接（オンライン可）。結果は面接後7日以内にメールでお知らせします",
+        value: "書類選考（履歴書・写真貼付）→ 面接（オンライン可）\n結果は面接後7日以内にメールでお知らせします",
       },
       { label: "採用人数", value: "1名" },
     ],
@@ -186,10 +186,10 @@ export const jobs: Job[] = [
         {
           label: "Pay",
           value:
-            "Patrol allowance ¥6,000/month (one weekly check, up to 15 min) / ¥1,300 per hour for other tasks (paid by the minute) / Emergency call-out ¥3,000 per visit + hourly pay (late-night premium applies)",
+            "Patrol allowance: ¥6,000/month (one weekly check, up to 15 min)\nOther tasks: ¥1,300 per hour (paid by the minute)\nEmergency call-out: ¥3,000 per visit + hourly pay (late-night premium applies)",
         },
-        { label: "Hours", value: "About 1 day a week, around 1 hour between 9:00 and 20:00" },
-        { label: "Days off", value: "Any day other than your working day" },
+        { label: "Hours", value: "One check a week (up to 15 min)\nThe day and time are agreed between 9:00 and 20:00\nOther tasks are requested as needed" },
+        { label: "Days off", value: "Any day other than your check day" },
         { label: "Breaks / overtime", value: "No breaks / No overtime" },
         { label: "Insurance", value: "Workers' accident compensation insurance (employment insurance, health insurance and employees' pension do not apply)" },
         { label: "Commuting allowance", value: "Not provided. This job suits people who can walk or cycle to the site." },
@@ -199,9 +199,9 @@ export const jobs: Job[] = [
         {
           label: "Requirements",
           value:
-            "No requirements for age, education, experience, or qualifications. Japanese language ability is not required. You need to be able to take and send photos with a smartphone.",
+            "No requirements for age, education, experience, or qualifications\nJapanese language ability is not required\nYou need to be able to take and send photos with a smartphone",
         },
-        { label: "Selection", value: "Document screening (résumé with a photo) → interview (online OK). We will email you the result within 7 days of the interview." },
+        { label: "Selection", value: "Document screening (résumé with a photo) → interview (online OK)\nWe will email you the result within 7 days of the interview" },
         { label: "Openings", value: "1" },
       ],
       sections: [
@@ -241,16 +241,16 @@ export const jobs: Job[] = [
       {
         label: "報酬",
         value:
-          "施設担当：1施設あたり 月15,000〜25,000円（実働目安 1日10〜30分）／清掃連携のみ（英語不要）：月5,000〜8,000円",
+          "施設担当：1施設あたり 月15,000〜25,000円（実働目安 1日10〜30分）\n清掃連携のみ（英語不要）：1施設あたり 月5,000〜8,000円",
       },
-      { label: "支払い", value: "月末締め・翌月払い（請求書払い）。詳細は個別契約で定めます" },
+      { label: "支払い", value: "月末締め・翌月払い（請求書払い）\n詳細は個別契約で定めます" },
       {
         label: "対応時間",
-        value: "コア10:00〜22:00。緊急は30分以内・通常は3時間以内の返信目安。深夜・早朝は原則対応不要",
+        value: "コアタイム 10:00〜22:00\n返信の目安：緊急は30分以内、通常は3時間以内\n深夜・早朝は原則対応不要",
       },
       {
         label: "求める人材",
-        value: "接客・ホスピタリティ業界での実務経験／英語での柔軟なコミュニケーション（CEFR B1程度〜）／自律して業務を遂行できる方",
+        value: "接客・ホスピタリティ業界での実務経験\n英語での柔軟なコミュニケーション（CEFR B1程度〜）\n自律して業務を遂行できる方",
       },
     ],
     sections: [
@@ -345,23 +345,23 @@ export const jobs: Job[] = [
         {
           label: "契約形態",
           value:
-            "登録制（ご登録の時点では契約は発生しません）。お仕事は1件ごとにLINEでご依頼し、お受けいただいたものを業務委託としてお願いします。受けるかどうかは毎回選べます",
+            "登録制（ご登録の時点では契約は発生しません）\nお仕事は1件ごとにLINEでご依頼し、お受けいただいたものを業務委託としてお願いします\n受けるかどうかは毎回選べます",
         },
         { label: "対応エリア", value: `${a.areaDetail}の当社運営施設` },
         {
           label: "お仕事の内容",
-          value: `${a.patrol ? "巡回（担当者が休むときの代わり）、" : ""}駆けつけ（ゲストからの連絡を受けての現地対応）、軽作業（備品の補充、電球や電池の交換、業者の立ち会いなど）`,
+          value: `${a.patrol ? "巡回（担当者が休むときの代わり）\n" : ""}駆けつけ（ゲストからの連絡を受けての現地対応）\n軽作業（備品の補充、電球や電池の交換、業者の立ち会いなど）`,
         },
         {
           label: "報酬（税込・目安）",
-          value: `${a.patrol ? a.patrol + "／" : ""}通常のお仕事（60分以内）：2,200円（以降30分ごと＋1,100円）／緊急の駆けつけ（最初の30分）：3,300円、深夜（22:00〜翌5:00）は5,500円（以降30分ごと＋1,100円）。金額はお仕事ごとにご提示し、合意のうえでお願いします`,
+          value: `${a.patrol ? a.patrol + "\n" : ""}通常のお仕事（60分以内）：2,200円\n　60分を超えた場合：30分ごとに＋1,100円\n緊急の駆けつけ（最初の30分）：3,300円\n　深夜（22:00〜翌5:00）：5,500円\n　30分を超えた場合：30分ごとに＋1,100円\n\n※金額はお仕事ごとにご提示し、合意のうえでお願いします`,
         },
-        { label: "交通費", value: "原則お支払いしません。担当エリアへ自転車や徒歩で動ける方に向いています" },
+        { label: "交通費", value: "原則お支払いしません\n担当エリアへ自転車や徒歩で動ける方に向いています" },
         { label: "支払い", value: "月末締め・翌月末払い（銀行振込）" },
         {
           label: "応募資格",
           value:
-            "経験不問。日本語力は問いません。スマートフォンで写真の撮影・送信、フォームの入力ができる方。LINEでやり取りができる方。英語や中国語ができる方は歓迎します",
+            "経験不問\n日本語力は問いません\nスマートフォンで写真の撮影・送信、フォームの入力ができる方\nLINEでやり取りができる方\n英語や中国語ができる方は歓迎します",
         },
         { label: "選考", value: "書類選考 → 面接" },
       ],
@@ -387,23 +387,23 @@ export const jobs: Job[] = [
           {
             label: "Arrangement",
             value:
-              "Registration-based (registering does not create any contract). We offer each job by LINE, and jobs you accept are done as freelance work. You can choose every time whether to take a job.",
+              "Registration-based (registering does not create any contract)\nWe offer each job by LINE, and jobs you accept are done as freelance work\nYou can choose every time whether to take a job",
           },
           { label: "Area", value: `Our properties in ${a.areaDetailEn}` },
           {
             label: "Work",
-            value: `${a.patrolEn ? "Patrols (covering for staff on days off), " : ""}call-outs (on-site response to guest calls), and light tasks (restocking supplies, replacing light bulbs and batteries, being present for contractors, etc.)`,
+            value: `${a.patrolEn ? "Patrols (covering for staff on days off)\n" : ""}Call-outs (on-site response to guest calls)\nLight tasks (restocking supplies, replacing light bulbs and batteries, being present for contractors, etc.)`,
           },
           {
             label: "Pay (tax incl., guide)",
-            value: `${a.patrolEn ? a.patrolEn + " / " : ""}Regular task (up to 60 min): ¥2,200 (then +¥1,100 per 30 min) / Emergency call-out (first 30 min): ¥3,300, or ¥5,500 late at night (22:00–5:00) (then +¥1,100 per 30 min). We show the amount for each job, and you take it only if you agree.`,
+            value: `${a.patrolEn ? a.patrolEn + "\n" : ""}Regular task (up to 60 min): ¥2,200\n  Over 60 min: +¥1,100 per 30 min\nEmergency call-out (first 30 min): ¥3,300\n  Late night (22:00–5:00): ¥5,500\n  Over 30 min: +¥1,100 per 30 min\n\n* We show the amount for each job, and you take it only if you agree`,
           },
-          { label: "Transport", value: "Not paid as a rule. Suits people who can get around the area by bicycle or on foot." },
+          { label: "Transport", value: "Not paid as a rule\nSuits people who can get around the area by bicycle or on foot" },
           { label: "Payment", value: "Closed at month-end, paid by bank transfer by the end of the following month" },
           {
             label: "Requirements",
             value:
-              "No experience needed. Japanese language ability is not required. You can take and send photos and fill in forms on a smartphone, and use LINE. English or Chinese is welcome.",
+              "No experience needed\nJapanese language ability is not required\nYou can take and send photos and fill in forms on a smartphone\nYou can use LINE\nEnglish or Chinese is welcome",
           },
           { label: "Selection", value: "Document screening → interview" },
         ],
