@@ -375,7 +375,8 @@ export const jobs: Job[] = [
           text: "登録フォームで、連絡先・本人確認書類・報酬の振込口座などをご登録いただき、登録スタッフ規約（お仕事の条件）にご同意いただきます。\n留学生の方は、資格外活動許可の範囲内（ほかのアルバイトと合わせて週28時間以内）でお受けいただけます。",
         },
       ],
-      note: "まずはメールでお気軽にお問い合わせください。",
+      note: "登録フォームでは、本人確認書類と振込口座の画像をアップロードいただくため、Googleアカウントでのログインが必要です。",
+      applyUrl: "https://docs.google.com/forms/d/e/1FAIpQLSe6ZfXbTsCxRuwf4AgkC6SPpxU2nocL1QSf4wRQWpwrCWloUQ/viewform",
       termsUrl: "https://docs.google.com/document/d/e/2PACX-1vTHf_x1y3_D9ykI41nu6FTbhPzBOBBC5mycZqZThoktBx9GY0mWDX_4nELu-sE1H3RTbdVQusX4MGdX/pub",
       en: {
         title: `On-call Property Support Staff (${a.areaEn})`,
@@ -416,7 +417,7 @@ export const jobs: Job[] = [
             text: "You register your contact details, ID and bank account on our registration form and agree to our registered staff terms (the conditions of the work).\nInternational students can take jobs within the limits of their permission to work (28 hours a week in total, including other part-time jobs).",
           },
         ],
-        note: "Feel free to email us first.",
+        note: "The registration form (in Japanese) asks you to upload your ID and bank account details, so you need to sign in with a Google account.",
       },
       employmentType: "CONTRACTOR",
       datePosted: "2026-09-23",

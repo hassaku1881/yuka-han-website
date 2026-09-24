@@ -22,6 +22,7 @@ const UI = {
     requirements: "募集要項",
     applyMail: "メールで応募する",
     applyForm: "応募フォームへ進む",
+    registerForm: "登録フォームへ進む",
     toAirwork: "Airワークの応募フォームに移動します。",
     applyTo: "応募先",
     mailSubject: "【応募】",
@@ -47,6 +48,7 @@ const UI = {
     requirements: "Details",
     applyMail: "Apply by email",
     applyForm: "Go to application form",
+    registerForm: "Go to registration form",
     toAirwork: "You will be taken to our application form on Airwork.",
     applyTo: "Send to",
     mailSubject: "[Application] ",
@@ -346,10 +348,10 @@ export function RecruitDetail({ job, locale }: { job: Job; locale: RecruitLocale
                 borderRadius: "4px",
               }}
             >
-              {isExternal ? ui.applyForm : ui.applyMail}
+              {isExternal ? (job.category === "registered" ? ui.registerForm : ui.applyForm) : ui.applyMail}
             </a>
             <p style={{ fontSize: "0.82rem", color: "var(--color-text-light)", marginTop: "1rem", lineHeight: 1.8 }}>
-              {c.note ?? (isExternal ? ui.toAirwork : "")}
+              {c.note ?? (isExternal && job.applyUrl?.includes("arwrk.net") ? ui.toAirwork : "")}
               {!isExternal && (
                 <>
                   <br />
