@@ -339,6 +339,7 @@ export default function AboutPage() {
                       宿泊施設の企画・開発・運営（Wuto）<br />
                       民泊運営代行<br />
                       宿泊施設運営支援<br />
+                      宿泊運営システムの開発・提供（AirChoiceシリーズ）<br />
                       撮影スタジオ事業<br />
                       マーケティング事業<br />
                       コンサルティング事業<br />

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { CheckCircle2, MapPin, Building, BarChart3, Compass, ArrowRight, FileText } from "lucide-react";
+import { BASE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "民泊運営代行 | Yuka-Han & Co.",
@@ -168,6 +169,143 @@ export default function OperationsPage() {
               )}
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── 自社開発システム ── */}
+      <section id="systems" style={{ background: "var(--color-primary)", padding: "6rem 8%" }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              name: "Check in by AirChoice",
+              applicationCategory: "BusinessApplication",
+              operatingSystem: "Web",
+              description:
+                "宿泊施設向けオンラインチェックイン・宿泊者名簿管理システム。旅館業法・住宅宿泊事業法が定める宿泊者名簿の記載事項に対応し、住宅宿泊事業の定期報告用CSV出力機能を備える。",
+              creator: { "@id": `${BASE_URL}/#organization` },
+            }),
+          }}
+        />
+        <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <p style={{ ...sectionLabel, color: "var(--color-accent)" }}>TECHNOLOGY</p>
+            <h2 style={{ ...sectionTitle, color: "var(--color-white)", marginBottom: "1.2rem" }}>
+              運営を支える、自社開発システム
+            </h2>
+            <p style={{ fontSize: "0.92rem", color: "rgba(255,255,255,0.75)", lineHeight: 2, maxWidth: "640px", margin: "0 auto" }}>
+              私たちは、運営の現場で必要になる道具を自分たちで開発しています。
+              日々の運営で使い込み、磨き続けているシステムの一部をご紹介します。
+            </p>
+          </div>
+
+          <div className="ops-systems-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
+            {/* Check in — 主役 */}
+            <div style={{
+              gridColumn: "1 / -1",
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.14)",
+              borderRadius: "8px",
+              padding: "2.4rem 2.2rem",
+            }}>
+              <p style={{ fontFamily: "var(--font-en)", fontSize: "0.68rem", letterSpacing: "0.22em", color: "var(--color-accent)", marginBottom: "0.7rem" }}>
+                CHECK-IN SYSTEM
+              </p>
+              <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1.4rem", fontWeight: 500, color: "var(--color-white)", marginBottom: "1rem" }}>
+                Check in by AirChoice
+              </h3>
+              <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.8)", lineHeight: 1.95, marginBottom: "1rem" }}>
+                ゲストが到着前にスマートフォンで完了できる、オンラインチェックインシステム。
+                旅館業法・住宅宿泊事業法に共通して義務付けられている宿泊者名簿の備え付けに対応し、
+                氏名・住所・国籍・職業など、法令が定める記載事項を漏れなく収集します。
+                日本国内に住所を持たない外国籍のゲストからは、パスポート画像の提出も受け付けます。
+              </p>
+              <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.8)", lineHeight: 1.95, marginBottom: "1.4rem" }}>
+                集めた名簿はオンラインで安全に保管。住宅宿泊事業の定期報告に対応したCSV出力機能により、
+                毎回の報告業務を数分に短縮します。
+              </p>
+              <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+                {["宿泊者名簿の法定記載事項に対応", "パスポート画像の収集", "定期報告用CSV出力", "ゲスト向け多言語対応"].map((tag) => (
+                  <span key={tag} style={{
+                    fontSize: "0.72rem",
+                    padding: "0.3rem 0.8rem",
+                    borderRadius: "20px",
+                    border: "1px solid rgba(139,115,85,0.55)",
+                    color: "var(--color-accent)",
+                    background: "rgba(139,115,85,0.12)",
+                  }}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* S */}
+            <div style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.14)",
+              borderRadius: "8px",
+              padding: "2rem 1.9rem",
+            }}>
+              <p style={{ fontFamily: "var(--font-en)", fontSize: "0.68rem", letterSpacing: "0.22em", color: "var(--color-accent)", marginBottom: "0.7rem" }}>
+                LINK & QR MANAGER
+              </p>
+              <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1.15rem", fontWeight: 500, color: "var(--color-white)", marginBottom: "0.9rem" }}>
+                S by AirChoice
+              </h3>
+              <p style={{ fontSize: "0.86rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.9 }}>
+                ゲストへ送る案内リンクを、人が読んで意味の分かるURLに整える発行・管理システム。
+                WiFi接続用QRコードの発行にも対応。長く不可解なURLをゲストに送らない——
+                そんな体験の細部まで設計するための道具です。
+              </p>
+            </div>
+
+            {/* TurnOps */}
+            <div style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.14)",
+              borderRadius: "8px",
+              padding: "2rem 1.9rem",
+            }}>
+              <p style={{ fontFamily: "var(--font-en)", fontSize: "0.68rem", letterSpacing: "0.22em", color: "var(--color-accent)", marginBottom: "0.7rem" }}>
+                TURNOVER OPS
+              </p>
+              <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1.15rem", fontWeight: 500, color: "var(--color-white)", marginBottom: "0.9rem" }}>
+                TurnOps by AirChoice
+              </h3>
+              <p style={{ fontSize: "0.86rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.9 }}>
+                チェックアウト後の清掃・ターンオーバーを管理するシステム。
+                現在は自社運営物件で運用しています。
+              </p>
+            </div>
+          </div>
+
+          <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, marginTop: "1.4rem" }}>
+            ※ 宿泊者名簿の記載事項・保存期間は、旅館業法・住宅宿泊事業法および関連する条例・ガイドラインの定めに沿って設計しています。
+          </p>
+
+          <div style={{ textAlign: "center", marginTop: "2.8rem" }}>
+            <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.85)", marginBottom: "1.4rem" }}>
+              Check in by AirChoice / S by AirChoice は、外部の宿泊事業者様へのご提供も準備中です。
+            </p>
+            <Link
+              href="/contact"
+              style={{
+                display: "inline-block",
+                padding: "0.85rem 2.5rem",
+                border: "1px solid rgba(255,255,255,0.6)",
+                color: "var(--color-white)",
+                textDecoration: "none",
+                fontSize: "0.88rem",
+                letterSpacing: "0.08em",
+                borderRadius: "4px",
+              }}
+            >
+              システムについて問い合わせる
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -524,6 +662,7 @@ export default function OperationsPage() {
       <style>{`
         @media (max-width: 768px) {
           .ops-grid-2 { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+          .ops-systems-grid { grid-template-columns: 1fr !important; }
           .ops-pain-grid { grid-template-columns: 1fr !important; }
           .ops-scope-grid { grid-template-columns: 1fr !important; }
           .ops-cohost { flex-direction: column !important; gap: 1.5rem !important; text-align: center; }

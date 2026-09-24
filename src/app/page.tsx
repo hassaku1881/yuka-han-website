@@ -204,6 +204,31 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* ── Technology band ── */}
+      <section style={{ background: "var(--color-bg)", padding: "3.8rem 8%", textAlign: "center" }}>
+        <p style={{ ...sectionLabel, textAlign: "center" }}>TECHNOLOGY</p>
+        <p style={{ fontSize: "1.05rem", color: "var(--color-primary)", fontWeight: 500, marginBottom: "0.7rem" }}>
+          民泊運営を支えるシステムを、自社で開発しています。
+        </p>
+        <p style={{ fontSize: "0.85rem", color: "var(--color-text-light)", lineHeight: 1.9, marginBottom: "1.5rem" }}>
+          宿泊者名簿・チェックインシステム「Check in by AirChoice」ほか、運営の現場から生まれたツール群。
+        </p>
+        <Link
+          href="/operations#systems"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.4rem",
+            color: "var(--color-accent)",
+            textDecoration: "none",
+            fontSize: "0.88rem",
+            letterSpacing: "0.05em",
+          }}
+        >
+          詳しく見る →
+        </Link>
+      </section>
+
       {/* Wuto Brand */}
       <section id="wuto" style={{ background: "var(--color-primary)", padding: 0 }}>
         <div

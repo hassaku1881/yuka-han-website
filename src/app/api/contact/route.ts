@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
   }
 
   // バリデーション
-  const validTypes = ["guest", "operations", "media", "neighbor", "other"];
+  const validTypes = ["guest", "operations", "media", "neighbor", "system", "other"];
   if (!validTypes.includes(type)) {
     return NextResponse.json({ error: "種別が不正です" }, { status: 400 });
   }
@@ -36,6 +36,7 @@ export async function POST(req: NextRequest) {
     operations: "民泊運営代行・コンサルティングのご相談",
     media: "取材・メディア掲載のご依頼",
     neighbor: "近隣・地域住民の方からのご連絡",
+    system: "自社開発システムに関するお問い合わせ",
     other: "その他",
   };
 
@@ -109,6 +110,7 @@ export async function POST(req: NextRequest) {
         operations: "contact_operations",
         media:      "contact_media",
         neighbor:   "contact_neighbor",
+        system:     "contact_system",
         other:      "contact_other",
       };
       await fetch(`${mcBase}/${emailHash}/tags`, {
