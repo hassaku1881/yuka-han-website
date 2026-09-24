@@ -11,6 +11,7 @@ import {
   LifeBuoy,
   Camera,
   KeyRound,
+  MonitorSmartphone,
 } from "lucide-react";
 import { notFound } from "next/navigation";
 import { SUPPORTED_LOCALES, LOCALE_SUFFIX, type SupportedLocale } from "@/lib/i18n";
@@ -130,7 +131,15 @@ const t = {
         title: "Real Estate",
         text: "Property leasing and management.",
       },
+      {
+        icon: <MonitorSmartphone size={22} strokeWidth={1.5} />,
+        title: "Operations Systems",
+        text: "Check-in & guest registry, guides & QR publishing, cleaning management — software we build in-house to power operations (the AirChoice series).",
+      },
     ],
+    techTitle: "We build the systems behind our operations, in-house.",
+    techSub: "Check in by AirChoice — our check-in and guest-registry system — and other tools born on the front lines of hosting.",
+    techLink: "Learn more →",
     wutoLabel: "OUR BRAND",
     wutoTagline: "Live like a local.",
     wutoBody:
@@ -246,7 +255,15 @@ const t = {
         title: "不動產租賃事業",
         text: "不動產的租賃・管理業務。",
       },
+      {
+        icon: <MonitorSmartphone size={22} strokeWidth={1.5} />,
+        title: "營運支援系統開發",
+        text: "入住登記・住宿者名簿、指南・QR發行、清潔管理等，支撐營運的自研系統（AirChoice系列）。",
+      },
     ],
+    techTitle: "支撐民宿營運的系統，我們自己開發。",
+    techSub: "入住登記・住宿者名簿系統「Check in by AirChoice」等，誕生於營運現場的工具群。",
+    techLink: "了解更多 →",
     wutoLabel: "OUR BRAND",
     wutoTagline: "像住家一樣，住宿。",
     wutoBody:
@@ -506,6 +523,31 @@ export default async function LocaleTopPage({ params }: Props) {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* ── Technology band ── */}
+      <section style={{ background: "var(--color-bg)", padding: "3.8rem 8%", textAlign: "center" }}>
+        <p style={{ ...sectionLabel, textAlign: "center" }}>TECHNOLOGY</p>
+        <p style={{ fontSize: "1.05rem", color: "var(--color-primary)", fontWeight: 500, marginBottom: "0.7rem" }}>
+          {tr.techTitle}
+        </p>
+        <p style={{ fontSize: "0.85rem", color: "var(--color-text-light)", lineHeight: 1.9, marginBottom: "1.5rem" }}>
+          {tr.techSub}
+        </p>
+        <Link
+          href={`/${locale}/operations#systems`}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.4rem",
+            color: "var(--color-accent)",
+            textDecoration: "none",
+            fontSize: "0.88rem",
+            letterSpacing: "0.05em",
+          }}
+        >
+          {tr.techLink}
+        </Link>
       </section>
 
       {/* Wuto Brand */}
@@ -963,9 +1005,9 @@ export default async function LocaleTopPage({ params }: Props) {
         }
         .sub-business-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1.5rem;
-          max-width: 1100px;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 1.2rem;
+          max-width: 1140px;
           margin: 0 auto;
         }
         .sub-business-card {

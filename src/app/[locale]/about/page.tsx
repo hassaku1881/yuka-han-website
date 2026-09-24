@@ -164,6 +164,8 @@ const t: Record<
             <br />
             Hospitality operations consulting
             <br />
+            Hospitality operations systems — development &amp; licensing (AirChoice series)
+            <br />
             Photography studio
             <br />
             Marketing
@@ -294,6 +296,8 @@ const t: Record<
             民宿運營代理
             <br />
             住宿設施運營支援
+            <br />
+            住宿營運系統開發・提供（AirChoice系列）
             <br />
             攝影工作室事業
             <br />
