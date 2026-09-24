@@ -6,6 +6,7 @@ import { SUPPORTED_LOCALES, type SupportedLocale } from "@/lib/i18n";
 import { BASE_URL } from "@/lib/constants";
 import WutoReviews from "@/components/WutoReviews";
 import PropertyImageSlider from "@/components/PropertyImageSlider";
+import { optimizedImage } from "@/lib/image";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -376,7 +377,7 @@ export default async function LocaleWutoPage({ params }: Props) {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        background: "linear-gradient(rgba(20,30,48,0.48), rgba(20,30,48,0.52)), url('/images/hero-wuto.jpg') center/cover",
+        background: `linear-gradient(rgba(20,30,48,0.48), rgba(20,30,48,0.52)), url('${optimizedImage("/images/hero-wuto.jpg", 1920)}') center/cover`,
         color: "var(--color-white)",
       }}>
         <div style={{ maxWidth: "700px", padding: "0 2rem" }}>

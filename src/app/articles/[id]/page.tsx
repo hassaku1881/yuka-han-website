@@ -7,6 +7,7 @@ import ArticleToc, { type TocHeading } from "@/components/ArticleToc";
 import ArticleShareButtons from "@/components/ArticleShareButtons";
 import ArticleProgress from "@/components/ArticleProgress";
 import { TRANSLATED_ARTICLE_BASE_IDS } from "@/lib/i18n";
+import { optimizedImage } from "@/lib/image";
 
 export const revalidate = 60;
 
@@ -129,7 +130,7 @@ export default async function ArticleDetailPage({ params }: Props) {
         <div
           style={{
             height: "50vh",
-            backgroundImage: `url('${article.thumbnail.url}')`,
+            backgroundImage: `url('${optimizedImage(article.thumbnail.url, 1920)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -353,7 +354,7 @@ export default async function ArticleDetailPage({ params }: Props) {
                   <div
                     className="related-card-img"
                     style={{
-                      backgroundImage: `url('${rel.thumbnail?.url ?? "/images/articles-" + rel.category.toLowerCase().replace(" ", "-") + ".jpg"}')`,
+                      backgroundImage: `url('${optimizedImage(rel.thumbnail?.url ?? "/images/articles-" + rel.category.toLowerCase().replace(" ", "-") + ".jpg", 828)}')`,
                     }}
                   />
                   <div style={{ padding: "1.1rem 1.2rem" }}>

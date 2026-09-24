@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { optimizedImage } from "@/lib/image";
 
 export const metadata: Metadata = {
   title: "About Us | 株式会社ユカハン",
@@ -56,7 +57,7 @@ export default function AboutPage() {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        background: "linear-gradient(rgba(20,30,48,0.55), rgba(20,30,48,0.68)), url('/images/20231003_katsushika-02.jpg') 25% 75% / cover no-repeat",
+        background: `linear-gradient(rgba(20,30,48,0.55), rgba(20,30,48,0.68)), url('${optimizedImage("/images/20231003_katsushika-02.jpg", 1920)}') 25% 75% / cover no-repeat`,
         color: "var(--color-white)",
         padding: "5rem 2rem",
       }}>

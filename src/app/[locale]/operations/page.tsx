@@ -4,6 +4,7 @@ import { CheckCircle2, MapPin, Building, BarChart3, Compass, ArrowRight, FileTex
 import { notFound } from "next/navigation";
 import { SUPPORTED_LOCALES, type SupportedLocale } from "@/lib/i18n";
 import { BASE_URL } from "@/lib/constants";
+import { optimizedImage } from "@/lib/image";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -588,7 +589,7 @@ export default async function LocaleOperationsPage({ params }: Props) {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        background: "linear-gradient(rgba(20,30,48,0.6), rgba(20,30,48,0.7)), url('/images/20250711-02.jpg') center/cover",
+        background: `linear-gradient(rgba(20,30,48,0.6), rgba(20,30,48,0.7)), url('${optimizedImage("/images/20250711-02.jpg", 1920)}') center/cover`,
         color: "var(--color-white)",
         padding: "5rem 2rem",
       }}>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { optimizedImage } from "@/lib/image";
 
 type Props = {
   images: string[];
@@ -27,7 +28,7 @@ export default function PropertyImageSlider({ images, alt }: Props) {
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: `url('${src}')`,
+            backgroundImage: `url('${optimizedImage(src, 1080)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             opacity: i === current ? 1 : 0,

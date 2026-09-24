@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import { optimizedImage } from "@/lib/image";
 
 type Slide = {
   id: string;
@@ -208,7 +209,7 @@ export default function HeroSlider({ locale = "ja" }: { locale?: string }) {
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: `linear-gradient(${s.overlay}, ${s.overlay}), url('${s.bg}')`,
+            backgroundImage: `linear-gradient(${s.overlay}, ${s.overlay}), url('${optimizedImage(s.bg, 1920)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             opacity: i === current ? 1 : 0,

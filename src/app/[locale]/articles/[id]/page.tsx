@@ -12,6 +12,7 @@ import {
   LOCALE_SUFFIX,
   type SupportedLocale,
 } from "@/lib/i18n";
+import { optimizedImage } from "@/lib/image";
 
 export const revalidate = 60;
 
@@ -142,7 +143,7 @@ export default async function TranslatedArticlePage({ params }: Props) {
         <div
           style={{
             height: "50vh",
-            backgroundImage: `url('${article.thumbnail.url}')`,
+            backgroundImage: `url('${optimizedImage(article.thumbnail.url, 1920)}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

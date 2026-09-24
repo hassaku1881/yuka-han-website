@@ -4,6 +4,7 @@ import { getArticles, getArticlesByCategory } from "@/lib/microcms";
 import type { Article } from "@/lib/microcms";
 import { BASE_URL } from "@/lib/constants";
 import { getFallback, getReadingTime, ARTICLE_CATEGORIES } from "@/lib/articleUtils";
+import { optimizedImage } from "@/lib/image";
 
 export const revalidate = 60;
 
@@ -92,7 +93,7 @@ export default async function ArticlesPage({ searchParams }: Props) {
       }}>
         <div style={{
           position: "absolute", inset: 0,
-          backgroundImage: "url('/images/20241109-32.jpg')",
+          backgroundImage: `url('${optimizedImage("/images/20241109-32.jpg", 1920)}')`,
           backgroundSize: "cover", backgroundPosition: "center 66%",
           opacity: 0.18,
         }} />
@@ -188,7 +189,7 @@ export default async function ArticlesPage({ searchParams }: Props) {
                   <div
                     className="featured-img"
                     style={{
-                      backgroundImage: `url('${featured.thumbnail?.url ?? getFallback(featured.category)}')`,
+                      backgroundImage: `url('${optimizedImage(featured.thumbnail?.url ?? getFallback(featured.category), 828)}')`,
                     }}
                   />
                   <div className="featured-body">
@@ -252,7 +253,7 @@ export default async function ArticlesPage({ searchParams }: Props) {
                       <div
                         className="article-card-img"
                         style={{
-                          backgroundImage: `url('${article.thumbnail?.url ?? getFallback(article.category)}')`,
+                          backgroundImage: `url('${optimizedImage(article.thumbnail?.url ?? getFallback(article.category), 828)}')`,
                         }}
                       />
                       <div style={{ padding: "1.3rem" }}>

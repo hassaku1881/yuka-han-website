@@ -3,6 +3,7 @@ import { Home as HomeIcon, TrainFront, Sparkles, Building2, Globe, Briefcase, St
 import { getArticles, getNews } from "@/lib/microcms";
 import HeroSlider from "@/components/HeroSlider";
 import { reviews } from "@/lib/reviews";
+import { optimizedImage } from "@/lib/image";
 
 const PROPERTY_THUMBS = [
   { name: "Wutoお花茶屋 1F", image: "/images/properties/ohanajaya-1f-main.jpg" },
@@ -243,7 +244,7 @@ export default async function Home() {
             alignItems: "center",
             justifyContent: "center",
             textAlign: "center",
-            background: "linear-gradient(rgba(20,30,48,0.55), rgba(20,30,48,0.55)), url('/images/hero-wuto.jpg') center/cover",
+            background: `linear-gradient(rgba(20,30,48,0.55), rgba(20,30,48,0.55)), url('${optimizedImage("/images/hero-wuto.jpg", 1920)}') center/cover`,
             padding: "5rem 8%",
           }}
         >
@@ -294,7 +295,7 @@ export default async function Home() {
               <Link key={p.name} href="/wuto" className="property-thumb">
                 <div
                   className="property-thumb-image"
-                  style={{ backgroundImage: `url('${p.image}')` }}
+                  style={{ backgroundImage: `url('${optimizedImage(p.image, 828)}')` }}
                 />
                 <p style={{
                   fontSize: "0.78rem",
@@ -408,7 +409,7 @@ export default async function Home() {
           <div className="articles-grid">
             {articles.map((article) => (
               <Link key={article.id} href={`/articles/${article.id}`} className="article-card">
-                <div style={{ height: "180px", backgroundImage: `url('${article.thumbnail?.url ?? getFallback(article.category)}')`, backgroundSize: "cover", backgroundPosition: "center", backgroundColor: "#eee" }} />
+                <div style={{ height: "180px", backgroundImage: `url('${optimizedImage(article.thumbnail?.url ?? getFallback(article.category), 828)}')`, backgroundSize: "cover", backgroundPosition: "center", backgroundColor: "#eee" }} />
                 <div style={{ padding: "1.5rem" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "0.8rem" }}>
                     {article.category && (

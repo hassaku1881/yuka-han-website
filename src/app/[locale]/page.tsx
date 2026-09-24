@@ -18,6 +18,7 @@ import { BASE_URL } from "@/lib/constants";
 import { getArticles } from "@/lib/microcms";
 import HeroSlider from "@/components/HeroSlider";
 import { reviews } from "@/lib/reviews";
+import { optimizedImage } from "@/lib/image";
 
 export const revalidate = 60;
 
@@ -517,7 +518,7 @@ export default async function LocaleTopPage({ params }: Props) {
             justifyContent: "center",
             textAlign: "center",
             background:
-              "linear-gradient(rgba(20,30,48,0.55), rgba(20,30,48,0.55)), url('/images/hero-wuto.jpg') center/cover",
+              `linear-gradient(rgba(20,30,48,0.55), rgba(20,30,48,0.55)), url('${optimizedImage("/images/hero-wuto.jpg", 1920)}') center/cover`,
             padding: "5rem 8%",
           }}
         >
@@ -604,7 +605,7 @@ export default async function LocaleTopPage({ params }: Props) {
               <Link key={p.name} href={`/${locale}/wuto`} className="property-thumb">
                 <div
                   className="property-thumb-image"
-                  style={{ backgroundImage: `url('${p.image}')` }}
+                  style={{ backgroundImage: `url('${optimizedImage(p.image, 828)}')` }}
                 />
                 <p
                   style={{
@@ -728,9 +729,7 @@ export default async function LocaleTopPage({ params }: Props) {
                 <div
                   style={{
                     height: "180px",
-                    backgroundImage: `url('${
-                      article.thumbnail?.url ?? getFallback(article.category)
-                    }')`,
+                    backgroundImage: `url('${optimizedImage(article.thumbnail?.url ?? getFallback(article.category), 828)}')`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundColor: "#eee",

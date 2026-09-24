@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { CheckCircle2, MapPin, Building, BarChart3, Compass, ArrowRight, FileText } from "lucide-react";
 import { BASE_URL } from "@/lib/constants";
+import { optimizedImage } from "@/lib/image";
 
 export const metadata: Metadata = {
   title: "民泊運営代行 | Yuka-Han & Co.",
@@ -43,7 +44,7 @@ export default function OperationsPage() {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        background: "linear-gradient(rgba(20,30,48,0.6), rgba(20,30,48,0.7)), url('/images/20250711-02.jpg') center/cover",
+        background: `linear-gradient(rgba(20,30,48,0.6), rgba(20,30,48,0.7)), url('${optimizedImage("/images/20250711-02.jpg", 1920)}') center/cover`,
         color: "var(--color-white)",
         padding: "5rem 2rem",
       }}>

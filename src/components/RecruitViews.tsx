@@ -167,7 +167,7 @@ export function RecruitList({ locale, jobs, intro }: { locale: RecruitLocale; jo
           padding: "5rem 2rem",
         }}
       >
-        <Image src="/images/20250711-02.jpg" alt="" fill priority sizes="100vw" quality={70} style={{ objectFit: "cover" }} />
+        <Image src="/images/20250711-02.jpg" alt="" fill priority sizes="100vw" style={{ objectFit: "cover" }} />
         <div aria-hidden style={{ position: "absolute", inset: 0, background: "linear-gradient(rgba(20,30,48,0.5), rgba(20,30,48,0.65))" }} />
         <div style={{ position: "relative" }}>
           <p style={{ fontFamily: "var(--font-en)", fontSize: "0.75rem", letterSpacing: "0.3em", color: "var(--color-accent)", marginBottom: "0.8rem" }}>

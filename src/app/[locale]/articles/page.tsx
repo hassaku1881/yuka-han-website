@@ -10,6 +10,7 @@ import { BASE_URL } from "@/lib/constants";
 import { getArticles, getArticlesByCategory } from "@/lib/microcms";
 import type { Article } from "@/lib/microcms";
 import { getFallback, getReadingTime, ARTICLE_CATEGORIES } from "@/lib/articleUtils";
+import { optimizedImage } from "@/lib/image";
 
 export const revalidate = 60;
 
@@ -133,7 +134,7 @@ export default async function LocaleArticlesPage({ params, searchParams }: Props
       }}>
         <div style={{
           position: "absolute", inset: 0,
-          backgroundImage: "url('/images/20241109-32.jpg')",
+          backgroundImage: `url('${optimizedImage("/images/20241109-32.jpg", 1920)}')`,
           backgroundSize: "cover", backgroundPosition: "center 66%",
           opacity: 0.18,
         }} />
@@ -201,7 +202,7 @@ export default async function LocaleArticlesPage({ params, searchParams }: Props
                 const baseId = featured.id.replace(/-en$/, "").replace(/-zh$/, "");
                 return (
                   <Link href={`/${locale}/articles/${baseId}`} className="featured-card" style={{ textDecoration: "none", color: "inherit" }}>
-                    <div className="featured-img" style={{ backgroundImage: `url('${featured.thumbnail?.url ?? getFallback(featured.category)}')` }} />
+                    <div className="featured-img" style={{ backgroundImage: `url('${optimizedImage(featured.thumbnail?.url ?? getFallback(featured.category), 828)}')` }} />
                     <div className="featured-body">
                       <div style={{ display: "flex", alignItems: "center", gap: "0.8rem", marginBottom: "1rem" }}>
                         {featured.category && (
@@ -239,7 +240,7 @@ export default async function LocaleArticlesPage({ params, searchParams }: Props
                     const baseId = article.id.replace(/-en$/, "").replace(/-zh$/, "");
                     return (
                       <Link key={article.id} href={`/${locale}/articles/${baseId}`} className="article-card" style={{ textDecoration: "none", color: "inherit" }}>
-                        <div className="article-card-img" style={{ backgroundImage: `url('${article.thumbnail?.url ?? getFallback(article.category)}')` }} />
+                        <div className="article-card-img" style={{ backgroundImage: `url('${optimizedImage(article.thumbnail?.url ?? getFallback(article.category), 828)}')` }} />
                         <div style={{ padding: "1.3rem" }}>
                           <div style={{ display: "flex", alignItems: "center", gap: "0.7rem", marginBottom: "0.7rem" }}>
                             {article.category && (

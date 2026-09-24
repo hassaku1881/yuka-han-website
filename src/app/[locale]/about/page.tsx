@@ -4,6 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { SUPPORTED_LOCALES, type SupportedLocale } from "@/lib/i18n";
 import { BASE_URL } from "@/lib/constants";
+import { optimizedImage } from "@/lib/image";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -349,7 +350,7 @@ export default async function LocaleAboutPage({ params }: Props) {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        background: "linear-gradient(rgba(20,30,48,0.55), rgba(20,30,48,0.68)), url('/images/20231003_katsushika-02.jpg') 25% 75% / cover no-repeat",
+        background: `linear-gradient(rgba(20,30,48,0.55), rgba(20,30,48,0.68)), url('${optimizedImage("/images/20231003_katsushika-02.jpg", 1920)}') 25% 75% / cover no-repeat`,
         color: "var(--color-white)",
         padding: "5rem 2rem",
       }}>
