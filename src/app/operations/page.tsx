@@ -210,24 +210,30 @@ export default function OperationsPage() {
               borderRadius: "8px",
               padding: "2.4rem 2.2rem",
             }}>
-              <p style={{ fontFamily: "var(--font-en)", fontSize: "0.68rem", letterSpacing: "0.22em", color: "var(--color-accent)", marginBottom: "0.7rem" }}>
-                CHECK-IN SYSTEM
-              </p>
-              <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1.4rem", fontWeight: 500, color: "var(--color-white)", marginBottom: "1rem" }}>
-                Check in by AirChoice
-              </h3>
+              <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.2rem" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/systems/checkin.svg" alt="Check in by AirChoice ロゴ" width={46} height={46} />
+                <div>
+                  <p style={{ fontFamily: "var(--font-en)", fontSize: "0.68rem", letterSpacing: "0.22em", color: "var(--color-accent)", marginBottom: "0.3rem" }}>
+                    CHECK-IN SYSTEM
+                  </p>
+                  <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1.4rem", fontWeight: 500, color: "var(--color-white)" }}>
+                    Check in by AirChoice
+                  </h3>
+                </div>
+              </div>
               <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.8)", lineHeight: 1.95, marginBottom: "1rem" }}>
                 ゲストが到着前にスマートフォンで完了できる、オンラインチェックインシステム。
                 旅館業法・住宅宿泊事業法に共通して義務付けられている宿泊者名簿の備え付けに対応し、
                 氏名・住所・国籍・職業など、法令が定める記載事項を漏れなく収集します。
-                日本国内に住所を持たない外国籍のゲストからは、パスポート画像の提出も受け付けます。
               </p>
               <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.8)", lineHeight: 1.95, marginBottom: "1.4rem" }}>
-                集めた名簿はオンラインで安全に保管。住宅宿泊事業の定期報告に対応したCSV出力機能により、
-                毎回の報告業務を数分に短縮します。
+                外国籍ゲストのパスポートは、<strong style={{ color: "var(--color-white)", fontWeight: 600 }}>画像をアップロードするだけで記載情報を自動で読み取り</strong>。
+                ゲストは面倒な入力なしでチェックインでき、オーナー様には本人確認書類が確実に収集・保管されている安心があります。
+                集めた名簿は住宅宿泊事業の定期報告に対応したCSVでいつでも出力でき、報告業務を数分に短縮します。
               </p>
               <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-                {["宿泊者名簿の法定記載事項に対応", "パスポート画像の収集", "定期報告用CSV出力", "ゲスト向け多言語対応"].map((tag) => (
+                {["宿泊者名簿の法定記載事項に対応", "パスポート画像の自動読み取り（OCR）", "定期報告用CSV出力", "ゲスト向け多言語対応"].map((tag) => (
                   <span key={tag} style={{
                     fontSize: "0.72rem",
                     padding: "0.3rem 0.8rem",
@@ -249,16 +255,22 @@ export default function OperationsPage() {
               borderRadius: "8px",
               padding: "2rem 1.9rem",
             }}>
-              <p style={{ fontFamily: "var(--font-en)", fontSize: "0.68rem", letterSpacing: "0.22em", color: "var(--color-accent)", marginBottom: "0.7rem" }}>
-                LINK & QR MANAGER
-              </p>
-              <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1.15rem", fontWeight: 500, color: "var(--color-white)", marginBottom: "0.9rem" }}>
-                S by AirChoice
-              </h3>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.9rem", marginBottom: "1rem" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/systems/s.svg" alt="S by AirChoice ロゴ" width={40} height={40} />
+                <div>
+                  <p style={{ fontFamily: "var(--font-en)", fontSize: "0.68rem", letterSpacing: "0.22em", color: "var(--color-accent)", marginBottom: "0.3rem" }}>
+                    SHORT URL / GUIDE / QR
+                  </p>
+                  <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1.15rem", fontWeight: 500, color: "var(--color-white)" }}>
+                    S by AirChoice
+                  </h3>
+                </div>
+              </div>
               <p style={{ fontSize: "0.86rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.9 }}>
-                ゲストへ送る案内リンクを、人が読んで意味の分かるURLに整える発行・管理システム。
-                WiFi接続用QRコードの発行にも対応。長く不可解なURLをゲストに送らない——
-                そんな体験の細部まで設計するための道具です。
+                ハウスマニュアル・アクセスガイドといったゲスト向け資料と、短縮URL・QRコードをまとめて発行・管理するシステム。
+                ホストは散らばりがちな案内資料をひとつに整理でき、ゲストには
+                s.airchoice.jp/施設名/guide のような、意味の分かるURLで届きます。
               </p>
             </div>
 
@@ -269,15 +281,22 @@ export default function OperationsPage() {
               borderRadius: "8px",
               padding: "2rem 1.9rem",
             }}>
-              <p style={{ fontFamily: "var(--font-en)", fontSize: "0.68rem", letterSpacing: "0.22em", color: "var(--color-accent)", marginBottom: "0.7rem" }}>
-                TURNOVER OPS
-              </p>
-              <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1.15rem", fontWeight: 500, color: "var(--color-white)", marginBottom: "0.9rem" }}>
-                TurnOps by AirChoice
-              </h3>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.9rem", marginBottom: "1rem" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/systems/turnops.svg" alt="TurnOps by AirChoice ロゴ" width={40} height={40} />
+                <div>
+                  <p style={{ fontFamily: "var(--font-en)", fontSize: "0.68rem", letterSpacing: "0.22em", color: "var(--color-accent)", marginBottom: "0.3rem" }}>
+                    TURNOVER OPS
+                  </p>
+                  <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1.15rem", fontWeight: 500, color: "var(--color-white)" }}>
+                    TurnOps by AirChoice
+                  </h3>
+                </div>
+              </div>
               <p style={{ fontSize: "0.86rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.9 }}>
-                チェックアウト後の清掃・ターンオーバーを管理するシステム。
-                現在は自社運営物件で運用しています。
+                アーリーチェックインやレイトチェックアウト、荷物預かり、追加タオルのご用意——
+                コストを理由に敬遠されがちな細やかな対応を、私たちはゲストの体験価値のために引き受けています。
+                その柔軟な現場運用を支えているのが、清掃・ターンオーバー管理システムです。
               </p>
             </div>
           </div>
@@ -288,7 +307,7 @@ export default function OperationsPage() {
 
           <div style={{ textAlign: "center", marginTop: "2.8rem" }}>
             <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.85)", marginBottom: "1.4rem" }}>
-              Check in by AirChoice / S by AirChoice は、外部の宿泊事業者様へのご提供も準備中です。
+              Check in by AirChoice / S by AirChoice は、単体での宿泊事業者様へのご提供も可能です。
             </p>
             <Link
               href="/contact"

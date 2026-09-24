@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
     operations: "民泊運営代行・コンサルティングのご相談",
     media: "取材・メディア掲載のご依頼",
     neighbor: "近隣・地域住民の方からのご連絡",
-    system: "自社開発システムに関するお問い合わせ",
+    system: "運営支援システムに関するお問い合わせ",
     other: "その他",
   };
 

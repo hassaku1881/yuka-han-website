@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Home as HomeIcon, TrainFront, Sparkles, Building2, Globe, Briefcase, Star, LifeBuoy, Camera, KeyRound } from "lucide-react";
+import { Home as HomeIcon, TrainFront, Sparkles, Building2, Globe, Briefcase, Star, LifeBuoy, Camera, KeyRound, MonitorSmartphone } from "lucide-react";
 import { getArticles, getNews } from "@/lib/microcms";
 import HeroSlider from "@/components/HeroSlider";
 import { reviews } from "@/lib/reviews";
@@ -188,6 +188,11 @@ export default async function Home() {
                 icon: <KeyRound size={22} strokeWidth={1.5} />,
                 title: "不動産賃貸事業",
                 text: "不動産の賃貸・管理。",
+              },
+              {
+                icon: <MonitorSmartphone size={22} strokeWidth={1.5} />,
+                title: "運営支援システム開発",
+                text: "チェックイン・宿泊者名簿、案内・QR発行、清掃管理など、運営を支えるシステムを自社開発・提供（AirChoiceシリーズ）。",
               },
             ].map((biz) => (
               <div key={biz.title} className="sub-business-card">
@@ -588,9 +593,9 @@ export default async function Home() {
         }
         .sub-business-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1.5rem;
-          max-width: 1100px;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 1.2rem;
+          max-width: 1140px;
           margin: 0 auto;
         }
         .sub-business-card {
