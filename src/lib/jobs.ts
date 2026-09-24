@@ -285,7 +285,7 @@ export const jobs: Job[] = [
   },
 
   // ── 登録スタッフ（業務委託） ─────────────────────────
-  // 条件は2025/9のジモティー掲載（京成線エリア）を全エリア共通で使用
+  // 条件の正：01_Corporate … 21_駆けつけ・施設管理/登録スタッフ_発注条件と運用.md と「登録スタッフ規約」
   ...[
     {
       id: "oncall-keisei",
@@ -294,6 +294,10 @@ export const jobs: Job[] = [
       areaEn: "Katsushika – Keisei Line area",
       areaDetailEn: "the Keisei Line area of Katsushika (Horikiri-shobuen, Ohanajaya, Aoto, Yotsugi, Keisei-Tateishi)",
       locality: "葛飾区",
+      patrol: "巡回（6軒・75分程度）：1回3,000円",
+      patrolEn: "Patrol (6 properties, about 75 min): ¥3,000 per round",
+      patrolCard: "巡回 1回3,000円",
+      patrolCardEn: "Patrol ¥3,000",
     },
     {
       id: "oncall-shinkoiwa",
@@ -302,6 +306,10 @@ export const jobs: Job[] = [
       areaEn: "Katsushika – Shin-Koiwa area",
       areaDetailEn: "the Shin-Koiwa area of Katsushika",
       locality: "葛飾区",
+      patrol: "巡回（1棟・最長10分）：1回700円",
+      patrolEn: "Patrol (1 building, up to 10 min): ¥700 per round",
+      patrolCard: "巡回 1回700円",
+      patrolCardEn: "Patrol ¥700",
     },
     {
       id: "oncall-shinjuku",
@@ -320,82 +328,97 @@ export const jobs: Job[] = [
       locality: "江戸川区",
     },
   ].map(
-    (a): Job => ({
+    (a: {
+      id: string; area: string; areaDetail: string; areaEn: string; areaDetailEn: string; locality: string;
+      patrol?: string; patrolEn?: string; patrolCard?: string; patrolCardEn?: string;
+    }): Job => ({
       id: a.id,
       published: true,
       occupation: "facility",
       category: "registered",
-      title: `駆け付け・施設管理 登録スタッフ（${a.area}）`,
+      title: `駆けつけ・施設管理 登録スタッフ（${a.area}）`,
       area: a.area,
-      wage: "緊急駆け付け 1件5,000円／緊急でない対応 1件2,500円",
-      summary:
-        "民泊施設の「困った！」を解決するお仕事。時給ではなく対応1件ごとのお支払いなので、空いた時間の副業に向いています。",
+      wage: `${a.patrolCard ? a.patrolCard + "／" : ""}駆けつけ 3,300円〜／通常のお仕事 2,200円〜（税込・目安）`,
+      summary: `空いた時間に、お近くの民泊施設の${a.patrol ? "巡回の代行・" : ""}駆けつけ・軽作業をスポットで。お仕事は1件ごとに、受けるかどうかを選べます。`,
       facts: [
-        { label: "契約形態", value: "登録制。登録後にお仕事をご依頼します。単発の作業は業務委託契約、アルバイトのお仕事の場合は別途雇用契約を結びます" },
-        { label: "対応エリア", value: `${a.areaDetail}の各施設` },
         {
-          label: "報酬",
+          label: "契約形態",
           value:
-            "緊急駆け付け対応（60分以内）：1件5,000円／緊急でない対応（60分以内）：1件2,500円／60分を超えた場合は以降30分ごとに1,500円",
+            "登録制（ご登録の時点では契約は発生しません）。お仕事は1件ごとにLINEでご依頼し、お受けいただいたものを業務委託としてお願いします。受けるかどうかは毎回選べます",
         },
-        { label: "支払い", value: "日払い（翌営業日振り込み）" },
-        { label: "勤務時間", value: "決まった勤務時間はありません。対応が必要になったときのみ" },
-        { label: "選考", value: "書類選考 → 面接" },
+        { label: "対応エリア", value: `${a.areaDetail}の当社運営施設` },
+        {
+          label: "お仕事の内容",
+          value: `${a.patrol ? "巡回（担当者が休むときの代わり）、" : ""}駆けつけ（ゲストからの連絡を受けての現地対応）、軽作業（備品の補充、電球や電池の交換、業者の立ち会いなど）`,
+        },
+        {
+          label: "報酬（税込・目安）",
+          value: `${a.patrol ? a.patrol + "／" : ""}通常のお仕事（60分以内）：2,200円（以降30分ごと＋1,100円）／緊急の駆けつけ（最初の30分）：3,300円、深夜（22:00〜翌5:00）は5,500円（以降30分ごと＋1,100円）。金額はお仕事ごとにご提示し、合意のうえでお願いします`,
+        },
+        { label: "交通費", value: "原則お支払いしません。担当エリアへ自転車や徒歩で動ける方に向いています" },
+        { label: "支払い", value: "月末締め・翌月末払い（銀行振込）" },
         {
           label: "応募資格",
           value:
-            "経験不問。日本語力は問いません。自転車やバイクでフットワーク軽く動ける方。英語や中国語で日常会話ができる方は優遇します",
+            "経験不問。日本語力は問いません。スマートフォンで写真の撮影・送信、フォームの入力ができる方。LINEでやり取りができる方。英語や中国語ができる方は歓迎します",
         },
+        { label: "選考", value: "書類選考 → 面接" },
       ],
       sections: [
         {
           heading: "仕事内容",
-          text: `${a.areaDetail}にある民泊施設の「困った！」を解決していただくお仕事です。\n\n【ゲストからの緊急連絡への対応】\n・鍵の紛失、設備の故障、騒音トラブルなど\n\n【ちょっとした施設管理・清掃】\n・備品の補充、壊れた物の買い替え\n・簡単な整理整頓や清掃\n\n時給ではなく対応ごとにお支払いするので、ご自身の空いた時間で副業として働きたい方におすすめです。`,
+          text: `${a.areaDetail}にある当社運営の民泊施設で、スタッフが回りきれないときのお仕事をスポットでお願いします。\n\n${a.patrol ? "【巡回】\n・担当者が休む日の見回りの代わり\n・施設の様子を確認し、スマホで写真を撮って報告\n\n" : ""}【駆けつけ】\n・ゲストからの連絡を受けての現地対応（鍵のトラブル、設備の不具合、騒音への対応など）\n\n【軽作業】\n・備品や消耗品の補充、電球や電池の交換\n・業者の立ち会いなど\n\nお仕事はLINEで日時・場所・内容・金額をお伝えします。受けるかどうかは、その都度ご自身で選べます。`,
         },
         {
-          heading: "こんな方を求めています",
-          text: "・担当エリアに詳しく、自転車やバイクでフットワーク軽く動ける方\n・責任感があり、臨機応変に対応できる方\n・民泊の仕事の経験は問いません\n・英語や中国語で日常会話ができる方は優遇します",
+          heading: "ご登録について",
+          text: "登録フォームで、連絡先・本人確認書類・報酬の振込口座などをご登録いただき、登録スタッフ規約（お仕事の条件）にご同意いただきます。\n留学生の方は、資格外活動許可の範囲内（ほかのアルバイトと合わせて週28時間以内）でお受けいただけます。",
         },
       ],
-      note: "まずはメールでお気軽にお問い合わせください。詳しくご説明します。",
+      note: "まずはメールでお気軽にお問い合わせください。",
       en: {
         title: `On-call Property Support Staff (${a.areaEn})`,
         area: a.areaEn,
-        wage: "¥5,000 per emergency call-out / ¥2,500 per non-urgent task",
-        summary:
-          "Help solve problems at vacation rentals. You are paid per job, not by the hour, so it works well as a side job in your free time.",
+        wage: `${a.patrolCardEn ? a.patrolCardEn + " / " : ""}Call-out from ¥3,300 / Tasks from ¥2,200 (tax incl., guide)`,
+        summary: `Spot work in your free time at vacation rentals near you — ${a.patrolEn ? "covering patrols, " : ""}call-outs and light tasks. You decide whether to take each job.`,
         facts: [
-          { label: "Contract", value: "Registration-based. After you register, we send you jobs. One-off tasks are done under a freelance (service) contract; if a part-time job comes up, we sign a separate employment contract." },
-          { label: "Area", value: `Properties in ${a.areaDetailEn}` },
           {
-            label: "Pay",
+            label: "Arrangement",
             value:
-              "Emergency call-out (up to 60 min): ¥5,000 per job / Non-urgent task (up to 60 min): ¥2,500 per job / Beyond 60 min: ¥1,500 for every additional 30 min",
+              "Registration-based (registering does not create any contract). We offer each job by LINE, and jobs you accept are done as freelance work. You can choose every time whether to take a job.",
           },
-          { label: "Payment", value: "Paid daily (transferred the next business day)" },
-          { label: "Hours", value: "No fixed hours — only when a job comes up" },
-          { label: "Selection", value: "Document screening → interview" },
+          { label: "Area", value: `Our properties in ${a.areaDetailEn}` },
+          {
+            label: "Work",
+            value: `${a.patrolEn ? "Patrols (covering for staff on days off), " : ""}call-outs (on-site response to guest calls), and light tasks (restocking supplies, replacing light bulbs and batteries, being present for contractors, etc.)`,
+          },
+          {
+            label: "Pay (tax incl., guide)",
+            value: `${a.patrolEn ? a.patrolEn + " / " : ""}Regular task (up to 60 min): ¥2,200 (then +¥1,100 per 30 min) / Emergency call-out (first 30 min): ¥3,300, or ¥5,500 late at night (22:00–5:00) (then +¥1,100 per 30 min). We show the amount for each job, and you take it only if you agree.`,
+          },
+          { label: "Transport", value: "Not paid as a rule. Suits people who can get around the area by bicycle or on foot." },
+          { label: "Payment", value: "Closed at month-end, paid by bank transfer by the end of the following month" },
           {
             label: "Requirements",
             value:
-              "No experience needed. Japanese language ability is not required. You can get around quickly by bicycle or motorbike. Everyday English or Chinese is a plus.",
+              "No experience needed. Japanese language ability is not required. You can take and send photos and fill in forms on a smartphone, and use LINE. English or Chinese is welcome.",
           },
+          { label: "Selection", value: "Document screening → interview" },
         ],
         sections: [
           {
             heading: "Job description",
-            text: `Help solve problems at vacation rental properties in ${a.areaDetailEn}.\n\n[Responding to guest emergencies]\n・Lost keys, broken equipment, noise complaints, etc.\n\n[Light property upkeep and cleaning]\n・Restocking supplies, replacing broken items\n・Simple tidying and cleaning\n\nYou are paid per job rather than by the hour, so this suits people looking for a side job in their free time.`,
+            text: `Spot work at our vacation rentals in ${a.areaDetailEn}, when our staff cannot cover everything.\n\n${a.patrolEn ? "[Patrols]\n・Covering the patrol on days our staff member is off\n・Checking the properties and reporting with smartphone photos\n\n" : ""}[Call-outs]\n・On-site response to guest calls (key trouble, equipment problems, noise, etc.)\n\n[Light tasks]\n・Restocking supplies, replacing light bulbs and batteries\n・Being present for contractors, etc.\n\nWe send each job by LINE with the date, place, task and amount. You decide each time whether to take it.`,
           },
           {
-            heading: "Who we are looking for",
-            text: "・You know the area well and can get around quickly by bicycle or motorbike\n・You are responsible and can adapt to the situation\n・No vacation rental experience needed\n・Everyday English or Chinese is a plus",
+            heading: "Registering",
+            text: "You register your contact details, ID and bank account on our registration form and agree to our registered staff terms (the conditions of the work).\nInternational students can take jobs within the limits of their permission to work (28 hours a week in total, including other part-time jobs).",
           },
         ],
-        note: "Feel free to email us first — we will explain the details.",
+        note: "Feel free to email us first.",
       },
-      employmentType: ["CONTRACTOR", "PART_TIME"],
+      employmentType: "CONTRACTOR",
       datePosted: "2026-09-23",
-    updatedAt: "2026-09-24",
+      updatedAt: "2026-09-24",
       locality: a.locality,
     })
   ),
