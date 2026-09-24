@@ -114,7 +114,7 @@ export const jobs: Job[] = [
         text: "葛飾区内にある宿泊施設を自転車やバイクで回り、施設の見回りと管理をお願いします。ダブルワークや60歳以上の方も歓迎します。\n\n【毎日の巡回・2時間程度】\n・施設の見回りと、スマホでの写真報告\n・共用部の簡単な清掃、ゴミの整理\n\n【その他の作業・週8時間程度／シフト制】\n・新しい施設の開業準備（設置、開梱、清掃）\n・備品や消耗品の買い出しと補充、草取り\n・電球交換など簡単な修繕、業者の立ち会い\n・清掃業者が入ったあとの仕上がり確認",
       },
     ],
-    note: "応募は履歴書をメールでお送りください。",
+    applyUrl: "https://arwrk.net/recruit/hmgi14si0uenqxf/13222355/",
     employmentType: "PART_TIME",
     datePosted: "2026-09-23",
     updatedAt: "2026-09-24",
@@ -168,10 +168,11 @@ export const jobs: Job[] = [
       },
       {
         heading: "やさしい にほんご",
-        text: "■ １しゅうかんに １かい：見まわり（ながくても １５分）\n・げんかんと ゴミおきばを 見ます\n・きょうようぶを かんたんに そうじします\n・ゆうびんぶつを かくにんして とります\n・スマホで しゃしんを とって、ほうこくします\n　→ はやいときは ２ふんで おわります\n　→ みじかくても 手当は へりません\n\n■ おきゅうりょう\n・見まわり手当　１かげつ ６，０００円\n・時給　１，３００円（見まわり いがいの さぎょう）\n・こうつうひは 出ません\n\n■ 留学生の みなさんへ\nこのしごとは、１しゅうかんに １５ふんだけです。\n「しかくがい かつどう」の ２８じかんのうち、\nつかうのは １％より すくないです。\nほかの アルバイトと いっしょに できます。\n（ざいりゅうカードの「資格外活動許可」が ひつようです）\n\n■ おうぼ\nしゃしんを はった りれきしょを、メールで おくってください。\ncontact@yuka-han.com",
+        text: "■ １しゅうかんに １かい：見まわり（ながくても １５分）\n・げんかんと ゴミおきばを 見ます\n・きょうようぶを かんたんに そうじします\n・ゆうびんぶつを かくにんして とります\n・スマホで しゃしんを とって、ほうこくします\n　→ はやいときは ２ふんで おわります\n　→ みじかくても 手当は へりません\n\n■ おきゅうりょう\n・見まわり手当　１かげつ ６，０００円\n・時給　１，３００円（見まわり いがいの さぎょう）\n・こうつうひは 出ません\n\n■ 留学生の みなさんへ\nこのしごとは、１しゅうかんに １５ふんだけです。\n「しかくがい かつどう」の ２８じかんのうち、\nつかうのは １％より すくないです。\nほかの アルバイトと いっしょに できます。\n（ざいりゅうカードの「資格外活動許可」が ひつようです）\n\n■ おうぼ\nこの ページの「応募フォームへ進む」から おうぼ して ください。\nおうぼの あとで、しゃしんを はった りれきしょを おくって いただきます。",
       },
     ],
-    note: "応募は履歴書（写真貼付）をメールでお送りください。",
+    note: "Airワークの応募フォームに移動します。ご応募後、写真を貼った履歴書のご提出をお願いします（提出方法はご応募後にご案内します）。",
+    applyUrl: "https://arwrk.net/recruit/hmgi14si0uenqxf/13222419/",
     en: {
       title: "Property Check & Maintenance Staff",
       area: "Shinjuku (3 min walk from Shinjuku-sanchome Sta.)",
@@ -214,7 +215,7 @@ export const jobs: Job[] = [
           text: "The weekly check takes about 15 minutes — less than 1% of the 28 hours a week you are allowed to work. You can easily combine it with another part-time job. You need permission to engage in activities outside your status of residence (shown on the back of your residence card).",
         },
       ],
-      note: "To apply, email us your résumé with a photo (English or Japanese).",
+      note: "You will be taken to our application form on Airwork (in Japanese). After you apply, we will ask you to send a résumé with a photo (English or Japanese).",
     },
     employmentType: "PART_TIME",
     datePosted: "2026-09-23",
@@ -290,6 +291,7 @@ export const jobs: Job[] = [
   ...[
     {
       id: "oncall-keisei",
+      airwork: "https://arwrk.net/recruit/hmgi14si0uenqxf/13222538/",
       area: "葛飾区・京成線エリア",
       areaDetail: "葛飾区の京成線エリア（堀切菖蒲園・お花茶屋・青砥・四ツ木・京成立石）",
       areaEn: "Katsushika – Keisei Line area",
@@ -302,6 +304,7 @@ export const jobs: Job[] = [
     },
     {
       id: "oncall-shinkoiwa",
+      airwork: "https://arwrk.net/recruit/hmgi14si0uenqxf/13222616/",
       area: "葛飾区・新小岩エリア",
       areaDetail: "葛飾区の新小岩エリア",
       areaEn: "Katsushika – Shin-Koiwa area",
@@ -314,6 +317,7 @@ export const jobs: Job[] = [
     },
     {
       id: "oncall-shinjuku",
+      airwork: "https://arwrk.net/recruit/hmgi14si0uenqxf/13222648/",
       area: "新宿エリア",
       areaDetail: "新宿区の新宿エリア",
       areaEn: "Shinjuku area",
@@ -322,6 +326,7 @@ export const jobs: Job[] = [
     },
     {
       id: "oncall-ichinoe",
+      airwork: "https://arwrk.net/recruit/hmgi14si0uenqxf/13222681/",
       area: "江戸川区・一之江/瑞江エリア",
       areaDetail: "江戸川区の一之江・瑞江エリア",
       areaEn: "Edogawa – Ichinoe / Mizue area",
@@ -330,7 +335,7 @@ export const jobs: Job[] = [
     },
   ].map(
     (a: {
-      id: string; area: string; areaDetail: string; areaEn: string; areaDetailEn: string; locality: string;
+      id: string; airwork: string; area: string; areaDetail: string; areaEn: string; areaDetailEn: string; locality: string;
       patrol?: string; patrolEn?: string; patrolCard?: string; patrolCardEn?: string;
     }): Job => ({
       id: a.id,
@@ -372,11 +377,11 @@ export const jobs: Job[] = [
         },
         {
           heading: "ご登録について",
-          text: "登録フォームで、連絡先・本人確認書類・報酬の振込口座などをご登録いただき、登録スタッフ規約（お仕事の条件）にご同意いただきます。\n留学生の方は、資格外活動許可の範囲内（ほかのアルバイトと合わせて週28時間以内）でお受けいただけます。",
+          text: "選考を通過された方には、登録フォームで連絡先・本人確認書類・報酬の振込口座などをご登録いただき、登録スタッフ規約（お仕事の条件）にご同意いただきます。\n留学生の方は、資格外活動許可の範囲内（ほかのアルバイトと合わせて週28時間以内）でお受けいただけます。",
         },
       ],
-      note: "登録フォームでは、本人確認書類と振込口座の画像をアップロードいただくため、Googleアカウントでのログインが必要です。",
-      applyUrl: "https://docs.google.com/forms/d/e/1FAIpQLSe6ZfXbTsCxRuwf4AgkC6SPpxU2nocL1QSf4wRQWpwrCWloUQ/viewform",
+      note: "Airワークの応募フォームに移動します。選考を通過された方には、登録フォーム（本人確認書類・振込口座・登録スタッフ規約への同意など）をご案内します。",
+      applyUrl: a.airwork,
       termsUrl: "https://docs.google.com/document/d/e/2PACX-1vTHf_x1y3_D9ykI41nu6FTbhPzBOBBC5mycZqZThoktBx9GY0mWDX_4nELu-sE1H3RTbdVQusX4MGdX/pub",
       en: {
         title: `On-call Property Support Staff (${a.areaEn})`,
@@ -414,10 +419,10 @@ export const jobs: Job[] = [
           },
           {
             heading: "Registering",
-            text: "You register your contact details, ID and bank account on our registration form and agree to our registered staff terms (the conditions of the work).\nInternational students can take jobs within the limits of their permission to work (28 hours a week in total, including other part-time jobs).",
+            text: "If you pass the selection, you register your contact details, ID and bank account on our registration form and agree to our registered staff terms (the conditions of the work).\nInternational students can take jobs within the limits of their permission to work (28 hours a week in total, including other part-time jobs).",
           },
         ],
-        note: "The registration form (in Japanese) asks you to upload your ID and bank account details, so you need to sign in with a Google account.",
+        note: "You will be taken to our application form on Airwork (in Japanese). If you pass the selection, we will send you our registration form (ID, bank account, agreement to the registered staff terms, etc.).",
       },
       employmentType: "CONTRACTOR",
       datePosted: "2026-09-23",

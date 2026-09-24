@@ -366,7 +366,7 @@ export function RecruitDetail({ job, locale }: { job: Job; locale: RecruitLocale
                 borderRadius: "4px",
               }}
             >
-              {isExternal ? (job.category === "registered" ? ui.registerForm : ui.applyForm) : ui.applyMail}
+              {isExternal ? ui.applyForm : ui.applyMail}
             </a>
             <p style={{ fontSize: "0.82rem", color: "var(--color-text-light)", marginTop: "1rem", lineHeight: 1.8 }}>
               {c.note ?? (isExternal && job.applyUrl?.includes("arwrk.net") ? ui.toAirwork : "")}
