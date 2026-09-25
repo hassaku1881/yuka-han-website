@@ -139,9 +139,6 @@ const t = {
         text: "Property leasing and management.",
       },
     ],
-    techTitle: "We build the systems behind our operations, in-house.",
-    techSub: "Check in by AirChoice — our check-in and guest-registry system — and other tools born on the front lines of hosting.",
-    techLink: "Learn more →",
     wutoLabel: "OUR BRAND",
     wutoTagline: "Live like a local.",
     wutoBody:
@@ -265,9 +262,6 @@ const t = {
         text: "不動產的租賃・管理業務。",
       },
     ],
-    techTitle: "支撐民宿營運的系統，我們自己開發。",
-    techSub: "入住登記・住宿者名簿系統「Check in by AirChoice」等，誕生於營運現場的工具群。",
-    techLink: "了解更多 →",
     wutoLabel: "OUR BRAND",
     wutoTagline: "像住家一樣，住宿。",
     wutoBody:
@@ -527,31 +521,6 @@ export default async function LocaleTopPage({ params }: Props) {
             ))}
           </div>
         </div>
-      </section>
-
-      {/* ── Technology band ── */}
-      <section style={{ background: "var(--color-bg)", padding: "3.8rem 8%", textAlign: "center" }}>
-        <p style={{ ...sectionLabel, textAlign: "center" }}>TECHNOLOGY</p>
-        <p style={{ fontSize: "1.05rem", color: "var(--color-primary)", fontWeight: 500, marginBottom: "0.7rem" }}>
-          {tr.techTitle}
-        </p>
-        <p style={{ fontSize: "0.85rem", color: "var(--color-text-light)", lineHeight: 1.9, marginBottom: "1.5rem" }}>
-          {tr.techSub}
-        </p>
-        <Link
-          href={`/${locale}/operations#systems`}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "0.4rem",
-            color: "var(--color-accent)",
-            textDecoration: "none",
-            fontSize: "0.88rem",
-            letterSpacing: "0.05em",
-          }}
-        >
-          {tr.techLink}
-        </Link>
       </section>
 
       {/* Wuto Brand */}
