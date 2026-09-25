@@ -395,8 +395,7 @@ export default async function LocaleTopPage({ params }: Props) {
 
         {/* Main 3 cards */}
         <div className="business-grid-3">
-          {tr.mainCards.map((card) =>
-            card.href ? (
+          {tr.mainCards.map((card) => (
               <Link key={card.title} href={card.href} className="business-card business-card-link">
                 <div style={{ marginBottom: "1.5rem", color: "var(--color-accent)" }}>
                   {card.icon}
@@ -432,44 +431,7 @@ export default async function LocaleTopPage({ params }: Props) {
                   {card.linkText}
                 </span>
               </Link>
-            ) : (
-              <div key={card.title} className="business-card">
-                <div style={{ marginBottom: "1.5rem", color: "var(--color-accent)" }}>
-                  {card.icon}
-                </div>
-                <h3
-                  style={{
-                    fontSize: "1.1rem",
-                    fontWeight: 500,
-                    color: "var(--color-primary)",
-                    marginBottom: "1rem",
-                  }}
-                >
-                  {card.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "0.9rem",
-                    color: "var(--color-text-light)",
-                    lineHeight: 1.8,
-                  }}
-                >
-                  {card.body}
-                </p>
-                <span
-                  style={{
-                    display: "inline-block",
-                    marginTop: "1.5rem",
-                    fontSize: "0.8rem",
-                    color: "var(--color-text-light)",
-                    opacity: 0.6,
-                  }}
-                >
-                  {card.linkText}
-                </span>
-              </div>
-            )
-          )}
+          ))}
         </div>
 
         {/* Sub-businesses */}
