@@ -108,6 +108,13 @@ const t = {
         linkText: "Feel free to reach out",
         href: null,
       },
+      {
+        icon: <MonitorSmartphone size={36} strokeWidth={1.5} />,
+        title: "Operations Systems",
+        body: "Check-in & guest registry, guides & QR publishing, cleaning management — software we build in-house to power operations (the AirChoice series).",
+        linkText: "Learn more →",
+        href: "/en/operations#systems",
+      },
     ],
     otherBusinessesLabel: "OTHER BUSINESSES",
     subCards: [
@@ -130,11 +137,6 @@ const t = {
         icon: <KeyRound size={22} strokeWidth={1.5} />,
         title: "Real Estate",
         text: "Property leasing and management.",
-      },
-      {
-        icon: <MonitorSmartphone size={22} strokeWidth={1.5} />,
-        title: "Operations Systems",
-        text: "Check-in & guest registry, guides & QR publishing, cleaning management — software we build in-house to power operations (the AirChoice series).",
       },
     ],
     techTitle: "We build the systems behind our operations, in-house.",
@@ -232,6 +234,13 @@ const t = {
         linkText: "歡迎隨時諮詢",
         href: null,
       },
+      {
+        icon: <MonitorSmartphone size={36} strokeWidth={1.5} />,
+        title: "營運支援系統開發事業",
+        body: "入住登記・住宿者名簿、指南・QR發行、清潔管理等，支撐營運的自研系統（AirChoice系列）。",
+        linkText: "了解更多 →",
+        href: "/zh-TW/operations#systems",
+      },
     ],
     otherBusinessesLabel: "OTHER BUSINESSES",
     subCards: [
@@ -254,11 +263,6 @@ const t = {
         icon: <KeyRound size={22} strokeWidth={1.5} />,
         title: "不動產租賃事業",
         text: "不動產的租賃・管理業務。",
-      },
-      {
-        icon: <MonitorSmartphone size={22} strokeWidth={1.5} />,
-        title: "營運支援系統開發",
-        text: "入住登記・住宿者名簿、指南・QR發行、清潔管理等，支撐營運的自研系統（AirChoice系列）。",
       },
     ],
     techTitle: "支撐民宿營運的系統，我們自己開發。",
@@ -982,9 +986,9 @@ export default async function LocaleTopPage({ params }: Props) {
 
         .business-grid-3 {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 2rem;
-          max-width: 1100px;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+          max-width: 1240px;
           margin: 0 auto;
         }
         .business-card {
@@ -1005,9 +1009,9 @@ export default async function LocaleTopPage({ params }: Props) {
         }
         .sub-business-grid {
           display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          gap: 1.2rem;
-          max-width: 1140px;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+          max-width: 1100px;
           margin: 0 auto;
         }
         .sub-business-card {

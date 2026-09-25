@@ -154,6 +154,22 @@ export default async function Home() {
               お気軽にご相談ください
             </span>
           </div>
+
+          {/* 運営支援システム開発事業 */}
+          <Link href="/operations#systems" className="business-card business-card-link">
+            <div style={{ marginBottom: "1.5rem", color: "var(--color-accent)" }}>
+              <MonitorSmartphone size={36} strokeWidth={1.5} />
+            </div>
+            <h3 style={{ fontSize: "1.1rem", fontWeight: 500, color: "var(--color-primary)", marginBottom: "1rem" }}>
+              運営支援システム開発事業
+            </h3>
+            <p style={{ fontSize: "0.9rem", color: "var(--color-text-light)", lineHeight: 1.8 }}>
+              チェックイン・宿泊者名簿、案内・QR発行、清掃管理など、運営を支えるシステムを自社開発・提供（AirChoiceシリーズ）。
+            </p>
+            <span style={{ display: "inline-block", marginTop: "1.5rem", fontSize: "0.8rem", color: "var(--color-accent)", letterSpacing: "0.05em" }}>
+              詳しく見る →
+            </span>
+          </Link>
         </div>
 
         {/* ── サブ事業 ── */}
@@ -189,11 +205,6 @@ export default async function Home() {
                 icon: <KeyRound size={22} strokeWidth={1.5} />,
                 title: "不動産賃貸事業",
                 text: "不動産の賃貸・管理。",
-              },
-              {
-                icon: <MonitorSmartphone size={22} strokeWidth={1.5} />,
-                title: "運営支援システム開発",
-                text: "チェックイン・宿泊者名簿、案内・QR発行、清掃管理など、運営を支えるシステムを自社開発・提供（AirChoiceシリーズ）。",
               },
             ].map((biz) => (
               <div key={biz.title} className="sub-business-card">
@@ -571,9 +582,9 @@ export default async function Home() {
 
         .business-grid-3 {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 2rem;
-          max-width: 1100px;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+          max-width: 1240px;
           margin: 0 auto;
         }
         .business-card {
@@ -594,9 +605,9 @@ export default async function Home() {
         }
         .sub-business-grid {
           display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          gap: 1.2rem;
-          max-width: 1140px;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem;
+          max-width: 1100px;
           margin: 0 auto;
         }
         .sub-business-card {
