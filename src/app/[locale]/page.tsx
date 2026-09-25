@@ -105,8 +105,8 @@ const t = {
         icon: <LifeBuoy size={36} strokeWidth={1.5} />,
         title: "Hospitality Operations Support",
         body: "Consulting, revenue improvement, and operations support for all types of accommodation properties. We handle a wide range of challenges.",
-        linkText: "Feel free to reach out",
-        href: null,
+        linkText: "Learn more →",
+        href: "/en/operations#hospitality",
       },
       {
         icon: <MonitorSmartphone size={36} strokeWidth={1.5} />,
@@ -228,8 +228,8 @@ const t = {
         icon: <LifeBuoy size={36} strokeWidth={1.5} />,
         title: "住宿設施運營支援事業",
         body: "不限民宿，提供各類住宿設施的諮詢・收益改善・運營支援。各類問題皆可廣泛支援。",
-        linkText: "歡迎隨時諮詢",
-        href: null,
+        linkText: "了解更多 →",
+        href: "/zh-TW/operations#hospitality",
       },
       {
         icon: <MonitorSmartphone size={36} strokeWidth={1.5} />,

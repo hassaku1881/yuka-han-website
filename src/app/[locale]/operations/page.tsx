@@ -1077,7 +1077,7 @@ export default async function LocaleOperationsPage({ params }: Props) {
       </section>
 
       {/* ── Hospitality Operations ── */}
-      <section style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
+      <section id="hospitality" style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
         <div style={{ maxWidth: "880px", margin: "0 auto" }}>
           <p style={sectionLabel}>{tx.hospitality.label}</p>
           <h2 style={{ ...sectionTitle, marginBottom: "1.2rem" }}>{tx.hospitality.heading}</h2>

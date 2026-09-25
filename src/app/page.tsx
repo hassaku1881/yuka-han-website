@@ -140,7 +140,7 @@ export default async function Home() {
           </Link>
 
           {/* 宿泊施設運営支援事業 */}
-          <div className="business-card">
+          <Link href="/operations#hospitality" className="business-card business-card-link">
             <div style={{ marginBottom: "1.5rem", color: "var(--color-accent)" }}>
               <LifeBuoy size={36} strokeWidth={1.5} />
             </div>
@@ -150,10 +150,10 @@ export default async function Home() {
             <p style={{ fontSize: "0.9rem", color: "var(--color-text-light)", lineHeight: 1.8 }}>
               民泊に限らず、宿泊施設全般のコンサルティング・収益改善・運営支援。課題の種類を問わず、幅広くサポートします。
             </p>
-            <span style={{ display: "inline-block", marginTop: "1.5rem", fontSize: "0.8rem", color: "var(--color-text-light)", opacity: 0.6 }}>
-              お気軽にご相談ください
+            <span style={{ display: "inline-block", marginTop: "1.5rem", fontSize: "0.8rem", color: "var(--color-accent)", letterSpacing: "0.05em" }}>
+              詳しく見る →
             </span>
-          </div>
+          </Link>
 
           {/* 運営支援システム開発事業 */}
           <Link href="/operations#systems" className="business-card business-card-link">

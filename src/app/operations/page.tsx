@@ -594,7 +594,7 @@ export default function OperationsPage() {
       </section>
 
       {/* ── 宿泊施設運営全般 ── */}
-      <section style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
+      <section id="hospitality" style={{ background: "var(--color-bg)", padding: "6rem 8%" }}>
         <div style={{ maxWidth: "880px", margin: "0 auto" }}>
           <p style={sectionLabel}>HOSPITALITY OPERATIONS</p>
           <h2 style={{ ...sectionTitle, marginBottom: "1.2rem" }}>宿泊施設運営全般</h2>
