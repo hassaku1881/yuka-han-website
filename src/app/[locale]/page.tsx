@@ -111,7 +111,7 @@ const t = {
       {
         icon: <MonitorSmartphone size={36} strokeWidth={1.5} />,
         title: "Operations Systems",
-        body: "Check-in & guest registry, guides & QR publishing, cleaning management — software we build in-house to power operations (the AirChoice series).",
+        body: "Check-in & guest registry, guides & QR publishing, cleaning and facility management — software we build in-house to power operations (the AirChoice series).",
         linkText: "Learn more →",
         href: "/en/operations#systems",
       },
@@ -234,7 +234,7 @@ const t = {
       {
         icon: <MonitorSmartphone size={36} strokeWidth={1.5} />,
         title: "營運支援系統開發事業",
-        body: "入住登記・住宿者名簿、指南・QR發行、清潔管理等，支撐營運的自研系統（AirChoice系列）。",
+        body: "入住登記・住宿者名簿、指南・QR發行、清潔・設施管理等，支撐營運的自研系統（AirChoice系列）。",
         linkText: "了解更多 →",
         href: "/zh-TW/operations#systems",
       },

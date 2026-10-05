@@ -164,7 +164,7 @@ export default async function Home() {
               運営支援システム開発事業
             </h3>
             <p style={{ fontSize: "0.9rem", color: "var(--color-text-light)", lineHeight: 1.8 }}>
-              チェックイン・宿泊者名簿、案内・QR発行、清掃管理など、運営を支えるシステムを自社開発・提供（AirChoiceシリーズ）。
+              チェックイン・宿泊者名簿、案内・QR発行、清掃・施設管理など、運営を支えるシステムを自社開発・提供（AirChoiceシリーズ）。
             </p>
             <span style={{ display: "inline-block", marginTop: "1.5rem", fontSize: "0.8rem", color: "var(--color-accent)", letterSpacing: "0.05em" }}>
               詳しく見る →

@@ -32,6 +32,7 @@ const t: Record<SupportedLocale, {
     checkin: { body1: string; body2: string; badges: string[] };
     s: { body: string };
     turnops: { body: string };
+    houseops: { body: string };
     note: string;
     ctaLead: string;
     ctaButton: string;
@@ -168,6 +169,9 @@ const t: Record<SupportedLocale, {
       },
       turnops: {
         body: "Early check-ins, late check-outs, luggage storage, extra towels — the small accommodations many management companies turn down on cost grounds, we take on for the sake of the guest experience. This cleaning and turnover management system is what makes that flexibility work on the ground.",
+      },
+      houseops: {
+        body: "On days when guests are staying, a person walks the building and its surroundings. HouseOps records those daily patrols, facility issues, and our responses to neighbors. Patrol days are determined automatically from reservations, so the records required by local ordinance come together naturally in day-to-day work.",
       },
       note: "* Guest-register items and retention periods are designed in accordance with the Hotel Business Act, the Private Lodging Business Act, and related ordinances and guidelines.",
       ctaLead: "Check in by AirChoice and S by AirChoice are also available to accommodation businesses as standalone products.",
@@ -415,6 +419,9 @@ const t: Record<SupportedLocale, {
       },
       turnops: {
         body: "提前入住、延遲退房、行李寄放、加購毛巾——這些因成本考量而常被營運代管公司婉拒的細緻服務，我們為了房客的體驗價值主動承接。支撐這份彈性現場運作的，正是這套清潔・翻房管理系統。",
+      },
+      houseops: {
+        body: "有房客入住的日子，就有人巡視建物與其周邊。HouseOps 記錄這些每日巡邏、設施課題，以及對鄰里意見的處理。巡邏日由訂房資訊自動判定，條例要求的紀錄便在日常業務中自然齊備。",
       },
       note: "※ 住宿者名簿的記載事項與保存期間，皆依旅館業法、住宅宿泊事業法及相關條例・指引之規定設計。",
       ctaLead: "Check in by AirChoice / S by AirChoice 亦可單獨提供予住宿業者。",
@@ -763,7 +770,7 @@ export default async function LocaleOperationsPage({ params }: Props) {
             </p>
           </div>
 
-          <div className="ops-systems-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
+          <div className="ops-systems-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "1.5rem" }}>
             {/* Check in — featured */}
             <div style={{
               gridColumn: "1 / -1",
@@ -851,6 +858,30 @@ export default async function LocaleOperationsPage({ params }: Props) {
               </div>
               <p style={{ fontSize: "0.86rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.9 }}>
                 {tx.systems.turnops.body}
+              </p>
+            </div>
+
+            {/* HouseOps */}
+            <div style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.14)",
+              borderRadius: "8px",
+              padding: "2rem 1.9rem",
+            }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.9rem", marginBottom: "1rem" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/systems/houseops.svg" alt="HouseOps by AirChoice logo" width={40} height={40} />
+                <div>
+                  <p style={{ fontFamily: "var(--font-en)", fontSize: "0.68rem", letterSpacing: "0.22em", color: "var(--color-accent)", marginBottom: "0.3rem" }}>
+                    FACILITY MANAGEMENT
+                  </p>
+                  <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1.15rem", fontWeight: 500, color: "var(--color-white)" }}>
+                    HouseOps by AirChoice
+                  </h3>
+                </div>
+              </div>
+              <p style={{ fontSize: "0.86rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.9 }}>
+                {tx.systems.houseops.body}
               </p>
             </div>
           </div>

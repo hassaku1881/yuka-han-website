@@ -202,7 +202,7 @@ export default function OperationsPage() {
             </p>
           </div>
 
-          <div className="ops-systems-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
+          <div className="ops-systems-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "1.5rem" }}>
             {/* Check in — 主役 */}
             <div style={{
               gridColumn: "1 / -1",
@@ -298,6 +298,32 @@ export default function OperationsPage() {
                 アーリーチェックインやレイトチェックアウト、荷物預かり、追加タオルのご用意——
                 コストを理由に敬遠されがちな細やかな対応を、私たちはゲストの体験価値のために引き受けています。
                 その柔軟な現場運用を支えているのが、清掃・ターンオーバー管理システムです。
+              </p>
+            </div>
+
+            {/* HouseOps */}
+            <div style={{
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.14)",
+              borderRadius: "8px",
+              padding: "2rem 1.9rem",
+            }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.9rem", marginBottom: "1rem" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/systems/houseops.svg" alt="HouseOps by AirChoice ロゴ" width={40} height={40} />
+                <div>
+                  <p style={{ fontFamily: "var(--font-en)", fontSize: "0.68rem", letterSpacing: "0.22em", color: "var(--color-accent)", marginBottom: "0.3rem" }}>
+                    FACILITY MANAGEMENT
+                  </p>
+                  <h3 style={{ fontFamily: "var(--font-en)", fontSize: "1.15rem", fontWeight: 500, color: "var(--color-white)" }}>
+                    HouseOps by AirChoice
+                  </h3>
+                </div>
+              </div>
+              <p style={{ fontSize: "0.86rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.9 }}>
+                宿泊者がいる日は、人が建物とその周りを見回る。その毎日の巡回と、施設の課題、
+                近隣からのお申し出への対応を記録するシステムです。巡回が必要な日は予約から自動で判定し、
+                条例が求める記録が日々の業務のなかで自然にそろいます。
               </p>
             </div>
           </div>
