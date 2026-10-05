@@ -321,16 +321,27 @@ export default function OperationsPage() {
                 </div>
               </div>
               <p style={{ fontSize: "0.86rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.9 }}>
-                オーナー様の資産である建物と、ご近所との関係。民泊運営で最も壊してはいけないこの2つを守るためのシステムです。
+                建物と、近隣との関係。宿泊施設の運営で最も壊してはいけないこの2つを守るためのシステムです。
                 宿泊者がいる日は毎日スタッフが建物とその周りを見回り、気づいた課題は写真付きで記録。
-                近隣からのお申し出も受付から解決までの経過が残り、小さな火種のうちに対処できます。
-                条例が求める巡回の記録も、日々の運営のなかで自然にそろいます。
+                近隣からのお申し出も受付から解決までの経過を残し、小さな火種のうちに対処します。
               </p>
             </div>
           </div>
 
           <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, marginTop: "1.4rem" }}>
             ※ 宿泊者名簿の記載事項・保存期間は、旅館業法・住宅宿泊事業法および関連する条例・ガイドラインの定めに沿って設計しています。
+          </p>
+          <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, marginTop: "0.4rem" }}>
+            ※ 巡回の点検項目と記録の出力、営業従事者名簿は、
+            <a
+              href="https://www.city.katsushika.lg.jp/keikaku/reiki_int/reiki_honbun/g123RG00000832.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(255,255,255,0.65)", textDecoration: "underline" }}
+            >
+              葛飾区旅館業法施行条例
+            </a>
+            の定めに沿って設計しています。
           </p>
 
           <div style={{ textAlign: "center", marginTop: "2.8rem" }}>

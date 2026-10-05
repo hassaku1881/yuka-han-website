@@ -34,6 +34,7 @@ const t: Record<SupportedLocale, {
     turnops: { body: string };
     houseops: { body: string };
     note: string;
+    ordinanceNote: { pre: string; linkLabel: string; post: string };
     ctaLead: string;
     ctaButton: string;
   };
@@ -171,9 +172,14 @@ const t: Record<SupportedLocale, {
         body: "Early check-ins, late check-outs, luggage storage, extra towels — the small accommodations many management companies turn down on cost grounds, we take on for the sake of the guest experience. This cleaning and turnover management system is what makes that flexibility work on the ground.",
       },
       houseops: {
-        body: "Your building, and its relationship with the neighborhood — the two things a vacation rental can least afford to lose. HouseOps protects both. On days when guests are staying, our staff walk the property and its surroundings every day; issues are logged with photos, and every neighbor concern is tracked from first contact to resolution, so small sparks are handled before they become fires. The patrol records required by local ordinance come together naturally along the way.",
+        body: "The building itself, and its relationship with the neighborhood — the two things an accommodation operation can least afford to lose. HouseOps protects both. On days when guests are staying, our staff walk the property and its surroundings every day, logging issues with photos; neighbor concerns are tracked from first contact to resolution, so small sparks are handled before they become fires.",
       },
       note: "* Guest-register items and retention periods are designed in accordance with the Hotel Business Act, the Private Lodging Business Act, and related ordinances and guidelines.",
+      ordinanceNote: {
+        pre: "* Patrol checklist items and record exports, and the staff register are designed to follow the ",
+        linkLabel: "Katsushika Ward ordinance implementing the Hotel Business Act",
+        post: " (Japanese).",
+      },
       ctaLead: "Check in by AirChoice and S by AirChoice are also available to accommodation businesses as standalone products.",
       ctaButton: "Ask about our systems",
     },
@@ -421,9 +427,14 @@ const t: Record<SupportedLocale, {
         body: "提前入住、延遲退房、行李寄放、加購毛巾——這些因成本考量而常被營運代管公司婉拒的細緻服務，我們為了房客的體驗價值主動承接。支撐這份彈性現場運作的，正是這套清潔・翻房管理系統。",
       },
       houseops: {
-        body: "房東的資產——建物，以及與鄰里的關係，是民宿營運最不能失去的兩件事。HouseOps 正是為了守護這兩者。有房客入住的日子，工作人員每天巡視建物與周邊；發現的課題以照片留存，鄰里的意見也從受理到解決全程留有紀錄，讓小火苗在釀成糾紛前就被處理。條例要求的巡邏紀錄，也在日常營運中自然齊備。",
+        body: "建物本身，以及與鄰里的關係——這是住宿營運最不能失去的兩件事，HouseOps 守護的正是這兩者。有房客入住的日子，工作人員每天巡視建物與周邊，發現的課題以照片留存；鄰里的意見也從受理到解決全程留有紀錄，讓小火苗在釀成糾紛前就被處理。",
       },
       note: "※ 住宿者名簿的記載事項與保存期間，皆依旅館業法、住宅宿泊事業法及相關條例・指引之規定設計。",
+      ordinanceNote: {
+        pre: "※ 巡邏的點檢項目與紀錄輸出、營業從事者名簿，皆依",
+        linkLabel: "葛飾區旅館業法施行條例",
+        post: "（日文）之規定設計。",
+      },
       ctaLead: "Check in by AirChoice / S by AirChoice 亦可單獨提供予住宿業者。",
       ctaButton: "洽詢營運支援系統",
     },
@@ -888,6 +899,18 @@ export default async function LocaleOperationsPage({ params }: Props) {
 
           <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, marginTop: "1.4rem" }}>
             {tx.systems.note}
+          </p>
+          <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, marginTop: "0.4rem" }}>
+            {tx.systems.ordinanceNote.pre}
+            <a
+              href="https://www.city.katsushika.lg.jp/keikaku/reiki_int/reiki_honbun/g123RG00000832.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(255,255,255,0.65)", textDecoration: "underline" }}
+            >
+              {tx.systems.ordinanceNote.linkLabel}
+            </a>
+            {tx.systems.ordinanceNote.post}
           </p>
 
           <div style={{ textAlign: "center", marginTop: "2.8rem" }}>
