@@ -34,7 +34,7 @@ const t: Record<SupportedLocale, {
     turnops: { body: string };
     houseops: { body: string };
     note: string;
-    ordinanceNote: { pre: string; linkLabel: string; post: string };
+    ordinanceNote: { pre: string; patrol: string; checklist: string; register: string; sep: string; post: string };
     ctaLead: string;
     ctaButton: string;
   };
@@ -172,13 +172,16 @@ const t: Record<SupportedLocale, {
         body: "Early check-ins, late check-outs, luggage storage, extra towels — the small accommodations many management companies turn down on cost grounds, we take on for the sake of the guest experience. This cleaning and turnover management system is what makes that flexibility work on the ground.",
       },
       houseops: {
-        body: "The building itself, and its relationship with the neighborhood — the two things an accommodation operation can least afford to lose. HouseOps protects both. On days when guests are staying, our staff walk the property and its surroundings every day, logging issues with photos; neighbor concerns are tracked from first contact to resolution, so small sparks are handled before they become fires.",
+        body: "Facility management looks simple, but doing the ordinary things properly, every time, is harder than it seems. With an app optimized for smartphone screens, staff can easily record their work, check existing issues, and report new ones. We aim not only to maintain the facilities themselves, but also to maintain and improve the surrounding environment.",
       },
       note: "* Guest-register items and retention periods are designed in accordance with the Hotel Business Act, the Private Lodging Business Act, and related ordinances and guidelines.",
       ordinanceNote: {
-        pre: "* Patrol checklist items and record exports, and the staff register are designed to follow the ",
-        linkLabel: "Katsushika Ward ordinance implementing the Hotel Business Act",
-        post: " (Japanese).",
+        pre: "* Patrol checklist items and record exports, and the staff register are designed to follow Katsushika Ward's requirements (",
+        patrol: "regular patrols",
+        checklist: "patrol inspection checklist",
+        register: "staff register",
+        sep: ", ",
+        post: "; documents in Japanese).",
       },
       ctaLead: "Check in by AirChoice and S by AirChoice are also available to accommodation businesses as standalone products.",
       ctaButton: "Ask about our systems",
@@ -427,13 +430,16 @@ const t: Record<SupportedLocale, {
         body: "提前入住、延遲退房、行李寄放、加購毛巾——這些因成本考量而常被營運代管公司婉拒的細緻服務，我們為了房客的體驗價值主動承接。支撐這份彈性現場運作的，正是這套清潔・翻房管理系統。",
       },
       houseops: {
-        body: "建物本身，以及與鄰里的關係——這是住宿營運最不能失去的兩件事，HouseOps 守護的正是這兩者。有房客入住的日子，工作人員每天巡視建物與周邊，發現的課題以照片留存；鄰里的意見也從受理到解決全程留有紀錄，讓小火苗在釀成糾紛前就被處理。",
+        body: "設施管理看似簡單，但要把理所當然的事確實做到，其實並不容易。透過針對手機畫面最佳化的應用程式，工作人員可以輕鬆記錄作業、確認既有課題並回報新課題。我們不僅維護設施本身，也致力於維持並提升周邊環境。",
       },
       note: "※ 住宿者名簿的記載事項與保存期間，皆依旅館業法、住宅宿泊事業法及相關條例・指引之規定設計。",
       ordinanceNote: {
-        pre: "※ 巡邏的點檢項目與紀錄輸出、營業從事者名簿，皆依",
-        linkLabel: "葛飾區旅館業法施行條例",
-        post: "（日文）之規定設計。",
+        pre: "※ 巡邏的點檢項目與紀錄輸出、營業從事者名簿，皆依葛飾區之規定（",
+        patrol: "定期巡邏",
+        checklist: "巡邏確認點檢表",
+        register: "營業從事者名簿",
+        sep: "・",
+        post: "；日文資料）設計。",
       },
       ctaLead: "Check in by AirChoice / S by AirChoice 亦可單獨提供予住宿業者。",
       ctaButton: "洽詢營運支援系統",
@@ -903,12 +909,30 @@ export default async function LocaleOperationsPage({ params }: Props) {
           <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, marginTop: "0.4rem" }}>
             {tx.systems.ordinanceNote.pre}
             <a
-              href="https://www.city.katsushika.lg.jp/keikaku/reiki_int/reiki_honbun/g123RG00000832.html"
+              href="https://www.city.katsushika.lg.jp/_res/projects/default_project/_page_/001/039/680/080127dai7jyunnkai.pdf"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "rgba(255,255,255,0.65)", textDecoration: "underline" }}
             >
-              {tx.systems.ordinanceNote.linkLabel}
+              {tx.systems.ordinanceNote.patrol}
+            </a>
+            {tx.systems.ordinanceNote.sep}
+            <a
+              href="https://www.city.katsushika.lg.jp/_res/projects/default_project/_page_/001/039/680/080127dai7kakuninntennkennhyou.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(255,255,255,0.65)", textDecoration: "underline" }}
+            >
+              {tx.systems.ordinanceNote.checklist}
+            </a>
+            {tx.systems.ordinanceNote.sep}
+            <a
+              href="https://www.city.katsushika.lg.jp/_res/projects/default_project/_page_/001/039/680/080127dai4meibo.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(255,255,255,0.65)", textDecoration: "underline" }}
+            >
+              {tx.systems.ordinanceNote.register}
             </a>
             {tx.systems.ordinanceNote.post}
           </p>

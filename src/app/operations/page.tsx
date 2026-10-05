@@ -321,9 +321,9 @@ export default function OperationsPage() {
                 </div>
               </div>
               <p style={{ fontSize: "0.86rem", color: "rgba(255,255,255,0.78)", lineHeight: 1.9 }}>
-                建物と、近隣との関係。宿泊施設の運営で最も壊してはいけないこの2つを守るためのシステムです。
-                宿泊者がいる日は毎日スタッフが建物とその周りを見回り、気づいた課題は写真付きで記録。
-                近隣からのお申し出も受付から解決までの経過を残し、小さな火種のうちに対処します。
+                施設管理は簡単なようで当たり前を当たり前にすることは難しいものです。
+                スマートフォン画面に最適化したアプリを使用し、スタッフは簡単に作業を記録し、既存課題の確認や新たな課題の報告をすることができます。
+                施設自体の維持管理だけでなく、周辺環境の維持向上も目指しています。
               </p>
             </div>
           </div>
@@ -332,16 +332,34 @@ export default function OperationsPage() {
             ※ 宿泊者名簿の記載事項・保存期間は、旅館業法・住宅宿泊事業法および関連する条例・ガイドラインの定めに沿って設計しています。
           </p>
           <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, marginTop: "0.4rem" }}>
-            ※ 巡回の点検項目と記録の出力、営業従事者名簿は、
+            ※ 巡回の点検項目と記録の出力、営業従事者名簿は、葛飾区の定め（
             <a
-              href="https://www.city.katsushika.lg.jp/keikaku/reiki_int/reiki_honbun/g123RG00000832.html"
+              href="https://www.city.katsushika.lg.jp/_res/projects/default_project/_page_/001/039/680/080127dai7jyunnkai.pdf"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: "rgba(255,255,255,0.65)", textDecoration: "underline" }}
             >
-              葛飾区旅館業法施行条例
+              定期的な巡回
             </a>
-            の定めに沿って設計しています。
+            ・
+            <a
+              href="https://www.city.katsushika.lg.jp/_res/projects/default_project/_page_/001/039/680/080127dai7kakuninntennkennhyou.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(255,255,255,0.65)", textDecoration: "underline" }}
+            >
+              巡回時の確認点検表
+            </a>
+            ・
+            <a
+              href="https://www.city.katsushika.lg.jp/_res/projects/default_project/_page_/001/039/680/080127dai4meibo.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "rgba(255,255,255,0.65)", textDecoration: "underline" }}
+            >
+              営業従事者名簿
+            </a>
+            ）に沿って設計しています。
           </p>
 
           <div style={{ textAlign: "center", marginTop: "2.8rem" }}>
