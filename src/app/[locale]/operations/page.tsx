@@ -155,13 +155,14 @@ const t: Record<SupportedLocale, {
       lead: "We build the tools our operations need, ourselves. Here are some of the systems we use — and keep refining — every single day.",
       checkin: {
         body1:
-          "An online check-in system guests complete on their phones before arrival. It fulfills the guest-register requirement common to Japan's Hotel Business Act and Private Lodging Business Act, reliably collecting every legally required item — name, address, nationality, and occupation.",
+          "An online check-in system guests complete on their phones before arrival. No Google account is required, so guests who cannot use Google services can check in without any trouble. It fulfills the guest-register requirement (*1) common to Japan's Hotel Business Act and Private Lodging Business Act, reliably collecting every legally required item — name, address, nationality, and occupation.",
         body2:
-          "For foreign guests, passport details are read automatically from an uploaded photo. Guests skip the tedious typing, and owners know identity documents are properly collected and stored. The register exports to CSV formatted for the periodic reports required of private lodging businesses, cutting reporting work down to minutes.",
+          "For foreign guests, passport details are read automatically from an uploaded photo. Guests skip the tedious typing, and operators know identity documents are properly collected and stored. The register exports as a CSV for the periodic reports required of private lodging businesses, ready to upload as-is to Japan's Minpaku administration system, cutting reporting work down to minutes.",
         badges: [
           "Covers all legally required guest-register items",
           "Automatic passport reading (OCR)",
           "CSV export for periodic reports",
+          "No Google account needed",
           "Multilingual guest experience",
         ],
       },
@@ -172,11 +173,11 @@ const t: Record<SupportedLocale, {
         body: "Early check-ins, late check-outs, luggage storage, extra towels — the small accommodations many management companies turn down on cost grounds, we take on for the sake of the guest experience. This cleaning and turnover management system is what makes that flexibility work on the ground.",
       },
       houseops: {
-        body: "Facility management looks simple, but doing the ordinary things properly, every time, is harder than it seems. With an app optimized for smartphone screens, staff can easily record their work, check existing issues, and report new ones. We aim not only to maintain the facilities themselves, but also to maintain and improve the surrounding environment.",
+        body: "Facility management seems like a matter of course, yet it is harder than it looks. With an app optimized for smartphone screens, staff can easily record patrol inspections (*2) and other work, check existing issues, and report new ones. We aim not only to maintain the facilities themselves, but also to maintain and improve the surrounding environment.",
       },
-      note: "* Guest-register items and retention periods are designed in accordance with the Hotel Business Act, the Private Lodging Business Act, and related ordinances and guidelines.",
+      note: "*1 Guest-register items and retention periods are designed in accordance with the Hotel Business Act, the Private Lodging Business Act, and related ordinances and guidelines.",
       ordinanceNote: {
-        pre: "* Patrol checklist items and record exports, and the staff register are designed to follow Katsushika Ward's requirements (",
+        pre: "*2 Patrol checklist items and record exports, and the staff register are designed to follow Katsushika Ward's requirements (",
         patrol: "regular patrols",
         checklist: "patrol inspection checklist",
         register: "staff register",
@@ -413,13 +414,14 @@ const t: Record<SupportedLocale, {
       lead: "營運現場需要的工具，我們自己開發。以下介紹我們每天實際使用、持續打磨的部分系統。",
       checkin: {
         body1:
-          "房客抵達前即可在手機上完成的線上入住登記系統。對應日本旅館業法與住宅宿泊事業法共同規定的住宿者名簿設置義務，完整收集姓名、地址、國籍、職業等法定記載事項。",
+          "房客抵達前即可在手機上完成的線上入住登記系統。無需Google帳號，無法使用Google服務的房客也能順利辦理。對應日本旅館業法與住宅宿泊事業法共同規定的住宿者名簿※1設置義務，完整收集姓名、地址、國籍、職業等法定記載事項。",
         body2:
-          "外國籍房客只需上傳護照照片，系統即自動讀取記載資訊。房客免去繁瑣輸入，房東也能安心確認身分證件已確實收集與保管。名簿可隨時匯出對應住宅宿泊事業定期報告格式的CSV，將申報作業縮短至數分鐘。",
+          "外國籍房客只需上傳護照照片，系統即自動讀取記載資訊。房客免去繁瑣輸入，營運業者也能安心確認身分證件已確實收集與保管。名簿可匯出為住宅宿泊事業定期報告用的CSV，直接上傳至日本的民泊制度營運系統，將申報作業縮短至數分鐘。",
         badges: [
           "對應住宿者名簿法定記載事項",
           "護照自動讀取（OCR）",
           "定期報告用CSV匯出",
+          "無需Google帳號",
           "房客介面多語對應",
         ],
       },
@@ -430,11 +432,11 @@ const t: Record<SupportedLocale, {
         body: "提前入住、延遲退房、行李寄放、加購毛巾——這些因成本考量而常被營運代管公司婉拒的細緻服務，我們為了房客的體驗價值主動承接。支撐這份彈性現場運作的，正是這套清潔・翻房管理系統。",
       },
       houseops: {
-        body: "設施管理看似簡單，但要把理所當然的事確實做到，其實並不容易。透過針對手機畫面最佳化的應用程式，工作人員可以輕鬆記錄作業、確認既有課題並回報新課題。我們不僅維護設施本身，也致力於維持並提升周邊環境。",
+        body: "設施管理看似理所當然，其實並不容易。透過針對手機畫面最佳化的應用程式，工作人員可以輕鬆記錄巡邏點檢※2與各項作業、確認既有課題並回報新課題。我們不僅維護設施本身，也致力於維持並提升周邊環境。",
       },
-      note: "※ 住宿者名簿的記載事項與保存期間，皆依旅館業法、住宅宿泊事業法及相關條例・指引之規定設計。",
+      note: "※1 住宿者名簿的記載事項與保存期間，皆依旅館業法、住宅宿泊事業法及相關條例・指引之規定設計。",
       ordinanceNote: {
-        pre: "※ 巡邏的點檢項目與紀錄輸出、營業從事者名簿，皆依葛飾區之規定（",
+        pre: "※2 巡邏的點檢項目與紀錄輸出、營業從事者名簿，皆依葛飾區之規定（",
         patrol: "定期巡邏",
         checklist: "巡邏確認點檢表",
         register: "營業從事者名簿",
