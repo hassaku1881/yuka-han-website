@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { SUPPORTED_LOCALES, type SupportedLocale } from "@/lib/i18n";
 import { BASE_URL } from "@/lib/constants";
 import { optimizedImage } from "@/lib/image";
+import { HOUSING_MGMT_REG_NO, HOUSING_MGMT_REG_TITLE } from "@/lib/registration";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -176,6 +177,7 @@ const t: Record<
           </>
         ),
       },
+      { label: "Licenses", value: `${HOUSING_MGMT_REG_TITLE.en}, ${HOUSING_MGMT_REG_NO.en}` },
       { label: "Lead Brand", value: "Wuto" },
       { label: "Email", value: "contact@yuka-han.com" },
     ],
@@ -309,6 +311,7 @@ const t: Record<
           </>
         ),
       },
+      { label: "許可・登錄", value: `${HOUSING_MGMT_REG_TITLE["zh-TW"]}　${HOUSING_MGMT_REG_NO["zh-TW"]}` },
       { label: "主要品牌", value: "Wuto" },
       { label: "Email", value: "contact@yuka-han.com" },
     ],

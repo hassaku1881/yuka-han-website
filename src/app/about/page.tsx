@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { optimizedImage } from "@/lib/image";
+import { HOUSING_MGMT_REG_NO, HOUSING_MGMT_REG_TITLE } from "@/lib/registration";
 
 export const metadata: Metadata = {
   title: "About Us | 株式会社ユカハン",
@@ -348,6 +349,7 @@ export default function AboutPage() {
                     </>
                   ),
                 },
+                { label: "許認可", value: `${HOUSING_MGMT_REG_TITLE.ja}　${HOUSING_MGMT_REG_NO.ja}` },
                 { label: "主力ブランド", value: "Wuto" },
                 { label: "Email", value: "contact@yuka-han.com" },
               ].map((row) => (

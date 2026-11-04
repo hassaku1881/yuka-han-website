@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { type Locale } from "@/lib/i18n";
+import { HOUSING_MGMT_REG_NO, HOUSING_MGMT_REG_TITLE } from "@/lib/registration";
 
 type LinkDef = { path: string; label: string; localized: boolean };
 
@@ -22,6 +23,7 @@ const t: Record<
       "株式会社ユカハン",
       "本社：〒124-0003 東京都葛飾区お花茶屋2-5-21",
       "新宿オフィス：〒160-0022 東京都新宿区新宿1-36-2 新宿第七葉山ビル3F",
+      `${HOUSING_MGMT_REG_TITLE.ja}　${HOUSING_MGMT_REG_NO.ja}`,
     ],
     business: [
       { path: "/wuto", label: "Wuto", localized: true },
@@ -42,6 +44,7 @@ const t: Record<
       "Yuka-Han & Co.",
       "HQ: 2-5-21 Ohanajaya, Katsushika-ku, Tokyo 124-0003",
       "Shinjuku Office: Shinjuku Dai-7 Hayama Bldg. 3F, 1-36-2 Shinjuku, Shinjuku-ku, Tokyo 160-0022",
+      `${HOUSING_MGMT_REG_TITLE.en}: ${HOUSING_MGMT_REG_NO.en}`,
     ],
     business: [
       { path: "/wuto", label: "Wuto", localized: true },
@@ -62,6 +65,7 @@ const t: Record<
       "株式会社ユカハン（Yuka-Han & Co.）",
       "總部：〒124-0003 東京都葛飾區お花茶屋2-5-21",
       "新宿辦公室：〒160-0022 東京都新宿區新宿1-36-2 新宿第七葉山ビル3F",
+      `${HOUSING_MGMT_REG_TITLE["zh-TW"]}　${HOUSING_MGMT_REG_NO["zh-TW"]}`,
     ],
     business: [
       { path: "/wuto", label: "Wuto", localized: true },
