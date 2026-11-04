@@ -130,7 +130,8 @@ const t: Record<
         value: (
           <>
             HQ: 2-5-21 Ohanajaya, Katsushika-ku, Tokyo, Japan<br />
-            Shinjuku Office: Shinjuku Dai-7 Hayama Bldg. 3F, 1-36-2 Shinjuku, Shinjuku-ku, Tokyo, Japan
+            Shinjuku Office: Shinjuku Dai-7 Hayama Bldg. 3F, 1-36-2 Shinjuku, Shinjuku-ku, Tokyo, Japan<br />
+            Hakuba Office: 14920-264 Hokujo, Hakuba-mura, Kitaazumi-gun, Nagano, Japan
           </>
         ),
       },
@@ -264,7 +265,8 @@ const t: Record<
         value: (
           <>
             總部：東京都葛飾區お花茶屋2-5-21<br />
-            新宿辦公室：東京都新宿區新宿1-36-2 新宿第七葉山ビル3F
+            新宿辦公室：東京都新宿區新宿1-36-2 新宿第七葉山ビル3F<br />
+            白馬辦公室：長野縣北安曇郡白馬村大字北城14920-264
           </>
         ),
       },

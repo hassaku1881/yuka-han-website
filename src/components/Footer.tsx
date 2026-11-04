@@ -23,6 +23,7 @@ const t: Record<
       "株式会社ユカハン",
       "本社：〒124-0003 東京都葛飾区お花茶屋2-5-21",
       "新宿オフィス：〒160-0022 東京都新宿区新宿1-36-2 新宿第七葉山ビル3F",
+      "白馬オフィス：〒399-9301 長野県北安曇郡白馬村大字北城14920-264",
       `${HOUSING_MGMT_REG_TITLE.ja}　${HOUSING_MGMT_REG_NO.ja}`,
     ],
     business: [
@@ -44,6 +45,7 @@ const t: Record<
       "Yuka-Han & Co.",
       "HQ: 2-5-21 Ohanajaya, Katsushika-ku, Tokyo 124-0003",
       "Shinjuku Office: Shinjuku Dai-7 Hayama Bldg. 3F, 1-36-2 Shinjuku, Shinjuku-ku, Tokyo 160-0022",
+      "Hakuba Office: 14920-264 Hokujo, Hakuba-mura, Kitaazumi-gun, Nagano 399-9301",
       `${HOUSING_MGMT_REG_TITLE.en}: ${HOUSING_MGMT_REG_NO.en}`,
     ],
     business: [
@@ -65,6 +67,7 @@ const t: Record<
       "株式会社ユカハン（Yuka-Han & Co.）",
       "總部：〒124-0003 東京都葛飾區お花茶屋2-5-21",
       "新宿辦公室：〒160-0022 東京都新宿區新宿1-36-2 新宿第七葉山ビル3F",
+      "白馬辦公室：〒399-9301 長野縣北安曇郡白馬村大字北城14920-264",
       `${HOUSING_MGMT_REG_TITLE["zh-TW"]}　${HOUSING_MGMT_REG_NO["zh-TW"]}`,
     ],
     business: [

@@ -136,6 +136,18 @@ export default function RootLayout({
                     streetAddress: "新宿1-36-2 新宿第七葉山ビル3F",
                   },
                 },
+                {
+                  "@type": "Place",
+                  name: "白馬オフィス",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressCountry: "JP",
+                    postalCode: "399-9301",
+                    addressRegion: "長野県",
+                    addressLocality: "北安曇郡白馬村",
+                    streetAddress: "大字北城14920-264",
+                  },
+                },
               ],
               brand: [
                 { "@type": "Brand", name: "Wuto", url: `${BASE_URL}/wuto` },
