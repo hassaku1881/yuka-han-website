@@ -440,6 +440,13 @@ export default function OperationsPage() {
               </div>
             </div>
           </div>
+          <p style={{ marginTop: "2.5rem", fontSize: "0.88rem", color: "var(--color-text)", lineHeight: 1.85 }}>
+            長野県の白馬エリアでも運営代行を始めました。白馬エリアの物件は専用ページをご覧ください。
+            <br />
+            <a href="https://host.airchoice.jp/hakuba" style={{ color: "var(--color-accent)", textDecoration: "underline" }}>
+              白馬エリアの運営代行について →
+            </a>
+          </p>
         </div>
       </section>
 

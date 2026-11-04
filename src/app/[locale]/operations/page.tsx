@@ -47,6 +47,8 @@ const t: Record<SupportedLocale, {
     feeHeading: string;
     fees: { label: string; value: string; big: boolean; note: string }[];
     alignment: string;
+    hakuba: string;
+    hakubaLink: string;
   };
   service02: {
     heading: string;
@@ -224,6 +226,8 @@ const t: Record<SupportedLocale, {
       ],
       alignment:
         "We have no structure that generates profit beyond the management fee. Our revenue and the owner's revenue optimization are designed to point in the same direction.",
+      hakuba: "We have also started management services in the Hakuba area (Nagano). For properties in Hakuba, please see the dedicated page.",
+      hakubaLink: "Hakuba area management",
     },
     service02: {
       heading: "Launch Support",
@@ -483,6 +487,8 @@ const t: Record<SupportedLocale, {
       ],
       alignment:
         "我們沒有在代營運手續費以外獲取利潤的結構。房東的收益最大化與我們的收益，指向同一個方向。",
+      hakuba: "我們也已在長野縣白馬地區開始提供代營運服務。白馬地區的物件請參考專屬頁面。",
+      hakubaLink: "白馬地區的代營運",
     },
     service02: {
       heading: "開業支援",
@@ -1003,6 +1009,13 @@ export default async function LocaleOperationsPage({ params }: Props) {
               </div>
             </div>
           </div>
+          <p style={{ marginTop: "2.5rem", fontSize: "0.88rem", color: "var(--color-text)", lineHeight: 1.85 }}>
+            {tx.service01.hakuba}
+            <br />
+            <a href="https://host.airchoice.jp/hakuba" style={{ color: "var(--color-accent)", textDecoration: "underline" }}>
+              {tx.service01.hakubaLink} →
+            </a>
+          </p>
         </div>
       </section>
 
