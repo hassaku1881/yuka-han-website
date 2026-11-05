@@ -49,6 +49,8 @@ const t: Record<SupportedLocale, {
     alignment: string;
     hakuba: string;
     hakubaLink: string;
+    junkai: string;
+    junkaiLink: string;
   };
   service02: {
     heading: string;
@@ -57,6 +59,8 @@ const t: Record<SupportedLocale, {
     services: string[];
     feeHeading: string;
     fees: { label: string; value: string; big: boolean; note: string }[];
+    photo: string;
+    photoLink: string;
   };
   cohost: {
     label: string;
@@ -228,9 +232,13 @@ const t: Record<SupportedLocale, {
         "We have no structure that generates profit beyond the management fee. Our revenue and the owner's revenue optimization are designed to point in the same direction.",
       hakuba: "We have also started management services in the Hakuba area (Nagano). For properties in Hakuba, please see the dedicated page.",
       hakubaLink: "Hakuba area management",
+      junkai: "For properties in Katsushika City, we also offer patrol-only service covering the inspections and records required by the city since April 2026.",
+      junkaiLink: "Katsushika patrol service",
     },
     service02: {
       heading: "Launch Support",
+      photo: "We also accept photography-only requests for vacation rentals in and around Tokyo.",
+      photoLink: "Vacation rental photography",
       sub: "From concept design and listing publication to early-stage support and operations improvement — we walk alongside you until your property is running smoothly.",
       servicesHeading: "Services",
       services: [
@@ -489,9 +497,13 @@ const t: Record<SupportedLocale, {
         "我們沒有在代營運手續費以外獲取利潤的結構。房東的收益最大化與我們的收益，指向同一個方向。",
       hakuba: "我們也已在長野縣白馬地區開始提供代營運服務。白馬地區的物件請參考專屬頁面。",
       hakubaLink: "白馬地區的代營運",
+      junkai: "葛飾區的物件，自2026年4月起須依規定定期巡查並留存紀錄。我們也受理僅委託巡查與紀錄的服務。",
+      junkaiLink: "葛飾區巡查代行",
     },
     service02: {
       heading: "開業支援",
+      photo: "也受理僅委託拍攝的服務（東京都內及近郊的民宿）。",
+      photoLink: "民宿攝影服務",
       sub: "從概念設計、房源上線，到啟動期支援和運營改善規劃——我們全程陪跑，直到您的業務步入正軌。",
       servicesHeading: "服務內容",
       services: [
@@ -1016,6 +1028,13 @@ export default async function LocaleOperationsPage({ params }: Props) {
               {tx.service01.hakubaLink} →
             </a>
           </p>
+          <p style={{ marginTop: "1.2rem", fontSize: "0.88rem", color: "var(--color-text)", lineHeight: 1.85 }}>
+            {tx.service01.junkai}
+            <br />
+            <a href="https://host.airchoice.jp/junkai" style={{ color: "var(--color-accent)", textDecoration: "underline" }}>
+              {tx.service01.junkaiLink} →
+            </a>
+          </p>
         </div>
       </section>
 
@@ -1052,6 +1071,13 @@ export default async function LocaleOperationsPage({ params }: Props) {
               ))}
             </div>
           </div>
+          <p style={{ marginTop: "2.5rem", fontSize: "0.88rem", color: "var(--color-text)", lineHeight: 1.85 }}>
+            {tx.service02.photo}
+            <br />
+            <a href="https://host.airchoice.jp/photo" style={{ color: "var(--color-accent)", textDecoration: "underline" }}>
+              {tx.service02.photoLink} →
+            </a>
+          </p>
         </div>
       </section>
 

@@ -447,6 +447,13 @@ export default function OperationsPage() {
               白馬エリアの運営代行について →
             </a>
           </p>
+          <p style={{ marginTop: "1.2rem", fontSize: "0.88rem", color: "var(--color-text)", lineHeight: 1.85 }}>
+            葛飾区の物件では、2026年4月から義務になった巡回と記録の代行のみのご依頼も承っています。
+            <br />
+            <a href="https://host.airchoice.jp/junkai" style={{ color: "var(--color-accent)", textDecoration: "underline" }}>
+              葛飾区の巡回代行について →
+            </a>
+          </p>
         </div>
       </section>
 
@@ -497,6 +504,13 @@ export default function OperationsPage() {
               ))}
             </div>
           </div>
+          <p style={{ marginTop: "2.5rem", fontSize: "0.88rem", color: "var(--color-text)", lineHeight: 1.85 }}>
+            東京都内・近郊の民泊の写真撮影のみのご依頼も承っています。
+            <br />
+            <a href="https://host.airchoice.jp/photo" style={{ color: "var(--color-accent)", textDecoration: "underline" }}>
+              民泊の写真撮影について →
+            </a>
+          </p>
         </div>
       </section>
 
